@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+  		<kd-header></kd-header>
   		<loader></loader>
   </div>
 </template>

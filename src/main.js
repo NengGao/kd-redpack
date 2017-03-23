@@ -7,7 +7,8 @@ import KD from './components/KD'
 
 Vue.config.productionTip = false
 
-Vue.use(KD);
+Vue.use(KD.Loader);
+Vue.use(KD.Header);
 
 /* eslint-disable no-new */
 new Vue({
