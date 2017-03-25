@@ -52,17 +52,17 @@
 </template>
 
 
-<style scoped>
+<style rel="stylesheet/scss" lang="scss">
 	
-
+@import "../../../assets/sass/config.scss";
 .loader {
-	width: 100px;
-    height: 100px;
+	width: toRem(100px);
+    height: toRem(100px);
     position: fixed;
     top: 50%;
     left: 50%;
-    margin-left: -50px;
-    margin-top: -50px;
+    margin-left: toRem(-50px);
+    margin-top: toRem(-50px);
     box-sizing: border-box;
     display: flex;
     flex: 0 1 auto;
@@ -73,21 +73,21 @@
     align-items: center;
     justify-content: center;
     background: rgba(0,0,0,0.6);
-    border-radius:5px;
+    border-radius:toRem(5px);
 }
 
 .ball-clip-rotate > div {
     background-color: #fff;
-    width: 15px;
-    height: 15px;
+    width: toRem(15px);
+    height: toRem(15px);
     border-radius: 100%;
-    margin: 2px;
+    margin: toRem(2px);
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
-    border: 2px solid #fff;
+    border: toRem(2px) solid #fff;
     border-bottom-color: transparent;
-    height: 28px;
-    width: 28px;
+    height: toRem(28px);
+    width: toRem(28px);
     background: transparent !important;
     display: inline-block;
     -webkit-animation: rotate 0.75s 0s linear infinite;
@@ -128,37 +128,37 @@
 
 .ball-clip-rotate-pulse {
     position: relative;
-    -webkit-transform: translate(-16px,-16px);
-    -ms-transform: translate(-16px,-16px);
-    transform: translate(-16px,-16px);
+    -webkit-transform: translate(toRem(-16px),toRem(-16px));
+    -ms-transform: translate(toRem(-16px),toRem(-16px));
+    transform: translate(toRem(-16px),toRem(-16px));
 }
 
 .ball-clip-rotate-pulse > div {
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     border-radius: 100%;
 }
 
 .ball-clip-rotate-pulse > div:first-child {
     background: #fff;
-    height: 16px;
-    width: 16px;
-    top: 9px;
-    left: 9px;
+    height: toRem(16px);
+    width: toRem(16px);
+    top: toRem(9px);
+    left: toRem(9px);
     -webkit-animation: scale 1s 0s cubic-bezier(.09, .57, .49, .9) infinite;
     animation: scale 1s 0s cubic-bezier(.09, .57, .49, .9) infinite;
 }
 
 .ball-clip-rotate-pulse > div:last-child {
     position: absolute;
-    border: 2px solid #fff;
-    width: 30px;
-    height: 30px;
+    border: toRem(2px) solid #fff;
+    width: toRem(30px);
+    height: toRem(30px);
     background: transparent;
-    border: 2px solid;
+    border: toRem(2px) solid;
     border-color: #fff transparent #fff transparent;
     -webkit-animation: rotate 1s 0s cubic-bezier(.09, .57, .49, .9) infinite;
     animation: rotate 1s 0s cubic-bezier(.09, .57, .49, .9) infinite;
@@ -207,9 +207,9 @@
 
 .ball-scale-multiple {
     position: relative;
-    -webkit-transform: translateY(-30px);
-    -ms-transform: translateY(-30px);
-    transform: translateY(-30px);
+    -webkit-transform: translateY(toRem(-30px));
+    -ms-transform: translateY(toRem(-30px));
+    transform: translateY(toRem(-30px));
 }
 
 .ball-scale-multiple > div:nth-child(2) {
@@ -225,16 +225,16 @@
 .ball-scale-multiple > div {
     background-color: #fff;
     border-radius: 100%;
-    margin: 2px;
+    margin: toRem(2px);
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
     position: absolute;
-    left: -30px;
+    left: toRem(-30px);
     top: 0;
     opacity: 0;
     margin: 0;
-    width: 60px;
-    height: 60px;
+    width: toRem(60px);
+    height: toRem(60px);
     -webkit-animation: ball-scale-multiple 1s 0s linear infinite;
     animation: ball-scale-multiple 1s 0s linear infinite;
 }
@@ -276,10 +276,10 @@
 
 .line-scale-pulse-out > div {
     background-color: #ff0000;
-    width: 4px;
-    height: 35px;
-    border-radius: 2px;
-    margin: 2px;
+    width: toRem(4px);
+    height: toRem(35px);
+    border-radius: toRem(2px);
+    margin: toRem(2px);
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
     display: inline-block;
@@ -333,10 +333,10 @@
 
 .line-scale-pulse-out-rapid > div {
     background-color: #ff0000;
-    width: 4px;
-    height: 35px;
-    border-radius: 2px;
-    margin: 2px;
+    width: toRem(4px);
+    height: toRem(35px);
+    border-radius: toRem(2px);
+    margin: toRem(2px);
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
     display: inline-block;
@@ -358,81 +358,81 @@
 
 @-webkit-keyframes ball-triangle-path-1 {
     33% {
-        -webkit-transform: translate(25px, -50px);
-        transform: translate(25px, -50px);
+        -webkit-transform: translate(toRem(25px), toRem(-50px));
+        transform: translate(toRem(25px), toRem(-50px));
     }
 
     66% {
-        -webkit-transform: translate(50px, 0px);
-        transform: translate(50px, 0px);
+        -webkit-transform: translate(toRem(50px), 0);
+        transform: translate(toRem(50px), 0);
     }
 
     100% {
-        -webkit-transform: translate(0px, 0px);
-        transform: translate(0px, 0px);
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0);
     }
 }
 
 @keyframes ball-triangle-path-1 {
     33% {
-        -webkit-transform: translate(25px, -50px);
-        transform: translate(25px, -50px);
+        -webkit-transform: translate(toRem(25px), toRem(-50px));
+        transform: translate(toRem(25px), toRem(-50px));
     }
 
     66% {
-        -webkit-transform: translate(50px, 0px);
-        transform: translate(50px, 0px);
+        -webkit-transform: translate(toRem(50px), 0);
+        transform: translate(toRem(50px), 0);
     }
 
     100% {
-        -webkit-transform: translate(0px, 0px);
-        transform: translate(0px, 0px);
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0);
     }
 }
 
 @-webkit-keyframes ball-triangle-path-2 {
     33% {
-        -webkit-transform: translate(25px, 50px);
-        transform: translate(25px, 50px);
+        -webkit-transform: translate(toRem(25px), toRem(50px));
+        transform: translate(toRem(25px), toRem(50px));
     }
 
     66% {
-        -webkit-transform: translate(-25px, 50px);
-        transform: translate(-25px, 50px);
+        -webkit-transform: translate(toRem(-25px), toRem(50px));
+        transform: translate(toRem(-25px), toRem(50px));
     }
 
     100% {
-        -webkit-transform: translate(0px, 0px);
-        transform: translate(0px, 0px);
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0);
     }
 }
 
 @keyframes ball-triangle-path-2 {
     33% {
-        -webkit-transform: translate(25px, 50px);
-        transform: translate(25px, 50px);
+        -webkit-transform: translate(toRem(25px), toRem(50px));
+        transform: translate(toRem(25px), toRem(50px));
     }
 
     66% {
-        -webkit-transform: translate(-25px, 50px);
-        transform: translate(-25px, 50px);
+        -webkit-transform: translate(toRem(-25px), toRem(50px));
+        transform: translate(toRem(-25px), toRem(50px));
     }
 
     100% {
-        -webkit-transform: translate(0px, 0px);
-        transform: translate(0px, 0px);
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0);
     }
 }
 
 @-webkit-keyframes ball-triangle-path-3 {
     33% {
-        -webkit-transform: translate(-50px, 0px);
-        transform: translate(-50px, 0px);
+        -webkit-transform: translate(toRem(-50px), 0);
+        transform: translate(toRem(-50px), 0);
     }
 
     66% {
-        -webkit-transform: translate(-25px, -50px);
-        transform: translate(-25px, -50px);
+        -webkit-transform: translate(toRem(-25px), toRem(-50px));
+        transform: translate(toRem(-25px), toRem(-50px));
     }
 
     100% {
@@ -443,13 +443,13 @@
 
 @keyframes ball-triangle-path-3 {
     33% {
-        -webkit-transform: translate(-50px, 0px);
-        transform: translate(-50px, 0px);
+        -webkit-transform: translate(toRem(-50px), 0);
+        transform: translate(toRem(-50px), 0px);
     }
 
     66% {
-        -webkit-transform: translate(-25px, -50px);
-        transform: translate(-25px, -50px);
+        -webkit-transform: translate(toRem(-25px), toRem(-50px));
+        transform: translate(toRem(-25px), toRem(-50px));
     }
 
     100% {
@@ -460,9 +460,9 @@
 
 .ball-triangle-path {
     position: relative;
-    -webkit-transform: translate(-30px, -30px);
-    -ms-transform:  translate(-30px, -30px);
-    transform:  translate(-30px, -30px);
+    -webkit-transform: translate(toRem(-30px), toRem(-30px));
+    -ms-transform:  translate(toRem(-30px), toRem(-30px));
+    transform:  translate(toRem(-30px), toRem(-30px));
 }
 
 .ball-triangle-path > div:nth-child(1) {
@@ -508,23 +508,23 @@
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
     position: absolute;
-    width: 10px;
-    height: 10px;
+    width: toRem(10px);
+    height: toRem(10px);
     border-radius: 100%;
-    border: 1px solid #fff;
+    border: toRem(1px) solid #fff;
 }
 
 .ball-triangle-path > div:nth-of-type(1) {
-    top: 50px;
+    top: toRem(50px);
 }
 
 .ball-triangle-path > div:nth-of-type(2) {
-    left: 25px;
+    left: toRem(25px);
 }
 
 .ball-triangle-path > div:nth-of-type(3) {
-    top: 50px;
-    left: 50px;
+    top: toRem(50px);
+    left: toRem(50px);
 }
 
 </style>

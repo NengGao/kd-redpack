@@ -1,0 +1,181 @@
+body,html {
+    overflow: hidden;
+    height: 100%;
+    background: #f5f2f0;
+}
+body {
+    font-family: DroidSansFallback,Arial,Helvetica,sans-serif;
+    -webkit-text-size-adjust: none;
+    margin: 0;
+    padding: 0;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch
+}
+article,aside,blockquote,button,code,dd,details,div,dl,dt,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hr,input,legend,li,menu,nav,ol,p,pre,section,td,textarea,th,ul {
+    margin: 0;
+    padding: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-tap-highlight-color: transparent
+}
+article,aside,details,figcaption,figure,footer,header,menu,nav,section {
+    display: block;
+    -webkit-tap-highlight-color: transparent
+}
+input,textarea {
+    -webkit-user-select: auto;
+    -webkit-appearance: none;
+    outline: 0
+}
+audio,canvas,video {
+    display: inline-block
+}
+em,i {
+    display: inline;
+    font-style: normal;
+    font-weight: 400
+}
+a {
+    color: #fff;
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: none
+}
+ol,ul {
+    list-style: none
+}
+img{
+    display: block;
+}
+.flex-wrap {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    .flex-con-1 {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        z-index: 2
+    }
+    .flex-con-2 {
+        -webkit-box-flex: 2;
+        -webkit-flex: 2;
+        flex: 2
+    }
+    .flex-center {
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center
+    }
+}
+.clearfix:after {
+    clear: both;
+    font-size: 0;
+    display: block;
+    content: " ";
+    line-height: 0
+}
+
+@media screen and (min-width:240px) {
+    body,button,html,input,select,textarea {
+        font-size:9px;
+    }
+}
+
+@media screen and (min-width:280px) {
+    body,button,html,input,select,textarea {
+        font-size:11px;    
+    }
+}
+
+@media screen and (min-width:320px) {
+    body,button,html,input,select,textarea {
+        font-size:12px;  
+    }
+}
+
+@media screen and (min-width:340px) {
+    body,button,html,input,select,textarea {
+        font-size:13px;  
+    }
+}
+
+@media screen and (min-width:354px) {
+    body,button,html,input,select,textarea {
+        font-size:14px;   
+    }
+}
+
+@media screen and (min-width:378px) {
+    body,button,html,input,select,textarea {
+        font-size:15px;
+    }
+}
+
+@media screen and (min-width:413px) {
+    body,button,html,input,select,textarea {
+        font-size:15.5px;     
+    }
+}
+
+@media screen and (min-width:426px) {
+    body,button,html,input,select,textarea {
+        font-size:16px;   
+    }
+}
+
+@media screen and (min-width:450px) {
+    body,button,html,input,select,textarea {
+        font-size:18px;
+    }
+}
+
+@media screen and (min-width:480px) {
+    body,button,html,input,select,textarea {
+        font-size:19px;    
+    }
+}
+
+@media screen and (min-width:540px) {
+    body,button,html,input,select,textarea {
+        font-size:20.25px;    
+    }
+}
+
+@media screen and (min-width:590px) {
+    body,button,html,input,select,textarea {
+        font-size:22.13px;     
+    }
+}
+
+@media screen and (min-width:600px) {
+    body,button,html,input,select,textarea {
+        font-size:22.5px;      
+    }
+}
+
+@media screen and (min-width:640px) {
+    body,button,html,input,select,textarea {
+        font-size:24px;  
+    }
+}
+
+@media screen and (min-width:720px) {
+    body,button,html,input,select,textarea {
+        font-size:27px;  
+    }
+}
+
+@media screen and (min-width:800px) {
+    body,button,html,input,select,textarea {
+        font-size:30px; 
+    }
+}
+
+@media screen and (min-width:874px) {
+    body,button,html,input,select,textarea {
+        font-size:33px; 
+    }
+}

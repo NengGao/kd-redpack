@@ -1,7 +1,7 @@
 <template>
 	<div class="">
 		<header class="header">
-			123
+			
 		</header>					
 	</div>
 </template>
@@ -10,13 +10,14 @@
 	
 </script>
 
-<style scoped>
+<style rel="stylesheet/scss" lang="scss">
+	@import "../../../assets/sass/config.scss";
 	.header{
-		height: 55px;
-		width: 100%;
-		display: block;
-		background: #ff3333;
-		position: fixed;
-		top: 0;
+	    height: toRem(55px);
+	    width: 100%;
+	    display: block;
+	   	background: $bgColor;
+	    position: fixed;
+	    top: 0;
 	}
 </style>
