@@ -4,8 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import KD from './components/KD'
+import BScroll from 'better-scroll'
+
 
 Vue.config.productionTip = false
+
 
 Vue.use(KD.Loader);
 Vue.use(KD.Header);

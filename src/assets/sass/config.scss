@@ -16,3 +16,8 @@ $border: solid 0.1rem #eee;
     -webkit-flex: $flex;
     flex: $flex;
 }
+@mixin overEllipsis(){
+    white-space:nowrap; 
+    overflow:hidden; 
+    text-overflow:ellipsis;
+}

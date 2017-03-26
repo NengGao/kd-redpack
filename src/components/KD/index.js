@@ -1,7 +1,6 @@
 import loaderComponent from './vue/Loader.vue'
 import headerComponent from './vue/Header.vue'
 
-/*import '@/assets/sass/components/Header.scss'*/
 
 const Loader = {
 	install: function(Vue) {
