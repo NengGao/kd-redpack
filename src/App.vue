@@ -11,14 +11,15 @@ export default {
   name: 'app',
   data () {
     return {
-      	transitionName: 'slide-right'
+      	transitionName: 'fade'
     }
   },
   watch: {
 	  '$route' (to, from) {
-	    const toDepth = to.path.split('/').length
-	    const fromDepth = from.path.split('/').length
-	    this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+		    const toDepth = to.path.split('/').length
+		    const fromDepth = from.path.split('/').length
+		    if(toDepth != fromDepth) return
+		    this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
 	  }
 	}
 }
@@ -37,29 +38,21 @@ export default {
 						height: 100%;
 					  transition: all .1s cubic-bezier(1,0.8,.1,0.3);
 				}
-			 .slide-left-enter{
+				.fade-enter-active, .fade-leave-active {
+				  	transition: opacity .15s ease;
+				}
+				.fade-enter, .fade-leave-active {
+				  	opacity: 0
+				}
+				.slide-left-enter, .slide-right-leave-active {
+					  opacity: 0;
+					  -webkit-transform: translate(30%, 0);
+					  transform: translate(30%, 0);
+				}
+				.slide-left-leave-active, .slide-right-enter {
 					  opacity: 0;
 					  -webkit-transform: translate(-30%, 0);
 					  transform: translate(-30%, 0);
-				}
-				.slide-left-leave-active{
-						opacity: 0;
-						transition: all .3s cubic-bezier(1,0.5,.8,1);
-				  	-webkit-transform: translate(-30%, 0);
-				 	 	transform: translate(-30%, 0);
-				}
-				
-				.slide-right-leave-active {
-						opacity: 0;
-						transition: all .1s cubic-bezier(1,0.5,.8,1);
-				  	-webkit-transform: translate(-30%, 0);
-				 	 	transform: translate(-30%, 0);
-				}
-				.slide-right-enter {
-					  opacity: 0;
-					  transition: all .3s cubic-bezier(1,0.5,.8,1);
-					  -webkit-transform: translate(30%, 0);
-					  transform: translate(30%, 0);
 				}
 		}
 </style>
