@@ -2,10 +2,10 @@
 <div class="flex-wrap" id="home">
 	<header class="header">
 		<router-link class="user-info flex-wrap" tag="div" to="/personal">
-			<img class="user-head" :src="user.userHead" alt="" />
+			<img class="user-head" :src="user.userImage" alt="" />
 			<div class="info">
-				<div class="user-name">{{user.userName}}</div>
-				<div class="user-id">ID:{{user.userId}}</div>
+				<div class="user-name">{{user.alias}}</div>
+				<div class="user-id">ID:{{user.userCode}}</div>
 			</div>
 		</router-link>
 		<router-link tag="div" class="user-balance" to="/balance"><i class="ic-balance"></i>余额(元):{{user.balance}}</router-link>
@@ -48,33 +48,36 @@
 			</div>
 		</div>
 	</div>
+	<loader></loader>
 </div>
 </template>
 
 <script>
 import BScroll from 'better-scroll';
-import router from '@/router'
 
 export default {
   name: 'home',
   data(){
     return {
-    	user:{
-    		userHead:'http://wx.qlogo.cn/mmopen/9ZQcUxWXzDoib8YOibgX9wLIDKPIg1P9hBst3H0t8GO1icwENm4TSGkx2Sc4nBzkG5V9NfJYxPs6yuIg6emVsiadW6kZ7ic3OezrS/0',
-	      	userName:'丶偏执',
-	      	userId:'10351',
-	      	balance:'1000.00'
-    	},
+    	user:'',
     	welfareInfo:{
     		time: '00:12:50' 
     	}
     }
   },
   created(){
-   		
+	
+	this.$http.get('http://m.go16888.cn/user/login?openId=o3Z-wwEbs0SlBadtmaubO9tVhdAs&loginType=2').then(res => {
+	    // success callback
+	    this.user = res.data
+	    this.user.balance = '100.00'
+	}, err => {
+	    // error callback
+	})
   },
   mounted(){
   	this._initScroll();
+
   },
   methods: {
   	_initScroll() {
@@ -83,7 +86,7 @@ export default {
         });
 	},
 	goWelfare(){
-		router.push("welfare")
+		this.$router.push("/welfare/index")
 	}
   }
 }

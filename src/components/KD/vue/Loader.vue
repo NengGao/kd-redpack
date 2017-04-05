@@ -1,23 +1,23 @@
 <template>
-	<div class="loaders">
-		<!-- loader 1 -->
-		<div class="loader">
-		    <div class="ball-clip-rotate">
-		      <div></div>
-		    </div>
-		</div> 
 
-		
-		<!-- loader 2
+	<!-- loader 1 -->
+	<div class="loader">
+	    <div class="ball-clip-rotate">
+	      <div></div>
+	    </div>
+	</div> 	
+
+</template>
+
+		<!-- 
 		<div class="loader">
 		    <div class="ball-clip-rotate-pulse">
 		      <div></div>
 		      <div></div>
 		    </div>
 		</div>
-		-->
 		
-<!--	
+
 		<div class="loader">
 		    <div class="ball-scale-multiple">
 		      <div></div>
@@ -25,8 +25,7 @@
 		      <div></div>
 		    </div>
 		</div>
--->
-<!--		
+
 		<div class="loader">
 		    <div class="line-scale-pulse-out">
 		      <div></div>
@@ -36,21 +35,15 @@
 		      <div></div>
 		    </div>
 		</div>
--->
 
-
-<!--
 		<div class="loader">
 		    <div class="ball-triangle-path">
 		      <div></div>
 		      <div></div>
 		      <div></div>
 	    	</div>
-  		</div>	
- --> 		
-	</div>
-</template>
-
+	    </div>	
+		-->
 
 <style rel="stylesheet/scss" lang="scss">
 	
@@ -61,6 +54,7 @@
     position: fixed;
     top: 50%;
     left: 50%;
+    z-index: 999;
     margin-left: toRem(-50px);
     margin-top: toRem(-50px);
     box-sizing: border-box;

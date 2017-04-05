@@ -3,10 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import config from './config'
 import KD from './components/KD'
 import BScroll from 'better-scroll'
+import axios from 'axios'
 
+import './assets/css/base.css'
 
+Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
 
