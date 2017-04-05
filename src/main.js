@@ -13,7 +13,6 @@ import './assets/css/base.css'
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
-
 Vue.use(KD.Loader);
 Vue.use(KD.Header);
 

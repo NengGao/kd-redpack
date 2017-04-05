@@ -7,6 +7,9 @@
 </template>
 
 <script>
+
+
+
 export default {
   name: 'app',
   data () {
@@ -39,7 +42,7 @@ export default {
 					  left: 0;
 					  width: 100%;
 						height: 100%;
-					  transition: all .1s cubic-bezier(1,0.8,.1,0.3);
+					  transition: all .4s;
 				}
 				.fade-enter-active, .fade-leave-active {
 				  	transition: opacity .15s ease;
@@ -49,13 +52,13 @@ export default {
 				}
 				.slide-left-enter, .slide-right-leave-active {
 					  opacity: 0;
-					  -webkit-transform: translate(30%, 0);
-					  transform: translate(30%, 0);
+					  -webkit-transform: translate(100%, 0);
+					  transform: translate(100%, 0);
 				}
 				.slide-left-leave-active, .slide-right-enter {
 					  opacity: 0;
-					  -webkit-transform: translate(-30%, 0);
-					  transform: translate(-30%, 0);
+					  -webkit-transform: translate(-100%, 0);
+					  transform: translate(-100%, 0);
 				}
 		}
 </style>

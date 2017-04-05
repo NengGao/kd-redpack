@@ -48,11 +48,14 @@
 			</div>
 		</div>
 	</div>
-	<loader></loader>
+	<loader v-show="loaderShow"></loader>
 </div>
 </template>
 
 <script>
+	
+import config from '@/config';
+import common from '@/assets/js/common';
 import BScroll from 'better-scroll';
 
 export default {
@@ -62,12 +65,19 @@ export default {
     	user:'',
     	welfareInfo:{
     		time: '00:12:50' 
-    	}
+    	},
+    	loaderShow : false
     }
   },
   created(){
-	
-	this.$http.get('http://m.go16888.cn/user/login?openId=o3Z-wwEbs0SlBadtmaubO9tVhdAs&loginType=2').then(res => {
+  	let openid = common.getLocal("openid");
+	if(config.start.isTest && !openid){
+		openid = config.start.testOpenId;
+	}else if(!openid){
+		// 登录
+		alert("调用登录");
+	}
+	this.$http.get(config.ip.user + '/login?openId='+ openid +'&loginType=2').then(res => {
 	    // success callback
 	    this.user = res.data
 	    this.user.balance = '100.00'
