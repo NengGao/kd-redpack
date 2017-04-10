@@ -36,12 +36,16 @@
 				</li>
 			</ul>
 			<ul class="activity-box flex-wrap">
-				<li></li>
-				<li></li>
-			</ul>
-			<ul class="activity-box flex-wrap">
-				<li></li>
-				<li></li>
+				<li class="hbjc flex-wrap">
+					<div class="activity-logo"></div>
+					<div class="activity-info">
+						<div class="activity-name">红包竞猜</div>
+						<div class="activity-tips">多人竞猜领红包</div>
+					</div>
+				</li>
+				<li class="ddjl flex-wrap">
+					
+				</li>
 			</ul>
 			<div class="goods-candid">
 				
