@@ -1,7 +1,7 @@
 
 
 const start = {
-	isTest : false,
+	isTest : true,
 	testOpenId : 'o3Z-wwEbs0SlBadtmaubO9tVhdAs'
 }
 const ip = {

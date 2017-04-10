@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import config from './config'
+import store from './store'
 import KD from './components/KD'
 import BScroll from 'better-scroll'
 import axios from 'axios'
@@ -20,6 +21,7 @@ Vue.use(KD.Header);
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

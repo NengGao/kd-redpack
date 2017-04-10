@@ -54,7 +54,7 @@
 
 <script>
 	
-import config from '@/config';
+import Api from '@/fetch/api';
 import common from '@/assets/js/common';
 import BScroll from 'better-scroll';
 
@@ -62,32 +62,21 @@ export default {
   name: 'home',
   data(){
     return {
-    	user:'',
-    	welfareInfo:{
+    	user: this.$store.getters.getUserInfo,
+    	welfareInfo: {
     		time: '00:12:50' 
     	},
-    	loaderShow : false
+    	loaderShow: false
     }
   },
-  created(){
-  	let openid = common.getLocal("openid");
-	if(config.start.isTest && !openid){
-		openid = config.start.testOpenId;
-	}else if(!openid){
-		// 登录
-		alert("调用登录");
-	}
-	this.$http.get(config.ip.user + '/login?openId='+ openid +'&loginType=2').then(res => {
-	    // success callback
-	    this.user = res.data
-	    this.user.balance = '100.00'
-	}, err => {
-	    // error callback
-	})
+  beforeCreate(){
+  	this.$store.dispatch('changeUserInfo',this);
   },
-  mounted(){
+  created() {
+  	
+  },
+  mounted() {
   	this._initScroll();
-
   },
   methods: {
   	_initScroll() {
