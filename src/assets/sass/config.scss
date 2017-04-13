@@ -4,7 +4,7 @@ $fontColor: '#333';
 $bgColor: linear-gradient(to right,#ff8c00,#ff5100);
 $bodyBg : #f5f2f0;
 $border: solid 0.1rem #eee;
-
+$red: #ff2739;
 
 @function toRem($px){
     @return $px/14px * 1rem; 

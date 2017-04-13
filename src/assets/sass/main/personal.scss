@@ -1,0 +1,62 @@
+@charset 'utf8';
+
+@import "../config.scss";
+@import "../icon.scss";
+
+.content{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    .ic-arrow-rw{
+        position: absolute;
+        right: 1rem;
+    }
+    .marginTop{
+        margin-top: toRem(8px);
+    }
+    .lineBox{
+        height: toRem(50px);
+        line-height: toRem(50px);
+        background: #fff;
+        border-bottom: 0.1rem solid #f5f1f0;
+    }
+    .lineBox-icon{
+        
+    }
+    .user-info{
+        width: 100%;
+        height: toRem(65px);
+        background: #fff;
+        position: relative;
+        .user-head{
+            width: toRem(48px);
+            height: toRem(48px);
+            margin: toRem(7px) 0.4rem 0 toRem(16px);
+            border-radius:50%;
+        }
+        .info{
+            height: toRem(40px);
+            margin-top: toRem(12px);
+            margin-left: 0.5rem;
+            line-height: 1.3rem;
+            .user-name{
+                color: #333;
+                font-size: toRem(16px);
+            }
+            .user-id{
+                color: #999;
+                padding-top: 0.28rem;
+            }
+        }
+        .editInfo{
+            position: absolute;
+            line-height: toRem(65px);
+            right: 3.1rem;
+            top: 0;
+            color: #999;
+        }
+        i{
+            top: 1.68rem;
+        }
+    }
+
+}

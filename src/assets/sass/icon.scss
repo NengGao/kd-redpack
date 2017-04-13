@@ -1,8 +1,4 @@
 
-.icon{
-        
-}
-
 .ic-balance{
     width: 2.4rem;
     height: toRem(53px);
@@ -23,4 +19,10 @@
     position: absolute;
     bottom: 0;
     left: 0;
+}
+.ic-arrow-rw{
+    display: inline;
+    padding: 0.6rem 1rem;
+    background:  center no-repeat url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAYCAMAAAD9GTxlAAAASFBMVEUAAACzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OkWi1rAAAAF3RSTlMA8vfUyxTsLRtDN9wPJArivk4+u29bKBU+vEEAAABSSURBVBjTnc47EoAgFEPRh3xFEcVP9r9TS8IwNKQ7RWauyHsfUhcWnOyrt9nJ64QtuShoduztPv4Dqspq4GGp0igOFFptcH5CKbPEICcq9Yb1A5iLBPOZVYWuAAAAAElFTkSuQmCC);
+    background-size: 0.62rem;
 }

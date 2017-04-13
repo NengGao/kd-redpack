@@ -42,7 +42,7 @@ export default {
 					  left: 0;
 					  width: 100%;
 						height: 100%;
-					  transition: all .4s;
+					  transition: all .24s;
 				}
 				.fade-enter-active, .fade-leave-active {
 				  	transition: opacity .15s ease;

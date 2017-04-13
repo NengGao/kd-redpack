@@ -1,8 +1,6 @@
 @charset 'utf8';
 
 @import "../config.scss";
-@import "../icon.scss";
-
 
 .header{
     height: toRem(55px);
@@ -44,7 +42,8 @@
     }
 }
 .content{
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
     .welfare-box{
         width: 100%;
         height: toRem(160px);
@@ -60,6 +59,7 @@
             line-height: 2rem;
             font-size: toRem(24px);
             line-height: 2.8rem;
+            height: 2.8rem;
             width: 100%;
             text-align: center;
         }
@@ -69,7 +69,7 @@
             font-size: toRem(12px);
         }
         .welfare-btn{
-            width: toRem(180px);
+            width: toRem(190px);
             height: toRem(38px);
             border-radius: toRem(38px);
             display: block;
@@ -134,12 +134,112 @@
             }
         }
         .activity-logo{
+           width: toRem(48px);
+           height: toRem(48px);
+           margin: 0.8rem 0.8rem auto 1.1rem;
            
         }
+        .activity-name{
+            font-size: toRem(16px);
+            padding-top: 1.2rem;
+            line-height: 1.4rem;
+            
+        }
+        .activity-tips{
+            color: #999;
+            line-height: 1.5rem;
+        }
+    }
+    .hbjc{
+       .activity-logo{
+           background: no-repeat center url(/static/images/main/ic_hbjc.png);
+           background-size: 100%;
+       } 
+    }
+    .ddjl{
+        .activity-logo{
+           background: no-repeat center url(/static/images/main/ic_ddjl.png);
+           background-size: 100%;
+       }
     }
     .goods-candid{
-        height: 20rem;
+        
         margin-top: toRem(16px);
         background: #fff;
+        .ic-candid{
+            padding: 0.9rem;
+            margin: 0 0.5rem 0 1.2rem;
+            display: inline;
+            background: no-repeat center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAllBMVEUAAAD/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTf/ZTcHT2lJAAAAMXRSTlMA3vIF9TO4eVgYDk4pzYhwFKp9HQnaj68v+ZVl7tG6akgldnXpx7ZGEp9cPzzBg1Qx1O8tJAAAAmRJREFUSMelltu2ojAMhkOLHBREEBARFc/7vPf//i83i7bSIjDjzHw3hHSlbZo0KfXwvdzJqvW6ypzc8+kPLKIQHcJoQeP4uQ3YO3cWvHD+EszcXfNfji3DTwxwvNTUpZ4DsBOnAQ4hsPrp639WQBj09TMGq6ZBagts9qjcAPGURpjGwKar2gMJ/YYE2Hf2A0QdX7/npTsxNRFg7Cpg3fk3FRouQWcN1v7yLWIyyKGozEVibLkST7BMfz2ART6fxOjopxaOKr4MtRk/C6wQ0rx7EjWYjHmJFRl8AElrujVHVihFvtkouifc/peAmRQF7IU4sB2ZuMBSiXOgE8ydOPwQ3rMGHkIiH3b6rEFqwycPDj1rQA7eKIerwptZDafGYCvFxkCKl6WaLCfnniMhBPPGgEmxMZAiNirnrpRBpcirMjhqgy9tIJMkQEYM6pa/QbArzs5SiqvJ+apEJuOxAKM2NmoIiR98KvHoFxcpOSr2gDYgC+O4d4O13JJyYpwPUluqtNO0wSg2p7vT+ljpgFF27VW+isApzhgjabMgN1MjxhjvOjXM5NvL/c7XuJNdxWed6uQz0ztAwzl91TN74vOp01tfIO3EcZFBkvOt+H61O4r0FdVOrD98IdgulRDc9BXtFoEI0mJPh83xe7qIoV3QRcAoM0XrbFK/eyWD5CJHb2D+YyGrMMRcFzIJDxHfFx2iVg6GvG0+DMl4OlWpKsaHfrnnA0vYni73Aw3lMHlkqhvKv7Ys3RRvNMhNN8Ve2y36+mIFbIPBxu7aw43ddjkNsxRPB0c/HRzxdFj+1+Pkr58/vwDIpZRwxnC+MwAAAABJRU5ErkJggg==);
+            background-size: 100%;
+        }
+        .goods-candid-title{
+            line-height: toRem(42px);
+            font-size: toRem(15px);
+            span{
+                color: $red;
+            }
+        }
+        .goods-list{
+            width: 100%;
+            li{
+               width: 50%;
+               float: left;
+               padding-bottom: 0.5rem;
+               border-top: $border;
+               position: relative; 
+               &:nth-child(n){
+                    width: 49.5%;
+                    border-right: $border;
+               }
+               &:after{
+                    content: '';
+                    width: toRem(90px);
+                    height: toRem(20px);
+                    display: block;
+                    position: absolute;
+                    top: 6.5rem;
+                    left: 3.4rem;
+                    background: no-repeat center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKwAAAAdBAMAAADFiZo7AAAAMFBMVEUAAAD/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/JzlZEY6fAAAAEHRSTlMAaRpPNVkHYxRCKCE7SC4NHHjHtAAAA8pJREFUSMedlkuMDFEUhq9uWvf0mPFPdyvt2cozFugUiQSJoUKwMIWIV6S8YiOiExEW4hWRiIVGsGyC2Eg8FpYIIrGaCbGwmklsBStb53G7qoyaycSfTN85t879+pxzT93bZlRlvdUJq8PznkZG3l3KE8nHcMw49BiTcReMSiWvUsKaAIQJY5opyGP+0JmyYu/hlFF987eajM/assDGyarD8UQUnOs+Q8VVLTLmAKYQqJrA9hKNseOBdlJ1TDVdUO0PJc6/ZLJIqsQh9ZPTrBibAQYZmwkojwg7medV28aCrVNIc9ATY1+iysuqAZynqVi0uOx/yXR63gpgu6dabfKA5wUokQGHd+4Y0JNf0gvSbdPWG8Xe8v1PAMWQpgmoxEZmWDZdDVomKVV+mHmbjapXsTX693gDFa7uAz/SWvG5h+k51w3TsVlY7KyQaKV/seYKwJw6Ik3m6VwD/eoiFlVmMfC8XaTsvgtUhAXjZLuaadgi0JeC7YQTRlhRV7Iq2rIT4bzzN2FmCtYEmCrYG65oSLCy7TFWiz1jOLYTomlp2CHMYiyXQnmTtQaDw7C/UPVFWyNsTnO8noa9gOq/2CxPxlhdZNWj7+VK+ux2SUtNGlZPgiRWPhNaZvcwib3oRqqNBds7ArYDFa29YpNbPCo2Ul8q9ihKfovbCX3/g40PJHWJ1zQwW+Zail3ui5ojYA8Mw+5Vn/H+WnZ54J8Xsxu4wo5Z7l4tGp+tnFc69hnKxpLs6WSnT7BLU9qHceUiJyKlVSz5Y2RsE9N5OOjWCBsfA3V9eZ9hinY3VXgA5/LA9TFhcw1d+AZ9HG2D3G1dn7LLRH238nwgHUVlIY1p2BwXfCCBnQT0K30tY5v2ZjqCirjQ0vNiniZ2A6AxwhaAULHFJmcc4ESEbdIodCdk7G9UtTT2TMgF2ElfGjgMvwfIqFjyxWvFDnESeW5Fi30BzGxXmLEdWrwC2mfCFV5R0CDnk7Mt/VuvlQ9Au33JW8ZNjd33P8gauVS4r3bqghZjOaLSeZMboAWC5cx3mXES5FyQTlqu6W6yucf+aBA5YXzgV2hFQdr1EGOLfJVOkouvUxK6zL8zdlFl35PvB4r3kez0vACYQX9nH2uyJEo4xn6RrtwRmrrW43BQNllngzr8pImNMFmqAyHO1HIPAawymZtkoVTrkOErhduwAXbZWO/KXbBOdkE7OPPRjH+k36vb90Tfcecr538tQJnKRdpHlOId5vIl89ZbTrbe4VHz6y6sqZlYebq9BxPXwT77sPv7Sd6Fz6/UvLo+KP0Bj6HmvpjgVZAAAAAASUVORK5CYII=);
+                    background-size: 100%;
+               }
+               img{
+                    width: 8rem;
+                    height: 8rem;
+                    margin: 0.8rem auto 0.4rem auto;
+               }
+               .goods-name{
+                    width: 88%;
+                    line-height: 1.3rem;
+                    margin: 0 auto;
+                    color: #444;
+               }
+               .current-price{
+                    width: 90%;
+                    color: #666;
+                    margin: 0.4rem auto;
+                    font-size: toRem(12px);
+                    span{
+                        color: $red;
+                        em{
+                            font-size: toRem(16px);
+                        }
+                    }
+               }
+               .candidBtn{
+                    width: toRem(50px);
+                    height: toRem(24px);
+                    border: 0;
+                    background: $red;
+                    color: #fff;
+                    border-radius: 0.3rem;
+                    font-size: toRem(12px);
+                    position: absolute;
+                    right: 1rem;
+                    bottom: 0.8rem;
+               }
+            }
+        }
     }
+
 }

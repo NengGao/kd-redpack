@@ -6,6 +6,7 @@ const start = {
 }
 const ip = {
 	user : 'http://m.go16888.cn/user',
+	portal : 'http://m.go16888.cn/rd-portal'
 }
 
 module.exports = {

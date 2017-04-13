@@ -2,7 +2,7 @@
 	<header class="header">
 		<i class="ic-back-fff" @click="goBack"></i>
 		<h1>{{headerMsg.title}}</h1>
-		<router-link :to=headerMsg.rightUrl class="header-right">{{headerMsg.rightMsg}}</router-link>
+		<router-link :to=headerMsg.rightUrl class="header-right" v-html=headerMsg.rightMsg></router-link>
 	</header>					
 </template>
 
