@@ -44,6 +44,11 @@
 .content{
     overflow-x: hidden;
     overflow-y: scroll;
+    .copyright{
+        line-height: 4rem;
+        color: #999;
+        text-align: center;
+    }
     .welfare-box{
         width: 100%;
         height: toRem(160px);
@@ -102,24 +107,24 @@
             }
 
             &:nth-child(1):after{
-                background: no-repeat top url(/static/images/main/ic_nav_01.png);
-                background-size: 100%;
+                background: no-repeat toRem(-202px) 0 url(/static/images/main/ic_home.png);
+                background-size: toRem(246.5px);
             }
             &:nth-child(2):after{
-                background: no-repeat top url(/static/images/main/ic_nav_02.png);
-                background-size: 100%;
+                background: no-repeat toRem(-152px) 0 url(/static/images/main/ic_home.png);
+                background-size: toRem(246.5px);
             }
             &:nth-child(3):after{
-                background: no-repeat top url(/static/images/main/ic_nav_03.png);
-                background-size: 100%;
+                background: no-repeat toRem(-50px) 0 url(/static/images/main/ic_home.png);
+                background-size: toRem(246.5px);
             }
             &:nth-child(4):after{
-                background: no-repeat top url(/static/images/main/ic_nav_04.png);
-                background-size: 100%;
+                background: no-repeat toRem(-101px) 0 url(/static/images/main/ic_home.png);
+                background-size: toRem(246.5px);
             }
             &:nth-child(5):after{
-                background: no-repeat top url(/static/images/main/ic_nav_05.png);
-                background-size: 100%;
+                background: no-repeat 0 0 url(/static/images/main/ic_home.png);
+                background-size: toRem(246.5px);
             }
         }
     }

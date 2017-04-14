@@ -1,6 +1,7 @@
 <template>
 	<div class="welfare">
 		<kd-header :headerMsg=headerMag></kd-header>
+		
 	</div>
 </template>
 

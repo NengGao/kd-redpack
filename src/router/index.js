@@ -26,6 +26,8 @@ export default new Router({
       name: 'Balance',
       component: Balance
     },
+    
+    // welfare 
     {
     	path: '/welfare/index',
       name: 'Welfare',

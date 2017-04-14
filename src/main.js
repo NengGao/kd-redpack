@@ -3,11 +3,13 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import axios from 'axios'
 import config from './config'
 import store from './store'
+import filter from './filter'
 import KD from './components/KD'
-import BScroll from 'better-scroll'
-import axios from 'axios'
+
+
 
 import './assets/css/base.css'
 

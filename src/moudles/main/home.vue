@@ -8,7 +8,7 @@
 				<div class="user-id">ID:{{user.userCode}}</div>
 			</div>
 		</router-link>
-		<router-link tag="div" class="user-balance" to="/balance"><i class="ic-balance"></i>余额(元): {{user.userMoney}}</router-link>
+		<router-link tag="div" class="user-balance" to="/balance"><i class="ic-balance"></i>余额(元): {{user.userMoney | RMB_f}}</router-link>
 	</header>
 	<div class="content flex-con-1" ref="wrapper">
 		<div class="scroll">
@@ -36,7 +36,7 @@
 				</li>
 			</ul>
 			<ul class="activity-box flex-wrap">
-				<li class="hbjc flex-wrap"@click=goHBJC>
+				<li class="hbjc flex-wrap" @click=goHBJC>
 					<div class="activity-logo"></div>
 					<div class="activity-info">
 						<div class="activity-name">红包竞猜</div>
@@ -81,18 +81,19 @@
 				</ul>
 			</div>
 		</div>
+		<div class="copyright">快点生活出品</div>
 	</div>
 	<loader v-show="loaderShow"></loader>
 </div>
 </template>
 
 <script>
-	
-import Api from '@/fetch/api';
+
 import Vue from 'vue'
-import common from '@/assets/js/common';
-import BScroll from 'better-scroll';
-import {mapGetters,mapActions} from 'vuex';
+import Api from '@/fetch/api'
+import common from '@/assets/js/common'
+import BScroll from 'better-scroll'
+import {mapGetters,mapActions} from 'vuex'
 
 export default {
   name: 'home',
@@ -107,7 +108,6 @@ export default {
   beforeCreate(){
   	this.$store.dispatch('changeUserInfo',this);
   	this.$store.dispatch('changeRedpackInfo',this);
-  	
   },
   created() {
   	this.countDown();
@@ -115,11 +115,15 @@ export default {
 	   
 	})
   },
+  mounted() {
+  	//this._initScroll();
+  	
+  },
   filters:{
   	welfareTime: function(value) {
   		
 		if(!value && value != 0) return
-		if(value == 0){
+		if(value <= 0){
 			return '正在进行中'
 		}else{
 			let times = value/1000;
@@ -138,10 +142,6 @@ export default {
 			return ss + ':' + fs + ":" + ms
 		}
 	}
-  },
-  mounted() {
-  	//this._initScroll();
-  	
   },
   methods: {
   	_initScroll() {
@@ -169,8 +169,9 @@ export default {
 				self.$store.dispatch('changeWelfare',welfare);
 				clearInterval(_countDown);
 				return
+			}else{
+				self.redpack.time = self.redpack.time - 1000;
 			}
-			self.redpack.time = self.redpack.time - 1000;
 		},1000)
 	},
 	goHBJC(){

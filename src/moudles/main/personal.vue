@@ -13,12 +13,49 @@
 					<i class="ic-arrow-rw"></i>
 				</li>
 				<li class="lineBox marginTop flex-wrap">
-					<div class="lineBox-icon"></div>
-					<div class="lineBox-title">我的快乐豆：<span>{{user.inviteCode}}</span></div>
+					<div class="lineBox-icon ic-kld"></div>
+					<div class="lineBox-title">我的快乐豆：<span>{{user.inviteCode | KLD_f}}豆</span></div>
+					<div class="lookDetail">明细</div>
+					<i class="ic-arrow-rw"></i>
+				</li>
+				<ul class="flex-wrap kld-box">
+					<li class="flex-con-1"><i class="ic-buy"></i>购买快乐豆</li>
+					<li class="flex-con-1"><i class="ic-exchange"></i>快乐豆商城</li>
+				</ul>
+				<li class="lineBox marginTop flex-wrap">
+					<div class="lineBox-icon ic-news"></div>
+					<div class="lineBox-title">消息通知</div>
+					<i class="ic-arrow-rw"></i>
 				</li>
 				<li class="lineBox flex-wrap">
-					
-					
+					<div class="lineBox-icon ic-auction"></div>
+					<div class="lineBox-title">我的抢拍</div>
+					<i class="ic-arrow-rw"></i>
+				</li>
+				
+				<li class="lineBox marginTop flex-wrap">
+					<div class="lineBox-icon ic-vip"></div>
+					<div class="lineBox-title">升级vip特权</div>
+					<i class="ic-arrow-rw"></i>
+				</li>
+				<ul class="flex-wrap vip-box">
+					<li class="flex-con-1">红包次数</li>
+					<li class="flex-con-1">奖励丰厚</li>
+					<li class="flex-con-1">vip专享</li>
+				</ul>
+				<li class="lineBox flex-wrap">
+					<div class="lineBox-icon ic-waiter"></div>
+					<div class="lineBox-title">在线客服</div>
+					<i class="ic-arrow-rw"></i>
+				</li>
+				<li class="lineBox flex-wrap">
+					<div class="lineBox-icon ic-about"></div>
+					<div class="lineBox-title">关于我们</div>
+					<i class="ic-arrow-rw"></i>
+				</li>
+				
+				<li class="lineBox exit" id="exit">
+					<i class="lineBox-icon ic-exit"></i>退出登录
 				</li>
 			</ul>
 		</div>
@@ -34,7 +71,7 @@
 				headerMag:{
 					title:'个人中心',
 					rightMsg: '<i class="ic-balance"></i>余额(元): '+ this.$store.state.user.userMoney,
-					rightUrl: '/'
+					rightUrl: '/balance'
 				}
 			}
 		}
