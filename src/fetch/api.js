@@ -55,8 +55,8 @@ export default {
   		cb(data)
   	})
   },
-  getAuctionInfo(cb) {
-  	fetch(config.ip.portal + '/cashRedpackInfo/getAuctionInfo','post')
+  goodsHome(cb) {
+  	fetch(config.ip.robBuy + '/goodsHome','get')
   	.then(function(data){
   		cb(data)
   	})

@@ -1,12 +1,14 @@
 
+const host = '192.168.1.114:8080';
 
 const start = {
 	isTest : true,
-	testOpenId : 'o3Z-wwEbs0SlBadtmaubO9tVhdAs'
+	testOpenId : 'orJtLt_If3QAld15hxMnuI1uRoGU'
 }
 const ip = {
-	user : 'http://m.go16888.cn/user',
-	portal : 'http://m.go16888.cn/rd-portal'
+	user : 'http://'+ host +'/user',
+	portal : 'http://'+ host +'/rd-portal',
+	robBuy : 'http://'+ host +'/robBuy'
 }
 
 module.exports = {

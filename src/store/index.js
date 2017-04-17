@@ -18,8 +18,12 @@ const actions = {
 	
     changeUserInfo: (context,vm) => {
     	Api.oldLogin(function(data){
-    		vm.user = data;
-    		context.commit("setUserInfo",data);
+    		
+    		Api.login(function(data2){
+    			data.token = data2.token;
+    			vm.user = data;
+    			context.commit("setUserInfo",data);
+    		})
     	})
     },
     changeRedpackInfo: (context,vm) => {

@@ -54,34 +54,18 @@
 			<div class="goods-candid">
 				<div class="goods-candid-title"><i class="ic-candid"></i>全民抢拍<span>（抢不到全额退豆）</span></div>
 				<ul class="goods-list clearfix">
-					<li>
-						<img src="http://k.go16888.cn//good/05/main/01.jpg">
-						<div class="goods-name">美的电饭煲圆灶釜内胆涡轮防溢 4L饭煲..</div>
+					<li v-for="goods in goodsLis">
+						<img :src="goods.goodsImg">
+						<div class="goods-name">{{goods.goodsName}}</div>
 						<div class="current-price">
-							当前价:<span>￥<em>32.00</em></span>
-						</div>
-						<input type="button" value="抢购" class="candidBtn"/>
-					</li>
-					<li>
-						<img src="http://k.go16888.cn//good/05/main/01.jpg">
-						<div class="goods-name">美的电饭煲圆灶釜内胆涡轮防溢 4L饭煲..</div>
-						<div class="current-price">
-							当前价:<span>￥<em>32.00</em></span>
-						</div>
-						<input type="button" value="抢购" class="candidBtn"/>
-					</li>
-					<li>
-						<img src="http://k.go16888.cn//good/05/main/01.jpg">
-						<div class="goods-name">美的电饭煲圆灶釜内胆涡轮防溢 4L饭煲..</div>
-						<div class="current-price">
-							当前价:<span>￥<em>32.00</em></span>
+							往期价:<span>￥<em>{{goods.upPrice | RMB_f}}</em></span>
 						</div>
 						<input type="button" value="抢购" class="candidBtn"/>
 					</li>
 				</ul>
 			</div>
+			<div class="copyright">快点生活出品</div>
 		</div>
-		<div class="copyright">快点生活出品</div>
 	</div>
 	<loader v-show="loaderShow"></loader>
 </div>
@@ -102,22 +86,24 @@ export default {
     	user: this.$store.getters.getUserInfo,
     	redpack:this.$store.getters.getRedpackInfo,
     	welfare : this.$store.getters.getWelfare,
+    	goodsLis : common.getJsonLocal("goodsLis"),
     	loaderShow: false
     }
   },
   beforeCreate(){
-  	this.$store.dispatch('changeUserInfo',this);
-  	this.$store.dispatch('changeRedpackInfo',this);
-  },
-  created() {
-  	this.countDown();
-  	Api.getAuctionInfo(function(data){
-	   
+  	var self = this;
+  	self.$store.dispatch('changeUserInfo',this);
+  	self.$store.dispatch('changeRedpackInfo',this);
+  	Api.goodsHome(function(data){
+  		common.setJsonLocal("goodsLis",data);
+	    self.goodsLis = data
 	})
   },
+  created() {	
+  	this.countDown();
+  },
   mounted() {
-  	//this._initScroll();
-  	
+  	this._initScroll();
   },
   filters:{
   	welfareTime: function(value) {
