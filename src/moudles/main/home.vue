@@ -19,21 +19,21 @@
 				<router-link to="/welfare/index"><input type="button" class="welfare-btn" :value="welfare.btn"/></router-link>
 			</div>
 			<ul class="home-nav flex-wrap">
-				<li class="flex-con-1">
+				<router-link tag="li" to="" class="flex-con-1">
 					<p>我的抢拍</p>
-				</li>
-				<li class="flex-con-1">
+				</router-link>
+				<router-link tag="li" to="" class="flex-con-1">
 					<p>乐豆商城</p>
-				</li>
-				<li class="flex-con-1">
+				</router-link>
+				<router-link tag="li" to="/vip" class="flex-con-1">
 					<p>vip特权</p>
-				</li>
-				<li class="flex-con-1">
+				</router-link>
+				<router-link tag="li" to="/news" class="flex-con-1">
 					<p>消息通知</p>
-				</li>
-				<li class="flex-con-1">
+				</router-link>
+				<router-link tag="li" to="" class="flex-con-1">
 					<p>客服中心</p>
-				</li>
+				</router-link>
 			</ul>
 			<ul class="activity-box flex-wrap">
 				<li class="hbjc flex-wrap" @click=goHBJC>
@@ -55,6 +55,7 @@
 				<div class="goods-candid-title"><i class="ic-candid"></i>全民抢拍<span>（抢不到全额退豆）</span></div>
 				<ul class="goods-list clearfix">
 					<li v-for="goods in goodsLis">
+						<div class="JD-price"><p><span>￥</span>{{goods.jdPrice | toInt}}</p></div>
 						<img :src="goods.goodsImg">
 						<div class="goods-name">{{goods.goodsName}}</div>
 						<div class="current-price">
@@ -109,7 +110,7 @@ export default {
   	welfareTime: function(value) {
   		
 		if(!value && value != 0) return
-		if(value <= 0){
+		if(value <= 1000){
 			return '正在进行中'
 		}else{
 			let times = value/1000;

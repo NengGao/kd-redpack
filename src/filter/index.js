@@ -8,3 +8,7 @@ Vue.filter('RMB_f', function(value){
 	if(!value) return '0.00';
 	return parseFloat(value).toFixed(2);
 });
+Vue.filter('toInt', function(value){
+	if(!value) return '0';
+	return parseInt(value);
+});
