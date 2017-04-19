@@ -56,12 +56,15 @@
 				<ul class="goods-list clearfix">
 					<li v-for="goods in goodsLis">
 						<div class="JD-price"><p><span>￥</span>{{goods.jdPrice | toInt}}</p></div>
-						<img :src="goods.goodsImg">
+						<img v-lazy="goods.goodsImg">
 						<div class="goods-name">{{goods.goodsName}}</div>
 						<div class="current-price">
 							往期价:<span>￥<em>{{goods.upPrice | RMB_f}}</em></span>
 						</div>
 						<input type="button" value="抢购" class="candidBtn"/>
+					</li>
+					<li class="empty" v-if="goodsLis.length%2 != 0">
+						
 					</li>
 				</ul>
 			</div>
@@ -84,10 +87,10 @@ export default {
   name: 'home',
   data(){
     return {
-    	user: this.$store.getters.getUserInfo,
-    	redpack:this.$store.getters.getRedpackInfo,
-    	welfare : this.$store.getters.getWelfare,
-    	goodsLis : common.getJsonLocal("goodsLis"),
+    	user: this.$store.getters.getUserInfo || '',
+    	redpack: this.$store.getters.getRedpackInfo || '',
+    	welfare : this.$store.getters.getWelfare || '',
+    	goodsLis : common.getJsonLocal("goodsLis") || '',
     	loaderShow: false
     }
   },
@@ -97,14 +100,12 @@ export default {
   	self.$store.dispatch('changeRedpackInfo',this);
   	Api.goodsHome(function(data){
   		common.setJsonLocal("goodsLis",data);
-	    self.goodsLis = data
-	})
+	    self.goodsLis = data;
+	    //self._initScroll();
+	});
   },
   created() {	
-  	this.countDown();
-  },
-  mounted() {
-  	this._initScroll();
+  	 this.countDown();
   },
   filters:{
   	welfareTime: function(value) {

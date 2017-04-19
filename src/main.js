@@ -7,6 +7,7 @@ import axios from 'axios'
 import config from './config'
 import store from './store'
 import filter from './filter'
+import VueLazyload from 'vue-lazyload'
 import KD from './components/KD'
 
 
@@ -16,6 +17,10 @@ import './assets/css/base.css'
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
+Vue.use(VueLazyload, {
+  loading: '/static/images/common/lazyload.png',
+  try: 2
+})
 Vue.use(KD.Loader);
 Vue.use(KD.Header);
 

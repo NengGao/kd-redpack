@@ -7,7 +7,7 @@
 
 <script>
 export default{
-	name:'Welfare',
+	name:'welfare',
 	data(){
 		return{
 			headerMag:{

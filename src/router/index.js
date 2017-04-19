@@ -40,7 +40,7 @@ export default new Router({
       name: 'News',
       component: News
     },
-    // welfare 
+  // welfare 
     {
     	path: '/welfare/index',
       name: 'Welfare',
