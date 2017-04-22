@@ -44,6 +44,7 @@
 	    	padding-left: 3.2rem;
 	    	font-weight: normal;
 	    	font-size: toRem(16px);
+	    	font-weight: 600;
 	    }
 	    .header-right{
 	    	position: absolute;

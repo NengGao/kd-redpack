@@ -1,0 +1,33 @@
+@charset 'utf8';
+
+@import "../config.scss";
+
+.content{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  .balance-head{
+     height: toRem(45px);
+     background: #ffffff;
+     line-height: toRem(45px);
+     margin-bottom: 0.3rem;
+     .balance-tab{
+       width: 50%;
+       text-align: center;
+       color: #666666;
+     }
+  }
+  .balanceList{
+     @include flex-pack-justify();
+     height: toRem(70px);
+     width: 100%;
+     background: #ffffff;
+     border-bottom: $border;
+     padding: 0  $padding;
+     box-sizing: border-box;
+     .content-left{
+        .dot{
+
+        }
+     }
+  }
+}

@@ -1,0 +1,126 @@
+@charset 'utf8';
+
+@import "../config.scss";
+@import "../icon.scss";
+@import "../dialog.scss";
+
+.content{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  .groupInfo{
+     background: #ffffff;
+     height: toRem(177px);
+     width: 100%;
+     padding: toRem(16px) toRem(8px);
+     box-sizing: border-box;
+    ul{
+       flex-wrap: wrap;
+       li{
+         width: 20%;
+         img{
+           width: toRem(48px);
+           height: toRem(48px);
+           margin: 0 auto;
+         }
+         .person-name{
+           width: 100%;
+           text-align: center;
+           font-size: toRem(12px);
+           @include overEllipsis();
+           line-height: 2rem;
+         }
+
+       }
+    }
+  }
+  .group-Box{
+    height: toRem(48px);
+    background: #ffffff;
+    line-height: toRem(48px);
+    border-bottom: $border;
+    padding: 0 $padding;
+    position: relative;
+    span:nth-of-type(1){
+      font-size: toRem(16px);
+      color: #3d3d3d;
+    }
+    span:nth-of-type(2){
+      position: absolute;
+      right: toRem(16px);
+      font-size: toRem(16px);
+      color: #999999;
+    }
+    em{
+      max-width: 12.5rem;
+      position: absolute;
+      right: toRem(16px);
+      @include setfont(toRem(14px),#999999,toRem(14px));
+      margin-top: 1rem;
+      text-align: justify;
+    }
+    .set-right{
+      right: 0.6rem!important;
+      &:active{
+        opacity: 0.6;
+      }
+    }
+  }
+  .set-height{
+     height: toRem(57px);
+     line-height: toRem(57px);
+  }
+  .margin-Top{
+    margin-top: 0.5rem;
+  }
+  .dissolve-room-btn{
+    display: block;
+    @include setBtn(toRem(328px),toRem(48px),toRem(19px),#fff,#f22435);
+    margin: 1rem auto;
+  }
+  .game-rule{
+    padding: $padding;
+    color: #6b6b6b;
+    text-align: justify;
+    line-height: 1.5rem;
+    ul{
+      li{
+        color: #fa9d3b;
+        list-style: disc;
+        margin-left: toRem(32px);
+      }
+    }
+  }
+}
+.md-dissolve-info{
+  width: toRem(328px);
+  height: toRem(192px);
+  background: #ffffff;
+  border-radius: 0.3rem;
+  padding: $padding;
+  box-sizing: border-box;
+  .title{
+    @include setfont(toRem(19px),$fontColor,1.8rem);
+    margin-top: 0.5rem;
+  }
+  .main-text{
+    @include setfont(toRem(16px),$fontColor,1.3rem);
+    margin: toRem(20px) 0;
+    text-align: justify;
+  }
+  .dissolve-btn{
+    position: relative;
+    .confirm-btn{
+      @include setBtn(toRem(140px),toRem(44px),toRem(16px),$fontColor,#fff);
+      border: 0.1rem solid $bodyBg;
+    }
+    .cancel-btn{
+      @include setBtn(toRem(140px),toRem(44px),toRem(16px),#fff,#ed1126);
+      position: absolute;
+      right: 0;
+    }
+  }
+  .ic-close-gray{
+    top:-0.5rem;
+    right: -0.5rem;
+  }
+}

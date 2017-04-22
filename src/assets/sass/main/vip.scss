@@ -6,4 +6,70 @@
 .content{
     overflow-x: hidden;
     overflow-y: scroll;
+    .vip-Head-Box{
+       @include flex-pack-justify();
+       height: toRem(72px);
+       background: #ffffff;
+       padding: 0 toRem(16px);
+       box-sizing: border-box;
+       position: relative;
+       .ic_vip{
+          width: toRem(48px);
+          height: toRem(48px);
+          background: no-repeat center url(/static/images/main/ic_vipdate.png);
+          background-size:100%;
+        }
+      .vip-Text-Box{
+          margin-left: 0.5rem;
+         p:nth-of-type(1){
+           font-size: 1.35rem;
+           color: $fontColor;
+           line-height: 2rem;
+         }
+         p:nth-of-type(2){
+           font-size: 1rem;
+           color: #999;
+           line-height: 1.5rem;
+         }
+      }
+      .openVip{
+        width:toRem(74px);
+        height: toRem(38px);
+        background: $bgColor;
+        border-radius: $border-radius;
+        border: 0;
+        color: #fff;
+      }
+    }
+    .vip-main{
+       width: 100%;
+       background: #ffffff;
+       margin-top: 0.5rem;
+       .vip-main-title{
+         height: toRem(42px);
+         line-height:toRem(42px);
+         color: #999999;
+         padding-left: toRem(16px);
+       }
+       table{
+          width: 100%;
+          border-collapse:collapse;
+          border-right: 0;
+          border-bottom:0.1rem solid #f6f6f6;
+         tr{
+           border-top:0.1rem solid #f6f6f6;
+           td{
+             width: 33.3%;
+             height: toRem(42px);
+             text-align: center;
+             color: #666666;
+             border-right: 0.1rem solid #f6f6f6;
+           }
+           td:nth-of-type(2){
+             color: #ff8c1a;
+           }
+         }
+       }
+    }
+
 }

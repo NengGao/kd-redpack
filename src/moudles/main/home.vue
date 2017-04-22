@@ -16,7 +16,7 @@
 				<div class="welfare-title">{{welfare.title}}</div>
 				<div class="welfare-status">{{redpack.time | welfareTime}}</div>
 				<div class="welfare-amonut">红包总金额：{{redpack.total}}元</div>
-				<router-link to="/welfare/index"><input type="button" class="welfare-btn" :value="welfare.btn"/></router-link>
+				<router-link :to='"/roomCard/index"' class="welfare-btn">{{welfare.btn}}</router-link>
 			</div>
 			<ul class="home-nav flex-wrap">
 				<router-link tag="li" to="" class="flex-con-1">

@@ -75,8 +75,10 @@
         }
         .welfare-btn{
             width: toRem(190px);
-            height: toRem(38px);
-            border-radius: toRem(38px);
+            height: toRem(36px);
+            line-height: toRem(36px);
+            text-align: center;
+            border-radius: toRem(19px);
             display: block;
             margin: 0.9rem auto;
             border: solid 0.1rem #fff;

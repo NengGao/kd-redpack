@@ -1,0 +1,330 @@
+@charset 'utf8';
+
+@import "../config.scss";
+@import "../icon.scss";
+@import "../dialog.scss";
+.card-number{
+    position: absolute;
+    right: 1rem;
+    top: 0.8rem;
+    background: #e01526;
+    height: toRem(30px);
+    line-height: toRem(30px);
+    text-align: center;
+    padding: 0 toRem(28px) 0 toRem(33px);
+    border-radius: toRem(15px);
+    width: toRem(30px);
+    color: #fff;
+    font-size: toRem(16px);
+    &:before{
+       content: '';
+       position: absolute;
+       left: 0.25rem;
+       top: -0.2rem;
+       width: toRem(30px);
+       height: toRem(33px);
+       background: no-repeat 0 0 url(/static/images/roomCard/ic_roomCard.png);
+       background-size: toRem(220px);
+    }
+    &:after{
+       content: '';
+       position: absolute;
+       right: 0.6rem;
+       width: toRem(20px);
+       height: toRem(28px);
+       background: no-repeat center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAAQlBMVEUAAAD/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX////cxufUAAAAFHRSTlMA+IZI8u3X0buyqVlSCyOERySYlN4f+EgAAADUSURBVDjLlZVbEoMgDEUDqfJQFNt0/1utM62ORcHc830+EkJuqCBlG/rOmK4PlhO14GjkgIlcVUcnJ9x4qU5eLvHT2R0eUuExlO4sDeZ/9yVNnkfXyg32UK/cstc9lb29V8outzfxci+L/81CNLJ8p+N0sqOVLDpZeJWjVo5EyWhlkyiLVpZMVi9bCno5UK+Xe+p2o8pmdGT0soFkqAyoQejpsKGwXmboI2FflFgrM7JW0MIiUYCEzILEFxKMSOSCYY6fiZ2ldoAW+LThR7MkceMcfwBkcXUkiPLycgAAAABJRU5ErkJggg==);
+       background-size: 100%;
+    }
+}
+
+.content{
+    overflow-x: hidden;
+    overflow-y: hidden;
+    flex-direction: column;  
+    li{
+        &:active{
+            opacity: 0.8;
+        }
+    } 
+    .nav{
+        line-height: toRem(48px);
+        text-align: center;
+        background: #fff;
+        color: #666;
+        li{
+            span{
+                width: 65%;
+                display: block;
+                font-size: toRem(16px);
+                height: toRem(46px);
+                margin: 0 auto;
+            }
+        }
+        .active{
+            color: $red;
+            span{
+                border-bottom: solid toRem(2px) $red;         
+            }
+        }
+    }  
+    .room-card-content{
+        position: relative;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        margin-top: toRem(8px);
+        .card-room{
+            text-align: center;
+            font-size: toRem(16px);
+            height: toRem(74px);
+            line-height: toRem(74px);        
+            background: #fff;
+            li{
+                i{
+                    display: inline-block;
+                    vertical-align: top;
+                    width: toRem(42px);
+                    height: toRem(40px);
+                    margin: 1.2rem 0.5rem;
+                }
+                .create-room{
+                    background: no-repeat toRem(-48px) 0 url(/static/images/roomCard/ic_roomCard.png);
+                    background-size: toRem(285px);
+                }
+                .add-room{
+                    background: no-repeat toRem(-95px) 0 url(/static/images/roomCard/ic_roomCard.png);
+                    background-size: toRem(285px);
+                }
+                &:nth-child(2){
+                    border-left: $border;
+                }
+            }
+        }
+        .my-room{
+            
+           background: #fff;
+           margin-top: toRem(8px);
+           .my-room-title{
+               line-height: toRem(40px);
+               height: toRem(40px);
+               border-bottom: $border;
+               position: relative;
+               span{
+                   margin-left: 3.2rem;
+                   color: #888;
+                   position: relative;
+                   &:before{
+                       content: '';
+                       position: absolute;
+                       left: -2.8rem;
+                       width: toRem(40px);
+                       height: toRem(38px);
+                       background: no-repeat center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAMAAADW3miqAAAAVFBMVEUAAAC4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLhK5DzXAAAAG3RSTlMAFSMG15VowZplPAvszsnEnnZZQzWk37pWpe2H7BEuAAABKElEQVQ4y5WU2ZbCIAyGWbogpbvVcXj/9xzCMok1HPW74DTkb7M0ICiqO0bnvRuPTgmen9kT5o2R7I0/0ewniW49Q6upRk4+0q9Wai3t2id7kkSTQi2K1LCkkP+qYYr2VTxxvcVvDdk0YN2zhcgY0+S6YjY696G1WM0dPHt8hIRuMmvCM2Y2gKuB1zeQl3ygExeSF/igqzPUJYioE8gCmYRaQawqouLtorYmEn3cOMK61kVr2DjEGFZbF9mwMQoXVlkXybDhhA/oukiDnxHNJtHaImLCISqF+2USR7ac+KkFlmqczC3AZibUBZGlmaXxPNmLP5hlgWpxVBhwVHDoKHToXsYXwfH9+CC8P1LvD+dnxxzRxjOY4ZurB9nqlxhFdY90HT6er8M/sAkxsh/RKEIAAAAASUVORK5CYII=);
+                       background-size: 50%;
+                   }
+               }
+               .hot-room{
+                   position: absolute;
+                   right: 2.4rem;
+                   top: 0;
+                   color: $red;
+                   &:before{
+                       content: '';
+                       position: absolute;
+                       left: -1.8rem;
+                       width: toRem(20px);
+                       height: toRem(35px);
+                       background: no-repeat center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAiCAMAAACDQ7KMAAAAh1BMVEUAAAD/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/JzkdFXemAAAALHRSTlMA+wW4czMlEAv36uKjnpiGZl1VRhjSgDAsKSHv5MrDva+od1A51rGPbk1JPVUoKREAAAD0SURBVCjPbZHZkoIwEEVvwpIIgoKggDrqjLP3/3/fkImJaSrnJVWnKr3chkdOiNPkcX8ou6gf6axjviVax/yViF4j5cXsRbbU8kyGXoKzJ0vD9U6QpWd6KsgxBFr15EmDnhdv2Q5rCki83lLIxel8xfzN+YQYG+jc6Iw4PzicTOAV14Wc+1UACu73wI3EhIHrk4I+mrzfuP+2Y1dIF8NAl/N75T6RwIZmalan6FzgX1CCPC3wa5fPw/nfgWbls+uOz6aZ/SwydsIdanaa9hHoiBe3suVe2mb/XmzhUbWplZnDlXeEDB9mzIYShQXjZwpdS1j+AANrPyh6rX54AAAAAElFTkSuQmCC);
+                       background-size: 65%;
+                   }
+                   &:after{
+                       content: '';
+                       position: absolute;
+                       right: -1.6rem;
+                       width: toRem(20px);
+                       height: toRem(38.5px);
+                       background: no-repeat center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAUBAMAAABL3sEiAAAAFVBMVEUAAADyJDXyJDXyJDXyJDXyJDXyJDUdRNXOAAAABnRSTlMAYnP8ai4LxCiYAAAAKUlEQVQI12NgFGAAgTBDMMWUDOGqkcRNhFApYME0AbgYYU4YRCsLmAMARhgIw8NHBWAAAAAASUVORK5CYII=);
+                       background-size: 34%;
+                   }
+               }
+           }
+           .my-room-list{
+               li{
+                   line-height: toRem(65px);
+                   height: toRem(65px);
+                   border-bottom: $border;
+                   position: relative;
+                   i.ic-arrow-rw{
+                       position: absolute;
+                       right: 0.58rem;
+                       top: 1.7rem;
+                       background-size: 0.5rem;
+                   }
+               }
+           }
+        }
+        .owner-head{
+           width: toRem(42px);
+           height: toRem(42px);
+           position: relative;
+           top: 0.75rem;
+           border-radius: 50%;
+           margin: 0 0.8rem 0 1.2rem;
+           overflow: hidden;
+           img{
+               width: 100%;
+               height: 100%;
+               display: block;
+               border-radius: 50%;
+           }
+           .owner-identify{
+               position: absolute;
+               width: 80%;
+               height: 1.1rem;
+               left: 10%;
+               bottom: 0;
+               background: no-repeat center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAAAdCAMAAADGkCHGAAAAmVBMVEUAAAD/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/////QE7/sbX/iI7/3+H/pKj/6uv/ycv/vcD/aHH/VWD/1Nb/eID/9fX/lpwvfLj8AAAAI3RSTlMA+/CBEOG1r6gpFs1u98nBoZVyZ1tOOjUvHQgE1Hfq5YpgQrFERJoAAAG+SURBVDjLldVnb8MgEAZgwDtNs5udrgOMRxqn///HlWCSgHefD5Zl2a+Ou5OMmo3WX87Mn3iEYMCEeBN/5nytR2ig/bfjf0CzD9/53vcF7BbTV+j2Ol3s2gPc8QsM8zJ2GxOimVXBD9ScmVHNLKolbAMMpoT+1iLoBQw42NpjmD8TuJLTlCvwlNEYrJS5Mai3d3hg1MZuz0pFfmYK3L2/6YTDHMDM4OxJUFaPpUZx84OaxhR6MoCXLlTfmEeaujJCzbP7LBqnrGnOLjpBNeOiu6p72pcBJ7Q/VjO4Hm4BSl/GUS5/RBrryKngym3ZYkXOVrHWj0RqstjOSIUkr1pR65F5Pqynu7S2Ub0SG2vaWccSaY75Ok1UNzI+pKcOeviEh0QtdDZstp/IsIC7nMpSC5rpHUu76lggywpDKRUALL3qMwvRnoFXqGLtPdpxFree/BSsTITY3nXdJG+NatwApOzK4us1UWk0TVWDOa2S6YGLmiyJHK38KD+X3c2FSFT1rArIErUYhTBMuEPtNj708zeo2ybE0AWHG9Rv1PGLOJ52aKBoHBCoIsE4Qv9y2K6ccOKp/603CZ3V9oBa/AEkabwIIxy/xgAAAABJRU5ErkJggg==);
+               background-size: 100%;
+           }
+       }
+       .room-info{
+           .room-code{
+               line-height: 1.8rem;
+               padding-top: 0.75rem;
+               font-size: toRem(16px);
+               .room-state{
+                   width: toRem(46px);
+                   height: toRem(14px);
+                   padding: 0.2rem;
+                   display: inline-block;
+                   text-align: center;
+                   line-height: toRem(14px);
+                   background: #b3b3b3;
+                   border-radius: toRem(10px);
+                   vertical-align: middle;
+                   font-size: toRem(12px);
+                   color: #fff;
+                   position: relative;
+                   top: -0.12rem;  
+               }
+               .active{
+                   background: #ff2739;
+               }
+           }
+           .room-tips{
+               line-height: 1.2rem;
+               font-size: toRem(12px);
+               color: #999;
+           }
+       }
+        .my-record{
+            width: 100%;
+            background: #fff;
+            position: relative;
+            li{
+                height: toRem(66px);
+                line-height: toRem(66px);
+                border-bottom: $border;
+                position: relative;
+                i.ic-arrow-rw{
+                   position: absolute;
+                   right: 0.58rem;
+                   top: 1.7rem;
+                   background-size: 0.5rem;
+               }
+               .game-code{
+                  color: #fa9d3b;
+               }
+               .room-code{
+                   font-size: toRem(15px);
+               }
+               .grade{
+                   position: absolute;
+                   right: 2.58rem;
+                   top: 0;
+                   background-size: 0.5rem;
+                   font-size: toRem(18px);
+                   color: #999;
+               }
+               .grade.active{
+                   color: $red;
+               }
+            }
+        }
+    }
+}
+.buy-room-card{
+    width: 100%;
+    line-height: toRem(60px);
+    height: toRem(60px);
+    position: relative;
+    bottom: 0;
+    background: #fff;
+    .ic-room-card{
+       width: toRem(40px);
+       height: toRem(48px);
+       background: no-repeat 0 0 url(/static/images/roomCard/ic_roomCard.png);
+       background-size: toRem(285px);
+       margin: 0.6rem 1rem auto toRem(23px);
+    }
+    .buy-card-info{
+        p{
+            height: 1.8rem;
+            padding-top: 0.6rem;
+            line-height: 1.8rem;
+            font-size: toRem(16px);
+            em{
+                color: $red;
+            }
+        }
+        span{
+            display: block;
+            line-height: 1.2rem;
+            color: #999;
+        }
+    }
+    .room-card-btn{
+        width: toRem(110px);
+        height: toRem(37px);
+        color: $red;
+        border: solid 0.1rem $red;
+        border-radius: 0.5rem;
+        background: #fff;
+        position: absolute;
+        right: toRem(14px);
+        top: toRem(11px);
+        &:active{
+            opacity: 0.8;
+        }
+    }
+}
+
+//弹出层
+.join-room{
+    margin-top: -3rem;
+    .md-content{
+        background: #fff;
+        padding-bottom: 0.6rem;
+        .title{
+            font-size: toRem(18px);
+            padding-top: 1rem;
+            line-height: 2rem;
+            padding-left: 1.2rem;
+        }
+        .inp{
+            width: 19rem;
+            display: block;
+            padding-left: 0.6rem;
+            margin: 0.8rem auto;
+            height: toRem(42px);
+            border: solid 0.1rem #ff3c4c;
+            border-radius: 0.4rem;
+        }
+        .tips{
+            width: 19.5rem;
+            color: #999;
+            text-align: justify;
+            font-size: toRem(12px);
+            margin: 0.5rem auto;
+        }
+    }
+}

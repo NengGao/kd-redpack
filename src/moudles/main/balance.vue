@@ -20,14 +20,14 @@
 				headerMag:{
 					title:'账户余额',
 					rightMsg: '资金明细',
-					rightUrl: '/'
+					rightUrl: '/balanceDetailed'
 				},
 				user: this.$store.getters.getUserInfo
 			}
 		}
 	}
 </script>
-	
+
 <style rel="stylesheet/scss" lang="scss" scoped>
 	@import "../../assets/sass/main/balance.scss";
 </style>

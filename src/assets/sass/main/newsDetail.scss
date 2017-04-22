@@ -1,0 +1,105 @@
+@charset 'utf8';
+
+@import "../config.scss";
+@import "../icon.scss";
+
+.content{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  .taskRewardBox{
+    width: toRem(330px);
+    background: #ffffff;
+    margin: 1rem auto;
+    .boxHead{
+      height: toRem(65px);
+      padding-left: 1rem;
+      position: relative;
+      border-bottom: 0.1rem solid #F5F5F5;
+      .box-right{
+        position: absolute;
+        right: 1rem;
+        top: 1.9rem;
+        color: #999999;
+        font-size: 0.875rem;
+      }
+      .box-left{
+        padding-top: 1rem;
+        .box-left-title{
+          color: #333333;
+          font-size: 1.15rem;
+          font-weight: 600;
+          line-height: 2.6rem;
+        }
+        .box-left_text{
+          color: #999999;
+          margin-top: 0.2rem;
+        }
+      }
+    }
+    .boxMain{
+       padding-bottom: 1rem;
+       border-bottom: 0.1rem solid #F5F5F5;
+      .boxMain-head{
+        height: toRem(40px);
+        line-height: toRem(40px);
+        font-size: 1.08rem;
+        padding-left: toRem(16px);
+        color: #333333;
+      }
+      .boxMain-content{
+        padding-left: toRem(16px);
+        .boxMain-cash{
+          color: #666666;
+          font-size: toRem(14px);
+        }
+        .boxMain-cash em{
+          color: #ff2739;
+          font-size: toRem(24px);
+        }
+        .boxMain-cash span{
+          color: #ff2739;
+          font-size: toRem(14px);
+        }
+        .boxMain-time{
+          color: #666666;
+          font-size: toRem(14px);
+          margin-top: 0.3rem;
+        }
+        .boxMain-time em{
+          color: #999999;
+          font-size: toRem(14px);
+        }
+        .boxMain-time span{
+          display: inline-block;
+          width: 0.4rem;
+          height: 0.4rem;
+          vertical-align: middle;
+          background: #999999;
+          border-radius: 1rem;
+          margin-right: 0.5rem;
+        }
+        .boxMain-text{
+          font-size: toRem(14px);
+          color: #999999;
+          margin-top: 0.3rem;
+        }
+      }
+    }
+    .boxFoot{
+      display: block;
+      margin-left: 1rem;
+      line-height: 3.2rem;
+      font-size: 1rem;
+      color: #333333;
+      position: relative;
+        .arrows-right-gray{
+          padding: .65rem;
+          background: no-repeat center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAaBAMAAABMRsE0AAAAHlBMVEUAAADMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMwLbf+mAAAACXRSTlMAbXRch5JkU3zIlQeuAAAAVUlEQVQI12NgCGSAANaZAhCG58xJEIbkzJkKYAbjTCShBjCDbebMGRChTCShKXAhBzCDGS5kiSHEDjO0EmgNLoGJMM0CYL04BTKhAgyREAGEd+AeBABbfifj7DrC8wAAAABJRU5ErkJggg==);
+          background-size: .5rem;
+          position: absolute;
+          right: 1rem;
+          top: 1rem;
+        }
+      }
+  }
+}

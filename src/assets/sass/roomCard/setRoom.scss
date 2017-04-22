@@ -1,0 +1,96 @@
+@charset 'utf8';
+
+@import "../config.scss";
+@import "../icon.scss";
+
+.content{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  .setRoom-Box{
+     height: toRem(48px);
+     line-height: toRem(48px);
+     padding: 0 $padding;
+     box-sizing: border-box;
+     background: #ffffff;
+     position: relative;
+     border-bottom: $border;
+     .setRoom-left{
+       @include setfont(toRem(16px),#3d3d3d,toRem(16px));
+       em{
+         color: #ed1126;
+       }
+     }
+     .setRoom-right{
+       @include setfont(toRem(16px),#6b6b6b,toRem(16px));
+       position: absolute;
+       right:toRem(16px);
+       top:toRem(16px);
+     }
+    .set-right{
+      right: 0.4rem;
+    }
+    &:active{
+      background: $bodyBg;
+  }
+  }
+  .margin-Top{
+     margin-top: toRem(8px);
+  }
+  p{
+    @include setfont(toRem(14px),#6b6b6b,toRem(20px));
+    padding-left: $padding;
+    text-align: justify;
+  }
+  .create-room-btn{
+    display: block;
+    @include setBtn(toRem(328px),toRem(48px),toRem(19px),#fff,#ff3c4c);
+    margin: 1.15rem auto;
+  }
+}
+.rule-box{
+   position: absolute;
+   width: 100%;
+   height: toRem(190px);
+   bottom: 0;
+   background: #ffffff;
+   padding: 0 $padding;
+   box-sizing: border-box;
+   z-index: 101;
+  .rule-title{
+    @include setfont(toRem(19px),#333,toRem(59px));
+    height: toRem(59px);
+  }
+  .rule-choose{
+     position: relative;
+     height: toRem(64px);
+     border-top: $border;
+    .rule-main{
+      margin-top: 1rem;
+      .active{
+        color: #f22435!important;
+      }
+      p:nth-of-type(1){
+        @include setfont(toRem(16px),#6b6b6b,1.5rem);
+      }
+      p:nth-of-type(2){
+        @include setfont(toRem(14px),#999,1.2rem);
+      }
+    }
+    .ic_choose{
+      position: absolute;
+      top: 1.2rem;
+      right: -0.5rem;
+    }
+    &:active{
+
+    }
+  }
+  .ic-close-gray{
+    position: absolute;
+    right: 0.5rem;
+    top: 0.4rem;
+    &:active{
+      opacity: 0.6;
+    }
+  }
+}

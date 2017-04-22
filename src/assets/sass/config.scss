@@ -1,13 +1,26 @@
 @charset 'utf-8';
 
-$fontColor: '#333';
-$bgColor: linear-gradient(to right,#ff8c00,#ff5100);
+$fontColor: #333;
+//$bgColor: linear-gradient(to right,#ff8c00,#ff5100);
+$bgColor: #ff2739;
 $bodyBg : #f5f2f0;
-$border: solid 0.1rem #eee;
+$border: solid 0.1rem #f6f6f6;
 $red: #ff2739;
+$border-radius:.3rem;
+$padding: (16px/14px)*1rem;//距左右1.15rem
+
+.mask{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  background-color: #151313;
+  opacity: .7
+}
 
 @function toRem($px){
-    @return $px/14px * 1rem; 
+    @return $px/14px * 1rem;
 }
 @mixin flex($flex){
     -webkit-box-flex: $flex;
@@ -15,7 +28,27 @@ $red: #ff2739;
     flex: $flex;
 }
 @mixin overEllipsis(){
-    white-space:nowrap; 
-    overflow:hidden; 
+    white-space:nowrap;
+    overflow:hidden;
     text-overflow:ellipsis;
+}
+@mixin flex-pack-justify(){//两端对其
+-webkit-box-pack:justify;
+  -webkit-justify-content:space-between;
+  -ms-flex-pack:justify;
+  justify-content:space-between;
+}
+@mixin setfont($font-size,$color,$line-height){//两端对其
+  line-height: $line-height;
+  font-size: $font-size;
+  color: $color;
+}
+@mixin setBtn($width,$height,$font-size,$color,$background){//两端对其
+  width: $width;
+  height: $height;
+  font-size: $font-size;
+  color: $color;
+  background: $background;
+  border: 0;
+  border-radius: 0.3rem;
 }

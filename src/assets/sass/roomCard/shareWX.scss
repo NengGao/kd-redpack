@@ -1,0 +1,56 @@
+@charset 'utf8';
+
+@import "../config.scss";
+@import "../icon.scss";
+
+.content{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  .rank-box{
+    position: absolute;
+    top:50%;
+    left:50%;
+    width: toRem(340px);
+    height: toRem(400px);
+    margin-left: toRem(-170px);
+    margin-top: toRem(-200px);
+    padding: $padding;
+    box-sizing: border-box;
+    background: #ffffff;
+    border-radius: 0.3rem;
+    .rank-title{
+       width: toRem(250px);
+       height: toRem(56px);
+       background: center no-repeat url(/static/images/roomCard/rank_title_bg.png);
+       background-size: 100%;
+       margin: -2.5rem auto 0 auto;
+       position: relative;
+      text-align: center;
+      .rank-num-room{
+        position: absolute;
+        bottom: 1.1rem;
+        width: 100%;
+        span{
+          @include setfont(toRem(12px),#fff,1rem);
+        }
+        span:nth-of-type(1){
+          margin-right: 1rem;
+        }
+      }
+
+    }
+    .rank-h1{
+       height:toRem(52px);
+       line-height: toRem(52px);
+    }
+  }
+}
+.share-btn{
+   height: toRem(59px);
+   background: #302627;
+  .to-share-btn{
+     display: block;
+     @include setBtn(toRem(328px),toRem(48px),toRem(19px),#fff,#ff2739);
+     margin: toRem(5.5px) auto 0 auto;
+  }
+}

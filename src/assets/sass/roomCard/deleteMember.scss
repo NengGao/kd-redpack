@@ -1,0 +1,42 @@
+@charset 'utf8';
+
+@import "../config.scss";
+@import "../icon.scss";
+
+.content {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  .delete-img{
+     height: toRem(56px);
+     padding:0 $padding;
+    img{
+       width: toRem(38px);
+       height: toRem(38px);
+       border-radius: 100%;
+    }
+  }
+  .delete-member{
+     background: #ffffff;
+     height: toRem(56px);
+     padding:0 $padding;
+     border: $border;
+    .choose-menber{
+      width: toRem(28px);
+      height: toRem(28px);
+      background-color: #dadada;
+      margin-right: toRem(18px);
+    }
+    img{
+      width: toRem(38px);
+      height: toRem(38px);
+      border-radius: 100%;
+    }
+    .name{
+      margin-left: 0.3rem;
+    }
+  }
+  .active{
+     background: center no-repeat url(/static/images/roomCard/choose_box.png);
+     background-size: 100%;
+  }
+}

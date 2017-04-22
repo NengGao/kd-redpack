@@ -7,7 +7,7 @@ import common from '@/assets/js/common';
 Vue.use(Vuex)
 
 const state = {
-  	user: common.getJsonLocal("user"),
+  	user: common.getJsonLocal("user") || '',
   	redpack:'',
   	welfare: {
   		title : '下个整点福利包',
@@ -15,10 +15,10 @@ const state = {
   	}
 }
 const actions = {
-	
+
     changeUserInfo: (context,vm) => {
     	Api.oldLogin(function(data){
-    		
+
     		Api.login(function(data2){
     			data.token = data2.token;
     			vm.user = data;
@@ -33,9 +33,13 @@ const actions = {
        	})
     },
     changeWelfare: (context,data) => {
-    
+
        	context.commit("setWelfare",data);
-    }
+    },
+  toMessageCenter: (context,data) => {
+
+    context.commit("setMessageCenter",data);
+  }
 }
 const getters = {
   	getUserInfo: state => {
@@ -46,6 +50,9 @@ const getters = {
     },
     getRedpackInfo: state => {
       return state.redpack
+    },
+    toMessageCenter: state => {
+  	  return state.toMessageCenter
     }
 }
 const mutations = {
@@ -59,7 +66,10 @@ const mutations = {
     },
     setWelfare: (state,welfare) => {
   		state.welfare = welfare;
-    }
+    },
+    setMessageCenter: (state,toMessageCenter) => {
+      state.toMessageCenter = toMessageCenter;
+  }
 }
 export default new Vuex.Store({
     state,
