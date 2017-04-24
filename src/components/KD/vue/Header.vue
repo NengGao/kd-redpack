@@ -37,7 +37,10 @@
 	    display: block;
 	   	background: $bgColor;
 	    position: relative;
+	    top: 0;
+	    left: 0;
 	    color: #fff;
+	    z-index: 10;
 	    overflow: hidden;
 	    h1{
 	    	line-height: toRem(55px);

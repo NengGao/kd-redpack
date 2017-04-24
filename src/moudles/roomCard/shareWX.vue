@@ -10,21 +10,37 @@
                       <span>编号:04697局</span>
                   </div>
               </div>
-              <div class="flex-wrap rank-h1">
+              <div class="flex-wrap flex-center rank-h1">
                   <span>本局排行榜</span>
-                  <div class="flex-wrap rank-host">
-                     <img src="/static/images/roomCard/ic_head.png" alt="">
+                  <div class="flex-wrap flex-center rank-host">
+                     <img src="/static/images/roomCard/ic_head.png" alt=""><i class="ic_hat"></i>
                      <span>冬天的冬<em>(房主)</em></span>
                   </div>
               </div>
               <div class="rank-list">
-                  <div class="flex-wrap rank-li">
-                      <div class="flex-wrap rank-left">
-                         <img src="/static/images/roomCard/ic_rank_1.png" alt="" class="ic-rank">
+                  <div class="flex-wrap flex-center rank-li">
+                      <div class="flex-wrap flex-center rank-left">
+                         <i class="ic-rank"></i>
                          <img src="/static/images/roomCard/ic_head.png" alt="" class="rank-head-img">
                          <div class="rank-name">大三洋摩托</div>
                       </div>
                       <div class="rank-right">＋1049.28</div>
+                  </div>
+                  <div class="flex-wrap flex-center rank-li">
+                    <div class="flex-wrap flex-center rank-left">
+                      <i class="ic-rank"></i>
+                      <img src="/static/images/roomCard/ic_head.png" alt="" class="rank-head-img">
+                      <div class="rank-name">大三洋摩托</div>
+                    </div>
+                    <div class="rank-right">＋1049.28</div>
+                  </div>
+                  <div class="flex-wrap flex-center rank-li">
+                    <div class="flex-wrap flex-center rank-left">
+                      <i class="ic-rank"></i>
+                      <img src="/static/images/roomCard/ic_head.png" alt="" class="rank-head-img">
+                      <div class="rank-name">大三洋摩托</div>
+                    </div>
+                    <div class="rank-right">＋1049.28</div>
                   </div>
               </div>
           </div>

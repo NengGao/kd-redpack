@@ -8,18 +8,30 @@
   overflow-y: scroll;
   .rank-box{
     width: toRem(328px);
-    padding: $padding $padding 0.5rem $padding;
-    box-sizing: border-box;
     background: #ffffff;
     border-radius: 0.3rem;
     margin: 3.5rem auto;
+    .rank-head-box{
+      height: toRem(110px);
+      border-bottom: 0.1rem dotted $bodyBg;
+      padding: $padding;
+      box-sizing: border-box;
+      p{
+        text-align: center;
+        @include setfont(toRem(14px),#999999,1.8rem)
+      }
+      .myScore{
+        text-align: center;
+        @include setfont(toRem(24px),#ff2739,1.8rem)
+      }
+    }
     .rank-title{
-       width: toRem(250px);
-       height: toRem(56px);
-       background: center no-repeat url(/static/images/roomCard/rank_title_bg.png);
-       background-size: 100%;
-       margin: -2.5rem auto 0 auto;
-       position: relative;
+      width: toRem(250px);
+      height: toRem(56px);
+      background: center no-repeat url(/static/images/roomCard/rank_title_bg.png);
+      background-size: 100%;
+      margin: -2.5rem auto 0 auto;
+      position: relative;
       text-align: center;
       .rank-num-room{
         position: absolute;
@@ -35,10 +47,12 @@
 
     }
     .rank-h1{
-       height:toRem(52px);
-       line-height: toRem(52px);
-       position: relative;
-       @include flex-pack-justify();
+      height:toRem(52px);
+      line-height: toRem(52px);
+      position: relative;
+      background: #f7f7f7;
+      padding: 0 $padding;
+      @include flex-pack-justify();
       span:nth-child(1){
         color: #999999;
       }
@@ -58,6 +72,9 @@
       }
     }
     .rank-list{
+      padding: 0 $padding 0.5rem $padding;
+      box-sizing: border-box;
+      background: #f7f7f7;
       .rank-li{
         height: toRem(48px);
         @include flex-pack-justify();
@@ -76,20 +93,25 @@
           }
           .rank-name{
             font-size: toRem(16px);
+            color: #333333;
             max-width: 10rem;
             @include overEllipsis();
           }
+        }
+        .rank-right{
+          color: #666666;
+          font-size: toRem(16px);
         }
       }
     }
   }
 }
 .share-btn{
-   height: toRem(59px);
-   background: #302627;
+  height: toRem(59px);
+  background: #302627;
   .to-share-btn{
-     display: block;
-     @include setBtn(toRem(328px),toRem(48px),toRem(19px),#fff,#ff2739);
-     margin: toRem(5.5px) auto 0 auto;
+    display: block;
+    @include setBtn(toRem(328px),toRem(48px),toRem(19px),#fff,#ff2739);
+    margin: toRem(5.5px) auto 0 auto;
   }
 }

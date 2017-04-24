@@ -22,6 +22,22 @@
            height: toRem(48px);
            margin: 0 auto;
          }
+         .ic_add{
+           display: block;
+           width: toRem(48px);
+           height: toRem(48px);
+           margin: 0 auto;
+           background: no-repeat 0 toRem(-26px) url(/static/images/roomCard/ic_rank_box.png);
+           background-size: toRem(97px);
+         }
+         .ic_reduce{
+           display: block;
+           width: toRem(48px);
+           height: toRem(48px);
+           margin: 0 auto;
+           background: no-repeat toRem(-48.5px) toRem(-26px) url(/static/images/roomCard/ic_rank_box.png);
+           background-size: toRem(97px);
+         }
          .person-name{
            width: 100%;
            text-align: center;
@@ -94,10 +110,12 @@
 .md-dissolve-info{
   width: toRem(328px);
   height: toRem(192px);
-  background: #ffffff;
   border-radius: 0.3rem;
-  padding: $padding;
-  box-sizing: border-box;
+  .md-content{
+    background: #ffffff;
+    padding: $padding;
+    box-sizing: border-box;
+  }
   .title{
     @include setfont(toRem(19px),$fontColor,1.8rem);
     margin-top: 0.5rem;
@@ -118,9 +136,5 @@
       position: absolute;
       right: 0;
     }
-  }
-  .ic-close-gray{
-    top:-0.5rem;
-    right: -0.5rem;
   }
 }

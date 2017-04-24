@@ -86,11 +86,11 @@
 				}
 			}
 		},
-    methods:{
-		    on:function () {
-
-        }
-    }
+	    methods:{
+			on:function () {
+				
+	        }
+	    }
 	}
 </script>
 

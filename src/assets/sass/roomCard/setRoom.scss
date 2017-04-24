@@ -2,6 +2,7 @@
 
 @import "../config.scss";
 @import "../icon.scss";
+@import "../dialog.scss";
 
 .content{
   overflow-x: hidden;
@@ -94,3 +95,107 @@
     }
   }
 }
+.md-game-play{
+  border-radius: 0.3rem;
+  .md-content{
+    padding: $padding;
+    background: #ffffff;
+    box-sizing: border-box;
+  }
+  .title{
+    @include setfont(toRem(19px),$fontColor,toRem(24px))
+  }
+  .text{
+    color: #999999;
+    font-size: toRem(14px);
+  }
+  .get-reward{
+    @include flex-pack-center();
+    height: toRem(48px);
+    border: 0.1rem solid $bgColor;
+    border-radius: 0.3rem;
+    margin: 1rem auto;
+    .number{
+      width: toRem(150px);
+      height: toRem(40px);
+      border: 0;
+      font-size: toRem(16px);
+      text-align: center;
+    }
+    .reward-number{
+      width: 100%;
+      height: toRem(40px);
+      border: 0;
+      font-size: toRem(16px);
+      text-indent: 0.8rem;
+    }
+    em{
+      color: #666666;
+      font-size: toRem(16px);
+    }
+  }
+  .confirm-btn{
+    @include setBtn(100%,toRem(48px),toRem(19px),#fff,$red)
+  }
+  .reward-confirm-btn{
+    @include setBtn(100%,toRem(48px),toRem(19px),#fff,#d1d1d1)
+  }
+}
+//额外奖励
+.extra-reward{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: #ffffff;
+  padding: $padding 0;
+  box-sizing: border-box;
+  z-index: 9999;
+  .extra-reward-title{
+    @include setfont(toRem(19px),$fontColor,toRem(24px));
+    padding: 0 $padding;
+  }
+  .extra-reward-text{
+    @include setfont(toRem(14px),#999,toRem(14px));
+    border-bottom: $border;
+    padding: 0.5rem $padding 1rem $padding;
+  }
+   .reward-type{
+     padding: 0 $padding;
+     height: toRem(60px);
+     @include flex-pack-justify();
+     border-bottom: $border;
+     .left-content{
+       p:nth-of-type(1){
+         @include setfont(toRem(16px),#7a7a7a,1.5rem)
+       }
+       p:nth-of-type(2){
+         @include setfont(toRem(14px),#999,1.5rem)
+       }
+       .font-active{
+         color: #ff3c4c!important;
+       }
+     }
+     .right-content{
+       position: relative;
+       span{
+         @include setfont(toRem(16px),#e78f4b,1.5rem)
+       }
+       .choose-type{
+         height: toRem(24px);
+         width: toRem(24px);
+         background-color: #ebebeb;
+         margin-left: 1.5rem;
+       }
+       .active{
+         background: center no-repeat url(/static/images/roomCard/choose_box.png);
+         background-size: 100%;
+       }
+     }
+   }
+  .ic-close-gray{
+    position: absolute;
+    right: 0.4rem;
+    top: 0.6rem;
+  }
+}
+

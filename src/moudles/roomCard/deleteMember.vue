@@ -1,3 +1,4 @@
+
 <template>
   <div class="groupInfo flex-wrap">
     <kd-header :headerMsg=headerMag></kd-header>

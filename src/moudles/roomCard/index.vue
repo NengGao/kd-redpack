@@ -20,7 +20,7 @@
 							<router-link tag="div" :to="'/roomCard/hot'" class="hot-room">热门推荐</router-link>
 						</div>
 						<ul class="my-room-list">
-							<li class="flex-wrap">
+							<router-link tag="li" :to="'/roomCard/room/100512'" class="flex-wrap">
 								<div class="owner-head">
 									<img src="http://wx.qlogo.cn/mmopen/WdJ2BLGuxzOm43YiaMwnyrmoGqSekH86zoyJmicPcyrCjwPPhPZKOLB23zLc25q1ktzLCicsN8UsD6tmib8V9Z53VHR2daFenvBg/0" alt="" />
 									<i class="owner-identify"></i>
@@ -30,7 +30,7 @@
 									<div class="room-tips">玩法：红包接龙(100点/4包)     额外加奖</div>
 									<i class="ic-arrow-rw"></i>
 								</div>
-							</li>
+							</router-link>
 							<li class="flex-wrap">
 								<div class="owner-head">
 									<img src="http://wx.qlogo.cn/mmopen/WdJ2BLGuxzOm43YiaMwnyrmoGqSekH86zoyJmicPcyrCjwPPhPZKOLB23zLc25q1ktzLCicsN8UsD6tmib8V9Z53VHR2daFenvBg/0" alt="" />
@@ -68,7 +68,7 @@
 							<div class="room-info">
 								<div class="room-code">房间号（1100）<span class="game-code">(10025局)</span></div>
 								<div class="room-tips">05 -21 16:42</div>
-								<div class="grade active">+ 1000</div>
+								<div class="grade active">+1000</div>
 								<i class="ic-arrow-rw"></i>
 							</div>
 						</li>
@@ -80,7 +80,7 @@
 							<div class="room-info">
 								<div class="room-code">房间号（1100）<span class="game-code">(10025局)</span></div>
 								<div class="room-tips">05 -21 16:42</div>
-								<div class="grade active">+ 1000</div>
+								<div class="grade active">+1000</div>
 								<i class="ic-arrow-rw"></i>
 							</div>
 						</li>
@@ -92,7 +92,7 @@
 							<div class="room-info">
 								<div class="room-code">房间号（1100）<span class="game-code">(10025局)</span></div>
 								<div class="room-tips">05 -21 16:42</div>
-								<div class="grade">- 1000</div>
+								<div class="grade">-1000</div>
 								<i class="ic-arrow-rw"></i>
 							</div>
 						</li>
@@ -116,7 +116,7 @@
 			<div class="md-content">
 				<i class="md-close ic-close-gray" @click="closeMd('joinRoom')"></i>
 				<div class="title">加入房间</div>
-				<input type="text" class="inp" placeholder="请输入6位房间号"/>
+				<input type="number" class="inp" placeholder="请输入6位房间号" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"/>
 				<div class="tips">tips:可向房主获取房间号和密码，或自建房间邀朋友一起玩。</div>
 			</div>
 		</div>

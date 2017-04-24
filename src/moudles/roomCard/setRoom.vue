@@ -23,11 +23,11 @@
               <span class="setRoom-left">一局发放的包数</span>
               <span class="setRoom-right set-right">20包<i class="ic-arrow-rg"></i></span>
             </div>
-            <div class="setRoom-Box margin-Top set-right">
+            <div class="setRoom-Box margin-Top set-right" @click="showMd('mdGamePlay')">
               <span class="setRoom-left">游戏打赏</span>
               <span class="setRoom-right set-right">每包抽15%<i class="ic-arrow-rg"></i></span>
             </div>
-            <div class="setRoom-Box">
+            <div class="setRoom-Box" @click="show">
               <span class="setRoom-left">额外奖励</span>
               <span class="setRoom-right set-right">已选3项<i class="ic-arrow-bg"></i></span>
             </div>
@@ -66,6 +66,97 @@
         </div>
         <i class="ic-close-gray"></i>
     </div>
+    <!--游戏打赏-->
+    <div class="md-mask" :class="{ 'active': md.mask }"></div>
+    <div class="md-modal md-effect-1 md-game-play" :class="{ 'md-show': md.mdGamePlay }">
+      <div class="md-content">
+        <i class="md-close ic-close-gray" @click="closeMd('mdGamePlay')"></i>
+        <div class="title">游戏打赏</div>
+        <div class="text">每包抽取部分金额，作为额外奖励发放给玩家</div>
+        <div class="flex-wrap flex-center get-reward">
+          <input type="number" pattern="\d*" class="number" placeholder="输入每包抽取比例"><em>%</em>
+        </div>
+        <input type="button" value="确定" class="confirm-btn">
+      </div>
+    </div>
+    <!--设置奖励倍数-->
+    <div class="md-modal md-effect-1 md-game-play" :class="{ 'md-show': md.mdGameReward }">
+      <div class="md-content">
+        <i class="md-close ic-close-gray" @click="closeMd('mdGameReward')"></i>
+        <div class="title">设置奖励倍数</div>
+        <div class="text">如每包金额100点，奖励倍数为2.0倍，若中则奖励200点。</div>
+        <div class="flex-wrap flex-center get-reward">
+          <input type="number" pattern="\d*" class="reward-number" placeholder="请输入倍数">
+        </div>
+        <input type="button" value="确定" class="reward-confirm-btn">
+      </div>
+    </div>
+    <!--额外奖励-->
+    <div class="extra-reward" v-show="activeBox.rewardShow" :class="{'slideInUp' :activeBox.slideShow}">
+       <div class="extra-reward-title">额外奖励</div>
+       <div class="extra-reward-text">以每包金额为基准的额外奖励</div>
+       <div class="flex-wrap flex-center reward-type" @click="toggle">
+         <div class="left-content">
+           <p :class="{'font-active' :activeBox.fontActive}">一份情</p>
+           <p>抢到0.01点</p>
+         </div>
+         <div class="flex-wrap right-content">
+           <span>奖励x0.8倍</span>
+           <div class="choose-type" :class="{'active': activeBox.isActive}"></div>
+         </div>
+        </div>
+        <div class="flex-wrap flex-center reward-type" @click="toggle">
+          <div class="left-content">
+            <p :class="{'font-active' :activeBox.fontActive}">大豹子</p>
+            <p>位数相同，如11.11、22.22</p>
+          </div>
+          <div class="flex-wrap right-content">
+            <span>奖励x0.8倍</span>
+            <div class="choose-type" :class="{'active': activeBox.isActive}"></div>
+          </div>
+        </div>
+        <div class="flex-wrap flex-center reward-type" @click="toggle">
+          <div class="left-content">
+            <p :class="{'font-active' :activeBox.fontActive}">小豹子</p>
+            <p>位数相同，如1.11、2.22</p>
+          </div>
+          <div class="flex-wrap right-content">
+            <span>奖励x0.8倍</span>
+            <div class="choose-type" :class="{'active': activeBox.isActive}"></div>
+          </div>
+        </div>
+        <div class="flex-wrap flex-center reward-type" @click="toggle">
+          <div class="left-content">
+            <p :class="{'font-active' :activeBox.fontActive}">大顺子</p>
+            <p>位数依次排序，如12.34、1.23</p>
+          </div>
+          <div class="flex-wrap right-content">
+            <span>奖励x0.8倍</span>
+            <div class="choose-type" :class="{'active': activeBox.isActive}"></div>
+          </div>
+        </div>
+        <div class="flex-wrap flex-center reward-type" @click="toggle">
+          <div class="left-content">
+            <p :class="{'font-active' :activeBox.fontActive}">小顺子</p>
+            <p>位数依次排序，如1.23、4.56</p>
+          </div>
+          <div class="flex-wrap right-content">
+            <span>奖励x0.8倍</span>
+            <div class="choose-type" :class="{'active': activeBox.isActive}"></div>
+          </div>
+        </div>
+        <div class="flex-wrap flex-center reward-type" @click="toggle">
+          <div class="left-content">
+            <p :class="{'font-active' :activeBox.fontActive}">衰神奖</p>
+            <p>连续抢3包最小</p>
+          </div>
+          <div class="flex-wrap right-content">
+            <span>奖励x0.8倍</span>
+            <div class="choose-type" :class="{'active': activeBox.isActive}"></div>
+          </div>
+        </div>
+        <i class="ic-close-gray" @click="close"></i>
+    </div>
   </div>
 </template>
 
@@ -74,6 +165,12 @@
     name: 'setRoom',
     data(){
       return{
+        activeBox:{
+          fontActive:true,
+          isActive: true,
+          rewardShow:false,
+          slideShow:false,
+        },
         rulebox:{
           rule:false,
           mask:false,
@@ -83,9 +180,39 @@
           title:'设置房间属性',
           rightMsg: '',
           rightUrl: ''
+        },
+        md:{
+          active: '',
+          mask: true,
+          mdGamePlay : false,
+          mdGameReward : true,
         }
       }
     },
+    methods:{
+      showMd: function(md){
+        this.md[md] = true;
+        this.md.mask = true;
+      },
+      closeMd :function(md){
+        this.md[md] = false;
+        this.md.mask = false;
+      },
+      toggle :function(){
+        this.activeBox.isActive=!this.activeBox.isActive;
+        this.activeBox.fontActive=!this.activeBox.fontActive;
+      },
+      show :function () {
+        this.activeBox.rewardShow=true;
+        this.activeBox.slideShow=true;
+        this.md.mask=true;
+      },
+      close :function () {
+        this.activeBox.rewardShow=false;
+        this.activeBox.slideShow=false;
+        this.md.mask=false;
+      }
+    }
   }
 </script>
 

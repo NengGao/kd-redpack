@@ -36,7 +36,8 @@
     }
   }
   .active{
-     background: center no-repeat url(/static/images/roomCard/choose_box.png);
-     background-size: 100%;
+     background: no-repeat  toRem(-84px) 0 url(/static/images/roomCard/ic_rank_box.png);
+     background-size:toRem(112px);
+
   }
 }

@@ -11,8 +11,8 @@
                   <li><img src="/static/images/roomCard/ic_head.png" alt=""><div class="person-name">樱花树下</div></li>
                   <li><img src="/static/images/roomCard/ic_head.png" alt=""><div class="person-name">樱花树下</div></li>
                   <li><img src="/static/images/roomCard/ic_head.png" alt=""><div class="person-name">樱花树下</div></li>
-                  <li><img src="/static/images/roomCard/ic_add.png" alt=""></li>
-                  <li><img src="/static/images/roomCard/ic_reduce.png" alt=""></li>
+                  <li><i class="ic_add"></i></li>
+                  <li><i class="ic_reduce"></i></li>
               </ul>
           </div>
           <div class="group-Box margin-Top"><span>房号</span><span>897692</span> </div>
