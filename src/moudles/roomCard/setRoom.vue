@@ -27,7 +27,7 @@
               <span class="setRoom-left">游戏打赏</span>
               <span class="setRoom-right set-right">每包抽15%<i class="ic-arrow-rg"></i></span>
             </div>
-            <div class="setRoom-Box" @click="show">
+            <div class="setRoom-Box" @click="pullUp">
               <span class="setRoom-left">额外奖励</span>
               <span class="setRoom-right set-right">已选3项<i class="ic-arrow-bg"></i></span>
             </div>
@@ -92,7 +92,7 @@
       </div>
     </div>
     <!--额外奖励-->
-    <div class="extra-reward" v-show="activeBox.rewardShow" :class="{'slideInUp' :activeBox.slideShow}">
+    <div class="extra-reward" v-show="activeBox.rewardShow" :class="activeBox.pullUpShow ? 'pullUp' : 'pullDown'">
        <div class="extra-reward-title">额外奖励</div>
        <div class="extra-reward-text">以每包金额为基准的额外奖励</div>
        <div class="flex-wrap flex-center reward-type" @click="toggle">
@@ -155,7 +155,7 @@
             <div class="choose-type" :class="{'active': activeBox.isActive}"></div>
           </div>
         </div>
-        <i class="ic-close-gray" @click="close"></i>
+        <i class="ic-close-gray" @click="pullUp"></i>
     </div>
   </div>
 </template>
@@ -166,10 +166,10 @@
     data(){
       return{
         activeBox:{
-          fontActive:true,
-          isActive: true,
+          fontActive:false,
+          isActive: false,
           rewardShow:false,
-          slideShow:false,
+          pullUpShow:false,
         },
         rulebox:{
           rule:false,
@@ -183,9 +183,9 @@
         },
         md:{
           active: '',
-          mask: true,
+          mask: false,
           mdGamePlay : false,
-          mdGameReward : true,
+          mdGameReward : false,
         }
       }
     },
@@ -202,16 +202,11 @@
         this.activeBox.isActive=!this.activeBox.isActive;
         this.activeBox.fontActive=!this.activeBox.fontActive;
       },
-      show :function () {
-        this.activeBox.rewardShow=true;
-        this.activeBox.slideShow=true;
-        this.md.mask=true;
+      pullUp :function () {
+        this.activeBox.rewardShow=!this.activeBox.rewardShow;
+        this.activeBox.pullUpShow=!this.activeBox.pullUpShow;
+        this.md.mask=!this.md.mask;
       },
-      close :function () {
-        this.activeBox.rewardShow=false;
-        this.activeBox.slideShow=false;
-        this.md.mask=false;
-      }
     }
   }
 </script>

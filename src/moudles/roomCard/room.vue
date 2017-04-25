@@ -2,17 +2,30 @@
 <template>
 	<div class="hot flex-wrap">
 		<kd-header :headerMsg=headerMag></kd-header>
-
-		<div class="content flex-wrap flex-con-1">
-			<div class="inform flex-wrap">
-				<div class="informList flex-con-1">
-					
-				</div>
-				<div class="more"></div>
-			</div>
-	       	<div class="scroll flex-con-1">
-          		
+		<div class="inform flex-wrap">
+			<div class="informList flex-con-1">
 				
+			</div>
+			<div class="more"></div>
+		</div>
+		<div class="content flex-wrap flex-con-1" ref="wrapper">
+	       	<div class="scroll">
+          		<div class="game-info">
+          			<div class="owner"><img src="http://wx.qlogo.cn/mmopen/WdJ2BLGuxzOm43YiaMwnyrmoGqSekH86zoyJmicPcyrCjwPPhPZKOLB23zLc25q1ktzLCicsN8UsD6tmib8V9Z53VHR2daFenvBg/0" alt="" /></div>
+          			<div class="owner-name">冬天的东</div>
+          			<div class="owner-account">微信号：wx396162610</div>
+          			<div class="game-tips"></div>
+          			<div class="game-rule">游戏规则：100点/4包，抢最小的发下一包，为避免逃包，由系统代发。</div>
+          			<div class="game-explain">每包抽取20点作为额外奖励，奖励如下：</div>
+          			<ul class="game-award">
+          				<li>◆  一份情（开出0.01点，奖励100点）</li>
+          				<li>◆  大豹子（如77.77～11.11，奖励420点）</li>
+          				<li>◆  一份情（开出0.01点，奖励100点）</li>
+          				<li>◆  大豹子（如77.77～11.11，奖励420点）</li>
+          				<li>◆  一份情（开出0.01点，奖励100点）</li>
+          				<li>◆  大豹子（如77.77～11.11，奖励420点）</li>
+          			</ul>
+          		</div>
 	        </div>
 		</div>
 		<div class="footer flex-wrap">
@@ -43,6 +56,7 @@
 import Vue from 'vue'
 import Api from '@/fetch/api'
 import common from '@/assets/js/common'
+import BScroll from 'better-scroll'
 
 export default{
 	data(){
@@ -57,6 +71,9 @@ export default{
 				mdRoomInfo : false
 			}
 		}
+	},
+	created() {
+		
 	},
 	methods:{
 		

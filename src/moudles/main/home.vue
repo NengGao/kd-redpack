@@ -71,7 +71,6 @@
 			<div class="copyright">快点生活出品</div>
 		</div>
 	</div>
-	<loader v-show="loaderShow"></loader>
 </div>
 </template>
 
@@ -81,6 +80,7 @@ import Vue from 'vue'
 import Api from '@/fetch/api'
 import common from '@/assets/js/common'
 import BScroll from 'better-scroll'
+import { Toast } from 'mint-ui';
 import {mapGetters,mapActions} from 'vuex'
 
 export default {
@@ -90,8 +90,7 @@ export default {
     	user: this.$store.getters.getUserInfo || '',
     	redpack: this.$store.getters.getRedpackInfo || '',
     	welfare : this.$store.getters.getWelfare || '',
-    	goodsLis : common.getJsonLocal("goodsLis") || '',
-    	loaderShow: false
+    	goodsLis : common.getJsonLocal("goodsLis") || ''
     }
   },
   beforeCreate(){
@@ -101,7 +100,6 @@ export default {
   	Api.goodsHome(function(data){
   		common.setJsonLocal("goodsLis",data);
 	    self.goodsLis = data;
-	    //self._initScroll();
 	});
   },
   created() {	
@@ -133,6 +131,7 @@ export default {
   },
   methods: {
   	_initScroll() {
+  		console.log(this.$refs.wrapper);
         this.scroll = new BScroll(this.$refs.wrapper, {
           	click: true
         });
@@ -141,9 +140,9 @@ export default {
 		let self = this;
 		if(self.redpack.time != 0){
 			let welfare = {
-					title : "下个整点福利包",
-					btn : '还未开始，请稍后..'
-				}
+				title : "下个整点福利包",
+				btn : '还未开始，请稍后..'
+			}
 			self.welfare = welfare;
 			self.$store.dispatch('changeWelfare',welfare);
 		}
@@ -163,7 +162,12 @@ export default {
 		},1000)
 	},
 	goHBJC(){
-		location.href = 'http://192.168.1.114:8080/redpackPK/views/redpackPK.html'
+		Toast({
+		  message: '操作成功',
+		  duration: 100000,
+		  iconClass: 'ic-toast-success'
+		});
+		//location.href = 'http://192.168.1.114:8080/redpackPK/views/redpackPK.html'
 	}
   }
 }

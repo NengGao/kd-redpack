@@ -3,6 +3,7 @@
 @import "../config.scss";
 @import "../icon.scss";
 @import "../dialog.scss";
+@import "../animations.scss";
 .card-number{
     position: absolute;
     right: 1rem;
@@ -15,6 +16,7 @@
     border-radius: toRem(15px);
     width: toRem(30px);
     color: #fff;
+    z-index: 11;
     font-size: toRem(16px);
     &:before{
        content: '';
@@ -40,12 +42,12 @@
 .content{
     overflow-x: hidden;
     overflow-y: hidden;
-    flex-direction: column;  
+    flex-direction: column;
     li{
         &:active{
             opacity: 0.8;
         }
-    } 
+    }
     .nav{
         line-height: toRem(48px);
         text-align: center;
@@ -63,10 +65,10 @@
         .active{
             color: $red;
             span{
-                border-bottom: solid toRem(2px) $red;         
+                border-bottom: solid toRem(2px) $red;
             }
         }
-    }  
+    }
     .room-card-content{
         position: relative;
         overflow-x: hidden;
@@ -76,7 +78,7 @@
             text-align: center;
             font-size: toRem(16px);
             height: toRem(74px);
-            line-height: toRem(74px);        
+            line-height: toRem(74px);
             background: #fff;
             li{
                 i{
@@ -100,7 +102,7 @@
             }
         }
         .my-room{
-            
+
            background: #fff;
            margin-top: toRem(8px);
            .my-room-title{
@@ -204,7 +206,7 @@
                    font-size: toRem(12px);
                    color: #fff;
                    position: relative;
-                   top: -0.12rem;  
+                   top: -0.12rem;
                }
                .active{
                    background: #ff2739;
@@ -327,4 +329,128 @@
             margin: 0.5rem auto;
         }
     }
+}
+
+.pay-room-card{
+  position: absolute;
+  bottom: 0;
+  background: #ffffff;
+  padding: $padding;
+  box-sizing: border-box;
+  width: 100%;
+  z-index: 9999;
+  .title{
+    @include setfont(toRem(19px),#333,1.8rem)
+  }
+  .text{
+    @include setfont(toRem(14px),#999,1rem);
+    padding-bottom: 1rem;
+    border-bottom: $border;
+  }
+  .room-card-num{
+    .buy-text{
+      @include setfont(toRem(14px),#666,1rem);
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+    .room-card-box{
+      .room-card-type{
+        border: $border;
+        border-radius: 0.3rem;
+        height: toRem(64px);
+        .main-content{
+          text-align: center;
+          width: 100%;
+          p:nth-of-type(1){
+            @include setfont(toRem(16px),#f22435,1.5rem)
+          }
+          p:nth-of-type(2){
+            @include setfont(toRem(14px),#999,1.2rem)
+          }
+          .active{
+            color: #ffffff!important;
+          }
+        }
+      }
+      .active{
+        background-color: #f22435!important;
+      }
+    }
+  }
+  .choose-pay-type{
+    margin-top: 1.5rem;
+    .choose-pay-text{
+      @include setfont(toRem(14px),#7a7a7a,1.5rem)
+    }
+    .pay-type-box{
+      height: toRem(85px);
+      margin-top: 1rem;
+      .pay-type-list{
+        height: toRem(42px);
+        float: left;
+        width: 50%;
+        .is-choose{
+          width: toRem(22px);
+          height: toRem(22px);
+          background-color: #ebebeb;
+          border-radius: 100%;
+          line-height: 1.88rem;
+          position: relative;
+          .active{
+            display: block;
+            width: toRem(13px);
+            height: toRem(13px);
+            background-color: #ff2739;
+            border-radius: 50%;
+            margin: toRem(4.5px) auto;
+          }
+        }
+
+        .pay-text{
+          margin-left: 0.5rem;
+          p:nth-child(1){
+            @include setfont(toRem(14px),#3d3d3d,1.5rem)
+          }
+          p:nth-child(2){
+            @include setfont(toRem(12px),#999,1.2rem)
+          }
+          .pay-SM{
+            position: relative;
+            span{
+              width:0;
+              height:0;
+              border-top:0rem solid transparent;
+              border-bottom: 0.9rem solid transparent;
+              border-right:0.8rem solid #f22435;
+              position: absolute;
+              left: -0.3rem;
+              top: 0.15rem;
+            }
+            em{
+              display: inline-block;
+              width: 100%;
+              background: #f22435;
+              border-radius: 0.8rem;
+              color: #ffffff;
+              font-size: toRem(12px);
+              padding: 0 0.2rem;
+              text-align: center;
+              line-height: toRem(16px);
+            }
+          }
+
+        }
+      }
+    }
+
+  }
+  .to-pay-btn{
+    @include setBtn(100%,toRem(48px),toRem(19px),#fff,#ed1126);
+    margin-top: toRem(16px);
+  }
+  .ic-close-gray{
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+  }
 }

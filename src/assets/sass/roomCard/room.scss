@@ -4,22 +4,96 @@
 @import "../icon.scss";
 @import "../dialog.scss";
 
+.inform{
+    width: 100%;
+    height: toRem(48px);
+    background: #542825;
+    .more{
+        width: toRem(48px);
+        height: toRem(48px);
+        background: no-repeat center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAAAZlBMVEUAAACWKSSWKSSWKSSWKSSWKSSWKSSWKSSWKSSWKSSWKSSWKSSWKSSWKSSWKSSWKSTsnlL0plqwSzLjjk/McELQdUSoQS7kk07fik7xolfql1OkOiu9WzqcMCerRTDUe0fCZD3chUybgB4CAAAAD3RSTlMAwxjxzT8PsqfilXxyVUgZvrPZAAAB/klEQVRIx5SSSYKCMBREE0BEGYqfBGQW73/JDh+wVUDhrVikqCER6/hJGHgXF3AvXhAmvtiNE0l8ICNnl/R0xirn02+pxCbyu9wJMFE35lGVRGX1ME2NieBL+NgFk5uK3qhMDsaNt7RXMKoYjmeNqlugrVWTDb8qFJjr+u3I0dVKtenwRme0lY/u0l+p68HSGivtsUJv5aaFxXMWvqytNVGGDTIiXbP601tyupSzrcONUu4jV7ZSJd3xlTuVarFazL7lMvIyesne8ctY7tA3Ze1PdTr0dv9H49es58y/kmt+6c/3DIuhosUeCjKwnF6Wzoly7GE+KV+M9Vx4T+2CrZ+NFWkw6pZuclNgNKm5tTMW6cGwdlMNph+th8Ej7qGxXwzNraNpLkMG+2PzcZ7Mh6WiDgfoqILFF8mU+hAV1QASEQJoKMMhMmoAhCKYvg/RcOlAeHxRCodQ9ADgictU4RA1L3YRLoCSWhy5KrRUAnAFLETAkUcyK/5KL3ccgEEYhopKndulUjNw/2uiyBsZiPwY2CJ+wX52iyNnd9tvbhtdmPtUfz6V2yRfNglqT/Qx0JckYoBkCAkgkV5P9LXQTexmM7rHMDqdevYtduaJN3OPnrmHzJ1hBQcajaHqE0qpdlQA7EPchfGRgytHZg7rNSZElJgAAwqPRjyUoTi4ALvOscuv6YUFAAAAAElFTkSuQmCC);
+        background-size: 60%;
+    }
+}
 .content{
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: hidden;
+    flex-direction: column;
     padding-bottom: toRem(60px);
     .scroll{
-        
-    }
-    .inform{
+        display: block;
         width: 100%;
-        height: toRem(48px);
-        background: #542825;
-        .more{
-            width: toRem(48px);
-            height: toRem(48px);
-            background: no-repeat center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAAAZlBMVEUAAACWKSSWKSSWKSSWKSSWKSSWKSSWKSSWKSSWKSSWKSSWKSSWKSSWKSSWKSSWKSTsnlL0plqwSzLjjk/McELQdUSoQS7kk07fik7xolfql1OkOiu9WzqcMCerRTDUe0fCZD3chUybgB4CAAAAD3RSTlMAwxjxzT8PsqfilXxyVUgZvrPZAAAB/klEQVRIx5SSSYKCMBREE0BEGYqfBGQW73/JDh+wVUDhrVikqCER6/hJGHgXF3AvXhAmvtiNE0l8ICNnl/R0xirn02+pxCbyu9wJMFE35lGVRGX1ME2NieBL+NgFk5uK3qhMDsaNt7RXMKoYjmeNqlugrVWTDb8qFJjr+u3I0dVKtenwRme0lY/u0l+p68HSGivtsUJv5aaFxXMWvqytNVGGDTIiXbP601tyupSzrcONUu4jV7ZSJd3xlTuVarFazL7lMvIyesne8ctY7tA3Ze1PdTr0dv9H49es58y/kmt+6c/3DIuhosUeCjKwnF6Wzoly7GE+KV+M9Vx4T+2CrZ+NFWkw6pZuclNgNKm5tTMW6cGwdlMNph+th8Ej7qGxXwzNraNpLkMG+2PzcZ7Mh6WiDgfoqILFF8mU+hAV1QASEQJoKMMhMmoAhCKYvg/RcOlAeHxRCodQ9ADgictU4RA1L3YRLoCSWhy5KrRUAnAFLETAkUcyK/5KL3ccgEEYhopKndulUjNw/2uiyBsZiPwY2CJ+wX52iyNnd9tvbhtdmPtUfz6V2yRfNglqT/Qx0JckYoBkCAkgkV5P9LXQTexmM7rHMDqdevYtduaJN3OPnrmHzJ1hBQcajaHqE0qpdlQA7EPchfGRgytHZg7rNSZElJgAAwqPRjyUoTi4ALvOscuv6YUFAAAAAElFTkSuQmCC);
-            background-size: 60%;
+        height: auto;
+        .game-info{
+            width: toRem(328px);
+            height: 140rem;
+            padding-top: 3rem;
+            margin: 4rem auto 1rem auto;
+            background: #fff;
+            border-radius: toRem(4px);
+            position: relative;
+            .owner{
+                width: toRem(65px);
+                border: solid toRem(5px) #fff;
+                position: absolute;
+                left: 50%;
+                top: -2.4rem;
+                border-radius: 50%;
+                margin-left: toRem(-37.5px);
+                img{
+                    width: toRem(65px);
+                    height: toRem(65px);
+                    border-radius: 50%;
+                }
+                &:after{
+                    content: '';
+                    position: absolute;
+                    display: block;
+                    width: 2.2rem;
+                    height: 2rem;
+                    background: no-repeat toRem(-88px) 0 url(/static/images/roomCard/ic_rank_box.png);
+                    background-size: toRem(160px);
+                    right: -0.2rem;
+                    top: -0.8rem;
+                }
+            }
+            .owner-name{
+                text-align: center;
+                font-size: toRem(16px);
+                line-height: 1.4rem;
+            }
+            .owner-account{
+                color: #999;
+                text-align: center;
+            }
+            .game-tips{
+                width: toRem(300px);
+                height: 2rem;
+                margin: 0.8rem auto 0.4rem auto;
+                background: no-repeat 0.4rem toRem(-50px) url(/static/images/roomCard/ic_roomCard.png);
+                background-size: toRem(290px);
+            }
+            .game-rule{
+                width: toRem(295px);
+                margin: 0 auto;
+                line-height: 1.4rem;
+                text-align: center;
+                color: #ba5c58;
+            }
+            .game-explain{
+                width: toRem(290px);
+                color: #666;
+                line-height: 1.5rem;
+                margin: 0.6rem auto 0.3rem auto;
+            }
+            .game-award{
+                color: #fa9d3b;
+            }
+            .game-award{
+                width: toRem(290px);
+                line-height: 1.7rem;
+                margin: 0 auto;
+            }
         }
     }
 }
@@ -62,7 +136,6 @@
                 border-radius: toRem(17px) 0 0 toRem(17px);
                 background: #342a2a;
                 color: #999;
-
             }
             .ic-face{
                 display: block;
