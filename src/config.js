@@ -8,7 +8,8 @@ const start = {
 const ip = {
 	user : 'http://'+ host +'/user',
 	portal : 'http://'+ host +'/rd-portal',
-	robBuy : 'http://'+ host +'/robBuy'
+	robBuy : 'http://'+ host +'/robBuy',
+	room : 'http://'+ host +'/room',
 }
 
 module.exports = {

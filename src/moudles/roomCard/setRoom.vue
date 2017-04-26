@@ -7,9 +7,9 @@
                <span class="setRoom-left">游戏模式</span>
                <span class="setRoom-right">红包接龙</span>
             </div>
-            <div class="setRoom-Box">
+            <div class="setRoom-Box" @click="rulePull">
               <span class="setRoom-left">游戏规则</span>
-              <span class="setRoom-right set-right">抢最小的发包<i class="ic-arrow-rg"></i></span>
+              <span class="setRoom-right set-right"><span>{{message.msg}}</span><i class="ic-arrow-rg"></i></span>
             </div>
             <div class="setRoom-Box margin-Top">
               <span class="setRoom-left">每包金额</span>
@@ -46,26 +46,20 @@
             <input type="button" class="create-room-btn" value="创建房间">
         </div>
     </div>
-    <!--蒙层-->
-    <div class="mask" v-show="rulebox.mask"></div>
     <!--选择游戏规则-->
-    <div class="rule-box" v-show="rulebox.rule">
+    <div class="rule-box" v-show="activeBox.rule" :class="{'pullUp': activeBox.ruleAddClass}">
        <div class="rule-title">选择游戏规则</div>
-       <div class="rule-choose">
+       <div class="rule-choose" @click="addActive('ruleLis',index,1)" v-for="(rule,index) in setRoomData.ruleList">
            <div class="rule-main">
-              <p class="active">抢最小的发包</p>
-              <p>总金额最小的发下一红包</p>
+           
+            	<p :class="{'active':ruleLis[index].active}">{{rule.ruleName}}</p>
+              <p>{{rule.ruleDesc}}</p>
            </div>
-           <i class="ic_choose"></i>
+           <i :class="{'ic-choose':ruleLis[index].active}"></i>
        </div>
-       <div class="rule-choose">
-          <div class="rule-main">
-             <p>抢末尾尾数最小的发包</p>
-             <p>如“0.13”最后一位即“3”</p>
-          </div>
-        </div>
-        <i class="ic-close-gray"></i>
+       <i class="ic-close-gray" @click="rulePull"></i>
     </div>
+    
     <!--游戏打赏-->
     <div class="md-mask" :class="{ 'active': md.mask }"></div>
     <div class="md-modal md-effect-1 md-game-play" :class="{ 'md-show': md.mdGamePlay }">
@@ -80,9 +74,10 @@
       </div>
     </div>
     <!--设置奖励倍数-->
+    <div class="mask-rule" v-show="md.maskRule"></div>
     <div class="md-modal md-effect-1 md-game-play" :class="{ 'md-show': md.mdGameReward }">
       <div class="md-content">
-        <i class="md-close ic-close-gray" @click="closeMd('mdGameReward')"></i>
+        <i class="md-close ic-close-gray" @click="editReward"></i>
         <div class="title">设置奖励倍数</div>
         <div class="text">如每包金额100点，奖励倍数为2.0倍，若中则奖励200点。</div>
         <div class="flex-wrap flex-center get-reward">
@@ -92,68 +87,19 @@
       </div>
     </div>
     <!--额外奖励-->
-    <div class="extra-reward" v-show="activeBox.rewardShow" :class="activeBox.pullUpShow ? 'pullUp' : 'pullDown'">
+    <div class="extra-reward" v-show="activeBox.rewardShow" :class="{'pullUp': activeBox.pullUpShow}">
        <div class="extra-reward-title">额外奖励</div>
        <div class="extra-reward-text">以每包金额为基准的额外奖励</div>
-       <div class="flex-wrap flex-center reward-type" @click="toggle">
+       <div class="flex-wrap flex-center reward-type" @click="toggle" v-for="reward in setRoomData.awardList">
          <div class="left-content">
-           <p :class="{'font-active' :activeBox.fontActive}">一份情</p>
-           <p>抢到0.01点</p>
+           <p :class="{'font-active' :activeBox.fontActive}">{{reward.awardName}}</p>
+           <p>{{reward.awardDesc}}</p>
          </div>
          <div class="flex-wrap right-content">
-           <span>奖励x0.8倍</span>
+           <span @click="editReward">奖励x0.8倍</span>
            <div class="choose-type" :class="{'active': activeBox.isActive}"></div>
+           <div class="tap-edit"><span></span><em>点击可修改</em></div>
          </div>
-        </div>
-        <div class="flex-wrap flex-center reward-type" @click="toggle">
-          <div class="left-content">
-            <p :class="{'font-active' :activeBox.fontActive}">大豹子</p>
-            <p>位数相同，如11.11、22.22</p>
-          </div>
-          <div class="flex-wrap right-content">
-            <span>奖励x0.8倍</span>
-            <div class="choose-type" :class="{'active': activeBox.isActive}"></div>
-          </div>
-        </div>
-        <div class="flex-wrap flex-center reward-type" @click="toggle">
-          <div class="left-content">
-            <p :class="{'font-active' :activeBox.fontActive}">小豹子</p>
-            <p>位数相同，如1.11、2.22</p>
-          </div>
-          <div class="flex-wrap right-content">
-            <span>奖励x0.8倍</span>
-            <div class="choose-type" :class="{'active': activeBox.isActive}"></div>
-          </div>
-        </div>
-        <div class="flex-wrap flex-center reward-type" @click="toggle">
-          <div class="left-content">
-            <p :class="{'font-active' :activeBox.fontActive}">大顺子</p>
-            <p>位数依次排序，如12.34、1.23</p>
-          </div>
-          <div class="flex-wrap right-content">
-            <span>奖励x0.8倍</span>
-            <div class="choose-type" :class="{'active': activeBox.isActive}"></div>
-          </div>
-        </div>
-        <div class="flex-wrap flex-center reward-type" @click="toggle">
-          <div class="left-content">
-            <p :class="{'font-active' :activeBox.fontActive}">小顺子</p>
-            <p>位数依次排序，如1.23、4.56</p>
-          </div>
-          <div class="flex-wrap right-content">
-            <span>奖励x0.8倍</span>
-            <div class="choose-type" :class="{'active': activeBox.isActive}"></div>
-          </div>
-        </div>
-        <div class="flex-wrap flex-center reward-type" @click="toggle">
-          <div class="left-content">
-            <p :class="{'font-active' :activeBox.fontActive}">衰神奖</p>
-            <p>连续抢3包最小</p>
-          </div>
-          <div class="flex-wrap right-content">
-            <span>奖励x0.8倍</span>
-            <div class="choose-type" :class="{'active': activeBox.isActive}"></div>
-          </div>
         </div>
         <i class="ic-close-gray" @click="pullUp"></i>
     </div>
@@ -161,19 +107,30 @@
 </template>
 
 <script>
+  import Api from '@/fetch/api'
+  import common from '@/assets/js/common'
+
   export default{
     name: 'setRoom',
     data(){
       return{
+        message:{
+          msg:"抢最小的发包"
+        },
+        ruleLis:[
+        	{msg:'尾数最小的发',active:false},
+        	{msg:'末两位数之和最小的发',active:false},
+        	{msg:'总额最小的发',active:false}
+        ],
+        
         activeBox:{
           fontActive:false,
           isActive: false,
           rewardShow:false,
           pullUpShow:false,
-        },
-        rulebox:{
           rule:false,
-          mask:false,
+          ruleAddClass:false,
+          ruleActive:1
         },
         user: this.$store.state.user,
         headerMag:{
@@ -186,7 +143,9 @@
           mask: false,
           mdGamePlay : false,
           mdGameReward : false,
-        }
+          maskRule :false
+        },
+        setRoomData:"",
       }
     },
     methods:{
@@ -194,19 +153,56 @@
         this.md[md] = true;
         this.md.mask = true;
       },
-      closeMd :function(md){
+      closeMd: function(md){
         this.md[md] = false;
         this.md.mask = false;
       },
-      toggle :function(){
+      addActive : function(arr,index,type){
+      		if(type != 1){
+      			this[arr][index].active = !this[arr][index].active;
+      		}else{
+      			var _arr = this[arr];
+      			for(let i=0;i<_arr.length;i++){
+      				_arr[i].active = false;
+      			}
+      			this[arr][index].active = true;
+      		}
+      },
+      
+      
+      editReward:function () {
+        this.md.mdGameReward =!this.md.mdGameReward;
+        this.md.maskRule =!this.md.maskRule;
+      },
+      toggle: function(){
         this.activeBox.isActive=!this.activeBox.isActive;
         this.activeBox.fontActive=!this.activeBox.fontActive;
       },
-      pullUp :function () {
+      pullUp: function () {
         this.activeBox.rewardShow=!this.activeBox.rewardShow;
         this.activeBox.pullUpShow=!this.activeBox.pullUpShow;
         this.md.mask=!this.md.mask;
       },
+      rulePull: function () {
+        this.activeBox.rule = !this.activeBox.rule;
+        this.activeBox.ruleAddClass=!this.activeBox.ruleAddClass;
+        this.md.mask=!this.md.mask;
+      },
+      ruleChange(type){
+        this.activeBox.ruleActive=type;
+        if(type==1){
+          this.message.msg="抢最小的发包";
+        }else if(type==2){
+          this.message.msg="抢末尾尾数最小的发包";
+        }
+      }
+
+    },
+    created(){
+     const self=this;
+     Api.setRoom(function (data) {
+       self.setRoomData=data;
+     })
     }
   }
 </script>

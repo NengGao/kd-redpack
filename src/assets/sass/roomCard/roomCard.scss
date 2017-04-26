@@ -454,3 +454,66 @@
     top: 0.5rem;
   }
 }
+
+//3次密码错误弹窗
+.password-error{
+   .md-content{
+     background: #ffffff;
+     padding: $padding;
+     box-sizing: border-box;
+     z-index: 9999;
+     .ic_error_3{
+       width: toRem(90px);
+       height: toRem(90px);
+       background: no-repeat 0.3rem toRem(-72px) url(/static/images/roomCard/ic_roomCard.png);
+       background-size: toRem(285px);
+       margin: 2rem auto;
+     }
+     .password-text{
+       text-align: center;
+       @include setfont(toRem(16px),#333,1.5rem)
+     }
+     .know-btn{
+       @include setBtn(100%,toRem(48px),toRem(19px),#fff,#ff2739);
+       margin-top: toRem(16px);
+     }
+   }
+}
+//房卡不足
+.no-room-card{
+  .md-content{
+    background: #ffffff;
+    padding: $padding;
+    box-sizing: border-box;
+    z-index: 9999;
+    .ic_room-card{
+      width: toRem(90px);
+      height: toRem(90px);
+      background: no-repeat 0.5rem 0 url(/static/images/roomCard/ic_roomCard.png);
+      background-size: toRem(571px);
+      margin: 2rem auto 1rem auto;
+      position: relative;
+      .room-card-num{
+        position: absolute;
+        right: 0;
+        top:0;
+        background: #ff2739;
+        border-radius: 40%;
+        color: #ffffff;
+        padding: 0.1rem 0.2rem;
+      }
+    }
+    .room-card-title{
+      @include setfont(toRem(19px),#333,1.8rem);
+      text-align: center;
+    }
+    .room-card-text{
+      @include setfont(toRem(14px),#999,1.5rem);
+      text-align: center;
+    }
+    .to-buy-btn{
+      @include setBtn(100%,toRem(48px),toRem(19px),#fff,#ff2739);
+      margin-top: toRem(32px);
+    }
+  }
+}

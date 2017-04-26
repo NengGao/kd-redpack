@@ -1,11 +1,20 @@
 import axios from 'axios'
 import config from '@/config';
+import common from '@/assets/js/common';
 
-export function fetch(url, type, params) {
+export function fetch(url, type, params, token) {
+
+	if(token) params.token = common.getJsonLocal("user").token;
 
     return new Promise((resolve, reject) => {
     	if(type == 'get' || type == 'GET'){
-	    	axios.get(url)
+    		var param = '';
+    		for(var key in params){
+				param += '&' + key + '=' + params[key]
+			}
+			param = param.replace('&','');
+
+	    	axios.get(url + '?' + param)
 	    	.then(response => {
 	            resolve(response.data);
 	        }).catch((error) => {
@@ -36,7 +45,10 @@ export function fetch(url, type, params) {
 export default {
   // 获取我的页面的后台数据
   login(cb) {
-  	fetch(config.ip.user + '/login?openId=' + config.start.testOpenId + '&loginType=2','get').then(function(data){
+  	fetch(config.ip.user + '/login?','get',{
+  		openId : config.start.testOpenId,
+  		loginType : 2
+  	}).then(function(data){
   		cb(data)
   	})
   },
@@ -69,10 +81,41 @@ export default {
     }
     fetch(config.ip.portal + '/messageCenter/toMessageCenter','post',{
       messageId : messageId
-    })
-      .then(function (data) {
+    }).then(function (data) {
         cb(data)
-      })
-  }
+    })
+  },
 
+
+
+// 房卡
+  roomCardlogin(cb,openid) {
+  	fetch(config.ip.user + '/login','get',{
+  		openId : openid,
+  		loginType : 2
+  	}).then(function(data){
+  		cb(data)
+  	})
+  },
+  gameLobby(cb){
+  	fetch(config.ip.room + '/gameLobby','get',{},true).then(function(data){
+  		cb(data)
+  	})
+  },
+  myResult(cb){
+  	fetch(config.ip.room + '/myResult','get',{},true).then(function(data){
+  		cb(data)
+  	})
+  },
+  hotRecommend(cb){
+  	fetch(config.ip.room + '/hotRecommend','get',{},true).then(function(data){
+  		cb(data)
+  	})
+  },
+//  设置房间
+  setRoom(cb){
+    fetch(config.ip.room + '/getRuleAndExtraAward','get',{},true).then(function(data){
+      cb(data)
+    })
+  }
 }

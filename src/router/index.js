@@ -73,13 +73,13 @@ export default new Router({
 /***********************************************  业务  房卡     ************************************************/
   	//房卡主页
   	{
-  		path: '/roomCard/index',
+  		path: '/roomCard/index/:oid',
       name: 'roomCard',
       component: RoomCard
   	},
   	//房间页
   	{
-  		path: '/roomCard/room/:id',
+  		path: '/roomCard/room/:roomid',
       name: 'room',
       component: Room
   	},
@@ -97,7 +97,7 @@ export default new Router({
     },
     //群组信息
     {
-      path: '/roomCard/groupInfo',
+      path: '/roomCard/groupInfo/:roomid',
       name: 'groupInfo',
       component: groupInfo
     },

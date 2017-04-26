@@ -67,3 +67,11 @@ body{
   border: 0;
   border-radius: 0.3rem;
 }
+//向下三角形
+@mixin triangle($font-size,$background) {
+  width:0;
+  height:0;
+  border-left:$font-size solid transparent;
+  border-right: $font-size solid transparent;
+  border-top: $font-size solid $background;
+}

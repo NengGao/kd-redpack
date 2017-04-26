@@ -16,7 +16,7 @@
 				<div class="welfare-title">{{welfare.title}}</div>
 				<div class="welfare-status">{{redpack.time | welfareTime}}</div>
 				<div class="welfare-amonut">红包总金额：{{redpack.total}}元</div>
-				<router-link :to='"/roomCard/index"' class="welfare-btn">{{welfare.btn}}</router-link>
+				<router-link :to='"/roomCard/index/wxOpenId_001018"' class="welfare-btn">{{welfare.btn}}</router-link>
 			</div>
 			<ul class="home-nav flex-wrap">
 				<router-link tag="li" to="" class="flex-con-1">
@@ -106,8 +106,8 @@ export default {
   	 this.countDown();
   },
   filters:{
+  	
   	welfareTime: function(value) {
-  		
 		if(!value && value != 0) return
 		if(value <= 1000){
 			return '正在进行中'
@@ -130,13 +130,11 @@ export default {
 	}
   },
   methods: {
-  	_initScroll() {
-  		console.log(this.$refs.wrapper);
-        this.scroll = new BScroll(this.$refs.wrapper, {
-          	click: true
-        });
-	},
+ 
 	countDown(){
+		
+		if(!this.redpack.time) return
+
 		let self = this;
 		if(self.redpack.time != 0){
 			let welfare = {

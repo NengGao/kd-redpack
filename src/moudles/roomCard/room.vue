@@ -26,6 +26,18 @@
           				<li>◆  大豹子（如77.77～11.11，奖励420点）</li>
           			</ul>
           		</div>
+          		<div class="flex-wrap redpack-row">
+          			<div class="send-head"><img src="http://wx.qlogo.cn/mmopen/WdJ2BLGuxzOm43YiaMwnyrmoGqSekH86zoyJmicPcyrCjwPPhPZKOLB23zLc25q1ktzLCicsN8UsD6tmib8V9Z53VHR2daFenvBg/0" alt="" /></div>
+          			<div class="send-info">
+          				<div class="send-name">中山大灯亮</div>
+          				<div class="redpack">
+          					<div class="redpack-info">血战到底（<em>第20包</em>/共20包）</div>
+          				</div>
+          			</div>
+          		</div>
+          		<div class="flex-wrap redpack-row">
+          			
+          		</div>
 	        </div>
 		</div>
 		<div class="footer flex-wrap">
@@ -62,9 +74,9 @@ export default{
 	data(){
 		return{
 			headerMag:{
-				title: '房间号（'+ this.$route.params.id +'）',
+				title: '房间号（'+ this.$route.params.roomid +'）',
 				rightMsg: '<i class="ic-ganapati"></i>',
-				rightUrl: '/roomCard/groupInfo'
+				rightUrl: '/roomCard/groupInfo/'+this.$route.params.roomid
 			},
 			md:{
 				mask: false,
@@ -72,11 +84,16 @@ export default{
 			}
 		}
 	},
-	created() {
-		
+	mounted(){
+		this._initScroll();
 	},
 	methods:{
-		
+		_initScroll() {
+	  		console.log(this.$refs.wrapper);
+	        this.scroll = new BScroll(this.$refs.wrapper, {
+	          	click: true
+	        });
+		}
 	}
 }
 </script>

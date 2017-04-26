@@ -18,7 +18,6 @@ const actions = {
 
     changeUserInfo: (context,vm) => {
     	Api.oldLogin(function(data){
-
     		Api.login(function(data2){
     			data.token = data2.token;
     			vm.user = data;
@@ -36,10 +35,19 @@ const actions = {
 
        	context.commit("setWelfare",data);
     },
-  toMessageCenter: (context,data) => {
+  	toMessageCenter: (context,data) => {
 
-    context.commit("setMessageCenter",data);
-  }
+    	context.commit("setMessageCenter",data);
+  	},  	
+  	//房卡 
+  	roomCardlogin : (context,openid) => {
+  		Api.roomCardlogin(function(data){
+  			context.commit("setUserInfo",data);
+  			Api.gameLobby(function(data){
+		  		common.setJsonLocal("roomCard",data)
+		  	});
+  		},openid)
+  	}
 }
 const getters = {
   	getUserInfo: state => {

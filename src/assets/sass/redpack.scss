@@ -2,6 +2,60 @@
 
 @import "./config.scss";
 
-.redpack-content{
-    
+.redpack-row{
+    padding: 0.8rem;
+    .send-head{
+        width: toRem(45px);
+        img{
+            width: toRem(45px);
+            height: toRem(45px);
+            border-radius: 50%;
+        }
+    }
+    .send-info{
+        .send-name{
+            padding-left: 1rem;
+            color: #999;
+            line-height: 1.6rem;
+            
+        }
+        .redpack{
+            width: toRem(230px);
+            height: toRem(95px);
+            margin-left: toRem(15px);
+            background: #f1294a;
+            border-radius: 0.32rem;
+            position: relative; 
+            &:before{
+                content: '';
+                font-size: 0;  
+                line-height: 0;  
+                border-width: toRem(8px);  
+                border-color: #f1294a;
+                border-left-width: 0;  
+                border-style: dashed;  
+                border-right-style: solid;  
+                border-top-color: transparent;  
+                border-bottom-color: transparent; 
+                position: absolute; 
+                left: toRem(-7px); 
+                top: 1rem;
+            }
+            .redpack-info{
+                width: 95%;
+                padding-left: 5%;
+                height: toRem(22px);
+                line-height: toRem(22px);
+                background: #fff;
+                position: absolute;
+                bottom: 0;
+                border-radius: 0 0 0.3rem 0.3rem;
+                font-size: toRem(12px);
+                color: #999;
+                em{
+                    color: $red;
+                }
+            }
+        }
+    }
 }

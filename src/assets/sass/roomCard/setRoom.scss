@@ -52,20 +52,20 @@
 .rule-box{
    position: absolute;
    width: 100%;
-   height: toRem(190px);
    bottom: 0;
    background: #ffffff;
-   padding: 0 $padding;
-   box-sizing: border-box;
-   z-index: 101;
+   z-index: 9999;
   .rule-title{
     @include setfont(toRem(19px),#333,toRem(59px));
     height: toRem(59px);
+    padding: 0 $padding;
   }
   .rule-choose{
      position: relative;
      height: toRem(64px);
      border-top: $border;
+     padding: 0 $padding;
+     box-sizing: border-box;
     .rule-main{
       margin-top: 1rem;
       .active{
@@ -78,13 +78,13 @@
         @include setfont(toRem(14px),#999,1.2rem);
       }
     }
-    .ic_choose{
+    .ic-choose{
       position: absolute;
       top: 1.2rem;
-      right: -0.5rem;
+      right: 0.5rem;
     }
     &:active{
-
+      background: $bodyBg;
     }
   }
   .ic-close-gray{
@@ -97,6 +97,7 @@
   }
 }
 .md-game-play{
+  z-index: 10001;
   border-radius: 0.3rem;
   .md-content{
     padding: $padding;
@@ -187,6 +188,24 @@
          background-color: #ebebeb;
          margin-left: 1.5rem;
        }
+       .tap-edit{
+         position: absolute;
+         background: rgba(78,78,78,0.9);
+         padding: 0.2rem 0.3rem;
+         top:-2.2rem;
+         left: 0;
+         border-radius: 0.3rem;
+         span{
+           position:absolute;
+         @include triangle(0.5rem,rgba(78,78,78,0.9));
+           bottom: -0.4rem;
+           left: 2.2rem;
+         }
+         em{
+          @include setfont(toRem(14px),#fff,1.5rem);
+           text-align: center;
+         }
+       }
        .active{
          background: no-repeat toRem(-84px) 0 url(/static/images/roomCard/ic_rank_box.png);
          background-size: toRem(110px);
@@ -199,4 +218,12 @@
     top: 0.6rem;
   }
 }
-
+.mask-rule{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 10000;
+  background-color: #151313;
+  opacity: .7
+}

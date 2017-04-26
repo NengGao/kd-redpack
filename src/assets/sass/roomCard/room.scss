@@ -3,7 +3,7 @@
 @import "../config.scss";
 @import "../icon.scss";
 @import "../dialog.scss";
-
+@import "../redpack.scss";
 .inform{
     width: 100%;
     height: toRem(48px);
@@ -19,16 +19,15 @@
     overflow-x: hidden;
     overflow-y: hidden;
     flex-direction: column;
-    padding-bottom: toRem(60px);
     .scroll{
         display: block;
         width: 100%;
         height: auto;
         .game-info{
             width: toRem(328px);
-            height: 140rem;
-            padding-top: 3rem;
-            margin: 4rem auto 1rem auto;
+            height: auto;
+            padding: 3rem 0 1rem 0;
+            margin: 4rem auto 1.5rem auto;
             background: #fff;
             border-radius: toRem(4px);
             position: relative;
@@ -68,7 +67,7 @@
             }
             .game-tips{
                 width: toRem(300px);
-                height: 2rem;
+                height: 1.8rem;
                 margin: 0.8rem auto 0.4rem auto;
                 background: no-repeat 0.4rem toRem(-50px) url(/static/images/roomCard/ic_roomCard.png);
                 background-size: toRem(290px);
@@ -101,7 +100,7 @@
     width: 100%;
     height: toRem(60px);
     background: #2c2223;
-    position: fixed;
+    position: relative;
     bottom: 0;
     z-index: 10;
     .integral{
@@ -141,7 +140,7 @@
                 display: block;
                 width: toRem(30px);
                 height: toRem(35px);
-                padding-right: toRem(10px);
+                padding-right: toRem(8px);
                 background: no-repeat center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAANlBMVEV8Z2kAAAB8Z2l8Z2l8Z2l8Z2l8Z2l8Z2l8Z2l8Z2l8Z2l8Z2l8Z2l8Z2l8Z2l8Z2l8Z2l8Z2l6vrqqAAAAEnRSTlOAAHsFEnVNOAlFLHBkaVUZaCNcwbPyAAAA30lEQVQ4y42T3RKEIAiFCZDyp7be/2V3sTXWcnTPTQHfIKMHmC5RkOQQXZJAlr0AFoRLKHwDyCNUQk+/AO/w0M4GvBw05F4FYKvXBJ8Aaf+mVsqA15nmZZnLnBZ5BVj/Zj1u/tYtQv4AoqlFU0sBLJIJCHsAEoS66T0KIPVY90ggQVcJXB9wgH0Ah8DwiPGQ0gckX1Scmor5ogj106qHfNXnY0V61kkbSHnu7Qls+bmLYcDXVcuq5VbQHlT134rlzLQxWD3EYtrK9tEfTMSHj5XtVbw2LM2j1ftzeYfr/wY4TwZKq+cayAAAAABJRU5ErkJggg==);
                 background-color: #342a2a;
                 background-size: 1.3rem;

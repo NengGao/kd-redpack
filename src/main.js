@@ -25,7 +25,7 @@ Vue.use(VueLazyload, {
   loading: '/static/images/common/lazyload.png',
   try: 2
 });
-Vue.use(KD.Loader);
+
 Vue.use(KD.Header);
 
 /* eslint-disable no-new */

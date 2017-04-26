@@ -12,13 +12,13 @@
                   <li><img src="/static/images/roomCard/ic_head.png" alt=""><div class="person-name">樱花树下</div></li>
                   <li><img src="/static/images/roomCard/ic_head.png" alt=""><div class="person-name">樱花树下</div></li>
                   <li><i class="ic_add"></i></li>
-                  <li><i class="ic_reduce"></i></li>
+                  <li><a href="#/roomCard/deleteMember"><i class="ic_reduce"></i></a></li>
               </ul>
           </div>
           <div class="group-Box margin-Top"><span>房号</span><span>897692</span> </div>
           <div class="group-Box"><span>游戏模式</span><span>红包接龙</span> </div>
-          <div class="group-Box"><span>游戏规则</span><span class="set-right">查看详情<i class="ic-arrow-bg"></i></span></div>
-          <div class="game-rule">
+          <div class="group-Box"><span>游戏规则</span><span class="set-right" @click="gameRuleShow">查看详情<i class="ic-arrow-bg"></i></span></div>
+          <div class="game-rule" v-show="md.gameRule">
               <p>1.100点/4包，1局20包，抢最小的发下一包，<em style="color: #f1294a">为游戏公正公平，避免逃包，由系统代发；</em></p>
               <p style="margin: 0.5rem 0">2.每包抽取20点作为额外奖励，奖励如下：</p>
               <ul>
@@ -64,12 +64,13 @@
         headerMag:{
           title:'群组信息',
           rightMsg: '设置',
-          rightUrl: ''
+          rightUrl: '/roomCard/setRoom'
         },
         md:{
           active: '',
-          mask: true,
-          mdDissolve : true
+          mask: false,
+          mdDissolve : false,
+          gameRule : false
         }
       }
     },
@@ -81,6 +82,9 @@
       closeMd :function(md){
         this.md[md] = false
         this.md.mask = false
+      },
+      gameRuleShow :function () {
+        this.md.gameRule=!this.md.gameRule;
       }
     }
   }
