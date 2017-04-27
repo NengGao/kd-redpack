@@ -11,8 +11,12 @@ const ip = {
 	robBuy : 'http://'+ host +'/robBuy',
 	room : 'http://'+ host +'/room',
 }
+const ws = {
+	roomCard : '192.168.1.188:9000'
+}
 
 module.exports = {
 	ip : ip,
-	start : start
+	start : start,
+	ws : ws
 }

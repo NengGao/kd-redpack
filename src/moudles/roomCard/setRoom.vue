@@ -9,32 +9,26 @@
             </div>
             <div class="setRoom-Box" @click="rulePull">
               <span class="setRoom-left">游戏规则</span>
-              <span class="setRoom-right set-right"><span>{{message.msg}}</span><i class="ic-arrow-rg"></i></span>
+              <span class="setRoom-right set-right"><span>{{ruleMsg}}</span><i class="ic-arrow-rg"></i></span>
             </div>
-            <div class="setRoom-Box margin-Top">
-              <span class="setRoom-left">每包金额</span>
-              <span class="setRoom-right set-right">100点<i class="ic-arrow-rg"></i></span>
+
+            <div class="setRoom-Box margin-Top" @click="numberPull(index)" v-for="(item,index) in defaultLis">
+              <span class="setRoom-left">{{item.title}}</span>
+              <span class="setRoom-right set-right">{{item.type}}<i class="ic-arrow-rg"></i></span>
             </div>
-            <div class="setRoom-Box">
-              <span class="setRoom-left">每包红包数</span>
-              <span class="setRoom-right set-right">4个<i class="ic-arrow-rg"></i></span>
-            </div>
-            <div class="setRoom-Box">
-              <span class="setRoom-left">一局发放的包数</span>
-              <span class="setRoom-right set-right">20包<i class="ic-arrow-rg"></i></span>
-            </div>
+
             <div class="setRoom-Box margin-Top set-right" @click="showMd('mdGamePlay')">
               <span class="setRoom-left">游戏打赏</span>
-              <span class="setRoom-right set-right">每包抽15%<i class="ic-arrow-rg"></i></span>
+              <span class="setRoom-right set-right">每包抽{{percent}}%<i class="ic-arrow-rg"></i></span>
             </div>
             <div class="setRoom-Box" @click="pullUp">
               <span class="setRoom-left">额外奖励</span>
-              <span class="setRoom-right set-right">已选3项<i class="ic-arrow-bg"></i></span>
+              <span class="setRoom-right set-right">已选{{chooseNum}}项<i class="ic-arrow-bg"></i></span>
             </div>
-            <div class="setRoom-Box margin-Top">
-              <span class="setRoom-left">房间密码</span>
-              <span class="setRoom-right set-right" style="color: #b8b8b8">设置密码<i class="ic-arrow-rg"></i></span>
-            </div>
+            <!--<div class="setRoom-Box margin-Top">-->
+              <!--<span class="setRoom-left">房间密码</span>-->
+              <!--<span class="setRoom-right set-right" style="color: #b8b8b8">设置密码<i class="ic-arrow-rg"></i></span>-->
+            <!--</div>-->
             <div class="setRoom-Box margin-Top">
               <span class="setRoom-left">群主微信号<em>（认领成功后显示）</em></span>
               <span class="setRoom-right set-right"><i class="ic-arrow-rg"></i></span>
@@ -43,7 +37,7 @@
             <p>• 创建房间须消耗1张房卡，游戏未开始不消耗房卡；</p>
             <p>• 可设置房间密码，好友通过输入房间号和密码进入房间；</p>
             <p>• 每局须群主确定开始，第一包将由群主发放。</p>
-            <input type="button" class="create-room-btn" value="创建房间">
+            <input type="button" class="create-room-btn" value="创建房间" @click="createRoom">
         </div>
     </div>
     <!--选择游戏规则-->
@@ -51,7 +45,6 @@
        <div class="rule-title">选择游戏规则</div>
        <div class="rule-choose" @click="addActive('ruleLis',index,1)" v-for="(rule,index) in setRoomData.ruleList">
            <div class="rule-main">
-           
             	<p :class="{'active':ruleLis[index].active}">{{rule.ruleName}}</p>
               <p>{{rule.ruleDesc}}</p>
            </div>
@@ -59,7 +52,18 @@
        </div>
        <i class="ic-close-gray" @click="rulePull"></i>
     </div>
-    
+<!--3个红包数弹窗 -->
+    <div class="rule-box" v-show="activeBox.redpack" :class="{'pullUp': activeBox.numberAddClass}">
+      <div class="rule-title">{{aMountLis[index].title}}</div>
+      <div class="rule-choose" @click="aMountActive(aMountLis[index].list,ix,1)" v-for="(item,ix) in aMountLis[index].list">
+        <div class="rule-main">
+          <p :class="{'active':aMountLis[index].list[ix].active}">{{item.type}}</p>
+        </div>
+        <i :class="{'ic-choose':aMountLis[index].list[ix].active}"></i>
+      </div>
+      <i class="ic-close-gray" @click="numberPull(index)"></i>
+    </div>
+
     <!--游戏打赏-->
     <div class="md-mask" :class="{ 'active': md.mask }"></div>
     <div class="md-modal md-effect-1 md-game-play" :class="{ 'md-show': md.mdGamePlay }">
@@ -68,9 +72,9 @@
         <div class="title">游戏打赏</div>
         <div class="text">每包抽取部分金额，作为额外奖励发放给玩家</div>
         <div class="flex-wrap flex-center get-reward">
-          <input type="number" pattern="\d*" class="number" placeholder="输入每包抽取比例"><em>%</em>
+          <input type="number" pattern="\d*" class="number" placeholder="输入每包抽取比例" v-model="percent"><em>%</em>
         </div>
-        <input type="button" value="确定" class="confirm-btn">
+        <input type="button" value="确定" class="confirm-btn" @click="closeMd('mdGamePlay')">
       </div>
     </div>
     <!--设置奖励倍数-->
@@ -81,24 +85,24 @@
         <div class="title">设置奖励倍数</div>
         <div class="text">如每包金额100点，奖励倍数为2.0倍，若中则奖励200点。</div>
         <div class="flex-wrap flex-center get-reward">
-          <input type="number" pattern="\d*" class="reward-number" placeholder="请输入倍数">
+          <input type="number" pattern="\d*" class="reward-number" placeholder="请输入倍数" v-model="inputVal">
         </div>
-        <input type="button" value="确定" class="reward-confirm-btn">
+        <input type="button" value="确定" class="reward-confirm-btn" :class="{'changeBg':activeBox.changeBg}" @click="editReward">
       </div>
     </div>
     <!--额外奖励-->
     <div class="extra-reward" v-show="activeBox.rewardShow" :class="{'pullUp': activeBox.pullUpShow}">
        <div class="extra-reward-title">额外奖励</div>
        <div class="extra-reward-text">以每包金额为基准的额外奖励</div>
-       <div class="flex-wrap flex-center reward-type" @click="toggle" v-for="reward in setRoomData.awardList">
+       <div class="flex-wrap flex-center reward-type" @click="rewardActive('awardList',index)" v-for="(reward,index) in setRoomData.awardList">
          <div class="left-content">
-           <p :class="{'font-active' :activeBox.fontActive}">{{reward.awardName}}</p>
+           <p :class="{'font-active' :setRoomData.awardList[index].active}">{{reward.awardName}}</p>
            <p>{{reward.awardDesc}}</p>
          </div>
          <div class="flex-wrap right-content">
-           <span @click="editReward">奖励x0.8倍</span>
-           <div class="choose-type" :class="{'active': activeBox.isActive}"></div>
-           <div class="tap-edit"><span></span><em>点击可修改</em></div>
+           <span @click.stop="editReward">奖励x{{reward.multiple}}倍</span>
+           <div class="choose-type" :class="{'active': setRoomData.awardList[index].active}"></div>
+           <div class="tap-edit" v-if="index==0"><span></span><em>点击可修改</em></div>
          </div>
         </div>
         <i class="ic-close-gray" @click="pullUp"></i>
@@ -114,15 +118,27 @@
     name: 'setRoom',
     data(){
       return{
-        message:{
-          msg:"抢最小的发包"
+        inputVal:"",
+        chooseNum:0,
+        percent:15,
+        setRoompara:{
+           jsonRoom:{ruleId:'LastMinGameRule',packetAmt: 100, packetSplitNum: 4,packetsPerBout: 20, commissionRate: 15,weixinNo:'sss'},
+           extraAward : "W",
         },
-        ruleLis:[
-        	{msg:'尾数最小的发',active:false},
-        	{msg:'末两位数之和最小的发',active:false},
-        	{msg:'总额最小的发',active:false}
+        ruleLis:'',
+        aMountLis:[
+          {title:'每包金额数',list:[{type:'100点',active:true},{type:'200点',active:false},{type:'300点',active:false}],active:true},
+          {title:'每包红包数',list:[{type:'4个',active:true},{type:'5个',active:false}],active:true},
+          {title:'一局发放的包数',list:[{type:'20包',active:true},{type:'30包',active:false}],active:true},
         ],
-        
+        defaultLis:[//默认的
+          {title:'每包金额数',type:'100点'},
+          {title:'每包红包数',type:'4个'},
+          {title:'一局发放的包数',type:'20包'},
+        ],
+        ruleMsg:'尾数最小的发',
+        i:"",
+        index:0,
         activeBox:{
           fontActive:false,
           isActive: false,
@@ -130,7 +146,10 @@
           pullUpShow:false,
           rule:false,
           ruleAddClass:false,
-          ruleActive:1
+          ruleActive:1,
+          numberAddClass:false,
+          redpack:false,
+          changeBg:false
         },
         user: this.$store.state.user,
         headerMag:{
@@ -145,7 +164,17 @@
           mdGameReward : false,
           maskRule :false
         },
-        setRoomData:"",
+        setRoomData:""
+      }
+    },
+    watch:{
+      inputVal :function (val) {
+         this.inputVal=val;
+         if(val.length>0){
+             this.activeBox.changeBg=true;
+         }else {
+           this.activeBox.changeBg=false;
+         }
       }
     },
     methods:{
@@ -166,17 +195,37 @@
       				_arr[i].active = false;
       			}
       			this[arr][index].active = true;
+            this.ruleMsg=this.ruleLis[index].msg;
+            this.setRoompara.jsonRoom.ruleId=this.ruleLis[index].ruleId;
       		}
       },
-      
-      
+      aMountActive: function (arr,index) {
+        for(let i=0;i<arr.length;i++){
+          arr[i].active = false;
+        }
+         arr[index].active = true;
+         this.defaultLis[this.index].type=this.aMountLis[this.index].list[index].type;
+      },
+      rewardActive: function (arr,index) {
+          this.chooseNum = 0;
+          this.setRoomData[arr][index].active = !this.setRoomData[arr][index].active;
+          let num=this.setRoomData[arr];
+          for (let i=0;i<num.length;i++){
+              if(num[i].active==true){
+                this.chooseNum ++
+              }
+          }
+
+      },
       editReward:function () {
+          if(this.inputVal==""){
+
+          }else {
+            this.setRoomData.awardList[this.i].multiple=this.inputVal;
+          }
+
         this.md.mdGameReward =!this.md.mdGameReward;
         this.md.maskRule =!this.md.maskRule;
-      },
-      toggle: function(){
-        this.activeBox.isActive=!this.activeBox.isActive;
-        this.activeBox.fontActive=!this.activeBox.fontActive;
       },
       pullUp: function () {
         this.activeBox.rewardShow=!this.activeBox.rewardShow;
@@ -188,21 +237,36 @@
         this.activeBox.ruleAddClass=!this.activeBox.ruleAddClass;
         this.md.mask=!this.md.mask;
       },
-      ruleChange(type){
-        this.activeBox.ruleActive=type;
-        if(type==1){
-          this.message.msg="抢最小的发包";
-        }else if(type==2){
-          this.message.msg="抢末尾尾数最小的发包";
-        }
-      }
+      numberPull: function (index) {
+        this.index=index;
+        this.activeBox.redpack = !this.activeBox.redpack;
+        this.activeBox.numberAddClass = !this.activeBox.numberAddClass;
+        this.md.mask=!this.md.mask;
+      },
+      createRoom: function () {
+          var data = this.setRoompara;
+          data.jsonRoom =JSON.stringify(data.jsonRoom);
+          Api.createRoom(function (data) {
 
+          },data)
+      }
+    },
+    beforeCreate(){
+       const self=this;
+       Api.setRoom(function (data) {
+        for(let i =0;i< data.awardList.length;i++) {
+          data.awardList[i].active = false;
+          data.awardList[i].multiple = 0.8;
+        }
+         for(let i =0;i< data.ruleList.length;i++) {
+           data.ruleList[i].active = false;
+         }
+         self.setRoomData=data;
+         self.ruleLis=data.ruleList;
+      })
     },
     created(){
-     const self=this;
-     Api.setRoom(function (data) {
-       self.setRoomData=data;
-     })
+
     }
   }
 </script>

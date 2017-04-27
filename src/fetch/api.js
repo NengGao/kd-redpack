@@ -87,6 +87,25 @@ export default {
   },
 
 
+//房卡  房间内
+	//进入房间
+	enterRoom(cb,data){
+	  	fetch(config.ip.room + '/enterRoom','get',data,true).then(function(data){
+	  		cb(data)
+	  	})
+	},
+	//开始游戏
+	startGame(cb,data){
+	  	fetch(config.ip.room + '/startGame','get',data,true).then(function(data){
+	  		cb(data)
+	  	})
+	},
+	//抢红包
+	rob(cb,data){
+	  	fetch(config.ip.room + '/rob','get',data,true).then(function(data){
+	  		cb(data)
+	  	})
+	},
 
 // 房卡
   roomCardlogin(cb,openid) {
@@ -107,6 +126,11 @@ export default {
   		cb(data)
   	})
   },
+  getRoomCard(cb,data){
+  	fetch(config.ip.room + '/getRoomCard','get',data,true).then(function(data){
+  		cb(data)
+  	})
+  },
   hotRecommend(cb){
   	fetch(config.ip.room + '/hotRecommend','get',{},true).then(function(data){
   		cb(data)
@@ -115,6 +139,12 @@ export default {
 //  设置房间
   setRoom(cb){
     fetch(config.ip.room + '/getRuleAndExtraAward','get',{},true).then(function(data){
+      cb(data)
+    })
+  },
+  //  创建房间
+  createRoom(cb,data){
+    fetch(config.ip.room + '/createRoom','get',data,true).then(function(data){
       cb(data)
     })
   }

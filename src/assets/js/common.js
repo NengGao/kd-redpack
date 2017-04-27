@@ -16,5 +16,18 @@ export default {
         var r = window.location.search.substr(1).match(reg);
         if (r != null) return decodeURI(r[2]);
         return null;
+    },
+    clearActive : function (arr){
+    	for(let i=0;i<arr.length;i++){
+    		arr[i].active = false
+    	}
+    	return arr
+    },
+    getArrItem : function(arr,item){
+    	for(let i = 0;i < arr.length;i++){
+    		if(arr[i].active){
+    			return arr[i][item]
+    		}
+    	}
     }
 }

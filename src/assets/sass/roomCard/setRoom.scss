@@ -142,6 +142,9 @@
   .reward-confirm-btn{
     @include setBtn(100%,toRem(48px),toRem(19px),#fff,#d1d1d1)
   }
+  .changeBg{
+    background: #ff3c4c!important;
+  }
 }
 //额外奖励
 .extra-reward{

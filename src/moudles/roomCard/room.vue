@@ -12,18 +12,13 @@
 	       	<div class="scroll">
           		<div class="game-info">
           			<div class="owner"><img src="http://wx.qlogo.cn/mmopen/WdJ2BLGuxzOm43YiaMwnyrmoGqSekH86zoyJmicPcyrCjwPPhPZKOLB23zLc25q1ktzLCicsN8UsD6tmib8V9Z53VHR2daFenvBg/0" alt="" /></div>
-          			<div class="owner-name">冬天的东</div>
-          			<div class="owner-account">微信号：wx396162610</div>
+          			<div class="owner-name">{{activeRoom.createByName}}</div>
+          			<div class="owner-account">微信号：{{activeRoom.weixinNo}}</div>
           			<div class="game-tips"></div>
-          			<div class="game-rule">游戏规则：100点/4包，抢最小的发下一包，为避免逃包，由系统代发。</div>
-          			<div class="game-explain">每包抽取20点作为额外奖励，奖励如下：</div>
-          			<ul class="game-award">
-          				<li>◆  一份情（开出0.01点，奖励100点）</li>
-          				<li>◆  大豹子（如77.77～11.11，奖励420点）</li>
-          				<li>◆  一份情（开出0.01点，奖励100点）</li>
-          				<li>◆  大豹子（如77.77～11.11，奖励420点）</li>
-          				<li>◆  一份情（开出0.01点，奖励100点）</li>
-          				<li>◆  大豹子（如77.77～11.11，奖励420点）</li>
+          			<div class="game-rule">游戏规则：{{activeRoom.gameRuleName}}</div>
+          			<div class="game-explain" v-if="activeRoom.award > 0">每包抽取{{activeRoom.award}}点作为额外奖励，奖励如下：</div>
+          			<ul class="game-award" v-if="activeRoom.award > 0">
+          				<li v-for="award in activeRoom.awardRules">◆  {{award.awardName}}（{{award.awardDesc}}，奖{{award.awardAmt / 100}}点）</li>
           			</ul>
           		</div>
           		<div class="flex-wrap redpack-row">
@@ -31,12 +26,33 @@
           			<div class="send-info">
           				<div class="send-name">中山大灯亮</div>
           				<div class="redpack">
+							<div class="ic-redpack"></div>
+							<div class="redpack-tip"><p>恭喜发财大吉大利</p><span>领取红包</span></div>
           					<div class="redpack-info">血战到底（<em>第20包</em>/共20包）</div>
           				</div>
           			</div>
           		</div>
           		<div class="flex-wrap redpack-row">
-          			
+          			<div class="take-result"><img src="http://wx.qlogo.cn/mmopen/WdJ2BLGuxzOm43YiaMwnyrmoGqSekH86zoyJmicPcyrCjwPPhPZKOLB23zLc25q1ktzLCicsN8UsD6tmib8V9Z53VHR2daFenvBg/0" alt="" />“大三洋摩托”领取了”中山大灯亮”的<em>红包</em></div>
+          		</div>
+          		<div class="flex-wrap redpack-row">
+          			<div class="take-result"><img src="http://wx.qlogo.cn/mmopen/WdJ2BLGuxzOm43YiaMwnyrmoGqSekH86zoyJmicPcyrCjwPPhPZKOLB23zLc25q1ktzLCicsN8UsD6tmib8V9Z53VHR2daFenvBg/0" alt="" />“大三洋摩托”领取了”中山大灯亮”的<em>红包</em></div>
+          		</div>
+          		<div class="flex-wrap redpack-row">
+          			<div class="take-result"><img src="http://wx.qlogo.cn/mmopen/WdJ2BLGuxzOm43YiaMwnyrmoGqSekH86zoyJmicPcyrCjwPPhPZKOLB23zLc25q1ktzLCicsN8UsD6tmib8V9Z53VHR2daFenvBg/0" alt="" />“大三洋摩托”领取了”中山大灯亮”的<em>红包</em></div>
+          		</div>
+          		<div class="flex-wrap redpack-row">
+          			<div class="take-result"><img src="http://wx.qlogo.cn/mmopen/WdJ2BLGuxzOm43YiaMwnyrmoGqSekH86zoyJmicPcyrCjwPPhPZKOLB23zLc25q1ktzLCicsN8UsD6tmib8V9Z53VHR2daFenvBg/0" alt="" />“大三洋摩托”领取了”中山大灯亮”的<em>红包</em></div>
+          		</div>
+          		
+          		<div class="flex-wrap redpack-row">
+          			<div class="send-head"><img src="http://wx.qlogo.cn/mmopen/WdJ2BLGuxzOm43YiaMwnyrmoGqSekH86zoyJmicPcyrCjwPPhPZKOLB23zLc25q1ktzLCicsN8UsD6tmib8V9Z53VHR2daFenvBg/0" alt="" /></div>
+          			<div class="send-info">
+          				<div class="send-name">系统提示</div>
+          				<div class="news-box">
+          					本局结束，即将公布本局抢红包结果。
+          				</div>
+          			</div>
           		</div>
 	        </div>
 		</div>
@@ -67,12 +83,16 @@
 <script>
 import Vue from 'vue'
 import Api from '@/fetch/api'
+import config from '@/config';
 import common from '@/assets/js/common'
 import BScroll from 'better-scroll'
 
 export default{
 	data(){
 		return{
+			user: this.$store.getters.getUserInfo || '',
+			activeRoom: this.$store.getters.getActiveRoom || '',
+			
 			headerMag:{
 				title: '房间号（'+ this.$route.params.roomid +'）',
 				rightMsg: '<i class="ic-ganapati"></i>',
@@ -84,15 +104,44 @@ export default{
 			}
 		}
 	},
+	created(){
+		this.createService(this.$route.params.roomid)
+	},
 	mounted(){
 		this._initScroll();
 	},
 	methods:{
 		_initScroll() {
-	  		console.log(this.$refs.wrapper);
 	        this.scroll = new BScroll(this.$refs.wrapper, {
 	          	click: true
 	        });
+		},
+		createService(roomId){
+			let interval;
+		    const ws = new WebSocket("ws://"+ config.ws.roomCard +"/room/createService?token=" + this.user.token + "&roomId=" + roomId);
+		    ws.onopen = function () {
+		        console.log("创建会话");
+		        interval = setInterval(function() {
+		            //keepalive()
+		        },30000);
+		    };
+		    ws.onclose = function () {
+		        console.log('会话关闭');
+		        clearInterval(interval)
+		    };
+		    ws.onerror = function (evt) {
+		        console.log("错误：" + evt)
+		    };
+		    ws.onmessage = function (message) {
+		
+		        if (sign != message.data) {
+		            var data = JSON.parse(message.data);
+		            var type = data.msgType,str = '';
+		            if ('200' == type) {//初始化房间
+		            	
+		            }
+		        }
+			}
 		}
 	}
 }

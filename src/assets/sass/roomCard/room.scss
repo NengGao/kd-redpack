@@ -21,6 +21,7 @@
     flex-direction: column;
     .scroll{
         display: block;
+        padding-bottom: 1rem;
         width: 100%;
         height: auto;
         .game-info{
@@ -87,6 +88,7 @@
             }
             .game-award{
                 color: #fa9d3b;
+                font-size: toRem(12px);
             }
             .game-award{
                 width: toRem(290px);

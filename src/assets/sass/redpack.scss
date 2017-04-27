@@ -3,7 +3,7 @@
 @import "./config.scss";
 
 .redpack-row{
-    padding: 0.8rem;
+    padding: 0.5rem 0.8rem;
     .send-head{
         width: toRem(45px);
         img{
@@ -18,6 +18,28 @@
             color: #999;
             line-height: 1.6rem;
             
+        }
+        .news-box{
+            width: toRem(220px);
+            padding: 0.5rem 0.8rem;
+            color: #d9822b;
+            background: #fff;
+            margin-left: toRem(15px);
+            border-radius: toRem(4px);
+            border: solid 0.15rem #f9eadd;
+            position:relative; 
+            &:before{
+                content: '';
+                display: block;
+                width: 1rem;
+                height: 1rem;
+                background: no-repeat right url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAYBAMAAAABjmA/AAAAHlBMVEUAAAD627v627v627v627v627v////63Lz++fT75MtCOSLGAAAABnRSTlMAnJvojYtDp5aTAAAAUUlEQVQI113PMRWAQAwE0YEGCScBCUhAAg5WApyCk4BeijDNpcm+/5JiqWlv7fUZFfYeIUKECBEiRAhcPRWO8YdTWbyh1ZeEhISEhIQ0tWC7P38ZKLbifhBfAAAAAElFTkSuQmCC);
+                background-size: 60%;
+                position: absolute; 
+                left: -0.99rem; 
+                top: 24%;
+                opacity: 0.8;
+            }
         }
         .redpack{
             width: toRem(230px);
@@ -41,6 +63,28 @@
                 left: toRem(-7px); 
                 top: 1rem;
             }
+            .ic-redpack{
+                display: inline-block;
+                vertical-align: top;
+                width: toRem(60px);
+                height: toRem(70px);
+                background: no-repeat center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEwAAABaCAMAAAAlxkCfAAAAh1BMVEX0tjH8xR70tjH8xR74vij4vigAAAD0tjH8xR70tjH8xR7/3TPomij/4Db/3zbrnynwrC7xsC34yDH+1zD92jfwqiT3uiD3wzTtpCj9zib70TT/3DP0tTDroSr0tCL7wx/93TjqnCj6vx/2vjPupyz90irvpyX1wC7vrSvsoin8yiPyryP8yiIod4r9AAAACXRSTlPy8q2tJyYA7+/qP8AoAAAB2ElEQVRYw+3VWXOyMBTG8dStDTlJWAJlUYtL7fr9P99LEuHwtuBMkOlV/jc6zvib88iFZLNePgQz9LBcb8jqKZippxVZBrO1JLjx/qUkmDGPecxjHvOYx/4IK5JKcC6qpLgbexVcMFPz5vUu7Jtx1ouz7+lY0VLI3dqakcvRwbqlHS9AANIR7hOtvvY5TKUAGmu4LBiIjTQ0UFMgSSihKd+//HqO5rAIILZGDBCZ034+05d9bqiQEkrDA+guP84Thkgk5BVrqnKQCdOJgaPgEFKqsYaT9oO0d1/Bu4Pe9OtbdyIv8KbUHiI1pTFTlIMt/8osmAhmi8xFidQjTSIxUPbVfSeiFDHdNtzBNZnus6Pe1g7dMrY1pK3K9qmEa7twS20WQ+8DumpmskPL0o60KWj7QAkxLDpfDxSsK4L3dzvSJuxJZ7NuBEMwPO8OLQa9Wmx3DhEax7BbGNW5YIr10g6mnLFSjGGidMae+dhM/uyM0XoMq6k7FvPhmTyegFE1jCk6BTvxIYyfXDF8Bhj++m4YaqOWO0ZPiv9HqRN1x7C4xj/hOqZ0GoZbSyU4F6rEhdMxzGMe85jHPOYxj3nMY3+AkTmtxXzYgqwe57IeV2SzXpBZNi7Wm3+zHgtTm9849QAAAABJRU5ErkJggg==);
+                background-size: 64%;
+            }
+            .redpack-tip{
+                display: inline-block;
+                vertical-align: top;
+                width: toRem(160px);
+                padding-top: 1rem;
+                p{
+                    font-size: toRem(16px);
+                    color: #fff;
+                    line-height: 1.8rem;
+                }
+                span{
+                    color: #f5e193;
+                }
+            }
             .redpack-info{
                 width: 95%;
                 padding-left: 5%;
@@ -56,6 +100,26 @@
                     color: $red;
                 }
             }
+        }
+    }
+    .take-result{
+        img{
+            width: 1.4rem;
+            height: 1.4rem;
+            margin-right: 0.2rem;
+            border-radius: 50%;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        background: #e6e4e4;
+        line-height: 1.4rem;
+        padding: 0.2rem 0.8rem;
+        font-size: toRem(12px);
+        color: #fff;
+        border-radius: 0.3rem;
+        margin: 0 auto;
+        em{
+            color: #d9822b;
         }
     }
 }

@@ -20,9 +20,9 @@
 							<router-link tag="div" :to="'/roomCard/hot'" class="hot-room">热门推荐</router-link>
 						</div>
 						<ul class="my-room-list">
-							<router-link tag="li" :to="'/roomCard/room/'+room.roomNumber" class="flex-wrap" v-for="room in roomCard.list">
+							<li @click="addRoom(room.roomNumber,'')" class="flex-wrap" v-for="room in roomCard.myRoomList">
 								<div class="owner-head">
-									<img src="http://wx.qlogo.cn/mmopen/WdJ2BLGuxzOm43YiaMwnyrmoGqSekH86zoyJmicPcyrCjwPPhPZKOLB23zLc25q1ktzLCicsN8UsD6tmib8V9Z53VHR2daFenvBg/0" alt="" />
+									<img :src="room.houseOwner" alt="" />
 									<i class="owner-identify"></i>
 								</div>
 								<div class="room-info">
@@ -31,7 +31,26 @@
 									<div class="room-tips" v-if="room.awardStatus == 'N'">玩法：{{room.gameplay}}</div>
 									<i class="ic-arrow-rw"></i>
 								</div>
-							</router-link>
+							</li>
+						</ul>
+					</div>
+					<div class="my-room">
+						<div class="my-room-title">
+							<span>我参与的房间</span>
+						</div>
+						<ul class="my-room-list">
+							<li @click="addRoom(room.roomNumber,'')" class="flex-wrap" v-for="room in roomCard.recentlyInList">
+								<div class="owner-head">
+									<img :src="room.houseOwner" alt="" />
+									<i class="owner-identify"></i>
+								</div>
+								<div class="room-info">
+									<div class="room-code">房间号（{{room.roomNumber}}）<span class="room-state active">游戏中</span></div>
+									<div class="room-tips" v-if="room.awardStatus == 'Y'">玩法：{{room.gameplay}}    额外加奖</div>
+									<div class="room-tips" v-if="room.awardStatus == 'N'">玩法：{{room.gameplay}}</div>
+									<i class="ic-arrow-rw"></i>
+								</div>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -101,66 +120,33 @@
       <div class="text">创建房间和开局必备道具</div>
       <div class="room-card-num">
         <p class="buy-text">选择购买数量</p>
-        <div class="flex-wrap room-card-box">
-          <div class="flex-con-1 flex-wrap flex-center room-card-type" :class="{'active': pay.chooseActive==1}" @click="changeClass(1)">
-             <div class="main-content">
-               <p :class="{'active': pay.chooseActive==1}">房卡x1张</p>
-               <p :class="{'active': pay.chooseActive==1}">5元</p>
-             </div>
-          </div>
-          <div class="flex-con-1 flex-wrap flex-center room-card-type" style="margin: 0 0.5rem" :class="{'active': pay.chooseActive==2}" @click="changeClass(2)">
-            <div class="main-content">
-              <p :class="{'active': pay.chooseActive==2}">房卡x50张</p>
-              <p :class="{'active': pay.chooseActive==2}">250元</p>
-            </div>
-          </div>
-          <div class="flex-con-1 flex-wrap flex-center room-card-type" :class="{'active': pay.chooseActive==3}" @click="changeClass(3)">
-            <div class="main-content">
-              <p :class="{'active': pay.chooseActive==3}">房卡x500张</p>
-              <p :class="{'active': pay.chooseActive==3}">2500元</p>
-            </div>
-          </div>
+        <div class="flex-wrap room-card-box">		
+        	<div class="flex-con-1 flex-wrap flex-center room-card-type" :class="{'active': buy.active}" @click="buyListChange(i)" v-for="(buy,i) in buyList">
+	             <div class="main-content">
+	               <p :class="{'active': buy.active}">房卡x{{buy.num}}张</p>
+	               <p :class="{'active': buy.active}">{{buy.price}}元</p>
+	             </div>
+          	</div>
         </div>
       </div>
       <div class="choose-pay-type">
+      	<i class="ic-close-gray" @click="payRoomCard"></i>
         <p class="choose-pay-text">选择支付方式</p>
         <div class="pay-type-box">
-          <div class="flex-wrap flex-center pay-type-list" @click="payClass(1)">
-            <div class="is-choose"><i :class="{'active':pay.payWayActive==1}"></i></div>
+          <div class="flex-wrap flex-center pay-type-list" @click="changePayWay(i)" v-for="(pay,i) in payList"> 
+            <div class="is-choose"><i :class="{'active': pay.active}"></i></div>
             <div class="pay-text">
-              <p>余额支付</p>
-              <p>我的余额：42.89元</p>
-            </div>
-          </div>
-
-          <div class="flex-wrap flex-center pay-type-list" @click="payClass(2)">
-            <div class="is-choose"><i :class="{'active':pay.payWayActive==2}"></i></div>
-            <div class="pay-text">
-              <p>微信扫码支付</p>
-              <div class="pay-SM">
+              <p>{{pay.title}}</p>
+              <div class="pay-SM" v-if="pay.favorable">
                  <span></span>
                  <em>支付随机减免</em>
               </div>
-            </div>
-          </div>
-
-          <div class="flex-wrap flex-center pay-type-list" @click="payClass(3)">
-            <div class="is-choose"><i :class="{'active':pay.payWayActive==3}"></i></div>
-            <div class="pay-text">
-              <p>微信支付</p>
-            </div>
-          </div>
-
-          <div class="flex-wrap flex-center pay-type-list" @click="payClass(4)">
-            <div class="is-choose"><i :class="{'active':pay.payWayActive==4}"></i></div>
-            <div class="pay-text">
-              <p>支付宝支付</p>
+              <p v-if="pay.type=='ye'">我的余额：{{user.balance | RMB_f}}元</p>
             </div>
           </div>
         </div>
       </div>
-      <input type="button" value="立即支付" class="to-pay-btn">
-      <i class="ic-close-gray" @click="payRoomCard"></i>
+      <input type="button" value="立即支付" class="to-pay-btn" @click=buyCard>
     </div>
 	</div>
 </template>
@@ -169,15 +155,23 @@
 
 	import Api from '@/fetch/api'
 	import common from '@/assets/js/common'
-
+	import { Toast } from 'mint-ui';
 	export default{
 
 		data(){
 			return{
-			  	isActive:{
-			    	active:1,
-           			payActive:1
-        		},
+				user: this.$store.getters.getUserInfo || '',
+				buyList :[
+					{num:"1",price:"5",active:true},
+					{num:"50",price:"250",active:false},
+					{num:"500",price:"2500",active:false}
+				],
+				payList :[
+					{title:"余额支付",type:"ye",active:true,favorable:false},
+					{title:"微信扫码支付",type:"wxScan",active:false,favorable:true},
+					{title:"微信支付",type:"wxApp",active:false,favorable:false},
+					{title:"支付宝支付",type:"wxApp",active:false,favorable:false}
+				],
 				page: true,
 				headerMag:{
 					title:'血战到底',
@@ -192,22 +186,15 @@
 			        payRoomCard: false,
 			        passwordError: false,
 			        noRoomCard: false
-				},
-		        pay:{
-					chooseActive : 1,
-		            payWayActive: 1,
-		            price : 5,
-		        }
+				}
 			}
 		},
 		beforeCreate(){
-		  	this.$store.dispatch('roomCardlogin',this.$route.params.oid);
-		},
-		created(){
-			const self = this;
-			Api.myResult(function(data){
-		  		self.myRecord = data
-		  	})
+			var data = {
+				oid : this.$route.params.oid,
+				self : this
+			}
+		  	this.$store.dispatch('roomCardlogin',data);
 		},
 		methods:{
 			_initScroll() {
@@ -219,24 +206,61 @@
 			changePage(type){
 				if((type && this.page) || (!type && !this.page)) return
 				this.page = !this.page
+				if(!this.page){
+					const self = this;
+					Api.myResult(function(data){
+				  		self.myRecord = data
+				  	})
+				}
 			},
-			showMd: function(md){
+			buyListChange(index){
+		    	common.clearActive(this.buyList);
+		      	this.buyList[index].active = true;
+		   },
+		    changePayWay(index){
+		    	common.clearActive(this.payList);
+		      	this.payList[index].active = true;
+		    },
+			showMd(md){
 				this.md[md] = true;
 				this.md.mask = true;
 			},
-			closeMd :function(md){
+			closeMd(md){
 				this.md[md] = false
 				this.md.mask = false
 			},
-		    payRoomCard: function () {
+		    payRoomCard () {
 		        this.md.mask = !this.md.mask;
 		        this.md.payRoomCard = !this.md.payRoomCard;
 		    },
-		    changeClass(type){
-		      	this.isActive.active = type;
+		    buyCard (){
+		    	let num = common.getArrItem(this.buyList,"num");
+		    	let type = common.getArrItem(this.payList,"type");
+		    	if(type == 'ye'){
+		    		let self = this;
+		    		Api.getRoomCard(function(data){
+		    			if(data.msgCode == '200'){
+		    				self.payRoomCard();
+		    				self.user.balance = data.balance;
+		    				self.roomCard.roomCardAmount = self.roomCard.roomCardAmount + parseInt(num);
+	    					Toast({message: '购买成功',duration: 1500,iconClass: 'ic-toast-success'});
+		    			}
+		    		},{
+		    			amount : num
+		    		})
+		    	}
 		    },
-		    payClass(type){
-		      	this.isActive.payActive = type;
+		    addRoom(roomId,roomPwd){
+		    	let self = this;
+		    	Api.enterRoom(function(data){
+					if(data.msgCode == '200'){
+						self.$store.dispatch('activeRoom',data);
+						self.$router.push('/roomCard/room/'+roomId)
+					}
+				},{
+					roomId: roomId,
+					roomPwd : roomPwd
+				})
 		    }
 		}
 	}

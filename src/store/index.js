@@ -12,7 +12,9 @@ const state = {
   	welfare: {
   		title : '下个整点福利包',
   		btn : '还未开始，请稍后..'
-  	}
+  	},
+ //房卡
+ 	activeRoom: common.getJsonLocal("activeRoom") || ''
 }
 const actions = {
 
@@ -32,22 +34,25 @@ const actions = {
        	})
     },
     changeWelfare: (context,data) => {
-
        	context.commit("setWelfare",data);
     },
   	toMessageCenter: (context,data) => {
-
     	context.commit("setMessageCenter",data);
   	},  	
   	//房卡 
-  	roomCardlogin : (context,openid) => {
+  	roomCardlogin : (context,param) => {
   		Api.roomCardlogin(function(data){
   			context.commit("setUserInfo",data);
   			Api.gameLobby(function(data){
+  				param.self.roomCard = data;
 		  		common.setJsonLocal("roomCard",data)
 		  	});
-  		},openid)
-  	}
+  		},param.oid)
+  	},
+  	activeRoom : (context,data) => {
+  		common.setJsonLocal("activeRoom",data);
+    	context.commit("setActiveRoom",data);
+  	},  	
 }
 const getters = {
   	getUserInfo: state => {
@@ -61,7 +66,11 @@ const getters = {
     },
     toMessageCenter: state => {
   	  return state.toMessageCenter
-    }
+    },
+ //房卡
+ 	getActiveRoom : state => {
+  	  return state.activeRoom
+    },
 }
 const mutations = {
 	//设置用户信息
@@ -77,7 +86,12 @@ const mutations = {
     },
     setMessageCenter: (state,toMessageCenter) => {
       state.toMessageCenter = toMessageCenter;
-  }
+  	},
+ 
+//房卡
+    setActiveRoom: (state,data) => {
+      state.activeRoom = data;
+  	},	
 }
 export default new Vuex.Store({
     state,
