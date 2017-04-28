@@ -12,7 +12,7 @@ const ip = {
 	room : 'http://'+ host +'/room',
 }
 const ws = {
-	roomCard : '192.168.1.188:9000'
+	roomCard : '192.168.1.88:9000'
 }
 
 module.exports = {

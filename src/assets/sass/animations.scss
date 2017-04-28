@@ -62,3 +62,30 @@
   }
 }
 
+.overturn{
+    -webkit-animation-name:overturn;
+    animation-name:overturn;
+    -webkit-animation-duration: 0.8s;
+    animation-duration:0.8s;
+    -webkit-animation-fill-mode:both;
+    animation-fill-mode:both;
+    animation-iteration-count:infinite;
+    -webkit-animation-iteration-count:infinite;
+    display: block;
+}
+@-webkit-keyframes overturn{
+    0%{-webkit-transform:rotateY(0deg);}
+    20%{-webkit-transform:rotateY(180deg);}
+    40%{-webkit-transform:rotateY(360deg);}
+    60%{-webkit-transform:rotateY(0deg);}
+    80%{-webkit-transform:rotateY(180deg);}
+    100%{-webkit-transform:rotateY(360deg);}
+}
+@keyframes overturn{
+    0%{transform:rotateY(0deg);}
+    20%{transform:rotateY(180deg);}
+    40%{transform:rotateY(360deg);}
+    60%{transform:rotateY(0deg);}
+    80%{transform:rotateY(180deg);}
+    100%{transform:rotateY(360deg);}
+}

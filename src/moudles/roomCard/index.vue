@@ -26,7 +26,7 @@
 									<i class="owner-identify"></i>
 								</div>
 								<div class="room-info">
-									<div class="room-code">房间号（{{room.roomNumber}}）<span class="room-state active">游戏中</span></div>
+									<div class="room-code">房间号（{{room.roomNumber}}）<span class="room-state" :class="{'active':room.roomStatus == 'P'}">{{room.roomStatus | roomStatus_f}}</span></div>
 									<div class="room-tips" v-if="room.awardStatus == 'Y'">玩法：{{room.gameplay}}    额外加奖</div>
 									<div class="room-tips" v-if="room.awardStatus == 'N'">玩法：{{room.gameplay}}</div>
 									<i class="ic-arrow-rw"></i>
@@ -45,7 +45,7 @@
 									<i class="owner-identify"></i>
 								</div>
 								<div class="room-info">
-									<div class="room-code">房间号（{{room.roomNumber}}）<span class="room-state active">游戏中</span></div>
+									<div class="room-code">房间号（{{room.roomNumber}}）<span class="room-state" :class="{'active':room.roomStatus == 'P'}">{{room.roomStatus | roomStatus_f}}</span></div>
 									<div class="room-tips" v-if="room.awardStatus == 'Y'">玩法：{{room.gameplay}}    额外加奖</div>
 									<div class="room-tips" v-if="room.awardStatus == 'N'">玩法：{{room.gameplay}}</div>
 									<i class="ic-arrow-rw"></i>

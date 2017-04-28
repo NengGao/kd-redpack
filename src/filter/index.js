@@ -1,3 +1,4 @@
+
 import Vue from 'vue'
 
 Vue.filter('KLD_f', function(value){
@@ -18,5 +19,18 @@ Vue.filter('grades_f', function(value){
 		return '+' + value;
 	}else{
 		return  value;
+	}
+});
+//房卡
+Vue.filter('roomStatus_f', function(value){
+	if(!value) return '0';
+	if(value == 'W'){
+		return '等待中'
+	}
+	if(value == 'P'){
+		return '游戏中'
+	}
+	if(value == 'E'){
+		return '游戏结束'
 	}
 });

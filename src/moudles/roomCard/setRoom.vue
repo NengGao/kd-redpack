@@ -29,7 +29,7 @@
               <!--<span class="setRoom-left">房间密码</span>-->
               <!--<span class="setRoom-right set-right" style="color: #b8b8b8">设置密码<i class="ic-arrow-rg"></i></span>-->
             <!--</div>-->
-            <div class="setRoom-Box margin-Top">
+            <div class="setRoom-Box margin-Top" @click="showMd('mdGameWX')">
               <span class="setRoom-left">群主微信号<em>（认领成功后显示）</em></span>
               <span class="setRoom-right set-right"><i class="ic-arrow-rg"></i></span>
             </div>
@@ -45,10 +45,10 @@
        <div class="rule-title">选择游戏规则</div>
        <div class="rule-choose" @click="addActive('ruleLis',index,1)" v-for="(rule,index) in setRoomData.ruleList">
            <div class="rule-main">
-            	<p :class="{'active':ruleLis[index].active}">{{rule.ruleName}}</p>
+            	<p :class="{'active':rule.active}">{{rule.ruleName}}</p>
               <p>{{rule.ruleDesc}}</p>
            </div>
-           <i :class="{'ic-choose':ruleLis[index].active}"></i>
+           <i :class="{'ic-choose':rule.active}"></i>
        </div>
        <i class="ic-close-gray" @click="rulePull"></i>
     </div>
@@ -57,7 +57,7 @@
       <div class="rule-title">{{aMountLis[index].title}}</div>
       <div class="rule-choose" @click="aMountActive(aMountLis[index].list,ix,1)" v-for="(item,ix) in aMountLis[index].list">
         <div class="rule-main">
-          <p :class="{'active':aMountLis[index].list[ix].active}">{{item.type}}</p>
+          <p :class="{'active':aMountLis[index].list[ix].active}">{{item.type}}{{item.dataType}}</p>
         </div>
         <i :class="{'ic-choose':aMountLis[index].list[ix].active}"></i>
       </div>
@@ -72,9 +72,21 @@
         <div class="title">游戏打赏</div>
         <div class="text">每包抽取部分金额，作为额外奖励发放给玩家</div>
         <div class="flex-wrap flex-center get-reward">
-          <input type="number" pattern="\d*" class="number" placeholder="输入每包抽取比例" v-model="percent"><em>%</em>
+          <input type="tel" pattern="\d*" class="number" placeholder="输入每包抽取比例" ref="percent" maxlength="3"><em>%</em>
         </div>
-        <input type="button" value="确定" class="confirm-btn" @click="closeMd('mdGamePlay')">
+        <input type="button" value="确定" class="confirm-btn" @click="confirm('mdGamePlay')">
+      </div>
+    </div>
+
+    <!--输入微信号-->
+    <div class="md-modal md-effect-1 md-game-play" :class="{ 'md-show': md.mdGameWX }">
+      <div class="md-content">
+        <i class="md-close ic-close-gray" @click="closeMd('mdGameWX')"></i>
+        <div class="title">微信号</div>
+        <div class="flex-wrap flex-center get-reward">
+          <input type="text" class="number" placeholder="输入微信号" ref="wxNum">
+        </div>
+        <input type="button" value="确定" class="confirm-btn" @click="confirmWX('mdGameWX')">
       </div>
     </div>
     <!--设置奖励倍数-->
@@ -85,9 +97,9 @@
         <div class="title">设置奖励倍数</div>
         <div class="text">如每包金额100点，奖励倍数为2.0倍，若中则奖励200点。</div>
         <div class="flex-wrap flex-center get-reward">
-          <input type="number" pattern="\d*" class="reward-number" placeholder="请输入倍数" v-model="inputVal">
+          <input type="tel" pattern="\d*" class="reward-number" placeholder="请输入倍数" v-model="inputVal" maxlength="8">
         </div>
-        <input type="button" value="确定" class="reward-confirm-btn" :class="{'changeBg':activeBox.changeBg}" @click="editReward">
+        <input type="button" value="确定" class="reward-confirm-btn" :class="{'changeBg':activeBox.changeBg}" @click="rewardConfirm">
       </div>
     </div>
     <!--额外奖励-->
@@ -100,7 +112,7 @@
            <p>{{reward.awardDesc}}</p>
          </div>
          <div class="flex-wrap right-content">
-           <span @click.stop="editReward">奖励x{{reward.multiple}}倍</span>
+           <span @click="editReward">奖励x{{reward.multiple}}倍</span>
            <div class="choose-type" :class="{'active': setRoomData.awardList[index].active}"></div>
            <div class="tap-edit" v-if="index==0"><span></span><em>点击可修改</em></div>
          </div>
@@ -113,6 +125,7 @@
 <script>
   import Api from '@/fetch/api'
   import common from '@/assets/js/common'
+  import { Toast } from 'mint-ui';
 
   export default{
     name: 'setRoom',
@@ -122,22 +135,22 @@
         chooseNum:0,
         percent:15,
         setRoompara:{
-           jsonRoom:{ruleId:'LastMinGameRule',packetAmt: 100, packetSplitNum: 4,packetsPerBout: 20, commissionRate: 15,weixinNo:'sss'},
+           jsonRoom:{ruleId:"LastMinGameRule",packetAmt: "100", packetSplitNum: "4",packetsPerBout: "20", commissionRate: "15", weixinNo:""},
            extraAward : "W",
         },
         ruleLis:'',
         aMountLis:[
-          {title:'每包金额数',list:[{type:'100点',active:true},{type:'200点',active:false},{type:'300点',active:false}],active:true},
-          {title:'每包红包数',list:[{type:'4个',active:true},{type:'5个',active:false}],active:true},
-          {title:'一局发放的包数',list:[{type:'20包',active:true},{type:'30包',active:false}],active:true},
+          {title:'每包金额数',list:[{type:'100',dataType:'点',active:true},{type:'200',dataType:'点',active:false},{type:'300',dataType:'点',active:false}],active:true},
+          {title:'每包红包数',list:[{type:'4',dataType:'个',active:true},{type:'5',dataType:'个',active:false}],active:true},
+          {title:'一局发放的包数',list:[{type:'25',dataType:'包',active:true}],active:true},
         ],
         defaultLis:[//默认的
           {title:'每包金额数',type:'100点'},
           {title:'每包红包数',type:'4个'},
-          {title:'一局发放的包数',type:'20包'},
+          {title:'一局发放的包数',type:'25包'},
         ],
         ruleMsg:'尾数最小的发',
-        i:"",
+        i:'',
         index:0,
         activeBox:{
           fontActive:false,
@@ -162,14 +175,15 @@
           mask: false,
           mdGamePlay : false,
           mdGameReward : false,
-          maskRule :false
+          maskRule :false,
+          mdGameWX: false
         },
-        setRoomData:""
+        setRoomData:"",
+        extraAward:""
       }
     },
     watch:{
       inputVal :function (val) {
-         this.inputVal=val;
          if(val.length>0){
              this.activeBox.changeBg=true;
          }else {
@@ -186,6 +200,21 @@
         this.md[md] = false;
         this.md.mask = false;
       },
+      confirm:function (md) {
+        this.md[md] = false;
+        this.md.mask = false;
+        this.percent=this.$refs.percent.value;
+        this.setRoompara.jsonRoom.commissionRate=this.percent;
+      },
+      confirmWX:function (md) {
+        var data = this.setRoompara;
+        if(typeof data.jsonRoom=='string'){
+          data.jsonRoom=JSON.parse(data.jsonRoom);
+        }
+        this.md[md] = false;
+        this.md.mask = false;
+        this.setRoompara.jsonRoom.weixinNo=this.$refs.wxNum.value;
+      },
       addActive : function(arr,index,type){
       		if(type != 1){
       			this[arr][index].active = !this[arr][index].active;
@@ -195,7 +224,7 @@
       				_arr[i].active = false;
       			}
       			this[arr][index].active = true;
-            this.ruleMsg=this.ruleLis[index].msg;
+            this.ruleMsg=this.ruleLis[index].ruleName;
             this.setRoompara.jsonRoom.ruleId=this.ruleLis[index].ruleId;
       		}
       },
@@ -204,26 +233,35 @@
           arr[i].active = false;
         }
          arr[index].active = true;
-         this.defaultLis[this.index].type=this.aMountLis[this.index].list[index].type;
+         this.defaultLis[this.index].type=this.aMountLis[this.index].list[index].type+this.aMountLis[this.index].list[index].dataType;
+         this.setRoompara.jsonRoom.packetAmt=this.aMountLis[this.index].list[index].type;
+
+
       },
       rewardActive: function (arr,index) {
+          this.i=index;
+          this.extraAward="";
           this.chooseNum = 0;
           this.setRoomData[arr][index].active = !this.setRoomData[arr][index].active;
           let num=this.setRoomData[arr];
           for (let i=0;i<num.length;i++){
               if(num[i].active==true){
-                this.chooseNum ++
+                this.chooseNum ++;
+                this.extraAward += num[i].awardRuleId+":"+num[i].multiple + ',';
               }
           }
-
+          this.setRoompara.extraAward=this.extraAward;
       },
       editReward:function () {
-          if(this.inputVal==""){
+        this.md.mdGameReward =!this.md.mdGameReward;
+        this.md.maskRule =!this.md.maskRule;
+      },
+      rewardConfirm: function(){
+        if(this.inputVal==""){
 
-          }else {
-            this.setRoomData.awardList[this.i].multiple=this.inputVal;
-          }
-
+        }else {
+          this.setRoomData.awardList[this.i].multiple=this.inputVal;
+        }
         this.md.mdGameReward =!this.md.mdGameReward;
         this.md.maskRule =!this.md.maskRule;
       },
@@ -244,11 +282,29 @@
         this.md.mask=!this.md.mask;
       },
       createRoom: function () {
-          var data = this.setRoompara;
-          data.jsonRoom =JSON.stringify(data.jsonRoom);
-          Api.createRoom(function (data) {
+          if(this.setRoompara.jsonRoom.weixinNo==""||this.setRoompara.jsonRoom.weixinNo==undefined||this.setRoompara.jsonRoom.weixinNo==null){
+            Toast('请输入微信号！')
+          }else {
+            var data = this.setRoompara;
+            data.jsonRoom =JSON.stringify(data.jsonRoom);
+            Api.createRoom(function (data) {
+               this.$refs.createRoomBtn.style.disabled="";
+               if(data.msgCode==200){
+                 Toast({
+                   message: '创建成功！',
+                   duration: 1000
+                 });
+                 window.history.back();
+               }else if(data.msgCode==707){
+                 Toast('房卡不足！')
+               }else if(data.msgCode==602){
+                 Toast('创建失败！')
+               }else if(data.msgCode==605){
+                 Toast('操作太频繁！')
+               }
+            },data)
+          }
 
-          },data)
       }
     },
     beforeCreate(){
@@ -259,14 +315,13 @@
           data.awardList[i].multiple = 0.8;
         }
          for(let i =0;i< data.ruleList.length;i++) {
-           data.ruleList[i].active = false;
+            if(i==0){data.ruleList[0].active = true;}else {
+              data.ruleList[i].active = false;
+            }
          }
          self.setRoomData=data;
          self.ruleLis=data.ruleList;
       })
-    },
-    created(){
-
     }
   }
 </script>

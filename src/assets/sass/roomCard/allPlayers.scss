@@ -1,0 +1,9 @@
+@charset 'utf8';
+
+@import "../config.scss";
+@import "../icon.scss";
+
+.content{
+  overflow-x: hidden;
+  overflow-y: scroll;
+}

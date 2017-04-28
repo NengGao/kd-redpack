@@ -123,3 +123,112 @@
         }
     }
 }
+
+.md-user-head{
+    width: toRem(60px);
+    height: toRem(60px);
+    border-radius: 50%;
+    margin: 0 auto 0.8rem auto;
+}
+.md-redpack-open{
+    width: toRem(280px);
+    
+    .md-content{
+        width: toRem(280px);
+        height: toRem(375px);
+        background: #dd3248;
+        overflow: hidden;
+        .md-top{
+            width: toRem(480px);
+            transform: translateX(-21%);
+            height: toRem(215px);
+            padding-top: toRem(30px);
+            background: #f0294a;
+            border-radius: 0 0 50% 50%;
+            box-shadow: 0 0 2px 2px #964646;
+            color: #fff;
+            line-height: 1.4rem;
+            text-align: center;
+            .user-name{
+                      
+            }
+            .tips{
+                font-size: toRem(15px);
+                margin-top: 0.5rem;
+            }
+            .title{
+                font-size: toRem(22px);
+                color: #f5e193;
+                margin-top: 1rem;
+                position: relative;
+                right: -0.5rem;
+            }
+        }
+        .open{
+            width: toRem(86px);
+            height: toRem(86px);
+            background: no-repeat center url(/static/images/redpack/ic_open.png);
+            background-size: 100%;
+            position: absolute;
+            bottom: 6.5rem;
+            left: 50%;
+            margin-left: toRem(-43px);
+        }
+    }
+}
+.md-redpack-result{
+    width: toRem(280px);
+    .md-content{
+        background: #fff;
+        overflow: hidden;
+        .md-top{
+            width: toRem(280px);
+            height: toRem(35px);
+            padding-top: toRem(55px);
+            background: #f0294a;
+            border-radius: 0 0 50% 50%;
+            .md-user-head{
+                width: toRem(56px);
+                height: toRem(56px);
+                border: solid 0.2rem #e02d3c;
+            }
+        }
+        .fromUser{
+            width: 100%;
+            color: #999;
+            text-align: center;
+            padding-top: 2rem;
+        }
+        .result{
+            height: 4rem;
+            padding-top: 1rem;
+            color: #f1294a;
+            text-align: center;
+            span{
+                font-size: toRem(48px);
+            }   
+        }
+        .info{
+            line-height: 2rem;
+            color: #999;
+            text-align: center;
+        }
+        .tips{
+            color: $red;
+            text-align: center;
+            padding-top: 2rem;
+            font-size: toRem(12px);
+        }
+        .btn{
+            width: toRem(240px);
+            height: toRem(42px);
+            background: #de3450;
+            display: block;
+            border: 0;
+            font-size: toRem(16px);
+            color: #fff;
+            margin: 1.2rem auto;
+            border-radius: toRem(4px);
+        }
+    }
+}

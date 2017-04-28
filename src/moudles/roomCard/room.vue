@@ -21,41 +21,48 @@
           				<li v-for="award in activeRoom.awardRules">◆  {{award.awardName}}（{{award.awardDesc}}，奖{{award.awardAmt / 100}}点）</li>
           			</ul>
           		</div>
-          		<div class="flex-wrap redpack-row">
-          			<div class="send-head"><img src="http://wx.qlogo.cn/mmopen/WdJ2BLGuxzOm43YiaMwnyrmoGqSekH86zoyJmicPcyrCjwPPhPZKOLB23zLc25q1ktzLCicsN8UsD6tmib8V9Z53VHR2daFenvBg/0" alt="" /></div>
-          			<div class="send-info">
-          				<div class="send-name">中山大灯亮</div>
-          				<div class="redpack">
+          		
+          		
+          		
+          		
+          		<div class="redpack-row" v-for="msg in contentMsg">
+          			
+          			<div class="flex-wrap" v-if='msg.msgType == 0'>
+	          			<div class="send-head"><img src="http://wx.qlogo.cn/mmopen/WdJ2BLGuxzOm43YiaMwnyrmoGqSekH86zoyJmicPcyrCjwPPhPZKOLB23zLc25q1ktzLCicsN8UsD6tmib8V9Z53VHR2daFenvBg/0" alt="" /></div>
+	          				<div class="send-info">
+	          				<div class="send-name">系统提示</div>
+	          				<div class="news-box">
+	          					本局结束，即将公布本局抢红包结果。
+	          				</div>
+	          			</div>
+          			</div>
+          			
+          			
+          			<div class="flex-wrap" v-if='msg.msgType == 1003'>
+			      		<div class="take-result"><img src="http://wx.qlogo.cn/mmopen/WdJ2BLGuxzOm43YiaMwnyrmoGqSekH86zoyJmicPcyrCjwPPhPZKOLB23zLc25q1ktzLCicsN8UsD6tmib8V9Z53VHR2daFenvBg/0" alt="" />“大三洋摩托”领取了”中山大灯亮”的<em>红包</em></div>
+			      	</div>
+          			
+          			<div class="flex-wrap" v-if='msg.msgType == 1004'>
+          				<div class="send-head"><img :src="msg.fromUserImg" alt="" /></div>
+						<div class="send-info">
+						    <div class="send-name">{{msg.fromUserName}}</div>
+						    <div class="redpack" @click="showMd('redpackOpen')">
 							<div class="ic-redpack"></div>
 							<div class="redpack-tip"><p>恭喜发财大吉大利</p><span>领取红包</span></div>
-          					<div class="redpack-info">血战到底（<em>第20包</em>/共20包）</div>
-          				</div>
+							<div class="redpack-info">血战到底（<em>第{{msg.nowPackets}}包</em>/共{{msg.packetsPerBout}}包）</div>
+						  	</div>
+					  	</div>
           			</div>
-          		</div>
-          		<div class="flex-wrap redpack-row">
-          			<div class="take-result"><img src="http://wx.qlogo.cn/mmopen/WdJ2BLGuxzOm43YiaMwnyrmoGqSekH86zoyJmicPcyrCjwPPhPZKOLB23zLc25q1ktzLCicsN8UsD6tmib8V9Z53VHR2daFenvBg/0" alt="" />“大三洋摩托”领取了”中山大灯亮”的<em>红包</em></div>
-          		</div>
-          		<div class="flex-wrap redpack-row">
-          			<div class="take-result"><img src="http://wx.qlogo.cn/mmopen/WdJ2BLGuxzOm43YiaMwnyrmoGqSekH86zoyJmicPcyrCjwPPhPZKOLB23zLc25q1ktzLCicsN8UsD6tmib8V9Z53VHR2daFenvBg/0" alt="" />“大三洋摩托”领取了”中山大灯亮”的<em>红包</em></div>
-          		</div>
-          		<div class="flex-wrap redpack-row">
-          			<div class="take-result"><img src="http://wx.qlogo.cn/mmopen/WdJ2BLGuxzOm43YiaMwnyrmoGqSekH86zoyJmicPcyrCjwPPhPZKOLB23zLc25q1ktzLCicsN8UsD6tmib8V9Z53VHR2daFenvBg/0" alt="" />“大三洋摩托”领取了”中山大灯亮”的<em>红包</em></div>
-          		</div>
-          		<div class="flex-wrap redpack-row">
-          			<div class="take-result"><img src="http://wx.qlogo.cn/mmopen/WdJ2BLGuxzOm43YiaMwnyrmoGqSekH86zoyJmicPcyrCjwPPhPZKOLB23zLc25q1ktzLCicsN8UsD6tmib8V9Z53VHR2daFenvBg/0" alt="" />“大三洋摩托”领取了”中山大灯亮”的<em>红包</em></div>
-          		</div>
-          		
-          		<div class="flex-wrap redpack-row">
-          			<div class="send-head"><img src="http://wx.qlogo.cn/mmopen/WdJ2BLGuxzOm43YiaMwnyrmoGqSekH86zoyJmicPcyrCjwPPhPZKOLB23zLc25q1ktzLCicsN8UsD6tmib8V9Z53VHR2daFenvBg/0" alt="" /></div>
-          			<div class="send-info">
-          				<div class="send-name">系统提示</div>
-          				<div class="news-box">
-          					本局结束，即将公布本局抢红包结果。
-          				</div>
-          			</div>
+          			
+          			
+          			
           		</div>
 	        </div>
 		</div>
+		<ul class="flex-wrap start-box" v-if="md.start">
+			<li class="flex-con-1"><div class="invite">邀请好友</div></li>
+			<li class="flex-con-1"><div class="start" @click="startGame">开始本局</div></li>
+		</ul>
 		<div class="footer flex-wrap">
 			<div class="integral">
 				<div class="title">本局积分</div>
@@ -70,11 +77,30 @@
 			</div>
 		</div>
 		<!--弹出层-->
-		<div class="md-mask" :class="{ 'active': md.mask }"></div>
-		<div class="md-modal md-effect-1 md-room-info" :class="{ 'md-show': md.mdRoomInfo }">
+		<div class="md-mask" :class="{ 'active': md.mask }" @click="closeMd('all')"></div>
+		<div class="md-modal md-effect-1 md-redpack-open" :class="{ 'md-show': md.redpackOpen }">
 			<div class="md-content">
-				<i class="md-close ic-close-gray" @click="closeMd('mdRoomInfo')"></i>
-				
+				<div class="md-top">
+					<img :src="newRedpack.fromUserImg" class="md-user-head" alt="" />
+					<div class="user-name">{{newRedpack.fromUserName}}</div>
+					<div class="tips">发了一个红包，金额随机</div>
+					<div class="title">恭喜发财，大吉大利！</div>
+				</div>
+				<div class="open" :class="{'overturn' : redpackState.openActive}" @click="open"></div>
+			</div>
+		</div>
+		
+		<div class="md-modal md-effect-1 md-redpack-result" :class="{ 'md-show': md.redpackResult }">
+			<div class="md-content">
+				<i class="md-close ic-close-gray" @click="closeMd('redpackResult')"></i>
+				<div class="md-top">
+					<img :src="newRedpack.fromUserImg" class="md-user-head" alt="" />
+				</div>
+				<div class="fromUser">来自“{{newRedpack.fromUserName}}”的红包</div>
+				<div class="result"><span>250.8</span></div>
+				<div class="info">已汇入本局战绩</div>
+				<div class="tips">Tips:本平台仅限玩家间互动娱乐,请勿沉迷！</div>
+				<input type="button" class="btn" value="确定" @click="closeMd('redpackResult')"/>
 			</div>
 		</div>
 	</div>
@@ -92,7 +118,6 @@ export default{
 		return{
 			user: this.$store.getters.getUserInfo || '',
 			activeRoom: this.$store.getters.getActiveRoom || '',
-			
 			headerMag:{
 				title: '房间号（'+ this.$route.params.roomid +'）',
 				rightMsg: '<i class="ic-ganapati"></i>',
@@ -100,12 +125,20 @@ export default{
 			},
 			md:{
 				mask: false,
-				mdRoomInfo : false
+				start: false,
+				redpackOpen : false,
+				redpackResult : false
+			},
+			contentMsg :'',
+			newRedpack: '',
+			redpackState:{
+				openActive : false
 			}
 		}
 	},
 	created(){
-		this.createService(this.$route.params.roomid)
+		this.isStart();
+		this.createService(this.$route.params.roomid);
 	},
 	mounted(){
 		this._initScroll();
@@ -116,8 +149,58 @@ export default{
 	          	click: true
 	        });
 		},
+		showMd(md){
+			this.md[md] = true;
+			this.md.mask = true;
+		},
+		closeMd(md){
+			if(md == 'all'){
+				for(let Key in this.md){
+					this.md[Key] = false;
+					this.md.mask = false;
+				}
+			}else{
+				this.md[md] = false
+				this.md.mask = false
+			}
+
+		},
+		isStart(){
+			if(this.user.userCode == this.activeRoom.createByCode && this.activeRoom.roomStatus == 'W'){
+				this.md.start = true;
+				//this.scroll.refresh();
+			}
+		},
+		startGame(){
+			let self = this;
+	    	Api.startGame(function(data){
+				if(data.msgCode == '200'){
+					self.md.start = false
+				}
+			},{
+				roomId: self.$route.params.roomid
+			})
+		},
+		open(){
+			let self = this;
+			this.redpackState.openActive = true;
+			Api.rob(function(data){
+				if(data.msgCode == '200'){
+					self.md.redpackOpen = false;
+					self.md.redpackResult = true;
+				}
+			},{
+				roomId: self.$route.params.roomid
+			})
+		},
+		
+		
+		
+		// 以下是  ws 代码
 		createService(roomId){
 			let interval;
+			let self = this;
+			this.contentMsg = [];
 		    const ws = new WebSocket("ws://"+ config.ws.roomCard +"/room/createService?token=" + this.user.token + "&roomId=" + roomId);
 		    ws.onopen = function () {
 		        console.log("创建会话");
@@ -133,12 +216,11 @@ export default{
 		        console.log("错误：" + evt)
 		    };
 		    ws.onmessage = function (message) {
-		
-		        if (sign != message.data) {
+		        if (message.data) {
 		            var data = JSON.parse(message.data);
-		            var type = data.msgType,str = '';
-		            if ('200' == type) {//初始化房间
-		            	
+		            self.contentMsg.push(data);
+		            if(data.msgType == 1004){
+		            	self.newRedpack = data;
 		            }
 		        }
 			}

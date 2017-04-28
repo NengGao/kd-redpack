@@ -4,6 +4,8 @@
 @import "../icon.scss";
 @import "../dialog.scss";
 @import "../redpack.scss";
+@import "../animations.scss";
+
 .inform{
     width: 100%;
     height: toRem(48px);
@@ -96,6 +98,27 @@
                 margin: 0 auto;
             }
         }
+    }
+}
+.start-box{
+    height: toRem(55px);
+    background: #fff;
+    color: #fff;
+    line-height: toRem(41px);
+    text-align: center;
+    .invite{
+        width: 80%;
+        height: toRem(41px);
+        background: #5cd451;
+        margin: toRem(7px) auto;
+        border-radius: toRem(3px);
+    }
+    .start{
+        width: 80%;
+        height: toRem(41px);
+        background: #e52838;
+        margin: toRem(7px) auto;
+        border-radius: toRem(3px);
     }
 }
 .footer{

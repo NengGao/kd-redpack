@@ -20,6 +20,7 @@ import shareWX from '@/moudles/roomCard/shareWX'
 import groupInfo from '@/moudles/roomCard/groupInfo'
 import deleteMember from '@/moudles/roomCard/deleteMember'
 import recordDetails from '@/moudles/roomCard/recordDetails'
+import allPlayers from '@/moudles/roomCard/allPlayers'
 
 
 Vue.use(Router);
@@ -117,6 +118,12 @@ export default new Router({
       path: '/roomCard/recordDetails',
       name: 'recordDetails',
       component: recordDetails
+    },
+    // 全部玩家
+    {
+      path: '/roomCard/allPlayers',
+      name: 'allPlayers',
+      component: allPlayers
     }
   ]
 })
