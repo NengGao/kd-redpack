@@ -3,18 +3,32 @@
 @import "../config.scss";
 @import "../icon.scss";
 
+
+.deleteUser{
+    height: toRem(55px);
+    line-height: toRem(55px);
+    position: fixed;
+    top: 0;
+    right: 0.5rem;
+    color: #fff;
+    z-index: 10;
+}
+.delete-img{
+  height: toRem(56px);
+  padding:0 $padding;
+  img{
+    width: toRem(38px);
+    height: toRem(38px);
+    border-radius: 100%;
+    margin-right: 0.5rem;
+  }
+}
+
+
 .content {
   overflow-x: hidden;
   overflow-y: scroll;
-  .delete-img{
-     height: toRem(56px);
-     padding:0 $padding;
-    img{
-       width: toRem(38px);
-       height: toRem(38px);
-       border-radius: 100%;
-    }
-  }
+
   .delete-member{
      background: #ffffff;
      height: toRem(56px);
@@ -38,6 +52,5 @@
   .active{
      background: no-repeat  toRem(-84px) 0 url(/static/images/roomCard/ic_rank_box.png);
      background-size:toRem(112px);
-
   }
 }

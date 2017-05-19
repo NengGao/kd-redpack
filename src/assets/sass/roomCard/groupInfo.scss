@@ -4,12 +4,18 @@
 @import "../icon.scss";
 @import "../dialog.scss";
 
+.room-set{
+    position: fixed;
+    top: 0;
+    right: 0.8rem;
+    z-index: 11;
+    line-height: toRem(55px);
+}
 .content{
   overflow-x: hidden;
   overflow-y: scroll;
   .groupInfo{
      background: #ffffff;
-     height: toRem(177px);
      width: 100%;
      padding: toRem(16px) toRem(8px);
      box-sizing: border-box;
@@ -17,17 +23,25 @@
        flex-wrap: wrap;
        li{
          width: 20%;
-         img{
+         .user-head{
            width: toRem(48px);
            height: toRem(48px);
            margin: 0 auto;
+           border-radius: 50%;
+           position: relative;
+           img{
+               width: toRem(48px);
+               height: toRem(48px);
+               margin: 0 auto;
+               border-radius: 50%;
+            }
          }
          .ic_add{
            display: block;
            width: toRem(48px);
            height: toRem(48px);
            margin: 0 auto;
-           background: no-repeat 0 toRem(-26px) url(/static/images/roomCard/ic_rank_box.png);
+           background: no-repeat 0 toRem(-24px) url(/static/images/roomCard/ic_rank_box.png);
            background-size: toRem(97px);
          }
          .ic_reduce{
@@ -35,7 +49,7 @@
            width: toRem(48px);
            height: toRem(48px);
            margin: 0 auto;
-           background: no-repeat toRem(-48.5px) toRem(-26px) url(/static/images/roomCard/ic_rank_box.png);
+           background: no-repeat toRem(-48.5px) toRem(-24px) url(/static/images/roomCard/ic_rank_box.png);
            background-size: toRem(97px);
          }
          .person-name{

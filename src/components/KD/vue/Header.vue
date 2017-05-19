@@ -1,5 +1,5 @@
 <template>
-	<header class="header">
+	<header class="header" id="header">
 		<i class="ic-back-fff" @click="goBack"></i>
 		<h1>{{headerMsg.title}}</h1>
 		<router-link :to=headerMsg.rightUrl class="header-right" v-html=headerMsg.rightMsg></router-link>
@@ -22,7 +22,11 @@
 		},
 		methods:{
 			goBack: function(){
-				router.back()
+				if(this.$route.params.oid){
+					window.location.href = 'http://vip.kuaidian.cn/views'
+				}else{
+					router.back()
+				}	
 			}
 		}
 	}

@@ -1,0 +1,207 @@
+@charset 'utf8';
+
+@import "../config.scss";
+@import "../icon.scss";
+@import "../dialog.scss";
+
+.content{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background: #fff0a6;
+  .banner{
+    height: toRem(141px);
+    img{
+      height: toRem(141px);
+    }
+  }
+  .informList {
+    border-radius:1rem;
+    width: 90%;
+    margin: 0.5rem auto 0 auto;
+    background-color: #feea9f;
+  }
+  .roomCard-box{
+    padding:0 $padding;
+    box-sizing: border-box;
+    .roomCard-head{
+      position: relative;
+      height:toRem(40px);
+      line-height: toRem(40px);
+      span:nth-of-type(1){
+        color: #333;
+        font-size: toRem(16px);
+        em{
+          color: #ff5931;
+        }
+      }
+      span:nth-of-type(2){
+        position: absolute;
+        right:0;
+        text-decoration:underline;
+        color: #ff5931;
+        font-size: toRem(14px);
+        &:active{
+          opacity: 0.6;
+        }
+      }
+    }
+    .get-roomCard{
+      .coupon{
+        height: toRem(72px);
+        width: 100%;
+        background: center no-repeat url(/static/images/roomCard/ic_coupon.png);
+        background-size: 100%;
+        margin-bottom: 0.5rem;
+        position: relative;
+        .toGet{
+          width: toRem(100px);
+          height: toRem(70px);
+          position: absolute;
+          right: 0;
+        }
+      }
+      .coupon2{
+        position: relative;
+        height: toRem(72px);
+        width: 100%;
+        background: center no-repeat url(/static/images/roomCard/ic_coupon2.png);
+        background-size: 100%;
+        .toGet{
+          width: toRem(100px);
+          height: toRem(70px);
+          position: absolute;
+          right: 0;
+        }
+      }
+    }
+  }
+  .activity-rule{
+    padding: 0.5rem $padding 0 $padding;
+    .title{
+      line-height:toRem(40px);
+      color: #625349;
+      &:before{
+        display: inline-block;
+        content: '';
+        width: 0.3rem;
+        height: 1.6rem;
+        background: #ffb200;
+        vertical-align: middle;
+        margin-right: 0.5rem;
+      }
+    }
+    p{
+      line-height:toRem(24px);
+      color: #625349;
+    }
+  }
+}
+
+.openVip {
+  width: 20.8rem;
+  border-radius: 0.3rem;
+  .md-content{
+    padding: $padding;
+    box-sizing: border-box;
+    background: #fff0a6;
+    .title{
+      text-align: center;
+      @include setfont(toRem(19px),#ff5931,2rem);
+      margin-top: 2.2rem;
+      font-weight: 600;
+    }
+    img{
+      width: toRem(200px);
+      height: toRem(120px);
+      margin: 1rem auto;
+    }
+    .openVip-Text{
+      text-align: center;
+      color: #f88c00;
+      line-height: 1.2rem;
+      a{
+        color: #ff5931;
+        text-decoration: underline;
+      }
+    }
+    .goVip-btn{
+      @include setBtn(100%,toRem(48px),toRem(19px),#fff,#ff5931);
+      border-radius: 1.5rem;
+      margin-top: 1.2rem;
+    }
+    .ic-close-white{
+      position: absolute;
+      bottom: -5rem;
+      left: 8.5rem;
+      background-size: 1.5rem;
+      &:active{
+        opacity: 0.6;
+      }
+    }
+  }
+}
+
+.getCard{
+  width: 20.8rem;
+  border-radius: 0.3rem;
+  overflow: visible;
+  .md-content{
+    padding: $padding;
+    box-sizing: border-box;
+    background: center no-repeat url(/static/images/roomCard/get_card_bg.png);
+    background-color: #e02d3c;
+    background-size: 100%;
+    background-position-x: -1rem;
+    background-position-y: 1rem;
+    overflow: visible;
+    .title{
+      text-align: center;
+      @include setfont(toRem(24px),#faf5f5,2rem);
+      margin-top: 2.2rem;
+      font-weight: 600;
+    }
+    p{
+      text-align: center;
+      @include setfont(toRem(16px),#faf5f5,2rem);
+    }
+    .ic_room_card_2{
+      display: block;
+      width: toRem(105px);
+      height: toRem(110px);
+      background: center no-repeat url(/static/images/roomCard/ic_room_card_2.png);
+      background-size: 100%;
+      margin: 1rem auto;
+    }
+    .ic_room_card_3{
+      display: block;
+      width: toRem(135px);
+      height: toRem(115px);
+      background: center no-repeat url(/static/images/roomCard/ic_room_card_3.png);
+      background-size: 100%;
+      margin: 1rem auto;
+    }
+    .openVip-Text{
+      text-align: center;
+      color: #fabebe;
+      line-height: 1.2rem;
+      a{
+        color: #ffd831;
+        text-decoration: underline;
+      }
+    }
+    .goVip-btn{
+      @include setBtn(100%,toRem(48px),toRem(19px),#e02d3c,#fec917);
+      border-radius: 1.5rem;
+      margin-top: 1.2rem;
+    }
+    .ic-close-white{
+      position: absolute;
+      bottom: -5rem;
+      left: 8.5rem;
+      background-size: 1.5rem;
+      &:active{
+        opacity: 0.6;
+      }
+    }
+  }
+}

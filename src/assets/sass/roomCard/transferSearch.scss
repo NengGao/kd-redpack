@@ -1,0 +1,197 @@
+@charset 'utf8';
+
+@import "../config.scss";
+@import "../icon.scss";
+@import "../dialog.scss";
+
+.header{
+  .ic-close-white{
+    padding: 0 0.5rem;
+    &:active{
+      background-color: $head-active;
+    }
+  }
+  .input-box{
+    width: 100%;
+    height: toRem(36px);
+    background-color: #ffffff;
+    border-radius: 0.3rem;
+    margin-top: 0.1rem;
+    overflow: hidden;
+    .searchId{
+      border: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 0.3rem;
+      font-size: toRem(14px);
+    }
+  }
+  .cancel{
+    width:toRem(88px);
+    height:toRem(60px);
+    line-height:toRem(60px);
+    text-align: center;
+    font-size: toRem(16px);
+    &:active{
+      opacity: 0.6;
+    }
+  }
+}
+
+.content{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  .no-find-user{
+    p:nth-of-type(1){
+      text-align: center;
+      @include setfont(toRem(16px),#666,1.5rem)
+    }
+    p:nth-of-type(2){
+      text-align: center;
+      @include setfont(toRem(14px),#999,1.5rem)
+    }
+  }
+  .recentlyContent{
+    background: #ffffff;
+    .title{
+      padding:0 $padding;
+      box-sizing: border-box;
+      height: toRem(40px);
+      line-height: toRem(40px);
+      color: #666;
+    }
+    .recently-lis{
+      padding:0 $padding;
+      box-sizing: border-box;
+      border-bottom: $border;
+      @include flex-pack-justify();
+      height: toRem(64px);
+      &:active{
+        background: $bodyBg;
+      }
+      .lis-left{
+        img{
+          width: toRem(40px);
+          height: toRem(40px);
+          border-radius: 100%;
+        }
+        .text{
+          margin-left: 0.5rem;
+          p:nth-of-type(1){
+            @include setfont(toRem(16px),#333,1.5rem);
+          }
+          p:nth-of-type(2){
+            @include setfont(toRem(14px),#999,1.2rem);
+          }
+        }
+      }
+    }
+  }
+}
+
+.md-room-transfer{
+  .md-content{
+     background: #ffffff;
+     overflow: hidden;
+     .title{
+       height: toRem(102px/2);
+       @include setfont(toRem(19px),#333,toRem(102px/2));
+       padding: 0 $padding;
+       border-bottom: $border;
+     }
+    .main-content{
+      padding: 0 $padding $padding $padding;
+      .transfer-user{
+        height: toRem(130px/2);
+        border-bottom: $border;
+        @include flex-pack-justify();
+        span{
+          @include setfont(toRem(14px),#666,1rem)
+        }
+        .user-info{
+         img{
+           width: toRem(40px);
+           height: toRem(40px);
+           border-radius: 100%;
+         }
+          .user-text{
+            margin-left: 0.5rem;
+            p:nth-of-type(1){
+              max-width: toRem(150px);
+              @include overEllipsis();
+            @include setfont(toRem(16px),#333,1.6rem)
+            }
+            p:nth-of-type(2){
+              @include setfont(toRem(14px),#999,1.1rem)
+            }
+          }
+        }
+      }
+      .price-box{
+         height:toRem(70px);
+         @include flex-pack-justify();
+        .left{
+          p:nth-of-type(1){
+            @include setfont(toRem(14px),#666,1.5rem)
+          }
+          p:nth-of-type(2){
+            @include setfont(toRem(12px),#ff9326,1.3rem)
+          }
+        }
+        .right{
+          width: toRem(60px);
+          height: toRem(32px);
+          border: 0;
+          background-color: #f5f5f5;
+          text-align: center;
+          @include setfont(toRem(14px),#cccccc,1.3rem)
+        }
+      }
+      .transfer-num{
+        p{
+          @include setfont(toRem(14px),#666,1.5rem);
+        }
+        .change-num{
+          margin: 0.8rem 0;
+          .num{
+            width: toRem(272px/2);
+            height: toRem(44px);
+            border: 0;
+            background-color: #f5f5f5;
+            margin: 0 toRem(16px);
+            border-radius: 0.3rem;
+            text-align: center;
+            color: #333;
+            font-size: toRem(16px);
+          }
+        }
+        .my-info{
+          position: relative;
+          span:nth-of-type(1){
+            @include setfont(toRem(14px),#999,1.5rem);
+            em{
+              color: #ed1126;
+            }
+          }
+          span:nth-of-type(2){
+            position: absolute;
+            right: 0;
+            @include setfont(toRem(14px),#999,1.8rem);
+            em{
+              color: #ff9326;
+            }
+          }
+        }
+      }
+      .tip{
+        @include setfont(toRem(14px),#999,1.3rem);
+        text-align: justify;
+        margin-top: 0.5rem;
+      }
+      .confirm-btn{
+        @include setBtn(toRem(592px/2),toRem(48px),toRem(19px),#fff,#ff2739);
+        margin-top: toRem(16px);
+      }
+    }
+  }
+}

@@ -12,7 +12,7 @@
     height: toRem(30px);
     line-height: toRem(30px);
     text-align: center;
-    padding: 0 toRem(33px) 0 toRem(36px);
+    padding: 0 toRem(38px) 0 toRem(40px);
     border-radius: toRem(15px);
     color: #fff;
     z-index: 11;
@@ -31,17 +31,28 @@
        content: '';
        position: absolute;
        right: 0.6rem;
-       width: toRem(20px);
+       width: toRem(22px);
        height: toRem(28px);
-       background: no-repeat center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAAQlBMVEUAAAD/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX////cxufUAAAAFHRSTlMA+IZI8u3X0buyqVlSCyOERySYlN4f+EgAAADUSURBVDjLlZVbEoMgDEUDqfJQFNt0/1utM62ORcHc830+EkJuqCBlG/rOmK4PlhO14GjkgIlcVUcnJ9x4qU5eLvHT2R0eUuExlO4sDeZ/9yVNnkfXyg32UK/cstc9lb29V8outzfxci+L/81CNLJ8p+N0sqOVLDpZeJWjVo5EyWhlkyiLVpZMVi9bCno5UK+Xe+p2o8pmdGT0soFkqAyoQejpsKGwXmboI2FflFgrM7JW0MIiUYCEzILEFxKMSOSCYY6fiZ2ldoAW+LThR7MkceMcfwBkcXUkiPLycgAAAABJRU5ErkJggg==);
-       background-size: 100%;
+       background: no-repeat 0 toRem(-31px) url(/static/images/roomCard/index_img.png);
+       background-size: toRem(100px)
     }
 }
 
 .content{
     overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-y: scroll;
     flex-direction: column;
+    background-color: #1b1617;
+  .mint-swipe{
+     height:toRem(112px);
+     overflow: visible;
+     position: relative;
+    .bannar{
+      height:toRem(112px);
+      width: 100%;
+    }
+  }
+
     li{
         &:active{
             opacity: 0.8;
@@ -50,7 +61,6 @@
     .nav{
         line-height: toRem(48px);
         text-align: center;
-        background: #fff;
         color: #666;
         li{
             span{
@@ -68,35 +78,177 @@
             }
         }
     }
+    .hot-room-list{
+      .no-record{
+        width: 100%;
+        height: 7rem!important;
+        padding-top: 1rem;
+        .no-record-img{
+          width: 4rem;
+          height: 4rem;
+          margin: 0 auto;
+          background: no-repeat center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEEAAABcCAYAAAAxv9gAAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NjhEMEJDRTkyQkVDMTFFN0I3RDg4NjI2MUY2NjY3RjkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NjhEMEJDRUEyQkVDMTFFN0I3RDg4NjI2MUY2NjY3RjkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo2OEQwQkNFNzJCRUMxMUU3QjdEODg2MjYxRjY2NjdGOSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo2OEQwQkNFODJCRUMxMUU3QjdEODg2MjYxRjY2NjdGOSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pu3v2I4AAAReSURBVHja7JxbbA1BGMenR5U0paTREtcHD0goJVK3El5dIhFCCEJIXONFQl2fqAeXkJCK+61EkOoDEqWKVNxDQ9Q9JC6t0LR1a/H/cr6TnDZ6zu7ZmdPdnfmSX3KSPTs7+ztnZ7+ZnZ2EiooKoTiSQSYYDAaB3iAdZIA2vL0O/AQfwSdAlXoA7oKHvF1ZJCoosy0YByaAEaCPheMkMx35+zlh2+rBE3ADnAfF4IfMCidI+ickgFFgLpgCUhT+cDXgNDgASsFfpwUGHO6fBOaAclDCn1MUX14pfBw63mMwG7RuCQn0y88Az/kX6StaJvqBg9yGTOd6xUUCNXA3wTHQXbgjeoLjXK8slRKocVsPykC2cGdkc/3W2Wn0rUpI52twg6I7isyg9mEjuML1liJhALgNhgtvxUhwC/R3KmEIuAZ6CG9GL76NZsUqgbK7SyBVeDtS+Twy7UqgVv8iZ3B+iDQ+n25WJVA+fw50Ev6KDD6vJCsS8mK513okKMfZFE0CdXiWCn/H8qZ5TqDJ510S+hNuj1ZgZ3iKHX7C08BAoUcM4a5+IwlkZY3QK3KbShjHPTKdYigYHS5hrtAz5ockUF4wUVMJk+j8ScJYoX40yK3RDuSQhDFC7xgbEO4dIIlXDKMBkgYRHN/XNeoTuU3QOgLChJFgJBgJRoKRYCQYCUaCkWAkRAnqO3QAUzV2cJLmLNGj7ErQXkMB30AaXQ6/RfBZvo5xmYYSQm3CRU0lXAhvGM+CP5oJoMGkwnAJH0RwOo5OcVUEZ9A2ukWe0u2u8L88oQB810RAbXMSvorgdFkdgv711c1ljPmaSMiPlDZfB/d9LqCMidh32OpzCdusdKCogXzrUwFvwBkrEuglizyfSsjj87PUld4P3vtMwDuwz854Ar1es9lnEmjq3i87EkK3kZc+EfAC7G1uYyQJZG2tTyTk8pCBbQkUJ0Rwmr/X84KI/aJoEuhNs0Ue7mZTd3mxiPLGnJWB1jseTqep3veifcnqaDNN9Kz0mIDPYLWVL1qVUAVWeUzCSu4ZS5MQSqBuekQA1fOQ1S/bkUCNI818rXO5AEr05gkbrw/bfQL1zAOXBbVfT+3sEMtjOHpXoNilAmg8ZLvdnWKR8Jcvi2qXCaD6zOLcQLkEweMNS1wmgZKi17Hs6OSp9JFInZI4B725fzTWnZ0+ml8mWn5Mstzpv9KpBLod0coZ31pIAB13stPbtoxJGjTmMDOWBklC54iO63g9FFkzVYqs5umS84EiGQXJnK6zBeyOkwAaK5Q2/Cd7zhK9XVuoWACVv1BmgQEF1ykt8FKqSEAJl9/gZgmCW+rxQv6QfRWXK70Dp2p9FEphv4CuYAF45aAsWheFVvKhx+k1Kiobj0ViaKDzkYP9lS9lYiZzGglGgpEQ74aRliRIcrB/Zz9IKDCXg2kTjAQjwUgwEoyE8KhV0JX2nITDLi8vLsnSHhFctWcF6OKgHHohhdaE26Gqov8EGAASBsPwPEKS0wAAAABJRU5ErkJggg==);
+          background-size: 2rem;
+        }
+        .no-record-info{
+          width: 100%;
+          text-align: center;
+          color: #999;
+          line-height: 2rem;
+        }
+      }
+      .hotLis{
+        position: relative;
+        height: toRem(64px);
+        width: 96%;
+        margin: 0 auto;
+        background: #2b2324;
+        padding: 0 toRem(14px);
+        box-sizing: border-box;
+        margin-bottom: 0.5rem;
+        .hotLis-box{
+          height: toRem(64px);
+          width: 100%;
+          img{
+            display: inline-block;
+            width:toRem(48px);
+            height:toRem(48px);
+            border-radius: 100%;
+            vertical-align: top;
+            margin-top: 0.55rem;
+          }
+          .hot-text{
+            display: inline-block;
+            width: 80%;
+            margin-left: 0.8rem;
+            margin-top: 1rem;
+            p{
+              @include setfont(toRem(16px),#d9cecf,1.2rem);
+              height:toRem(16px);
+              text-align: justify;
+              @include overEllipsis();
+            }
+            .star-box{
+              position: relative;
+              margin-top: 0.4rem;
+              .star-left{
+                display: inline-block;
+              }
+              .star-right{
+                display: inline-block;
+                position: absolute;
+                right:0;
+                line-height: 1.2rem;
+                .room-box{
+                  display: inline-block;
+                  .ic_house{
+                    display: inline-block;
+                    vertical-align: middle;
+                  }
+                  span{
+                    font-size: toRem(12px);
+                    color: #726464;
+                  }
+                }
+                .person-box{
+                  display: inline-block;
+                  .ic_person{
+                    display: inline-block;
+                    vertical-align: middle;
+                  }
+                  span{
+                    font-size: toRem(12px);
+                    color: #726464;
+                  }
+                  em{
+                    color: $red;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
     .room-card-content{
         position: relative;
-        overflow-x: hidden;
-        overflow-y: scroll;
-        margin-top: toRem(8px);
+      .informList{
+        height: toRem(32px);
+        line-height: toRem(32px);
+        overflow: hidden;
+        position: relative;
+        .inform-info{
+          width: 90%;
+          padding-left: 10%;
+          height: toRem(32px);
+          line-height: toRem(32px);
+          border-radius: toRem(16px);
+          overflow: hidden;
+          color: #d9cecf;
+          position: relative;
+          &:after{
+            width: toRem(35px);
+            height: toRem(30px);
+            background: no-repeat center url(/static/images/roomCard/ic_notice.gif);
+            background-size: 1rem;
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+          }
+          li{
+            span{
+              display: inline-block;
+              max-width: 10rem;
+              color: #cc3945;
+              font-size: toRem(14px);
+              @include overEllipsis();
+              vertical-align: middle;
+            }
+            em{
+              color: #cc8c39;
+              font-size: toRem(14px);
+            }
+          }
+        }
+      }
         .card-room{
             text-align: center;
             font-size: toRem(16px);
             height: toRem(74px);
-            line-height: toRem(74px);
-            background: #fff;
+            background: #2b2324;
+            padding: 0.6rem;
+            box-sizing: border-box;
             li{
                 i{
                     display: inline-block;
                     vertical-align: top;
-                    width: toRem(42px);
-                    height: toRem(40px);
-                    margin: 1.2rem 0.5rem;
+                    width: toRem(35px);
+                    height: toRem(35px);
+                    margin: 0.3rem 0.5rem 0 0.5rem;
+                }
+                p{
+                  font-size: toRem(12px);
+                  color: #999999;
+                  line-height: 2rem;
                 }
                 .create-room{
-                    background: no-repeat toRem(-48px) 0 url(/static/images/roomCard/ic_roomCard.png);
-                    background-size: toRem(285px);
+                  background: no-repeat toRem(-66px) 1.5px url(/static/images/roomCard/index_img.png);
+                  background-size: toRem(100px);
                 }
                 .add-room{
-                    background: no-repeat toRem(-95px) 0 url(/static/images/roomCard/ic_roomCard.png);
-                    background-size: toRem(285px);
+                  background: no-repeat toRem(-32px) 1.5px url(/static/images/roomCard/index_img.png);
+                  background-size: toRem(100px);
+                }
+               .my-room{
+                 background: no-repeat 2px 1.5px url(/static/images/roomCard/index_img.png);
+                 background-size: toRem(100px);
                 }
                 &:nth-child(2){
-                    border-left: $border;
+                    border-left:0.1rem solid #1b1617;
+                    border-right:0.1rem solid #1b1617;
                 }
             }
         }
@@ -149,6 +301,76 @@
                }
            }
            .my-room-list{
+             .hotLis{
+               position: relative;
+               height: toRem(64px);
+               width: 96%;
+               margin: 0 auto;
+               background: #2b2324;
+               padding: 0 toRem(14px);
+               box-sizing: border-box;
+               margin-bottom: 0.5rem;
+               .hotLis-box{
+                 height: toRem(64px);
+                 width: 100%;
+                 img{
+                   display: inline-block;
+                   width:toRem(48px);
+                   height:toRem(48px);
+                   border-radius: 100%;
+                   vertical-align: top;
+                   margin-top: 0.55rem;
+                 }
+                 .hot-text{
+                   display: inline-block;
+                   width: 80%;
+                   margin-left: 0.8rem;
+                   margin-top: 1rem;
+                   p{
+                     @include setfont(toRem(16px),#d9cecf,1.2rem)
+                     text-align: justify;
+                     @include overEllipsis();
+                   }
+                   .star-box{
+                     position: relative;
+                     margin-top: 0.4rem;
+                     .star-left{
+                       display: inline-block;
+                     }
+                     .star-right{
+                       display: inline-block;
+                       position: absolute;
+                       right:0;
+                       .room-box{
+                         display: inline-block;
+                         .ic_house{
+                           display: inline-block;
+                           vertical-align: middle;
+                         }
+                         span{
+                           font-size: toRem(12px);
+                           color: #726464;
+                         }
+                       }
+                       .person-box{
+                         display: inline-block;
+                         .ic_person{
+                           display: inline-block;
+                           vertical-align: middle;
+                         }
+                         span{
+                           font-size: toRem(12px);
+                           color: #726464;
+                         }
+                         em{
+                           color: $red;
+                         }
+                       }
+                     }
+                   }
+                 }
+               }
+             }
                li{
                    line-height: toRem(65px);
                    height: toRem(65px);
@@ -177,15 +399,6 @@
                display: block;
                border-radius: 50%;
            }
-           .owner-identify{
-               position: absolute;
-               width: 80%;
-               height: 1.1rem;
-               left: 10%;
-               bottom: 0;
-               background: no-repeat center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAAAdCAMAAADGkCHGAAAAmVBMVEUAAAD/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/////QE7/sbX/iI7/3+H/pKj/6uv/ycv/vcD/aHH/VWD/1Nb/eID/9fX/lpwvfLj8AAAAI3RSTlMA+/CBEOG1r6gpFs1u98nBoZVyZ1tOOjUvHQgE1Hfq5YpgQrFERJoAAAG+SURBVDjLldVnb8MgEAZgwDtNs5udrgOMRxqn///HlWCSgHefD5Zl2a+Ou5OMmo3WX87Mn3iEYMCEeBN/5nytR2ig/bfjf0CzD9/53vcF7BbTV+j2Ol3s2gPc8QsM8zJ2GxOimVXBD9ScmVHNLKolbAMMpoT+1iLoBQw42NpjmD8TuJLTlCvwlNEYrJS5Mai3d3hg1MZuz0pFfmYK3L2/6YTDHMDM4OxJUFaPpUZx84OaxhR6MoCXLlTfmEeaujJCzbP7LBqnrGnOLjpBNeOiu6p72pcBJ7Q/VjO4Hm4BSl/GUS5/RBrryKngym3ZYkXOVrHWj0RqstjOSIUkr1pR65F5Pqynu7S2Ub0SG2vaWccSaY75Ok1UNzI+pKcOeviEh0QtdDZstp/IsIC7nMpSC5rpHUu76lggywpDKRUALL3qMwvRnoFXqGLtPdpxFree/BSsTITY3nXdJG+NatwApOzK4us1UWk0TVWDOa2S6YGLmiyJHK38KD+X3c2FSFT1rArIErUYhTBMuEPtNj708zeo2ybE0AWHG9Rv1PGLOJ52aKBoHBCoIsE4Qv9y2K6ccOKp/603CZ3V9oBa/AEkabwIIxy/xgAAAABJRU5ErkJggg==);
-               background-size: 100%;
-           }
        }
        .room-info{
            .room-code{
@@ -193,14 +406,14 @@
                padding-top: 0.75rem;
                font-size: toRem(16px);
                .room-state{
-                   width: toRem(46px);
+                   width: auto;
                    height: toRem(14px);
-                   padding: 0.2rem;
+                   padding: 0.28rem 0.4rem;
                    display: inline-block;
                    text-align: center;
                    line-height: toRem(14px);
                    background: #b3b3b3;
-                   border-radius: toRem(10px);
+                   border-radius: toRem(25px);
                    vertical-align: middle;
                    font-size: toRem(12px);
                    color: #fff;
@@ -298,18 +511,94 @@
         }
     }
 }
+.room-card-foot{
+  width: 100%;
+  line-height: toRem(60px);
+  height: toRem(60px);
+  position: relative;
+  bottom: 0;
+  background: #fff;
+  text-align: center;
+  border-top: $border;
+  .buy-cards{
+    color: #ff850e;
+    font-size: toRem(19px);
+    border-right: $border;
+    &:active{
+      opacity: 0.6;
+    }
+  }
+  .cards-transfer{
+    color: #ff2739;
+    font-size: toRem(19px);
+    &:active{
+      opacity: 0.6;
+    }
+  }
+}
 
+.group-box{
+  position: absolute;
+  bottom: 0;
+  background: #33292a;
+  width: 100%;
+  padding-bottom: toRem(10px);
+  z-index: 999;
+  .ic-close-white{
+    position: absolute;
+    top:-0.2rem;
+    right: 0;
+  }
+  .title{
+    padding: 0  $padding;
+    box-sizing: border-box;
+    height:toRem(51px);
+    background: #2d2425;
+    @include setfont(toRem(19px),#e5dada,toRem(51px));
+  }
+  .buy-cards{
+    padding: 0  $padding;
+    box-sizing: border-box;
+    height:toRem(51px);
+    @include setfont(toRem(16px),#ebe0e0,toRem(56px));
+    position: relative;
+    .ic-arrow-rg{
+      position: absolute;
+      right: toRem(14px);
+      top: 1.2rem;
+    }
+    &:active{
+      background: #2d2425;
+    }
+  }
+  .cards-transfer{
+    padding: 0  $padding;
+    box-sizing: border-box;
+    height:toRem(51px);
+    @include setfont(toRem(16px),#ebe0e0,toRem(56px));
+    position: relative;
+    .ic-arrow-rg{
+      position: absolute;
+      right: toRem(14px);
+      top: 1.2rem;
+    }
+    &:active{
+      background: #2d2425;
+    }
+  }
+}
 //弹出层
 .join-room{
     margin-top: -3rem;
     .md-content{
         background: #fff;
+        //background: #33292a;
         padding-bottom: 0.6rem;
         .title{
             font-size: toRem(18px);
             padding-top: 1rem;
             line-height: 2rem;
-            padding-left: 1.2rem;
+            padding-left: 1.6rem;
         }
         .inp{
             width: 19rem;
@@ -518,5 +807,158 @@
       @include setBtn(100%,toRem(48px),toRem(19px),#fff,#ff2739);
       margin-top: toRem(32px);
     }
+  }
+}
+
+//批量买卡
+.mass-buy-card{
+  position: absolute;
+  bottom: 0;
+  background: #fff;
+  padding: $padding;
+  box-sizing: border-box;
+  width: 100%;
+  z-index: 9999;
+  .ic-close-gray{
+    position: absolute;
+    right:toRem(8px);
+    top:toRem(8px);
+  }
+  .title{
+    @include setfont(toRem(19px),#333,toRem(19px));
+  }
+  .main-content{
+    .buy-cards-text{
+      height:toRem(40px);
+      line-height:toRem(40px);
+      position: relative;
+      span{
+        @include setfont(toRem(14px),#999,toRem(14px));
+      }
+      em{
+        position: absolute;
+        @include setfont(toRem(14px),#fa9c3e,toRem(14px));
+        right: 0;
+        top: toRem(12px);
+      }
+    }
+    .choose-type-box{
+      flex-wrap: wrap;
+      @include flex-pack-justify();
+      .choose-type{
+        width:48%;
+        height: toRem(132px/2);
+        border: 0.1rem solid #E7E7E7;
+        border-radius: 0.3rem;
+        text-align: center;
+        .card-num{
+          @include setfont(toRem(16px),#f22435,toRem(18px));
+          margin-top: 1.3rem;
+        }
+        .card-price{
+          @include setfont(toRem(14px),#666,toRem(16px));
+        }
+        .active{
+          color: #ffffff;
+        }
+      }
+      .choose-type:nth-of-type(3){
+        margin-top: 0.6rem;
+      }
+      .choose-type:nth-of-type(4){
+        margin-top: 0.6rem;
+      }
+      .active{
+        background-color:#f22435;
+      }
+    }
+  }
+}
+//确认付款
+.confirm-pay{
+  position: absolute;
+  bottom: 0;
+  background: #fff;
+  padding: $padding;
+  box-sizing: border-box;
+  width: 100%;
+  z-index: 999;
+  .title{
+    @include setfont(toRem(19px),#333,toRem(19px));
+  }
+  .pay-head{
+    border-bottom: $border;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+    P{
+      @include setfont(toRem(14px),#666,toRem(28px));
+    }
+    .pay-price{
+      @include setfont(toRem(24px),#333,toRem(32px));
+    }
+  }
+  .choose-box{
+    padding-top: 1rem;
+    .choose-text{
+      @include setfont(toRem(14px),#999,toRem(14px));
+    }
+    .choose-pay-type-box{
+       max-height: toRem(200px);
+       overflow-y: scroll;
+       margin-top: 0.8rem;
+      .choose-pay-type{
+        height: toRem(112px/2);
+        border-bottom: $border;
+        position: relative;
+        @include flex-pack-justify();
+        &:active{
+          background-color: $bodyBg;
+        }
+        .pay-left{
+          .pay-title{
+            margin-left: 0.5rem;
+            p:nth-of-type(1){
+              @include setfont(toRem(16px),#666,toRem(18px));
+            }
+            p:nth-of-type(2){
+              @include setfont(toRem(14px),#999,toRem(18px));
+            }
+            .pay-SM{
+              position: relative;
+              span{
+                width:0;
+                height:0;
+                border-top:0rem solid transparent;
+                border-bottom: 0.9rem solid transparent;
+                border-right:0.8rem solid #f22435;
+                position: absolute;
+                left: -0.3rem;
+                top: 0.15rem;
+              }
+              em{
+                display: inline-block;
+                width: 100%;
+                background: #f22435;
+                border-radius: 0.8rem;
+                color: #ffffff;
+                font-size: toRem(12px);
+                padding: 0 0.2rem;
+                text-align: center;
+                line-height: toRem(16px);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .to-pay-btn{
+    @include setBtn(100%,toRem(48px),toRem(19px),#fff,#ff2739);
+    margin-top: 1rem;
+  }
+  .ic-close-gray{
+    position: absolute;
+    right: 0.5rem;
+    top:0.5rem;
   }
 }

@@ -31,6 +31,6 @@ Vue.filter('roomStatus_f', function(value){
 		return '游戏中'
 	}
 	if(value == 'E'){
-		return '游戏结束'
+		return '等待中'
 	}
 });

@@ -1,0 +1,54 @@
+@charset 'utf8';
+
+@import "../config.scss";
+@import "../icon.scss";
+@import "../animations.scss";
+
+.tab-box{
+  height: toRem(48px);
+  background: #ffffff;
+  line-height: toRem(48px);
+  text-align: center;
+  color: #666666;
+  font-size: toRem(16px);
+  .active{
+    color: #ff2739;
+    border-bottom: 0.1rem solid #ff2739;
+  }
+}
+.content{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  .scroll{
+    margin-top: 1rem;
+    .recordLis{
+      background: #ffffff;
+      height: toRem(64px);
+      padding: 0 $padding;
+      box-sizing: border-box;
+      @include flex-pack-justify();
+      .user-info{
+        img{
+          width: toRem(40px);
+          height:toRem(40px);
+          border-radius: 100%;
+        }
+        .record-text{
+          margin-left: 0.5rem;
+          p:nth-of-type(1){
+            @include setfont(toRem(16px),#333,1.6rem);
+            em{
+              color: #999;
+            }
+          }
+          p:nth-of-type(2){
+            @include setfont(toRem(14px),#999,1rem);
+          }
+        }
+      }
+      .score{
+        @include setfont(toRem(16px),#ff9326,1rem);
+      }
+    }
+  }
+}

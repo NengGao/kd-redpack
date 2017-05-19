@@ -1,21 +1,23 @@
 
-const host = '192.168.1.114:8080';
-
+const host = 'g.kuaidian.cn';
+//const host = '192.168.1.114:8080';
 const start = {
-	isTest : true,
+	isTest : false,
 	testOpenId : 'orJtLt_If3QAld15hxMnuI1uRoGU'
 }
 const ip = {
 	user : 'http://'+ host +'/user',
 	portal : 'http://'+ host +'/rd-portal',
 	robBuy : 'http://'+ host +'/robBuy',
-	room : 'http://'+ host +'/room',
+	trade : 'http://'+ host +'/trade',
+	room : 'http://'+ host +'/room'
 }
 const ws = {
-	roomCard : '192.168.1.88:9000'
+	roomCard : 'ws://ws.kuaidian.cn/room'
+	//roomCard: 'ws://192.168.1.114:8080/room'
 }
-
 module.exports = {
+	host : host,
 	ip : ip,
 	start : start,
 	ws : ws

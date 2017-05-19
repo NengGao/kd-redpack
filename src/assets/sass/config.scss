@@ -1,14 +1,14 @@
-@charset 'utf-8';
+@charset 'utf8';
 
 $fontColor: #333;
-//$bgColor: linear-gradient(to right,#ff8c00,#ff5100);
+//$bgColor: linear-gradient(to right,#5436c1,#ff5100);
 $bgColor: #ff2739;
 $bodyBg : #f5f2f0;
 $border: solid 0.1rem #f6f6f6;
 $red: #ff2739;
 $border-radius:.3rem;
 $padding: (16px/14px)*1rem;//距左右1.15rem
-
+$head-active: #e01526;
 body{
     overflow: hidden;
    .mask{

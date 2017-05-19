@@ -7,26 +7,27 @@ import axios from 'axios'
 import config from './config'
 import store from './store'
 import filter from './filter'
-import VueLazyload from 'vue-lazyload'
+import FastClick from 'fastclick'
 import KD from './components/KD'
 import Mint from 'mint-ui'
-
-
 
 import './assets/css/base.css'
 import 'mint-ui/lib/style.css';
 
-Vue.use(Mint);
 
+if ('addEventListener' in document) {
+    document.addEventListener('DOMContentLoaded', function() {
+        FastClick.attach(document.body);
+    }, false);
+}
+
+Vue.use(Mint);
 Vue.prototype.$http = axios;
 Vue.config.productionTip = false;
 
-Vue.use(VueLazyload, {
-  loading: '/static/images/common/lazyload.png',
-  try: 2
-});
-
 Vue.use(KD.Header);
+Vue.use(KD.wxScan);
+Vue.use(KD.informList);
 
 /* eslint-disable no-new */
 new Vue({

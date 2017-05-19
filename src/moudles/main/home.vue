@@ -16,7 +16,7 @@
 				<div class="welfare-title">{{welfare.title}}</div>
 				<div class="welfare-status">{{redpack.time | welfareTime}}</div>
 				<div class="welfare-amonut">红包总金额：{{redpack.total}}元</div>
-				<router-link :to='"/roomCard/index/wxOpenId_001018"' class="welfare-btn">{{welfare.btn}}</router-link>
+				<router-link :to='"/roomCard/index/orJtLt_If3QAld15hxMnuI1uRoGU/0"' class="welfare-btn">{{welfare.btn}}</router-link>
 			</div>
 			<ul class="home-nav flex-wrap">
 				<router-link tag="li" to="" class="flex-con-1">
@@ -51,6 +51,22 @@
 					</div>
 				</li>
 			</ul>
+			<ul class="activity-box flex-wrap">
+				<li class="xzdd flex-wrap" @click=goXZDD>
+					<div class="activity-logo"></div>
+					<div class="activity-info">
+						<div class="activity-name">血战到底</div>
+						<div class="activity-tips">欢迎参与内测</div>
+					</div>
+				</li>
+				<li class="jqqd flex-wrap">
+					<div class="activity-logo"></div>
+					<div class="activity-info">
+						<div class="activity-name">敬请期待</div>
+						<div class="activity-tips">正在制作中</div>
+					</div>
+				</li>
+			</ul>
 			<div class="goods-candid">
 				<div class="goods-candid-title"><i class="ic-candid"></i>全民抢拍<span>（抢不到全额退豆）</span></div>
 				<ul class="goods-list clearfix">
@@ -79,8 +95,7 @@
 import Vue from 'vue'
 import Api from '@/fetch/api'
 import common from '@/assets/js/common'
-import BScroll from 'better-scroll'
-import { Toast } from 'mint-ui';
+import { Toast,Lazyload } from 'mint-ui';
 import {mapGetters,mapActions} from 'vuex'
 
 export default {
@@ -93,7 +108,7 @@ export default {
     	goodsLis : common.getJsonLocal("goodsLis") || ''
     }
   },
-  beforeCreate(){
+  created() {	
   	var self = this;
   	self.$store.dispatch('changeUserInfo',this);
   	self.$store.dispatch('changeRedpackInfo',this);
@@ -101,9 +116,7 @@ export default {
   		common.setJsonLocal("goodsLis",data);
 	    self.goodsLis = data;
 	});
-  },
-  created() {	
-  	 this.countDown();
+  	this.countDown();
   },
   filters:{
   	
@@ -165,7 +178,6 @@ export default {
 		  duration: 100000,
 		  iconClass: 'ic-toast-success'
 		});
-		//location.href = 'http://192.168.1.114:8080/redpackPK/views/redpackPK.html'
 	}
   }
 }

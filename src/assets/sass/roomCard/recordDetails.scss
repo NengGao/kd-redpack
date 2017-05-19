@@ -50,31 +50,44 @@
       height:toRem(52px);
       line-height: toRem(52px);
       position: relative;
-      background: #f7f7f7;
       padding: 0 $padding;
       @include flex-pack-justify();
+      @include flex-pack-center();
       span:nth-child(1){
         color: #999999;
       }
       .rank-host{
         position: relative;
         img{
-          height: toRem(20px);
-          width: toRem(20px);
+          height: toRem(40px);
+          width: toRem(40px);
           border-radius: 100%;
         }
         span{
           color: #333333;
+          margin-left: 0.5rem;
           em{
             color: #ff2739;
           }
         }
       }
     }
+    .rank_p{
+      span{
+        font-size: toRem(12px);
+        color: #999999;
+      }
+      span:nth-of-type(2){
+        text-align: left;
+      }
+      span:nth-of-type(3){
+        text-align: right;
+      }
+    }
     .rank-list{
       padding: 0 $padding 0.5rem $padding;
       box-sizing: border-box;
-      background: #f7f7f7;
+      background: #fff;
       .rank-li{
         height: toRem(48px);
         @include flex-pack-justify();
@@ -82,14 +95,28 @@
           .ic-rank{
             width: toRem(18px);
             height: toRem(20px);
+            line-height: toRem(20px);
+            text-align: center;
+            color: #999;
+          }
+          .ic-rank-1{
             background: no-repeat toRem(0px) 0 url(/static/images/roomCard/ic_rank_box.png);
+            background-size: toRem(97px);
+          }
+          .ic-rank-2{
+            background: no-repeat toRem(-18px) 0 url(/static/images/roomCard/ic_rank_box.png);
+            background-size: toRem(97px);
+          }
+          .ic-rank-3{
+            background: no-repeat toRem(-36px) 0 url(/static/images/roomCard/ic_rank_box.png);
             background-size: toRem(97px);
           }
           .rank-head-img{
             width: toRem(40px);
             height: toRem(40px);
             border-radius: 100%;
-            margin: 0 0.5rem;
+            margin-left: 1.8rem;
+            margin-right: 1rem;
           }
           .rank-name{
             font-size: toRem(16px);
@@ -104,6 +131,17 @@
         }
       }
     }
+  }
+}
+.myTotal{
+  height: toRem(40px);
+  line-height: toRem(40px);
+  text-align: center;
+  font-size: toRem(16px);
+  color: #C47356;
+  background-color: #FBDCBE;
+  em{
+    color:#ff2739;
   }
 }
 .share-btn{

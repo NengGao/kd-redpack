@@ -1,0 +1,274 @@
+@charset 'utf8';
+
+@import "../config.scss";
+@import "../icon.scss";
+@import "../dialog.scss";
+@import "../animations.scss";
+
+.content{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  .setRoom-Box{
+    height: toRem(48px);
+    padding: 0 $padding;
+    box-sizing: border-box;
+    background: #ffffff;
+    position: relative;
+    border-bottom: $border;
+    .setRoom-left{
+      @include setfont(toRem(16px),#3d3d3d,toRem(16px));
+      em{
+        color: #ed1126;
+      }
+    }
+
+    .setRoom-right{
+      @include setfont(toRem(16px),#6b6b6b,toRem(16px));
+      position: absolute;
+      right:toRem(16px);
+      top:toRem(16px);
+    }
+    .set-right{
+      right: 0.4rem;
+    }
+    &:active{
+      background: $bodyBg;
+    }
+  }
+  .reward-Box{
+    @include flex-pack-justify();
+    height: toRem(64px);
+    padding-left: toRem(16px);
+    box-sizing: border-box;
+    background: #ffffff;
+    position: relative;
+    border-bottom: $border;
+    .setRoom-left{
+      @include setfont(toRem(16px),#3d3d3d,toRem(16px));
+      em{
+        color: #ed1126;
+      }
+    }
+    .reward-text{
+      @include setfont(toRem(14px),#999,toRem(16px));
+    }
+    .ic-arrow-rg{
+      margin-right: 0.5rem;
+    }
+  }
+  .room-language{
+    height: toRem(80px);
+    background-color: #ffffff;
+    padding:$padding;
+    box-sizing: border-box;
+    .title{
+      @include setfont(toRem(16px),#3d3d3d,toRem(24px));
+    }
+    .input-language{
+      border: 0;
+      height: toRem(32px);
+      font-size: toRem(16px);
+      width: 100%;
+    }
+  }
+  .margin-Top{
+    margin-top: toRem(8px);
+  }
+  p{
+    @include setfont(toRem(14px),#6b6b6b,toRem(20px));
+    padding-left: $padding;
+    text-align: justify;
+  }
+  .create-room-btn{
+    display: block;
+    @include setBtn(toRem(328px),toRem(48px),toRem(19px),#fff,#ff3c4c);
+    margin: 1.15rem auto;
+  }
+}
+.rule-box{
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background: #ffffff;
+  z-index: 9999;
+  .rule-title{
+    @include setfont(toRem(19px),#333,toRem(59px));
+    height: toRem(59px);
+    padding: 0 $padding;
+  }
+  .rule-choose{
+    position: relative;
+    height: toRem(64px);
+    border-top: $border;
+    padding: 0 $padding;
+    box-sizing: border-box;
+    .rule-main{
+      margin-top: 1rem;
+      .active{
+        color: #f22435!important;
+      }
+      p:nth-of-type(1){
+        @include setfont(toRem(16px),#6b6b6b,1.5rem);
+      }
+      p:nth-of-type(2){
+        @include setfont(toRem(14px),#999,1.2rem);
+      }
+    }
+    .ic-choose{
+      position: absolute;
+      top: 1.2rem;
+      right: 0.5rem;
+    }
+    &:active{
+      background: $bodyBg;
+    }
+  }
+  .ic-close-gray{
+    position: absolute;
+    right: 0.5rem;
+    top: 0.4rem;
+    &:active{
+      opacity: 0.6;
+    }
+  }
+}
+.md-game-play{
+  z-index: 999;
+  border-radius: 0.3rem;
+  .md-content{
+    padding: $padding;
+    background: #ffffff;
+    box-sizing: border-box;
+  }
+  .title{
+    @include setfont(toRem(19px),$fontColor,toRem(24px))
+  }
+  .text{
+    color: #999999;
+    font-size: toRem(14px);
+  }
+  .get-reward{
+    @include flex-pack-center();
+    height: toRem(48px);
+    border: 0.1rem solid $bgColor;
+    border-radius: 0.3rem;
+    margin: 1rem auto;
+    .number{
+      width: toRem(150px);
+      height: toRem(40px);
+      border: 0;
+      font-size: toRem(16px);
+      text-align: center;
+    }
+    .reward-number{
+      width: 100%;
+      height: toRem(40px);
+      border: 0;
+      font-size: toRem(16px);
+      text-indent: 0.8rem;
+    }
+    em{
+      color: #666666;
+      font-size: toRem(16px);
+    }
+  }
+  .confirm-btn{
+    @include setBtn(100%,toRem(48px),toRem(19px),#fff,$red)
+  }
+  .reward-confirm-btn{
+    @include setBtn(100%,toRem(48px),toRem(19px),#fff,#d1d1d1)
+  }
+  .changeBg{
+    background: #ff3c4c!important;
+  }
+}
+//额外奖励
+.extra-reward{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: #ffffff;
+  padding: $padding 0;
+  box-sizing: border-box;
+  z-index: 998;
+  .extra-reward-title{
+    @include setfont(toRem(19px),$fontColor,toRem(24px));
+    padding: 0 $padding;
+    margin-bottom: 1.5rem;
+  }
+  .extra-reward-text{
+    @include setfont(toRem(14px),#999,toRem(14px));
+    border-bottom: $border;
+    padding: 0.5rem $padding 1rem $padding;
+  }
+  .reward-type{
+    padding: 0 $padding;
+    height: toRem(60px);
+    @include flex-pack-justify();
+    border-top: $border;
+    .left-content{
+      .choose-type{
+        height: toRem(24px);
+        width: toRem(24px);
+        background-color: #ebebeb;
+      }
+      .nameBox{
+        margin-left: 0.5rem;
+      }
+      p:nth-of-type(1){
+        @include setfont(toRem(16px),#7a7a7a,1.5rem)
+      }
+      p:nth-of-type(2){
+        @include setfont(toRem(14px),#999,1.5rem)
+      }
+      .font-active{
+        color: #ff3c4c!important;
+      }
+      .active{
+        background: no-repeat toRem(-84px) 0 url(/static/images/roomCard/ic_rank_box.png);
+        background-size: toRem(110px);
+      }
+    }
+    .right-content{
+      position: relative;
+      span{
+        @include setfont(toRem(16px),#e78f4b,1.5rem)
+      }
+
+      .tap-edit{
+        position: absolute;
+        background: rgba(78,78,78,0.9);
+        text-align: center;
+        line-height: 1.8rem;
+        width: 5.8rem;
+        top:-2.6rem;
+        left: -0.8rem;
+        border-radius: 0.3rem;
+        span{
+          position:absolute;
+          @include triangle(0.5rem,rgba(78,78,78,0.9));
+          bottom: -0.4rem;
+          left: 2.6rem;
+        }
+        em{
+          @include setfont(toRem(14px),#fff,1.5rem);
+          text-align: center;
+        }
+      }
+    }
+  }
+  .ic-close-gray{
+    position: absolute;
+    right: 0.4rem;
+    top: 0.6rem;
+  }
+}
+.mask-rule{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 999;
+  background-color: #151313;
+  opacity: .7
+}

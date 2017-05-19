@@ -6,8 +6,43 @@
 @import "../redpack.scss";
 @import "../animations.scss";
 
+
+.moreLis{
+    width: 8rem;
+    z-index: 9;
+    background: #542825;
+    position: absolute;
+    bottom: -9rem;
+    right: 0.8rem;
+    text-align: center;
+    border-radius: toRem(4px);
+    color: #eb9e52;
+    li{
+        line-height: toRem(40px);
+        border-bottom: solid 0.1rem #6f3e3f;
+        &:active{
+            opacity: 0.8;
+        }
+    }
+    &:before{
+        content: '';
+        position: absolute;
+        right: toRem(12px);
+        top: toRem(-6px);
+        font-size: 0;
+        line-height: 0;
+        border-width: toRem(6px);
+        border-color: #542825;
+        border-top-width: 0;
+        border-style: dashed;
+        border-bottom-style: solid;
+        border-left-color: transparent;
+        border-right-color: transparent;
+    }
+}
 .inform{
-    width: 100%;
+    width: 96%;
+    padding-left: 4%;
     height: toRem(48px);
     background: #542825;
     .more{
@@ -15,92 +50,273 @@
         height: toRem(48px);
         background: no-repeat center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAAAZlBMVEUAAACWKSSWKSSWKSSWKSSWKSSWKSSWKSSWKSSWKSSWKSSWKSSWKSSWKSSWKSSWKSTsnlL0plqwSzLjjk/McELQdUSoQS7kk07fik7xolfql1OkOiu9WzqcMCerRTDUe0fCZD3chUybgB4CAAAAD3RSTlMAwxjxzT8PsqfilXxyVUgZvrPZAAAB/klEQVRIx5SSSYKCMBREE0BEGYqfBGQW73/JDh+wVUDhrVikqCER6/hJGHgXF3AvXhAmvtiNE0l8ICNnl/R0xirn02+pxCbyu9wJMFE35lGVRGX1ME2NieBL+NgFk5uK3qhMDsaNt7RXMKoYjmeNqlugrVWTDb8qFJjr+u3I0dVKtenwRme0lY/u0l+p68HSGivtsUJv5aaFxXMWvqytNVGGDTIiXbP601tyupSzrcONUu4jV7ZSJd3xlTuVarFazL7lMvIyesne8ctY7tA3Ze1PdTr0dv9H49es58y/kmt+6c/3DIuhosUeCjKwnF6Wzoly7GE+KV+M9Vx4T+2CrZ+NFWkw6pZuclNgNKm5tTMW6cGwdlMNph+th8Ej7qGxXwzNraNpLkMG+2PzcZ7Mh6WiDgfoqILFF8mU+hAV1QASEQJoKMMhMmoAhCKYvg/RcOlAeHxRCodQ9ADgictU4RA1L3YRLoCSWhy5KrRUAnAFLETAkUcyK/5KL3ccgEEYhopKndulUjNw/2uiyBsZiPwY2CJ+wX52iyNnd9tvbhtdmPtUfz6V2yRfNglqT/Qx0JckYoBkCAkgkV5P9LXQTexmM7rHMDqdevYtduaJN3OPnrmHzJ1hBQcajaHqE0qpdlQA7EPchfGRgytHZg7rNSZElJgAAwqPRjyUoTi4ALvOscuv6YUFAAAAAElFTkSuQmCC);
         background-size: 60%;
+        position: relative;
+    }
+    .inform-info{
+        width: 90%;
+        padding-left: 10%;
+        height: toRem(32px);
+        line-height: toRem(32px);
+        border-radius: toRem(16px);
+        margin: toRem(8px) auto;
+        background: #422021;
+        overflow: hidden;
+        color: #eb9e52;
+        position: relative;
+        &:after{
+            width: toRem(35px);
+            height: toRem(30px);
+            background: no-repeat center url(/static/images/roomCard/ic_notice.gif);
+            background-size: 1rem;
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        li{
+
+        }
+    }
+}
+
+.game-info{
+    width: toRem(328px);
+    height: auto;
+    padding: 3rem 0 1rem 0;
+    margin: 4rem auto 1.5rem auto;
+    background: #fff;
+    border-radius: toRem(4px);
+    position: fixed;
+    top: 7.5rem;
+    left: 50%;
+    opacity: 0.3;
+    margin-left: toRem(-164px);
+    z-index: 0;
+    .owner{
+        width: toRem(65px);
+        border: solid toRem(5px) #fff;
+        position: absolute;
+        left: 50%;
+        top: -2.4rem;
+        border-radius: 50%;
+        margin-left: toRem(-37.5px);
+        img{
+            width: toRem(65px);
+            height: toRem(65px);
+            border-radius: 50%;
+        }
+        &:after{
+            content: '';
+            position: absolute;
+            display: block;
+            width: 2.2rem;
+            height: 2rem;
+            background: no-repeat toRem(-88px) 0 url(/static/images/roomCard/ic_rank_box.png);
+            background-size: toRem(160px);
+            right: -0.2rem;
+            top: -0.8rem;
+        }
+    }
+    .owner-name{
+        text-align: center;
+        font-size: toRem(16px);
+        line-height: 1.4rem;
+    }
+    .owner-account{
+        width: 90%;
+        margin: 0 auto;
+        color: #999;
+        text-align: center;
+    }
+    .game-tips{
+        width: toRem(300px);
+        height: 1.8rem;
+        margin: 0.8rem auto 0.4rem auto;
+        background: no-repeat 0.4rem toRem(-50px) url(/static/images/roomCard/ic_roomCard.png);
+        background-size: toRem(290px);
+    }
+    .game-rule{
+        width: toRem(295px);
+        margin: 0 auto;
+        line-height: 1.4rem;
+        text-align: center;
+        color: #ba5c58;
+    }
+    .game-explain{
+        width: toRem(290px);
+        color: #666;
+        line-height: 1.5rem;
+        margin: 0.6rem auto 0.3rem auto;
+    }
+    .game-award{
+        color: #fa9d3b;
+        font-size: toRem(12px);
+        width: toRem(290px);
+        line-height: 1.7rem;
+        margin: 0 auto;
     }
 }
 .content{
     overflow-x: hidden;
     overflow-y: hidden;
     flex-direction: column;
+    z-index: 1;
+    position: relative;
     .scroll{
         display: block;
-        padding-bottom: 1rem;
+        padding: 1rem 0 2rem 0;
         width: 100%;
         height: auto;
-        .game-info{
+        .rank-box{
             width: toRem(328px);
-            height: auto;
-            padding: 3rem 0 1rem 0;
-            margin: 4rem auto 1.5rem auto;
-            background: #fff;
-            border-radius: toRem(4px);
-            position: relative;
-            .owner{
-                width: toRem(65px);
-                border: solid toRem(5px) #fff;
+            background: #ffffff;
+            border-radius: 0.3rem;
+            margin: 3.5rem auto;
+            .rank-head-box{
+              height: toRem(90px);
+              border-bottom: 0.1rem dotted $bodyBg;
+              padding: $padding;
+              box-sizing: border-box;
+              font-size: toRem(16px);
+              p{
+                text-align: center;
+                @include setfont(toRem(14px),#999999,1.8rem)
+              }
+              .myScore{
+                text-align: center;
+                @include setfont(toRem(28px),#ff2739,2.5rem)
+              }
+            }
+            .rank-title{
+              width: toRem(250px);
+              height: toRem(56px);
+              background: center no-repeat url(/static/images/roomCard/rank_title_bg.png);
+              background-size: 100%;
+              margin: -2.5rem auto 0 auto;
+              position: relative;
+              text-align: center;
+              .rank-num-room{
                 position: absolute;
-                left: 50%;
-                top: -2.4rem;
-                border-radius: 50%;
-                margin-left: toRem(-37.5px);
+                bottom: 1.1rem;
+                width: 100%;
+                span{
+                  @include setfont(toRem(12px),#fff,1rem);
+                }
+                span:nth-of-type(1){
+                  margin-right: 1rem;
+                }
+              }
+
+            }
+            .rank-host{
+                width: 12rem;
+                position: relative;
+                margin: 0 auto;
+                text-align: center;
+                .ic_hat{
+                    left: 1.70rem;
+                    top: -0.36rem;
+                }
                 img{
-                    width: toRem(65px);
-                    height: toRem(65px);
-                    border-radius: 50%;
+                  height: toRem(40px);
+                  width: toRem(40px);
+                  border-radius: 100%;
+                  margin-right: 0.5rem;
+                  display: inline;
                 }
-                &:after{
-                    content: '';
-                    position: absolute;
-                    display: block;
-                    width: 2.2rem;
-                    height: 2rem;
-                    background: no-repeat toRem(-88px) 0 url(/static/images/roomCard/ic_rank_box.png);
-                    background-size: toRem(160px);
-                    right: -0.2rem;
-                    top: -0.8rem;
+                span{
+                    display: inline;
+                    color: #333333;
+                    em{
+                        color: #ff2739;
+                    }
                 }
+              }
+            .rank-h1{
+              height:toRem(52px);
+              line-height: toRem(52px);
+              position: relative;
+              padding: 0 $padding;
+              background: #fff;
+              @include flex-pack-justify();
+              color:#999;
             }
-            .owner-name{
-                text-align: center;
-                font-size: toRem(16px);
-                line-height: 1.4rem;
+            .rank-list{
+              
+              box-sizing: border-box;
+              background: #fff;
+              .active{
+                  background: #fff0e0;
+              }
+              .rank-li{
+                padding: 0.3rem $padding 0.3rem $padding;
+                height: toRem(48px);
+                @include flex-pack-justify();
+                .rank-left{
+                  .ic-rank{
+                    width: toRem(18px);
+                    height: toRem(20px);
+                    line-height: toRem(20px);
+                    text-align: center;
+                    color: #999;
+                    margin-left: 0.4rem;
+                  }
+                  .ic-rank-1{
+                    background: no-repeat toRem(0px) 0 url(/static/images/roomCard/ic_rank_box.png);
+                    background-size: toRem(97px);
+                  }
+                  .ic-rank-2{
+                    background: no-repeat toRem(-18px) 0 url(/static/images/roomCard/ic_rank_box.png);
+                    background-size: toRem(97px);
+                  }
+                  .ic-rank-3{
+                    background: no-repeat toRem(-36px) 0 url(/static/images/roomCard/ic_rank_box.png);
+                    background-size: toRem(97px);
+                  }
+                  .rank-head-img{
+                    width: toRem(35px);
+                    height: toRem(35px);
+                    border-radius: 100%;
+                    margin: 0 0.5rem 0 4rem;
+                  }
+                  .rank-name{
+                    font-size: toRem(16px);
+                    color: #333333;
+                    max-width: 10rem;
+                    @include overEllipsis();
+                  }
+                }
+                .rank-right{
+                  text-align: right;
+                  color: #666666;
+                  font-size: toRem(17px);
+                  p{
+                      color: $red;
+                  }
+                  span{
+                      font-size: toRem(12px);
+                      color: #999;
+                  }
+                }
+              }
             }
-            .owner-account{
-                color: #999;
-                text-align: center;
-            }
-            .game-tips{
-                width: toRem(300px);
-                height: 1.8rem;
-                margin: 0.8rem auto 0.4rem auto;
-                background: no-repeat 0.4rem toRem(-50px) url(/static/images/roomCard/ic_roomCard.png);
-                background-size: toRem(290px);
-            }
-            .game-rule{
-                width: toRem(295px);
-                margin: 0 auto;
-                line-height: 1.4rem;
-                text-align: center;
-                color: #ba5c58;
-            }
-            .game-explain{
-                width: toRem(290px);
-                color: #666;
-                line-height: 1.5rem;
-                margin: 0.6rem auto 0.3rem auto;
-            }
-            .game-award{
-                color: #fa9d3b;
-                font-size: toRem(12px);
-            }
-            .game-award{
-                width: toRem(290px);
-                line-height: 1.7rem;
-                margin: 0 auto;
-            }
-        }
+          }
     }
 }
-.start-box{
+
+.point{
+    width: toRem(60px);
+    height: toRem(60px);
+    margin: 0 auto 0.5rem auto;
+    background: no-repeat toRem(-186px) toRem(-80px) url(/static/images/roomCard/ic_roomCard.png);
+    background-size: toRem(290px);
+    position: fixed;
+    right: 1rem;
+    bottom: 8rem;
+    z-index: 100;
+}
+.btn-box{
     height: toRem(55px);
     background: #fff;
     color: #fff;
@@ -120,7 +336,73 @@
         margin: toRem(7px) auto;
         border-radius: toRem(3px);
     }
+    .share{
+        width: 79%;
+        height: toRem(38px);
+        background: #fff;
+        color:$red;
+        border:solid 0.1rem $red;
+        margin: toRem(7px) auto;
+        border-radius: toRem(3px);
+    }
+    .save{
+        width: 79%;
+        height: toRem(38px);
+        background: #e52838;
+        border:solid 0.1rem $red;
+        margin: toRem(7px) auto;
+        border-radius: toRem(3px);
+    }
+    .again{
+        width: 79%;
+        height: toRem(38px);
+        background: #e52838;
+        margin: toRem(7px) auto;
+        border:solid 0.1rem $red;
+        border-radius: toRem(3px);
+    }
 }
+.md-integral{
+    width: toRem(285px);
+    .md-content{
+        background: #fff;
+        padding: 3rem 0 0.5rem 0;
+        .integral-img{
+            width: toRem(94px);
+            height: toRem(94px);
+            margin: 0 auto 0.5rem auto;
+            background: no-repeat toRem(-85px) toRem(-75px) url(/static/images/roomCard/ic_roomCard.png);
+            background-size: toRem(290px);
+        }
+        .integral-title{
+            font-size: toRem(16px);
+            width: 100%;
+            text-align: center;
+        }
+        .integral-tips{
+            width: 90%;
+            text-align: center;
+            color: #999;
+            line-height: 1.4rem;
+            margin: 0.5rem auto;
+            em{
+                color: $red;
+            }
+        }
+        .integral-btn{
+            width: toRem(495px/2);
+            height: toRem(94px/2);
+            background: #ff2739;
+            color: #fff;
+            font-size: toRem(16px);
+            display: block;
+            margin: 0.5rem auto;
+            border: 0;
+            border-radius: toRem(4px);
+        }
+    }
+}
+
 .footer{
     width: 100%;
     height: toRem(60px);
@@ -128,10 +410,49 @@
     position: relative;
     bottom: 0;
     z-index: 10;
+    .integral-tips{
+        position: absolute;
+        left: 1rem;
+        bottom: 3.8rem;
+        background: rgba(0,0,0,0.9);
+        width: toRem(110px);
+        height: toRem(38px);
+        border-radius: 0.3rem;
+        .title{
+            color: #fff;
+            font-size: toRem(12px);
+            width: 100%;
+            text-align: center;
+            padding-top: 0.2rem;
+            line-height: 1.2rem;
+        }
+        .num{
+            width: 100%;
+            text-align: center;
+            color: #ff9326;
+        }
+        &:after{
+            content: '';
+            font-size: 0;
+            line-height: 0;
+            border-width: toRem(10px);
+            border-color: rgba(0,0,0,0.9);
+            border-bottom-width: 0;
+            border-style: dashed;
+            border-top-style: solid;
+            border-left-color: transparent;
+            border-right-color: transparent;
+            position: absolute;
+            bottom: toRem(-5px);
+            left: 50%;
+            margin-left: toRem(-8px);
+        }
+    }
     .integral{
         height: toRem(60px);
-        width: toRem(80px);
+        width: toRem(90px);
         padding-left: 0.6rem;
+        position: relative;
         .title{
             line-height: 1.2rem;
             padding-top: 0.9rem;
@@ -139,8 +460,19 @@
         }
         .number{
             color: #d9822b;
-            line-height: 1.4rem;
+            height: 1.8rem;
+            line-height: 1.8rem;
+            overflow: hidden;
             padding-left: 0.08rem;
+        }
+        .add-point{
+            position: absolute;
+            right: 0.6rem;
+            bottom: 0.4rem;
+            width: 1.42857rem;
+            height: 2rem;
+            background: no-repeat center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAAQlBMVEUAAAD/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX/wTX////cxufUAAAAFHRSTlMA+IZI8u3X0buyqVlSCyOERySYlN4f+EgAAADUSURBVDjLlZVbEoMgDEUDqfJQFNt0/1utM62ORcHc830+EkJuqCBlG/rOmK4PlhO14GjkgIlcVUcnJ9x4qU5eLvHT2R0eUuExlO4sDeZ/9yVNnkfXyg32UK/cstc9lb29V8outzfxci+L/81CNLJ8p+N0sqOVLDpZeJWjVo5EyWhlkyiLVpZMVi9bCno5UK+Xe+p2o8pmdGT0soFkqAyoQejpsKGwXmboI2FflFgrM7JW0MIiUYCEzILEFxKMSOSCYY6fiZ2ldoAW+LThR7MkceMcfwBkcXUkiPLycgAAAABJRU5ErkJggg==);
+            background-size: 86%;
         }
     }
     .chatInp{
@@ -154,7 +486,7 @@
                 display: block;
             }
             .feedIn{
-                width: auto;
+                width: toRem(160px);
                 line-height: toRem(35px);
                 padding-left: toRem(15px);
                 border-radius: toRem(17px) 0 0 toRem(17px);
@@ -163,7 +495,7 @@
             }
             .ic-face{
                 display: block;
-                width: toRem(30px);
+                width: toRem(35px);
                 height: toRem(35px);
                 padding-right: toRem(8px);
                 background: no-repeat center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAANlBMVEV8Z2kAAAB8Z2l8Z2l8Z2l8Z2l8Z2l8Z2l8Z2l8Z2l8Z2l8Z2l8Z2l8Z2l8Z2l8Z2l8Z2l8Z2l6vrqqAAAAEnRSTlOAAHsFEnVNOAlFLHBkaVUZaCNcwbPyAAAA30lEQVQ4y42T3RKEIAiFCZDyp7be/2V3sTXWcnTPTQHfIKMHmC5RkOQQXZJAlr0AFoRLKHwDyCNUQk+/AO/w0M4GvBw05F4FYKvXBJ8Aaf+mVsqA15nmZZnLnBZ5BVj/Zj1u/tYtQv4AoqlFU0sBLJIJCHsAEoS66T0KIPVY90ggQVcJXB9wgH0Ah8DwiPGQ0gckX1Scmor5ogj106qHfNXnY0V61kkbSHnu7Qls+bmLYcDXVcuq5VbQHlT134rlzLQxWD3EYtrK9tEfTMSHj5XtVbw2LM2j1ftzeYfr/wY4TwZKq+cayAAAAABJRU5ErkJggg==);
@@ -171,13 +503,74 @@
                 background-size: 1.3rem;
             }
             .send{
-                background: #962924;
-                width: toRem(50px);
-                padding: 0 0.4rem 0 0.1rem;
+                background: #54211f;
+                width: toRem(57px);
+                padding-right: toRem(3px);
                 border-radius: 0 toRem(17px) toRem(17px) 0;
                 font-size: toRem(12px);
+                color: #e2b7b7;
+            }
+            .active{
+                background: #cc3642;
                 color: #fff;
             }
         }
     }
+}
+
+.hotActivity{
+  position: absolute;
+  bottom: 0;
+  background: #ffffff;
+  width: 100%;
+  z-index: 999;
+  .title{
+    padding: 0 $padding;
+    @include setfont(toRem(19px),#333,toRem(112px)/2)
+  }
+  .activity-box{
+    height: toRem(64px);
+    border-bottom: $border;
+    position: relative;
+    padding: 0 $padding;
+    box-sizing: border-box;
+    img{
+      width: toRem(40px);
+      height: toRem(40px);
+      border-radius: 0.5rem;
+      margin-top: toRem(12px);
+    }
+    .activity-text{
+      margin-top: toRem(12px);
+      margin-left: 0.5rem;
+      p:nth-of-type(1){
+        @include setfont(toRem(16px),#333,1.5rem);
+      }
+      p:nth-of-type(2){
+        @include setfont(toRem(16px),#999,1.5rem);
+      }
+    }
+    .plan{
+      position: absolute;
+      right:toRem(16px);
+      top:toRem(22px);
+      font-size: toRem(16px);
+      color: #666666;
+      span{
+        color: #999999;
+      }
+    }
+    .toGet{
+      position: absolute;
+      right:toRem(16px);
+      top:toRem(16px);
+      border-radius: 1rem!important;
+      @include setBtn(toRem(64px),toRem(32px),toRem(16px),#fff,#ff2739);
+    }
+  }
+  .ic-close-gray{
+    position: absolute;
+    top:0.7rem;
+    right: 0.5rem;
+  }
 }

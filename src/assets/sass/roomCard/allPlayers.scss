@@ -2,8 +2,207 @@
 
 @import "../config.scss";
 @import "../icon.scss";
+@import "../animations.scss";
+@import "../dialog.scss";
 
+.header{
+   position: relative;
+   z-index: 9999;
+  .header-left{
+    .ic-close-white{
+      &:active{
+        background-color: #e01526;
+      }
+    }
+    .play-btn{
+      &:active{
+        opacity:0.6;
+      }
+      span{
+        font-size: toRem(16px);
+        font-weight: 600;
+        position: relative;
+        top: 0.1rem;
+      }
+      em{
+        @include triangle(0.55rem,#fff);
+        position: relative;
+        left:0.5rem;
+        top:0.6rem;
+      }
+    }
+  }
+  .header-right{
+    font-size: toRem(16px);
+    &:active{
+      opacity: 0.6;
+    }
+  }
+}
 .content{
   overflow-x: hidden;
   overflow-y: scroll;
+  .ic-clean2{
+    position: fixed;
+    bottom: 5rem;
+    right: 1.5rem;
+  }
+  .input-info{
+    width: toRem(330px);
+    height: toRem(38px);
+    background: #ffffff;
+    margin: 0.8rem auto;
+    border-radius: 0.3rem;
+    @include flex-pack-center();
+    span{
+      color: #ccc;
+    }
+  }
+  .play-box{
+    background-color: #ffffff;
+    .active{
+        margin-left: -2.8rem;
+    }
+    .play-list{
+      height: toRem(64px);
+      border-bottom: $border;
+      padding:0 $padding;
+      box-sizing: border-box;
+      @include flex-pack-justify;
+      transition: all 0.3s;
+      overflow-x: visible;
+      position: relative;
+      .play-left{
+        img{
+          width: toRem(40px);
+          height: toRem(40px);
+          border-radius: 100%;
+        }
+        .play-info{
+          width: 7.2rem;
+          margin-left: 0.5rem;
+          p:nth-of-type(1){
+            max-width: 7.2rem;
+            @include setfont(toRem(16px),#333,1.8rem);
+            @include overEllipsis();
+          }
+          p:nth-of-type(2){
+            @include setfont(toRem(14px),#999,1.2rem)
+          }
+        }
+      }
+      .play-right-box{
+        height:100%;
+        position: relative;
+        .play-middle{
+          @include setfont(toRem(16px),#ff2739,1.2rem);
+          position: relative;
+          right: toRem(32px);
+        }
+        .play-right{
+          height: 100%;
+          margin-left: 1.15rem;
+          .ic-add{
+            margin-right: toRem(15px);
+          }
+          .ic-clean{
+            margin-left: toRem(15px);
+          }
+          .play-input{
+            width: toRem(103px);
+            background-color: #f5f1f0;
+            border-radius: 0.3rem;
+            height:toRem(28px);
+            margin: 0 0.8rem;
+            padding: 0 0.5rem;
+            box-sizing: border-box;
+            em{
+              color: #ff2739;
+              font-size: toRem(16px);
+              line-height: toRem(16px);
+            }
+            .add-num{
+               border: 0;
+               width: 100%;
+               height: 100%;
+               background-color: #f5f1f0;;
+               color: #333;
+               font-size: toRem(16px);
+            }
+          }
+        }
+        .ic-yes{
+          margin-left: toRem(23px);
+          margin-right: toRem(16px);
+        }
+      }
+    }
+  }
+}
+
+.filter-box{
+   background: #ffffff;
+   position: absolute;
+   top:toRem(55px);
+   width: 100%;
+   z-index: 9999;
+  .filter-list{
+    padding: 0 $padding;
+    box-sizing: border-box;
+    height:toRem(48px);
+    border-bottom: $border;
+    color: #666;
+    font-size:toRem(16px);
+    line-height: toRem(48px);
+    &:active{
+      background: $bodyBg;
+    }
+  }
+  .active{
+    color: #ff2739;
+  }
+}
+
+.md-point{
+    margin-top: -3rem;
+    .md-content{
+
+        background: #fff;
+        padding-bottom: 0.6rem;
+        .title{
+            font-size: toRem(18px);
+            padding-top: 1rem;
+            line-height: 2rem;
+            padding-left: 1.2rem;
+        }
+        .inp{
+            width: 19rem;
+            display: block;
+            padding-left: 0.6rem;
+            margin: 0.8rem auto;
+            height: toRem(42px);
+            border: solid 0.1rem #ff3c4c;
+            border-radius: 0.4rem;
+        }
+        .tips{
+            width: 19.5rem;
+            color: #999;
+            text-align: justify;
+            font-size: toRem(12px);
+            margin: 0.5rem auto;
+            em{
+                color: $red;
+            }
+        }
+        .btn{
+            width: 19.8rem;
+            height: 3rem;
+            border: 0;
+            display: block;
+            background: $red;
+            border-radius: 0.3rem;
+            color: #fff;
+            margin: 0.5rem auto;
+        }
+    }
 }

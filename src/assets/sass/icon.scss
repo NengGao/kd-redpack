@@ -1,5 +1,13 @@
 
-
+.owner-identify{
+   position: absolute;
+   width: 80%;
+   height: 1.1rem;
+   left: 10%;
+   bottom: 0;
+   background: no-repeat center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEMAAAAdCAMAAADGkCHGAAAAmVBMVEUAAAD/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/////QE7/sbX/iI7/3+H/pKj/6uv/ycv/vcD/aHH/VWD/1Nb/eID/9fX/lpwvfLj8AAAAI3RSTlMA+/CBEOG1r6gpFs1u98nBoZVyZ1tOOjUvHQgE1Hfq5YpgQrFERJoAAAG+SURBVDjLldVnb8MgEAZgwDtNs5udrgOMRxqn///HlWCSgHefD5Zl2a+Ou5OMmo3WX87Mn3iEYMCEeBN/5nytR2ig/bfjf0CzD9/53vcF7BbTV+j2Ol3s2gPc8QsM8zJ2GxOimVXBD9ScmVHNLKolbAMMpoT+1iLoBQw42NpjmD8TuJLTlCvwlNEYrJS5Mai3d3hg1MZuz0pFfmYK3L2/6YTDHMDM4OxJUFaPpUZx84OaxhR6MoCXLlTfmEeaujJCzbP7LBqnrGnOLjpBNeOiu6p72pcBJ7Q/VjO4Hm4BSl/GUS5/RBrryKngym3ZYkXOVrHWj0RqstjOSIUkr1pR65F5Pqynu7S2Ub0SG2vaWccSaY75Ok1UNzI+pKcOeviEh0QtdDZstp/IsIC7nMpSC5rpHUu76lggywpDKRUALL3qMwvRnoFXqGLtPdpxFree/BSsTITY3nXdJG+NatwApOzK4us1UWk0TVWDOa2S6YGLmiyJHK38KD+X3c2FSFT1rArIErUYhTBMuEPtNj708zeo2ybE0AWHG9Rv1PGLOJ52aKBoHBCoIsE4Qv9y2K6ccOKp/603CZ3V9oBa/AEkabwIIxy/xgAAAABJRU5ErkJggg==);
+   background-size: 100%;
+}
 .ic-balance{
     width: 2.4rem;
     height: toRem(53px);
@@ -48,6 +56,14 @@
   background: center no-repeat url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdCAMAAABhTZc9AAAAPFBMVEUAAADb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29vb29sLjUvCAAAAE3RSTlMABB3oKamU3d73nK5QPumPb1lIlVkAyAAAAH5JREFUKM9t0UkOAyEAA0FDFjLMZOX/fw1Bivpg97VOliWVV1HofOiH+7jA4GM7Fg4YPI0xubapMDh7Cja8SnBE2NEZTAw6g4nBwDuYGHQGvc/CVgyYwm5DOGJvcHil3mBDwQnhiLCjM+gMJq6gcZf6H423uyYvdF4ovaXEE7+v0hFx/fpkSwAAAABJRU5ErkJggg==);
   background-size: 1.2rem;
 }
+.ic-close-white{
+  display: inline-block;
+  height: toRem(55px);
+  width: toRem(55px);
+  background: center no-repeat url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAV1BMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////+ORg7oAAAAHHRSTlMA/Pn0X1QD9mU9pG1aR/FpS0VBqndyOVGbT0k13JUHtgAAAM9JREFUKM9t0tkSgyAMBdBAFVncdy3//50l6VCk4T7FHMeBGABlWyikWlSwxYu2YMIHtd57Uf2bFqG9wCELqn2IHAEuUv20Aa3psBxR/UNdNMzd4NOQ2WuKjx2pA8pGNsMv0ws7G5ZrtJT5q9EMZDGkK1mPlmuPfbIdWPY+WUElWvOGUgyhNFzikdI1+GWew2FjcCXtyFw+9Ghp9AOd6k42SrLsR+emsxWRF9V8USrSA8s6Wa51sFCw5WypWYONxtWCsvgKS/igxZU/0bieCj7WfRkUEvSfxgAAAABJRU5ErkJggg==);
+  background-size: 1.14rem;
+  vertical-align: middle;
+}
 .ic-choose{
   display: inline;
   padding: 1rem 1.5rem;
@@ -65,10 +81,260 @@
 .ic_hat{
   position: absolute;
   display: block;
-  width: 1rem;
-  height: 1rem;
-  background: no-repeat toRem(-53px) 0 url(/static/images/roomCard/ic_rank_box.png);
-  background-size: toRem(97px);
-  left: 0.6rem;
-  top: 0.4rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  background: no-repeat toRem(-55px) 0 url(/static/images/roomCard/ic_rank_box.png);
+  background-size: toRem(100px);
+  left: 1.5rem;
+  top: -0.2rem;
+}
+
+.ic-wx{
+    display: inline;
+    padding: 1rem 1.25rem;
+    background: no-repeat center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAAyCAMAAAA3KEgwAAAAolBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8ELnaCAAAANXRSTlMA9PAEAnz6+OzNlmMO5dvUglsYEOCmnoxtCMbCiDMhFb24sqyidGdfUDw3Lym8kUtBHT3WRXmEVaEAAAIqSURBVEjHnZXZsqIwFEUPkyKIgEyiyHWe577n/3+tkQomlElI93qy0FUx+yQbaGMct8nU01Gz/VVwGMI/8NjYyNKbuYq+Gf7Bb/QiUnDnA+Rj7zqXDXooZDGWusMlyvDmMneKcvSj0DUW2IV+FskOdjMSzOyOhHiy37SMgetekZBy3XzUzOQdasC6efVgjQTutidIcKAiYmS3PnWfgfHkERKyOnhG3kPFERs4mZ3oNN+ZbBl5ZlYPaArZl8tu0g/vWeugXQ+HhPn6W16iAto12x04icWdpnd7GWBEzyj/krUO1Q/zk7WK6+14s+LXYGW5au/HlocsunOhcl/mrsuC88+SJx2zkN72wU9Ed4m8ErvhRNgQqVHLW6G8t1DMqrZLFJDtUMYG3syQy+BEokzKMqUn9jy22Gtz4MunAWkBE8BsSrn/UwkJSa2uRW6BJSH5sATmUntQYbFX+MIb9afG7Wqxof15DGA2i2nR2+Yk419oe7muT0/cNlzQcQgasJhgN0ktm1/2PVWQfVoJLZ4q11yn/dsin6ECtMpaKBWM3cgFtjCU90xvpjYlMx+rpL0h7qVWszHkr8ltfZ2eLwpySGTrrf4Aw6C7UofNT7WCqA1hp3xr3tABUSmmZOnmVok59+WyCzLkTZKCHEtWyiZ0IG5Px4BOXrEgLBMUyAONaz9AiR8rbi/aIzNWZG6tRvXc4kXwa5RpnzShOlEUNRstnT7O4b95OhZU/AUVGnI1ry5hPQAAAABJRU5ErkJggg==);
+    background-size: 1.75rem;
+}
+.ic-play{
+    display: inline;
+    padding: 1rem 1.25rem;
+    background: no-repeat center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAsCAMAAADGmMENAAAAkFBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+WABnwAAAAL3RSTlMA+vYi4eo2suViBu4CvZ96QiwmHA7xpY3Rq5mTh2hPGQty28mRhG5fWxVRTMyobCtYZKgAAAIXSURBVDjLhNLZjoJAEIXh0yAwyi6yiOsoKs4knvd/u+l00RFMRr8rUvzdcFEwim2Od/JtAVjujDHeiTlzRzHXeGdNyYeYNYwsqQtYRZ1kMGpKPsRUPbSbIr+WEMsvPb5B6xVt3lCkwFxPJZdYU3MgpWgABPTMnMmOmuPoXGL9qO0Smjs8BtBWuJ8oVK3DhesD8N2FPlIritNddwPXo/GDV780PBcjviOf8zHly086L/OWMt5jbO/QaDHx4EBd8XRVHDwwHpNhS9FFEFFH0Ybk6JI5yTkqiuBohseAohreWyHpRVjEFOcDgMOZIl4g8sgQVilbtWooZjnyGUWzkq0qIwxSsoJW2CT8Du3BAlplFsPaMJCtLzlV5mYecIORroGRKY6pDEbTYeISweg51sOILvhHyqcUn7glrdDFB/5fI3W3giAQBQF4XMiLJU1IisofxAvBlPP+b5fURMNuWt+VeLEL58zOzj52KTaNzpQbsaGzUIc1+5vFbnvEGCMlIYu1k2zlLFuaWoQYI6pR84shCxSakApApWkpoNg7dGKSiB0kKTHR8+30JiQpuRF75oWdRDkoNWLPSCeJlH91KS6NOon4HrwckQTtk8ilnlWngybSsd+BxayDDujYZyxKJ4OOnezNlSwq5scj5rkl1lXGZ3Ut8F1xZblkwPF5yaXxWOebi7PFEQdLsqHEL+WQJXZA3rX4T9vlD5eukScDq814AAAAAElFTkSuQmCC);
+    background-size: 1.55rem;
+}
+.ic-search{
+  display: inline;
+  padding: 1rem 1.5rem;
+  background: center no-repeat url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAflBMVEUAAADMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMysrMyspDFPcAAAAAKXRSTlMAA6ubC1Ht4cOn+ubIiHxxbDt3YUoj0LuxoJaSRTAqHBjz2mgTB/K0gnownMcAAAENSURBVDjLvZDbksIgEEQBg4QsScCYxKhZo3vt///BpSwEBGt9s59mmFPNTJObqGnkOLLf4xd5pKJ5g9O6/sznWzd2SJfON9dnqTnX0xU90Gy+bgu3SycA7O/8AZRLtM8OwEfUW1NVkEjUEueTbxvrvyQ3XYCVx61BSxJxoLoda6xBns0AdOGHVTQJr5Mrmd841hFQriyBbQ68A+IpEL7oHn4xuLL2uSbps3CyyIEyhFN8AzydzwB81gfgUtzPqTXY+e50BqSrw17VHFoNgEUe1HqiJpEkgMH4CKx/Ej+dYKVa0/dGjwAygmwqxKpZRvQyID8zoTlBFs2UEIq1vW0SItWLif0TouLkX0Jy8gdg7CRXd54GPAAAAABJRU5ErkJggg==);
+  background-size: 1.4rem;
+}
+.ic-add{
+  display: inline-block;
+  width: toRem(24px);
+  height: toRem(24px);
+  background: center no-repeat url(/static/images/roomCard/ic_add.png);
+  background-size: 100%;
+  &:active{
+    opacity: 0.6;
+  }
+}
+.ic-clean{
+  display: inline-block;
+  width: toRem(24px);
+  height: toRem(24px);
+  background: center no-repeat url(/static/images/roomCard/ic_clean.png);
+  background-size: 100%;
+  &:active{
+    opacity: 0.6;
+  }
+}
+.ic-clean2{
+  display: inline-block;
+  width: toRem(64px);
+  height: toRem(64px);
+  background: center no-repeat url(/static/images/roomCard/ic_clean2.png);
+  background-size: 100%;
+  &:active{
+    opacity: 0.6;
+  }
+}
+.ic-add-white{
+   display: inline-block;
+   width: toRem(24px);
+   height: toRem(24px);
+   background: center no-repeat url(/static/images/roomCard/ic_add_white.png);
+   background-size: 100%;
+   &:active{
+    opacity: 0.6;
+  }
+ }
+.ic-reduce{
+  display: inline-block;
+  width: toRem(24px);
+  height: toRem(24px);
+  background: center no-repeat url(/static/images/roomCard/ic_reduce.png);
+  background-size: 100%;
+  &:active{
+    opacity: 0.6;
+  }
+}
+.ic-reduce-gray{
+  display: inline-block;
+  width: toRem(24px);
+  height: toRem(24px);
+  background: center no-repeat url(/static/images/roomCard/ic_reduce_gray.png);
+  background-size: 100%;
+  &:active{
+    opacity: 0.6;
+  }
+}
+.ic-yes{
+  display: inline-block;
+  width: toRem(24px);
+  height: toRem(24px);
+  background: center no-repeat url(/static/images/roomCard/ic_yes.png);
+  background-size: 100%;
+  &:active{
+    opacity: 0.6;
+  }
+}
+//空页面图标
+.ic-eye{
+  display: block;
+  width: toRem(64px);
+  height: toRem(64px);
+  background: center no-repeat url(/static/images/roomCard/ic_eye.png);
+  background-size: 100%;
+  margin: toRem(55px) auto toRem(8px) auto;
+}
+
+.ic-history{
+  display: inline-block;
+  width: toRem(24px);
+  height: toRem(24px);
+  background: center no-repeat url(/static/images/roomCard/ic-history.png);
+  background-size: 1.3rem;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  position: relative;
+  top: -0.1rem;
+}
+//空页面图
+.ic-no-info{
+  display: block;
+  width: toRem(95px);
+  height: toRem(95px);
+  background: center no-repeat url(/static/images/roomCard/ic_no_info.png);
+  background-size: 100%;
+  margin: toRem(55px) auto toRem(18px) auto;
+}
+
+.ic_del{
+  display: inline-block;
+  width: toRem(24px);
+  height: toRem(24px);
+  background: center no-repeat url(/static/images/roomCard/ic_del.png);
+  padding: 0 0.5rem;
+  background-size: toRem(18px);
+
+  &:active{
+    opacity: 0.6;
+  }
+}
+
+.ic-decrease{
+  display: inline-block;
+  width: toRem(128px/2);
+  height: toRem(88px/2);
+  background: center no-repeat url(/static/images/roomCard/ic_decrease.png);
+  background-size: 100%;
+  &:active{
+    opacity: 0.6;
+  }
+}
+.ic-increase{
+  display: inline-block;
+  width: toRem(128px/2);
+  height: toRem(88px/2);
+  background: center no-repeat url(/static/images/roomCard/ic_increase.png);
+  background-size: 100%;
+  &:active{
+    opacity: 0.6;
+  }
+}
+.ic-success-pay{
+  display: block;
+  width: toRem(140px/2);
+  height: toRem(140px/2);
+  background: center no-repeat url(/static/images/roomCard/ic_success_pay.png);
+  background-size: 100%;
+}
+.ic_cancel_pay{
+  display: block;
+  width: toRem(140px/2);
+  height: toRem(140px/2);
+  background: center no-repeat url(/static/images/roomCard/ic_cancel_pay.png);
+  background-size: 100%;
+}
+.ic_wait_pay{
+  display: block;
+  width: toRem(140px/2);
+  height: toRem(140px/2);
+  background: center no-repeat url(/static/images/roomCard/ic_wait_pay.png);
+  background-size: 100%;
+}
+
+.ic_balance_pay{
+  display: block;
+  width: toRem(80px/2);
+  height: toRem(80px/2);
+  background: center no-repeat url(/static/images/roomCard/ic_balance_pay.png);
+  background-size: 100%;
+}
+.ic_wx_smpay{
+  display: block;
+  width: toRem(80px/2);
+  height: toRem(80px/2);
+  background: center no-repeat url(/static/images/roomCard/ic_wx_smpay.png);
+  background-size: 100%;
+}
+.ic_wx_pay{
+  display: block;
+  width: toRem(80px/2);
+  height: toRem(80px/2);
+  background: center no-repeat url(/static/images/roomCard/ic_wx_pay.png);
+  background-size: 100%;
+}
+.ic_zfb_pay{
+  display: block;
+  width: toRem(80px/2);
+  height: toRem(80px/2);
+  background: center no-repeat url(/static/images/roomCard/ic_zfb_pay.png);
+  background-size: 100%;
+}
+
+.ic_house{
+  display: block;
+  width: toRem(14.5px);
+  height: toRem(14.5px);
+  background: center no-repeat url(/static/images/roomCard/ic_house.png);
+  background-size: 100%;
+}
+.ic_person{
+  display: block;
+  width: toRem(16px);
+  height: toRem(16px);
+  background: center no-repeat url(/static/images/roomCard/ic_person.png);
+  background-size: 100%;
+}
+
+.ic_today_tj{
+  width: toRem(112px/2);
+  height: toRem(64px/2);
+  background: center no-repeat url(/static/images/roomCard/ic_today_tj.png);
+  background-size: 100%;
+  position: absolute;
+  top:0;
+  right:0;
+}
+
+.ic_star{
+  display: inline-block;
+  width: toRem(16px);
+  height: toRem(16px);
+  background: center no-repeat url(/static/images/roomCard/ic_star.png);
+  background-size: 100%;
+}
+.ic_no_star{
+  display: inline-block;
+  width: toRem(16px);
+  height: toRem(16px);
+  background: center no-repeat url(/static/images/roomCard/ic_no_star.png);
+  background-size: 100%;
+}
+.ic_half_star{
+  display: inline-block;
+  width: toRem(16px);
+  height: toRem(16px);
+  background: center no-repeat url(/static/images/roomCard/ic_half_star.png);
+  background-size: 100%;
 }

@@ -8,6 +8,7 @@ Vue.use(Vuex)
 
 const state = {
   	user: common.getJsonLocal("user") || '',
+  	socket : null,
   	redpack:'',
   	welfare: {
   		title : '下个整点福利包',
@@ -17,7 +18,9 @@ const state = {
  	activeRoom: common.getJsonLocal("activeRoom") || ''
 }
 const actions = {
-
+	socket : (context,data) => {
+		context.commit("setSocket",data);
+	},
     changeUserInfo: (context,vm) => {
     	Api.oldLogin(function(data){
     		Api.login(function(data2){
@@ -38,23 +41,41 @@ const actions = {
     },
   	toMessageCenter: (context,data) => {
     	context.commit("setMessageCenter",data);
-  	},  	
-  	//房卡 
+  	},
+  	//房卡
   	roomCardlogin : (context,param) => {
   		Api.roomCardlogin(function(data){
   			context.commit("setUserInfo",data);
-  			Api.gameLobby(function(data){
-  				param.self.roomCard = data;
-		  		common.setJsonLocal("roomCard",data)
-		  	});
-  		},param.oid)
+  			if(param.page == 0){
+	          Api.xzddHome(function(data){
+	            param.self.roomCard.roomCardAmount = data.roomCardAmount;
+	            localStorage.setItem("roomCardAmount",data.roomCardAmount);
+	            param.self.hotArr = data;
+	            param.self.messageList=data.messageList;
+	            common.setJsonLocal("hotArr",data);
+	            common.setJsonLocal("messageList",data.messageList);
+	          })
+	        }else {
+	          Api.recentJoin(function(data){
+	            param.self.roomCard.roomCardAmount = data.roomCardAmount;
+	            param.self.hotArr = data;
+	            common.setJsonLocal("hotArr",data);
+	          })
+	        }
+	       param.callback
+  		},param)
   	},
   	activeRoom : (context,data) => {
   		common.setJsonLocal("activeRoom",data);
     	context.commit("setActiveRoom",data);
-  	},  	
+  	},
+  	
 }
 const getters = {
+	
+	getSocket: state => {
+		return state.socket
+	},
   	getUserInfo: state => {
       return state.user
     },
@@ -69,10 +90,14 @@ const getters = {
     },
  //房卡
  	getActiveRoom : state => {
-  	  return state.activeRoom
+ 		return state.activeRoom
     },
 }
 const mutations = {
+	//ws
+	setSocket :(state,data) =>  {
+		state.socket = data;
+	},
 	//设置用户信息
   	setUserInfo: (state,data) => {
   		state.user = data;
@@ -87,11 +112,11 @@ const mutations = {
     setMessageCenter: (state,toMessageCenter) => {
       state.toMessageCenter = toMessageCenter;
   	},
- 
+
 //房卡
     setActiveRoom: (state,data) => {
       state.activeRoom = data;
-  	},	
+  	},
 }
 export default new Vuex.Store({
     state,

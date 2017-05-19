@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-  	<transition :name="transitionName">
     	<router-view class="child-view"></router-view>
-    </transition>
   </div>
 </template>
 
@@ -25,7 +23,7 @@ export default {
 		    	this.transitionName = 'fade';
 		    	return
 		    }
-		    this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+		   // this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
 	  }
 	}
 }
@@ -42,10 +40,10 @@ export default {
 					  left: 0;
 					  width: 100%;
 						height: 100%;
-					  transition: all .24s;
+					  transition: all .1s;
 				}
 				.fade-enter-active, .fade-leave-active {
-				  	transition: opacity .15s ease;
+				  	transition: opacity .1s ease;
 				}
 				.fade-enter, .fade-leave-active {
 				  	opacity: 0

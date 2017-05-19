@@ -3,45 +3,48 @@
     <kd-header :headerMsg=headerMag></kd-header>
     <div class="content flex-con-1">
         <div class="scroll">
-            <div class="setRoom-Box">
+            <div class="flex-wrap flex-center setRoom-Box">
                <span class="setRoom-left">游戏模式</span>
                <span class="setRoom-right">红包接龙</span>
             </div>
-            <div class="setRoom-Box" @click="rulePull">
+            <div class="flex-wrap flex-center setRoom-Box" style="margin-bottom: 0.5rem" @click="rulePull">
               <span class="setRoom-left">游戏规则</span>
-              <span class="setRoom-right set-right"><span>{{ruleMsg}}</span><i class="ic-arrow-rg"></i></span>
+              <span class="setRoom-right set-right"><span>{{defaultData.ruleMsg}}</span><i class="ic-arrow-rg"></i></span>
             </div>
-
-            <div class="setRoom-Box margin-Top" @click="numberPull(index)" v-for="(item,index) in defaultLis">
+            <!--@click="numberPull(index)"-->
+            <div class="flex-wrap flex-center setRoom-Box" v-for="(item,index) in defaultLis" @click="numberPull(index)">
               <span class="setRoom-left">{{item.title}}</span>
-              <span class="setRoom-right set-right">{{item.type}}<i class="ic-arrow-rg"></i></span>
+              <span class="setRoom-right set-right" style="margin-right: 0.8rem">{{item.type}}</span>
             </div>
 
-            <div class="setRoom-Box margin-Top set-right" @click="showMd('mdGamePlay')">
-              <span class="setRoom-left">游戏打赏</span>
-              <span class="setRoom-right set-right">每包抽{{percent}}%<i class="ic-arrow-rg"></i></span>
-            </div>
-            <div class="setRoom-Box" @click="pullUp">
-              <span class="setRoom-left">额外奖励</span>
-              <span class="setRoom-right set-right">已选{{chooseNum}}项<i class="ic-arrow-bg"></i></span>
-            </div>
-            <!--<div class="setRoom-Box margin-Top">-->
-              <!--<span class="setRoom-left">房间密码</span>-->
-              <!--<span class="setRoom-right set-right" style="color: #b8b8b8">设置密码<i class="ic-arrow-rg"></i></span>-->
+            <!--<div class="setRoom-Box margin-Top set-right" @click="showMd('mdGamePlay')">-->
+              <!--<span class="setRoom-left">游戏打赏</span>-->
+              <!--<span class="setRoom-right set-right">每包抽{{defaultData.percent}}%<i class="ic-arrow-rg"></i></span>-->
             <!--</div>-->
-            <div class="setRoom-Box margin-Top" @click="showMd('mdGameWX')">
-              <span class="setRoom-left">群主微信号<em>（认领成功后显示）</em></span>
+            <div class="flex-wrap flex-center reward-Box margin-Top" @click="pullUp">
+              <div class="reward-left">
+                <span class="setRoom-left" style="line-height: 1.5rem">游戏奖励</span>
+                <div class="reward-text">添加额外的奖励，如顺子,豹子等</div>
+              </div>
               <span class="setRoom-right set-right"><i class="ic-arrow-rg"></i></span>
             </div>
+
+            <div class="room-language margin-Top">
+               <div class="title">房间欢迎语</div>
+               <input type="text" class="input-language" placeholder="写一句欢迎语，让大家都能看到~" maxlength="40" v-model="inputText">
+            </div>
+            <!--<div class="flex-wrap flex-center setRoom-Box margin-Top" @click="showMd('mdGameWX')">-->
+              <!--<span class="setRoom-left">群主微信号<em>（认领成功后显示）</em></span>-->
+              <!--<span class="setRoom-right set-right"><i class="ic-arrow-rg"></i></span>-->
+            <!--</div>-->
+            <input type="button" class="create-room-btn" value="创建房间" @click="createRoom" :disabled="disabled">
             <p style="margin-top: 1rem">重要提示：</p>
-            <p>• 创建房间须消耗1张房卡，游戏未开始不消耗房卡；</p>
-            <p>• 可设置房间密码，好友通过输入房间号和密码进入房间；</p>
-            <p>• 每局须群主确定开始，第一包将由群主发放。</p>
-            <input type="button" class="create-room-btn" value="创建房间" @click="createRoom">
+            <p>• 每局开始须消耗1张房卡，第一包将由房主发放；</p>
+            <p>• 如有疑问请联系在线客服（工作日09:00-18:00）。</p>
         </div>
     </div>
     <!--选择游戏规则-->
-    <div class="rule-box" v-show="activeBox.rule" :class="{'pullUp': activeBox.ruleAddClass}">
+    <div class="rule-box" v-show="md.rule" :class="{'pullUp': md.ruleAddClass}">
        <div class="rule-title">选择游戏规则</div>
        <div class="rule-choose" @click="addActive('ruleLis',index,1)" v-for="(rule,index) in setRoomData.ruleList">
            <div class="rule-main">
@@ -53,9 +56,9 @@
        <i class="ic-close-gray" @click="rulePull"></i>
     </div>
 <!--3个红包数弹窗 -->
-    <div class="rule-box" v-show="activeBox.redpack" :class="{'pullUp': activeBox.numberAddClass}">
+    <div class="rule-box" v-show="md.redpack" :class="{'pullUp': md.numberAddClass}">
       <div class="rule-title">{{aMountLis[index].title}}</div>
-      <div class="rule-choose" @click="aMountActive(aMountLis[index].list,ix,1)" v-for="(item,ix) in aMountLis[index].list">
+      <div class="rule-choose" @click="aMountActive(aMountLis[index].list,ix)" v-for="(item,ix) in aMountLis[index].list">
         <div class="rule-main">
           <p :class="{'active':aMountLis[index].list[ix].active}">{{item.type}}{{item.dataType}}</p>
         </div>
@@ -72,7 +75,7 @@
         <div class="title">游戏打赏</div>
         <div class="text">每包抽取部分金额，作为额外奖励发放给玩家</div>
         <div class="flex-wrap flex-center get-reward">
-          <input type="tel" pattern="\d*" class="number" placeholder="输入每包抽取比例" ref="percent" maxlength="3"><em>%</em>
+          <input type="number" class="number" placeholder="输入每包抽取比例" v-model="inputPercent"><em>%</em>
         </div>
         <input type="button" value="确定" class="confirm-btn" @click="confirm('mdGamePlay')">
       </div>
@@ -95,25 +98,26 @@
       <div class="md-content">
         <i class="md-close ic-close-gray" @click="editReward"></i>
         <div class="title">设置奖励倍数</div>
-        <div class="text">如每包金额100点，奖励倍数为2.0倍，若中则奖励200点。</div>
+        <div class="text">设置中奖奖励分数。</div>
         <div class="flex-wrap flex-center get-reward">
-          <input type="tel" pattern="\d*" class="reward-number" placeholder="请输入倍数" v-model="inputVal" maxlength="8">
+          <input type="number" class="reward-number" placeholder="请输入奖励倍数" v-model="inputVal" @keyup="clearNoNum(inputVal)">
         </div>
-        <input type="button" value="确定" class="reward-confirm-btn" :class="{'changeBg':activeBox.changeBg}" @click="rewardConfirm">
+        <input type="button" value="确定" class="reward-confirm-btn" :class="{'changeBg':md.changeBg}" @click="rewardConfirm">
       </div>
     </div>
     <!--额外奖励-->
-    <div class="extra-reward" v-show="activeBox.rewardShow" :class="{'pullUp': activeBox.pullUpShow}">
-       <div class="extra-reward-title">额外奖励</div>
-       <div class="extra-reward-text">以每包金额为基准的额外奖励</div>
+    <div class="extra-reward" v-show="md.rewardShow" :class="{'pullUp': md.pullUpShow}">
+       <div class="extra-reward-title">游戏奖励</div>
        <div class="flex-wrap flex-center reward-type" @click="rewardActive('awardList',index)" v-for="(reward,index) in setRoomData.awardList">
-         <div class="left-content">
-           <p :class="{'font-active' :setRoomData.awardList[index].active}">{{reward.awardName}}</p>
-           <p>{{reward.awardDesc}}</p>
+         <div class="flex-wrap flex-center left-content">
+           <div class="choose-type" :class="{'active': setRoomData.awardList[index].active}"></div>
+           <div class="nameBox">
+             <p :class="{'font-active' :setRoomData.awardList[index].active}">{{reward.awardName}}</p>
+             <p>{{reward.awardDesc}}</p>
+           </div>
          </div>
          <div class="flex-wrap right-content">
-           <span @click="editReward">奖励x{{reward.multiple}}倍</span>
-           <div class="choose-type" :class="{'active': setRoomData.awardList[index].active}"></div>
+           <span @click.stop="editReward(index)">奖励x{{reward.awardMultiple}} 倍</span>
            <div class="tap-edit" v-if="index==0"><span></span><em>点击可修改</em></div>
          </div>
         </div>
@@ -131,28 +135,57 @@
     name: 'setRoom',
     data(){
       return{
-        inputVal:"",
-        chooseNum:0,
-        percent:15,
-        setRoompara:{
-           jsonRoom:{ruleId:"LastMinGameRule",packetAmt: "100", packetSplitNum: "4",packetsPerBout: "20", commissionRate: "15", weixinNo:""},
-           extraAward : "W",
+        user: this.$store.state.user,
+        headerMag:{
+          title:'设置房间玩法',
+          rightMsg: '',
+          rightUrl: ''
         },
-        ruleLis:'',
-        aMountLis:[
-          {title:'每包金额数',list:[{type:'100',dataType:'点',active:true},{type:'200',dataType:'点',active:false},{type:'300',dataType:'点',active:false}],active:true},
-          {title:'每包红包数',list:[{type:'4',dataType:'个',active:true},{type:'5',dataType:'个',active:false}],active:true},
-          {title:'一局发放的包数',list:[{type:'25',dataType:'包',active:true}],active:true},
-        ],
-        defaultLis:[//默认的
-          {title:'每包金额数',type:'100点'},
+        //设置默认的数据
+        defaultLis:[
+          {title:'每包金额数',type:'10点'},
           {title:'每包红包数',type:'4个'},
           {title:'一局发放的包数',type:'25包'},
         ],
-        ruleMsg:'尾数最小的发',
+        defaultData:{
+          ruleMsg:'尾数最小的发',
+          chooseNum:0,
+          percent:15,
+        },
+        aMountLis:[
+          {title:'每包金额数',list:[{type:'10',dataType:'点',active:true}],active:true},
+          {title:'每包红包数',list:[{type:'4',dataType:'个',active:true},{type:'1',dataType:'个',active:false}],active:true},
+          {title:'一局发放的包数',list:[{type:'25',dataType:'包',active:true},{type:'10',dataType:'包',active:false}],active:true},
+        ],
+       //动态数据
+        setRoomData:"",
+        extraAward:[{
+          awardRuleId: "",
+          awardAmt: "",
+          awardMultiple:"",
+        }],
+        ruleLis:'',
+        //输入框数据
+        inputVal:"",
+        inputPercent:'',
+        inputText:'',
+        //提交的数据
+        setRoompara:{
+          jsonRoom:{ruleId:"LastMinGameRule",packetAmt: 10, packetSplitNum: 4,packetsPerBout: 25, commissionRate: 0.2, weixinNo:""},
+          extraAward : "W",
+        },
+        //存传值的数据
         i:'',
         index:0,
-        activeBox:{
+        //弹窗的显示状态
+        disabled:false,
+        md:{
+          active: '',
+          mask: false,
+          mdGamePlay : false,
+          mdGameReward : false,
+          maskRule :false,
+          mdGameWX: false,
           fontActive:false,
           isActive: false,
           rewardShow:false,
@@ -164,30 +197,14 @@
           redpack:false,
           changeBg:false
         },
-        user: this.$store.state.user,
-        headerMag:{
-          title:'设置房间属性',
-          rightMsg: '',
-          rightUrl: ''
-        },
-        md:{
-          active: '',
-          mask: false,
-          mdGamePlay : false,
-          mdGameReward : false,
-          maskRule :false,
-          mdGameWX: false
-        },
-        setRoomData:"",
-        extraAward:""
       }
     },
     watch:{
       inputVal :function (val) {
          if(val.length>0){
-             this.activeBox.changeBg=true;
+             this.md.changeBg=true;
          }else {
-           this.activeBox.changeBg=false;
+           this.md.changeBg=false;
          }
       }
     },
@@ -200,17 +217,24 @@
         this.md[md] = false;
         this.md.mask = false;
       },
+      clearNoNum: function (obj) {
+        this.inputVal = obj.replace(/[^\d.]/g,"");  //清除“数字”和“.”以外的字符
+        this.inputVal = obj.replace(/\.{2,}/g,"."); //只保留第一个. 清除多余的
+        this.inputVal = obj.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+        this.inputVal = obj.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3');//只能输入两个小数
+      },
       confirm:function (md) {
-        this.md[md] = false;
-        this.md.mask = false;
-        this.percent=this.$refs.percent.value;
-        this.setRoompara.jsonRoom.commissionRate=this.percent;
+        if(this.inputPercent==""||this.inputPercent==null||this.inputPercent==undefined){
+          Toast({message: '请输入抽取比例',duration: 2000});
+        }else {
+          this.md[md] = false;
+          this.md.mask = false;
+          this.defaultData.percent=this.inputPercent;
+          this.setRoompara.jsonRoom.commissionRate=(this.defaultData.percent/100);
+        }
       },
       confirmWX:function (md) {
         var data = this.setRoompara;
-        if(typeof data.jsonRoom=='string'){
-          data.jsonRoom=JSON.parse(data.jsonRoom);
-        }
         this.md[md] = false;
         this.md.mask = false;
         this.setRoompara.jsonRoom.weixinNo=this.$refs.wxNum.value;
@@ -224,8 +248,10 @@
       				_arr[i].active = false;
       			}
       			this[arr][index].active = true;
-            this.ruleMsg=this.ruleLis[index].ruleName;
+            this.defaultData.ruleMsg=this.ruleLis[index].ruleName;
             this.setRoompara.jsonRoom.ruleId=this.ruleLis[index].ruleId;
+            this.md.rule=false;
+            this.md.mask=false;
       		}
       },
       aMountActive: function (arr,index) {
@@ -234,93 +260,121 @@
         }
          arr[index].active = true;
          this.defaultLis[this.index].type=this.aMountLis[this.index].list[index].type+this.aMountLis[this.index].list[index].dataType;
-         this.setRoompara.jsonRoom.packetAmt=this.aMountLis[this.index].list[index].type;
-
-
+         if(this.index==0){
+           this.setRoompara.jsonRoom.packetAmt=this.aMountLis[this.index].list[index].type;
+         }else if(this.index==1){
+           this.setRoompara.jsonRoom.packetSplitNum=this.aMountLis[this.index].list[index].type;
+         }else if(this.index==2){
+           this.setRoompara.jsonRoom.packetsPerBout=this.aMountLis[this.index].list[index].type;
+         }
+        this.md.redpack=false;
+        this.md.mask=false;
       },
       rewardActive: function (arr,index) {
           this.i=index;
-          this.extraAward="";
-          this.chooseNum = 0;
+          this.extraAward=[];
+          this.defaultData.chooseNum = 0;
           this.setRoomData[arr][index].active = !this.setRoomData[arr][index].active;
           let num=this.setRoomData[arr];
           for (let i=0;i<num.length;i++){
               if(num[i].active==true){
-                this.chooseNum ++;
-                this.extraAward += num[i].awardRuleId+":"+num[i].multiple + ',';
+                this.defaultData.chooseNum ++;
+                this.extraAward.push({awardRuleId:num[i].awardRuleId,awardAmt:num[i].awardAmt,awardMultiple:parseFloat(num[i].awardMultiple)});
               }
           }
           this.setRoompara.extraAward=this.extraAward;
       },
-      editReward:function () {
+      editReward:function (index) {
+        this.i=index;
         this.md.mdGameReward =!this.md.mdGameReward;
         this.md.maskRule =!this.md.maskRule;
       },
       rewardConfirm: function(){
-        if(this.inputVal==""){
-
+        if(this.inputVal<=0){
+             Toast("请输入正确的奖励倍数");
         }else {
-          this.setRoomData.awardList[this.i].multiple=this.inputVal;
+          this.setRoomData.awardList[this.i].awardMultiple=this.inputVal;
+          this.extraAward=[];
+          let num=this.setRoomData.awardList;
+          for (let i=0;i<num.length;i++){
+            if(num[i].active==true){
+              this.extraAward.push({awardRuleId:num[i].awardRuleId,awardAmt:num[i].awardAmt,awardMultiple:parseFloat(num[i].awardMultiple)});
+            }
+          }
+          this.setRoompara.extraAward=this.extraAward;
+          this.md.mdGameReward =!this.md.mdGameReward;
+          this.md.maskRule =!this.md.maskRule;
         }
-        this.md.mdGameReward =!this.md.mdGameReward;
-        this.md.maskRule =!this.md.maskRule;
       },
       pullUp: function () {
-        this.activeBox.rewardShow=!this.activeBox.rewardShow;
-        this.activeBox.pullUpShow=!this.activeBox.pullUpShow;
+        this.md.rewardShow=!this.md.rewardShow;
+        this.md.pullUpShow=!this.md.pullUpShow;
         this.md.mask=!this.md.mask;
       },
       rulePull: function () {
-        this.activeBox.rule = !this.activeBox.rule;
-        this.activeBox.ruleAddClass=!this.activeBox.ruleAddClass;
+        this.md.rule = !this.md.rule;
+        this.md.ruleAddClass=!this.md.ruleAddClass;
         this.md.mask=!this.md.mask;
       },
       numberPull: function (index) {
         this.index=index;
-        this.activeBox.redpack = !this.activeBox.redpack;
-        this.activeBox.numberAddClass = !this.activeBox.numberAddClass;
+        this.md.redpack = !this.md.redpack;
+        this.md.numberAddClass = !this.md.numberAddClass;
         this.md.mask=!this.md.mask;
       },
       createRoom: function () {
-          if(this.setRoompara.jsonRoom.weixinNo==""||this.setRoompara.jsonRoom.weixinNo==undefined||this.setRoompara.jsonRoom.weixinNo==null){
-            Toast('请输入微信号！')
-          }else {
-            var data = this.setRoompara;
-            data.jsonRoom =JSON.stringify(data.jsonRoom);
-            Api.createRoom(function (data) {
-               this.$refs.createRoomBtn.style.disabled="";
-               if(data.msgCode==200){
-                 Toast({
-                   message: '创建成功！',
-                   duration: 1000
-                 });
-                 window.history.back();
-               }else if(data.msgCode==707){
-                 Toast('房卡不足！')
-               }else if(data.msgCode==602){
-                 Toast('创建失败！')
-               }else if(data.msgCode==605){
-                 Toast('操作太频繁！')
-               }
-            },data)
+         const self=this;
+         self.disabled=true;
+        var data = this.setRoompara;
+        if(typeof data.jsonRoom=='string'){
+          data.jsonRoom=JSON.parse(data.jsonRoom);
+        }
+        this.setRoompara.jsonRoom.weixinNo=this.inputText;
+        data.jsonRoom=JSON.stringify(data.jsonRoom);
+        data.extraAward=JSON.stringify(data.extraAward);
+        Api.createRoom(function (data) {
+          if(data.msgCode==200){
+            Toast({message: '创建成功',duration: 800,iconClass: 'ic-toast-success'});
+            setTimeout(function () {
+              window.history.back();
+            },1000);
+          }else if(data.msgCode==707){
+            Toast('房卡不足！')
+          }else if(data.msgCode==602){
+            Toast('创建失败！')
+          }else if(data.msgCode==605){
+            Toast('操作太频繁！')
+          }else if(data.msgCode==616){
+            Toast('每人只能创建2个房间，如需更多，请联系在线客服！')
           }
+          setTimeout(function () {
+            self.disabled=false;
+          },500)
+        },data)
 
       }
     },
     beforeCreate(){
        const self=this;
        Api.setRoom(function (data) {
-        for(let i =0;i< data.awardList.length;i++) {
-          data.awardList[i].active = false;
-          data.awardList[i].multiple = 0.8;
+        if(data.awardList!=""||data.awardList!=undefined||data.awardList!=null){
+          for(let i =0;i< data.awardList.length;i++) {
+            data.awardList[i].active = false;
+            data.awardList[i].awardMultiple = 10;//倍数
+            data.awardList[i].awardAmt = 0;//固定奖励
+          }
         }
-         for(let i =0;i< data.ruleList.length;i++) {
-            if(i==0){data.ruleList[0].active = true;}else {
-              data.ruleList[i].active = false;
-            }
+         if(data.ruleList!=""||data.ruleList!=undefined||data.ruleList!=null) {
+           for (let i = 0; i < data.ruleList.length; i++) {
+             if (i == 0) {
+               data.ruleList[0].active = true;
+             } else {
+               data.ruleList[i].active = false;
+             }
+           }
+           self.ruleLis=data.ruleList;
          }
          self.setRoomData=data;
-         self.ruleLis=data.ruleList;
       })
     }
   }
