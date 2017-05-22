@@ -28,6 +28,7 @@ Vue.config.productionTip = false;
 Vue.use(KD.Header);
 Vue.use(KD.wxScan);
 Vue.use(KD.informList);
+Vue.use(KD.star);
 
 /* eslint-disable no-new */
 new Vue({

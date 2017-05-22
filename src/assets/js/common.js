@@ -43,7 +43,7 @@ export default {
 		  );
 	},
     shareContent : function(_json){
-    	
+
     	var u = navigator.userAgent;
     	var title = _json.title,
     		content = _json.content,
@@ -79,19 +79,19 @@ export default {
     },
     saveImage: function(url,cb){
     	let u = navigator.userAgent;
-        let savePath = "/tencent/MicroMsg/Weixin/"; 
+        let savePath = "/tencent/MicroMsg/Weixin/";
         if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {
             window.ncp.toWeChatScan(url,savePath)
             cb()
         }else{
-            var data = {img:url,saveImg:"save"};
+          var data = {img:url,saveImg:"save"};
         	var url = "url:shareImg:" + JSON.stringify(data);
         	window.location = url;
         }
     },
     /*************** 调起 微信 支付 *****************/
     toWxPay :function(wxJson,code,weixinUrl,fid) {
-     
+
         let u = navigator.userAgent;
         if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {
             if(code){
@@ -101,9 +101,9 @@ export default {
             }
         } else if (u.indexOf('iPhone') > -1) {
             let iosUrl = "url:toWxPay:" + wxJson;
-            document.location = iosUrl;   
+            document.location = iosUrl;
         }
-     
+
     },
     /*************** 调起 支付宝 支付 *****************/
     toAlipay : function(data,returnUrl){
@@ -112,9 +112,9 @@ export default {
         if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {//安卓手机
             window.ncp.retureurl(returnUrl);
         }
-        let Alipay = document.createElement("div"); 
+        let Alipay = document.createElement("div");
         Alipay.innerHTML = data;
         document.getElementById("app").appendChild(Alipay);
         document.forms['alipaysubmit'].submit();
-    }
+    },
 }

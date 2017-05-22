@@ -26,7 +26,6 @@
   import Vue from 'vue'
   import Api from '@/fetch/api'
   import common from '@/assets/js/common'
-  import BScroll from 'better-scroll'
   import {mapGetters,mapActions} from 'vuex'
 
 	export default{

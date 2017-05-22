@@ -42,12 +42,7 @@
 								<div class="hot-text">
 									<p>{{item.notice}}</p>
 									<div class="star-box">
-										<div class="star-left">
-											<i :class="{'ic_no_star':item.starLevel==0,'ic_half_star':item.starLevel==1,'ic_star':item.starLevel>=2}"></i>
-											<i :class="{'ic_no_star':item.starLevel-2<=0,'ic_half_star':item.starLevel-2==1,'ic_star':item.starLevel-2>=2}"></i>
-											<i :class="{'ic_no_star':item.starLevel-4<=0,'ic_half_star':item.starLevel-4==1,'ic_star':item.starLevel-4>=2}"></i>
-											<i :class="{'ic_no_star':item.starLevel-6<=0,'ic_half_star':item.starLevel-6==1,'ic_star':item.starLevel-6>=2}"></i>
-										</div>
+                    <star :starLevel="item.starLevel"></star>
 										<div class="star-right">
 											<div class="room-box">
 												<i class="ic_house"></i>
@@ -243,7 +238,7 @@
 				callback :  this.createService()
 			};
 			this.$store.dispatch('roomCardlogin', data);
-			
+
 			if(this.$route.params.page == 1) {
 				this.page = false;
 			} else if(this.$route.params.page == 0) {
@@ -465,9 +460,9 @@
 			recordDetails(b, r, u) {
 				this.$router.push('/roomCard/recordDetails/' + b + '/' + r + '/' + u)
 			},
-			// 以下是  .ws 
+			// 以下是  .ws
 			createService() {
-				
+
 				let interval;
 				let self = this;
 				if(!this.ws){
@@ -497,7 +492,7 @@
 						ws.close()
 					}
 				}
-				
+
 			}
 		}
 	}

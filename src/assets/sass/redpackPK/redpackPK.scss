@@ -1,0 +1,528 @@
+@charset 'utf8';
+
+@import "../config.scss";
+@import "../icon.scss";
+@import "../dialog.scss";
+@import "../redpack.scss";
+@import "../animations.scss";
+
+.content {
+  overflow: hidden;
+  .scroll{
+    padding-bottom: 3rem;
+  }
+}
+/*红包竞猜列表*/
+.textBox{
+  width: 24rem;
+  position: relative;
+  margin-top: 1.5rem;
+  .ic_head{
+    display: inline-block;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    margin-left: 0.57rem;
+    font-size: 0;
+    background: #fff;
+    img{
+      width: 3.2rem;
+      height: 3.2rem;
+      border-radius: 3.5rem;
+    }
+  }
+  .box_right{
+    display: inline-block;
+    max-width: 18.8rem;
+    vertical-align: top;
+    margin-left: 0.6rem;
+    .box_title{
+      color: #bf5926;
+      font-size: 1rem;
+      padding-left: 0.5rem;
+    }
+
+    .box_content{
+      position: relative;
+      font-size: 1.15rem;
+      color: #bf5926;
+      border: 0.1rem solid #E6DED3;
+      border-radius: 0.3rem;
+      padding: 0.8rem 0.57rem;
+      text-align: justify;
+      background: #ffffff;
+      margin-top: 0.3rem;
+      span:nth-child(1){
+        position: absolute;
+        width:0;
+        height:0;
+        border-top:0.5rem solid transparent;
+        border-bottom: 0.5rem solid transparent;
+        border-right: 0.5rem solid #E6DED3;
+        left: -0.5rem;
+
+      }
+      span:nth-child(2){
+        position: absolute;
+        width:0;
+        height:0;
+        border-top:0.5rem solid transparent;
+        border-bottom: 0.5rem solid transparent;
+        border-right: 0.5rem solid #fff;
+        left: -0.4rem;
+
+      }
+      .guessAmount{
+        width: 16.5rem;
+        .guess{
+          position: relative;
+          margin-top: 0.5rem;
+          .guessleft{
+            .whichBig{
+              color: #6b6866;
+              font-size: 1.15rem;
+              .ic_guess{
+                display: inline-block;
+                width: 1.2rem;
+                height: 1.2rem;
+                background: no-repeat center url(/static/images/redpackPK/ic_A.png);
+                background-size: 100%;
+                vertical-align: middle;
+                margin-right: 0.5rem;
+                position: relative;
+                top:-0.2rem;
+              }
+              .guess_B{
+                background: no-repeat center url(/static/images/redpackPK/ic_B.png);
+                background-size: 100%;
+              }
+              .guess_C{
+                background: no-repeat center url(/static/images/redpackPK/ic_C.png);
+                background-size: 100%;
+              }
+            }
+            .addreward{
+              color: #fa9632;
+              font-size: 0.875rem;
+              padding-left: 1.7rem;
+              line-height: 1.35rem;
+            }
+
+            .guessplan{
+              width: 10.5rem;
+              height: 0.15rem;
+              background: #fdeac9;
+              margin-top: 0.2rem;
+              em{
+                display: inline-block;
+                width: 0;
+                height: 0.15rem;
+                position: absolute;
+                background:#ffb726;
+              }
+            }
+            .addNum{
+              position: absolute;
+              left: 8rem;
+              bottom: 0;
+              color: #ff3333;
+              font-weight: 900;
+              font-size: 1.4rem;
+              z-index: 101;
+              opacity: 0;
+            }
+
+          }
+
+          .guessright{
+            position: absolute;
+            right: 0.5rem;
+            p{
+              color: #ed3c4b;
+              font-size: 0.875rem;
+            }
+            .chooseType{
+              display: block;
+              border: 0;
+              width: 4.21rem;
+              height: 1.57rem;
+              background: #ed3c4b;
+              border-radius: 1rem;
+              line-height: 1.57rem;
+              color: #ffffff;
+              font-size: 0.875rem;
+              text-align: center;
+              &:active{
+                opacity: 0.6;
+              }
+            }
+            .changebg{
+              background: #fcf7f2;
+            }
+            .changebg span:nth-child(2){
+              border-right: 0.5rem solid #fcf7f2;
+            }
+
+          }
+        }
+    }
+      .ic_pk_time{
+        position: absolute;
+        width: 2.8rem;
+        height: 2.8rem;
+        line-height: 2.7rem;
+        text-align: center;
+        top: -0.1rem;
+        right: 1rem;
+        font-size: 0.75rem;
+        color: #ffffff;
+        background: no-repeat center url(/static/images/redpackPK/ic_pk_time.png);
+        background-size: 100%;
+        white-space: nowrap;
+      }
+  }
+}
+  .boxMask{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 100;
+    opacity: .7
+  }
+}
+
+.resultBox{
+  color: #bf5926;
+  font-size: 1.15rem;
+  text-align: center;
+  height: 3.21rem;
+  width: 20rem;
+  line-height: 3.21rem;
+  border: 0.1rem solid #edd4b4;
+  background: #f9f1e6;
+  border-radius: 0.3rem;
+  margin: 1.4rem auto;
+  &:before{
+    display: inline-block;
+    content: '';
+    width: 4rem;
+    height: 1rem;
+    background: no-repeat center url(/static/images/redpackPK/ic_line.png);
+    background-size: 100%;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+  }
+  &:after{
+    display: inline-block;
+    content: '';
+    width: 4rem;
+    height: 1rem;
+    background: no-repeat center url(/static/images/redpackPK/ic_line.png);
+    background-size: 100%;
+    vertical-align: middle;
+    transform:rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    margin-left: 0.5rem;
+  }
+   em{
+    color: #ed1126;
+  }
+}
+
+//*中奖信息*/
+.rewardInfoBox{
+  width: 16rem;
+  height: 4.2rem;
+  background: no-repeat center url(/static/images/redpackPK/reward_bg.png);
+  background-size: 100%;
+  position: fixed;
+  top: 12rem;
+  left: 0;
+  z-index: 10;
+  .rewardInfo{
+    width: 16rem;
+    height: 4.2rem;
+     img{
+      width: 2.57rem;
+      height: 2.57rem;
+      margin-left: 0.5rem;
+      border-radius: 100%;
+      position: relative;
+      top:0.1rem;
+    }
+    .rewardBox{
+      position: relative;
+      top: 0.2rem;
+      margin-left: 0.6rem;
+      .rewardUser{
+        color: #ffffff;
+        font-size: 1rem;
+        line-height: 1.3rem;
+        width: 8rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .rewardNum{
+        color: #ffffff;
+        font-size: 1rem;
+        line-height: 1.2rem;
+         em{
+          color: #ffba4d;
+        }
+      }
+    }
+  }
+
+}
+.getRedpack{
+  max-width: 22rem;
+  width: -webkit-fit-content;
+  width:-moz-fit-content;
+  margin: 1rem auto;
+  border-radius: 0.25rem;
+  color: #ffffff;
+  font-size: 1rem;
+  box-sizing: border-box;
+  position: relative;
+}
+.userGet{
+  display: inline-block;
+  background: #D8D4D3;
+  text-align: center;
+  border-radius: 0.3rem;
+  padding: 0.2rem 1rem 0.2rem 1rem;
+
+}
+.ic_getRedpack{
+  display: inline-block;
+  width: 1.15rem;
+  height: 1.43rem;
+  background: no-repeat center url(/static/images/redpackPK/ic_redbag.png);
+  background-size: 100%;
+  vertical-align: middle;
+}
+.getRedpack em{
+  display: inline-block;
+  color: #ffffff;
+  max-width: 9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+/*信息栏*/
+.noticeBox{
+  height: 3.42rem;
+  background: #542825;
+  padding-left: 1rem;
+  position: relative;
+  z-index: 10;
+  .content{
+    height: 3.42rem;
+
+    .section{
+      height: 2.14rem;
+      background: #422021;
+      border-radius: 1rem;
+      line-height: 2.24rem;
+      color: #d9822b;
+      font-size: 1rem;
+      .ic_hornBox{
+        height: 2.14rem;
+        width: 2rem;
+        z-index: 1;
+        .ic_horn{
+          display: inline-block;
+          width: .85rem;
+          height: .85rem;
+          background: no-repeat center url(/static/images/redpackPK/ic_laba.png);
+          background-size: 100%;
+          margin-left: 0.6rem;
+          margin-right: 0.6rem;
+          position: relative;
+          vertical-align: middle;
+
+        }
+      }
+      .noticeList{
+        height: 2.14rem;
+        overflow: hidden;
+        background:#422021;
+        border-radius: 1rem;
+        .noticeList li{
+          margin-left: 0.2rem;
+          display: inline-block;
+          max-width: 17.85rem;
+        }
+      }
+
+    }
+    .section1{
+      padding: 0 0.3rem;
+      box-sizing: border-box;
+      .rightBox{
+        width: 3.2rem;
+        height: 3.42rem;
+        position: relative;
+         img{
+          width: 2.2rem;
+          height:2.2rem;
+          position: absolute;
+          top:50%;
+          left: 50%;
+          margin-top: -1.1rem;
+          margin-left: -1.1rem;
+        }
+        &:active{
+          background:#422021;
+        }
+      }
+    }
+  }
+}
+.publicResult{
+  height: 2.32rem;
+  line-height: 2.32rem;
+  background: #5b4a4a;
+  position: absolute;
+  bottom: 4.21rem;
+  z-index: 10;
+  width: 100%;
+  .pR_mark{
+    background: #ed3c4b;
+    border-radius: 1rem;
+    color: #ffffff;
+    font-size: 0.875rem;
+    padding: 0.2rem 0.3rem;
+    margin-left: 1rem;
+  }
+  .pR_text{
+    color: #ffffff;
+    font-size: 1rem;
+  }
+  .pR_which{
+    color: #ffb726;
+    font-size: 1rem;
+  }
+  .addNum{
+    position: absolute;
+    left: 8rem;
+    bottom: 0;
+    color: #ff3333;
+    font-weight: 900;
+    font-size: 1.4rem;
+    z-index: 101;
+    opacity: 0;
+  }
+  .changeheight{
+    height: 4.5rem!important;
+    position: relative;
+    top: -0.5rem;
+  }
+}
+/*底部*/
+.footer{
+  background: #2c2223;
+  width: 100%;
+  height: 4.21rem;
+  .footBox{
+    align-items: center;
+    justify-content: space-between;
+    -webkit-box-align:center;
+    -webkit-box-pack: Justify;
+    padding-left: 1.15rem;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    .foot_l p{
+      color: #7c6769;
+      font-size: 0.875rem;
+      line-height: 1.5rem;
+      margin-left: 0.3rem;
+    }
+    .balance{
+      width: 6.3rem;
+      height: 1.2rem;
+      border-radius: 1rem;
+      color: #7c6769;
+      position: relative;
+      font-size: 0.875rem;
+    }
+    .balance span{
+      display: inline-block;
+      content: '';
+      width: 1.2rem;
+      height: 1.2rem;
+      background: no-repeat center url(/static/images/redpackPK/ic_kld_add.png);
+      background-size: 1.1rem;
+      position: absolute;
+      top: -0.15rem;
+      right: 0.1rem;
+    }
+    .beansNum{
+      font-size: 1rem;
+      color: #d9822b;
+    }
+
+    .foot_r{
+      background: #302627;
+      height: 100%;
+      width: 63.5%;
+      padding: 0 1.15rem;
+      .myJoinBeans{
+        font-size: 0.875rem;
+        color: #7c6769;
+        line-height: 1.5rem;
+        text-align: center;
+        margin-top: 0.2rem;
+      }
+      .myJoinBeans em,.myJoinBeans span{
+        color: #d9822b;
+      }
+      .beansType ul{
+        height: 2.1rem;
+        border: 0.1rem solid #542825;
+        border-radius: 1rem;
+        overflow: hidden;
+        li{
+          color: #996b6b;
+          font-size: 1.15rem;
+          text-align: center;
+          line-height: 2.1rem;
+          width: 33.3%;
+
+        }
+        .selected{
+          background: #962924;
+
+        }
+        li:nth-child(2){
+          border-right: 0.1rem solid #542825;
+          border-left: 0.1rem solid #542825;
+          opacity: 0.6;
+        }
+        li:nth-child(3){
+          opacity: 0.6;
+        }
+        li span:before{
+          display: inline-block;
+          content: '';
+          width: 1rem;
+          height: 1rem;
+          background: no-repeat center url(/static/images/redpackPK/ic_kld_s.png);
+          background-size: 100%;
+          margin-right: 0.35rem;
+          position: relative;
+          top: 0.1rem;
+        }
+      }
+    }
+  }
+}
+
+
+

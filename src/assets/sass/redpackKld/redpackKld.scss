@@ -1,0 +1,16 @@
+@charset 'utf8';
+
+@import "../config.scss";
+@import "../icon.scss";
+@import "../dialog.scss";
+@import "../redpack.scss";
+@import "../animations.scss";
+
+.footer{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background: #302627;
+  width: 100%;
+  height: 4.21rem;
+}

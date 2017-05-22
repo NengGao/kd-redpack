@@ -3,16 +3,16 @@
 		<i class="ic-back-fff" @click="goBack"></i>
 		<h1>{{headerMsg.title}}</h1>
 		<router-link :to=headerMsg.rightUrl class="header-right" v-html=headerMsg.rightMsg></router-link>
-	</header>					
+	</header>
 </template>
 
 <script>
 	import router from '@/router'
-	
+
 	export default {
 		data(){
 			return{
-				
+
 			}
 		},
 		props:{
@@ -22,11 +22,11 @@
 		},
 		methods:{
 			goBack: function(){
-				if(this.$route.params.oid){
+				/*if(this.$route.params.oid){
 					window.location.href = 'http://vip.kuaidian.cn/views'
-				}else{
+				}else{*/
 					router.back()
-				}	
+				//}
 			}
 		}
 	}
@@ -45,7 +45,6 @@
 	    left: 0;
 	    color: #fff;
 	    z-index: 10;
-	    overflow: hidden;
 	    h1{
 	    	line-height: toRem(55px);
 	    	padding-left: 3.2rem;

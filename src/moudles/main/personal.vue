@@ -19,25 +19,24 @@
 					<i class="ic-arrow-rw"></i>
 				</li>
 				<ul class="flex-wrap kld-box">
-					<li class="flex-con-1"><i class="ic-buy"></i>购买快乐豆</li>
-					<li class="flex-con-1"><i class="ic-exchange"></i>快乐豆商城</li>
+					<router-link tag="li" to="/buy" class="flex-con-1"><i class="ic-buy"></i>购买快乐豆</router-link>
+					<router-link tag="li" to="/shop" class="flex-con-1"><i class="ic-exchange"></i>快乐豆商城</router-link>
 				</ul>
-				<li class="lineBox marginTop flex-wrap">
+				<router-link tag="li" to="/news" class="lineBox marginTop flex-wrap">
 					<div class="lineBox-icon ic-news"></div>
 					<div class="lineBox-title">消息通知</div>
 					<i class="ic-arrow-rw"></i>
-				</li>
+				</router-link>
 				<li class="lineBox flex-wrap">
 					<div class="lineBox-icon ic-auction"></div>
 					<div class="lineBox-title">我的抢拍</div>
 					<i class="ic-arrow-rw"></i>
 				</li>
-				
-				<li class="lineBox marginTop flex-wrap">
+				<router-link tag="li" to="/vip" class="lineBox marginTop flex-wrap">
 					<div class="lineBox-icon ic-vip"></div>
 					<div class="lineBox-title">升级vip特权</div>
 					<i class="ic-arrow-rw"></i>
-				</li>
+				</router-link>
 				<ul class="flex-wrap vip-box">
 					<li class="flex-con-1">红包次数</li>
 					<li class="flex-con-1">奖励丰厚</li>
@@ -48,12 +47,11 @@
 					<div class="lineBox-title">在线客服</div>
 					<i class="ic-arrow-rw"></i>
 				</li>
-				<li class="lineBox flex-wrap">
+				<router-link tag="li" to="/about" class="lineBox flex-wrap">
 					<div class="lineBox-icon ic-about"></div>
 					<div class="lineBox-title">关于我们</div>
 					<i class="ic-arrow-rw"></i>
-				</li>
-				
+				</router-link>
 				<li class="lineBox exit" id="exit">
 					<i class="lineBox-icon ic-exit"></i>退出登录
 				</li>

@@ -1,0 +1,109 @@
+@charset 'utf8';
+
+@import "../config.scss";
+
+.header-right{
+    position: fixed;
+    z-index: 11;
+    height: 2.2rem;
+    width: auto;
+    padding: 0 0.5rem 0 0.8rem;
+    position: absolute;
+    right: 0.8rem;
+    top: 0.8rem;
+    background: #ee2733;
+    border-radius: 1.1rem;
+    line-height: 2.2rem;
+    color: #fff;
+    overflow: hidden;
+    font-weight: 600;
+    .ic-kld{
+        position: relative;
+        top: -0.2rem;
+    }
+    .ic-add{
+        background: no-repeat center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAb1BMVEX82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb+/v6Ws3QHAAAAI3RSTlMACAkKDA0jJCUyV1iIiYqYmZqbnMjJz9DR6Onq6/T19vj5+nYITrIAAADQSURBVDjLjZPrFoIgEIRX01TMVETDa8L2/s+YWUdFBZp/MN/Z5TILsMgjKWvGsWEp8eCogPa4qKfBznZuAhWJxNn61woPqjZFohpPVEdL+xZP1f5quI917zVpXXF3BhLUAZjMB5R6QH6aUNQDWAD4vQnofSBoApBAbgZyYGaAQbcYe81GB8IMCDtgbWE9pPWa1ocyP/XgAxSWz4LA9N2hJTD3b+S4NnKX/0Jrj/1Ugx99rkyfk0jVluroTQrpsNrPIjyZby/OylbKtszizfi/ATOAbUTz8QKcAAAAAElFTkSuQmCC);
+        background-size: 70%;
+        position: relative;
+        left: 0.2rem;
+        top: 0.15rem;
+    }
+}
+
+.shop-notice{
+    width: 100%;
+    background: #fff;
+    height: 2.9rem;
+    margin-bottom: 0.8rem;
+}
+.shop-title {
+    width: 100%;
+    background: #fff;
+    position: relative;
+    line-height: 2.5rem;
+    span{
+        position: absolute;
+        right: 1rem;
+        color: #f33;
+        font-size: .85rem;
+    }
+    &:before{
+        width: 2.5rem;
+        height: 2.4rem;
+        content: '';
+        display: inline-block;
+        background: no-repeat center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAABgFBMVEX/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/KDr/KTv/Kjv/LD7/LT7/Lj//L0H/NEX/N0j/Tl3/Xmv/YW7/Z3T/aHX/bHj/b3v/cHz/d4P/eIT/fYj/goz/maH/mqP/m6P/pKv/sLf/t73/ur//usD/u8H/vML/vcL/v8X/wcb/wsf/xMn/xcn/x8z/ys//y9D/1Nf/1dn/1tr/3N//3uH/4+X/5ef/5uj/5+n/6uz/6+z/7O3/7u//7/D/8fL/8/T/9PX/9/j/+/v//Pz//f3//v7///8XgzFoAAAAQHRSTlMABAUGExQWFxkaGxwlJikqTk9QUVdYW1xmaXBxcnV2enuNjo+TlJW2t7jLzM7P0NjZ2+zt7vHy8/T19vj5+vz+SWi1rwAAAitJREFUSMellutbElEQxid0IcqUTEolKt1EBENJhVpTxgpFs4t5v2sXyy5ixhqoMf96H5Czs8ten95P7DPvj3POnMsMgFH+Djk+NDI+PjIUlzv84KDmSCKHTLlEpNnGfrXnCTbo6cOghf1KNIumykZ9Zv6WQbTUo7ZG/80xtFG23ejvnERbTXbq/V3oqC7uD2n/P7VaUdfytd/5NbWyOlUfI6T5W1l6Ful4//zjC0TE5x/O94u0KNbRWvf7Umzkr2oBX/9dRkRcrr7BgvpFhFL17Eb5VE+3EHHlJL+w8PJkBRG3VC12r+YP6var+hkRp492iHaOphHxU5Ult7bnfbpklC7mEGd3iYh2ZxHnLkosGAMAkBQdsE7lvcMzIiKis8O9Mq2zoCIBQLc+3TMblXLx+8H25ub2wbdiubIxw6PdAJAUX29PSQgR/wj9eFW3JAD82vn/TTqAff0S9yMIYW08sgRIeG6D7A2QIe4N6Ie0NyANGQ14994CWFoSngzwLBcsAO7xCjzjU3IDPOaLdqM0T6sb9fONcyOZHw0+7YLFGu5AIOcFyAX58XYBJA0XyBG4a7iiToAiAQDE3AMx4zNTtQcunxn2kP00BYqGhwx8opTMl0yA4/nL6KAoRC1jbjY5c8P0ubcuKaH/KSjeSxZAu31RvOWt7KbazAp1033F3K48aLLoBa71mrUOfddtug0pktQ3J8mI5NTQBMLywPDoxMTo8IAcDjSE/wFGXDV7OZeFtQAAAABJRU5ErkJggg==);
+        background-size: 60%;
+        vertical-align: top;
+        margin-left: 0.5rem;
+    }
+}
+.content {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    .goods-list{
+        width: 100%;
+        li{
+            width: 50%;
+            background: #fff;
+            float: left;
+            border-top: .1rem #eee solid;
+            position: relative;
+            .goods-img {
+                width: 7.6rem;
+                height: 7.6rem;
+                margin: 0.5rem auto 0.2rem auto;
+                img{
+                    width: 100%;
+                }
+            }
+            .goods-name {
+                width: 80%;
+                line-height: 1.5rem;
+                margin: 0 auto;
+            }
+            .goods-tips{
+                color: #999;
+                font-size: .8rem;
+                height: 1.4rem;
+                text-align: center;
+                position: relative;
+            }
+            .goods-btn{
+                width: 82%;
+                height: 2.5rem;
+                background: #ff2739;
+                margin: .5rem auto .8rem;
+                border-radius: .23rem;
+                line-height: 2.5rem;
+                color: #fff;
+                font-size: 1.15rem;
+                text-align: center;
+            }
+            &:nth-child(2n){
+                border-left: .1rem #eee solid;
+                margin-left: -0.1rem;
+            }
+        }
+    }
+}

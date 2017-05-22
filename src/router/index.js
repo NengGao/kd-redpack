@@ -6,9 +6,12 @@ import Home from '@/moudles/main/home'
 import RoomCard from '@/moudles/roomCard'
 
 //主程序 模块
-const Personal = r => require.ensure([], () => r(require('@/moudles/main/balance')), 'main')
-const Balance = r => require.ensure([], () => r(require('@/moudles/main/personal')), 'main')
+const Personal = r => require.ensure([], () => r(require('@/moudles/main/personal')), 'main')
+const Balance = r => require.ensure([], () => r(require('@/moudles/main/balance')), 'main')
 const Vip = r => require.ensure([], () => r(require('@/moudles/main/vip')), 'main')
+const Buy = r => require.ensure([], () => r(require('@/moudles/main/buy')), 'main')
+const Shop = r => require.ensure([], () => r(require('@/moudles/main/shop')), 'main')
+const About = r => require.ensure([], () => r(require('@/moudles/main/about')), 'main')
 const News = r => require.ensure([], () => r(require('@/moudles/main/news')), 'main')
 const newsDetail = r => require.ensure([], () => r(require('@/moudles/main/newsDetail')), 'main')
 const balanceDetailed = r => require.ensure([], () => r(require('@/moudles/main/balanceDetailed')), 'main')
@@ -18,6 +21,12 @@ const cashRedpack = r => require.ensure([], () => r(require('@/moudles//cashRedp
 
 //福利场模块
 const Welfare = r => require.ensure([], () => r(require('@/moudles/welfare/index.vue')), 'welfare')
+
+//红包竞猜模块
+const redpackPK = r => require.ensure([], () => r(require('@/moudles/redpackPK/index.vue')), 'redpackPK')
+
+//豆豆接龙模块
+const redpackKld = r => require.ensure([], () => r(require('@/moudles/redpackKld/index.vue')), 'redpackKld')
 
 
 //血战到底 模块
@@ -47,7 +56,7 @@ Vue.use(Router);
 export default new Router({
   routes: [
 /***********************************************  主程序    ************************************************/
-		{	
+		{
       path: '/',
       name: 'Home',
       component: Home
@@ -68,6 +77,11 @@ export default new Router({
       component: Vip
     },
     {
+    	path: '/about',
+      name: 'About',
+      component: About
+    },
+    {
     	path: '/news',
       name: 'News',
       component: News
@@ -84,11 +98,26 @@ export default new Router({
       name: 'balanceDetailed',
       component: balanceDetailed
     },
+  //  乐豆商城
+    {
+    	path: '/shop',
+      name: 'Shop',
+      component: Shop
+    },
+   //  乐豆商城
+    {
+    	path: '/buy',
+      name: 'Buy',
+      component: Buy
+    },   
+    
+//福利场
     {
     	path: '/welfare/index',
       name: 'Welfare',
       component: Welfare
     },
+
 /***********************************************  业务  房卡     ************************************************/
     //超级大富翁主页
   	{
@@ -96,7 +125,22 @@ export default new Router({
       name: 'cashRedpack',
       component: cashRedpack
   	},
-   
+    /***********************************************  业务  红包竞猜     ************************************************/
+    //红包竞猜主页
+    {
+      path: '/redpackPK/index',
+      name: 'redpackPK',
+      component: redpackPK
+    },
+
+    /***********************************************  业务  豆豆接龙     ************************************************/
+    //豆豆接龙主页
+    {
+      path: '/redpackKld/index',
+      name: 'redpackKld',
+      component: redpackKld
+    },
+
 /***********************************************  业务  房卡     ************************************************/
   	//房卡主页
   	{

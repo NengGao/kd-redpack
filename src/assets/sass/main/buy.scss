@@ -1,0 +1,42 @@
+@charset 'utf8';
+
+@import "../config.scss";
+
+.my-kld{
+    padding-left: 1.1rem;
+    height:3.8rem;
+    line-height: 3.8rem;
+    background: #fff;
+    position: relative;
+    font-size: toRem(16px);
+    span{
+        color: $red;
+        em{
+            font-size: toRem(22px);
+            padding: 0 0.2rem;
+        }
+    }
+    .ic-kld{
+        background-size: 65%;
+        padding-right: 0.5rem;
+        position: relative;
+        top: 0.7rem;
+    }
+    .right{
+        font-size: toRem(14px);
+        position: absolute;
+        right: 0.5rem;
+        top: 0;
+        color: #999;
+    }
+}
+
+.kld-title{
+    line-height: 3rem;
+    color: #666;
+    padding-left: 1rem;
+}
+.kld-list{
+    width: 92%;
+    margin: 0 auto;
+}

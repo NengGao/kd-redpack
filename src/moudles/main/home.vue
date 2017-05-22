@@ -16,13 +16,13 @@
 				<div class="welfare-title">{{welfare.title}}</div>
 				<div class="welfare-status">{{redpack.time | welfareTime}}</div>
 				<div class="welfare-amonut">红包总金额：{{redpack.total}}元</div>
-				<router-link :to='"/roomCard/index/orJtLt_If3QAld15hxMnuI1uRoGU/0"' class="welfare-btn">{{welfare.btn}}</router-link>
+				<router-link :to='"/welfare/index"' class="welfare-btn">{{welfare.btn}}</router-link>
 			</div>
 			<ul class="home-nav flex-wrap">
 				<router-link tag="li" to="" class="flex-con-1">
 					<p>我的抢拍</p>
 				</router-link>
-				<router-link tag="li" to="" class="flex-con-1">
+				<router-link tag="li" to="/shop" class="flex-con-1">
 					<p>乐豆商城</p>
 				</router-link>
 				<router-link tag="li" to="/vip" class="flex-con-1">
@@ -36,20 +36,20 @@
 				</router-link>
 			</ul>
 			<ul class="activity-box flex-wrap">
-				<li class="hbjc flex-wrap" @click=goHBJC>
+				<router-link tag="li" to="/redpackPK/index" class="hbjc flex-wrap" @click=goHBJC>
 					<div class="activity-logo"></div>
 					<div class="activity-info">
 						<div class="activity-name">红包竞猜</div>
 						<div class="activity-tips">多人竞猜领红包</div>
 					</div>
-				</li>
-				<li class="ddjl flex-wrap">
+				</router-link>
+				<router-link tag="li" to="/redpackKld/index" class="ddjl flex-wrap">
 					<div class="activity-logo"></div>
 					<div class="activity-info">
 						<div class="activity-name">豆豆接龙</div>
 						<div class="activity-tips">全凭手气抢红包</div>
 					</div>
-				</li>
+				</router-link>
 			</ul>
 			<ul class="activity-box flex-wrap">
 				<li class="xzdd flex-wrap" @click=goXZDD>
@@ -80,12 +80,13 @@
 						<input type="button" value="抢购" class="candidBtn"/>
 					</li>
 					<li class="empty" v-if="goodsLis.length%2 != 0">
-						
+
 					</li>
 				</ul>
 			</div>
 			<div class="copyright">快点生活出品</div>
 		</div>
+		<div class="ic-cash-logo" @click=goDFW></div>
 	</div>
 </div>
 </template>
@@ -95,7 +96,7 @@
 import Vue from 'vue'
 import Api from '@/fetch/api'
 import common from '@/assets/js/common'
-import { Toast,Lazyload } from 'mint-ui';
+import { Toast,Lazyload } from 'mint-ui'
 import {mapGetters,mapActions} from 'vuex'
 
 export default {
@@ -108,7 +109,7 @@ export default {
     	goodsLis : common.getJsonLocal("goodsLis") || ''
     }
   },
-  created() {	
+  created() {
   	var self = this;
   	self.$store.dispatch('changeUserInfo',this);
   	self.$store.dispatch('changeRedpackInfo',this);
@@ -119,7 +120,7 @@ export default {
   	this.countDown();
   },
   filters:{
-  	
+
   	welfareTime: function(value) {
 		if(!value && value != 0) return
 		if(value <= 1000){
@@ -143,9 +144,9 @@ export default {
 	}
   },
   methods: {
- 
+
 	countDown(){
-		
+
 		if(!this.redpack.time) return
 
 		let self = this;
@@ -178,7 +179,14 @@ export default {
 		  duration: 100000,
 		  iconClass: 'ic-toast-success'
 		});
+	},
+	goXZDD(){
+		this.$router.push('/roomCard/index/orJtLt_If3QAld15hxMnuI1uRoGU/0')
+	},
+	goDFW(){
+		this.$router.push('/cashRedpack/index')
 	}
+
   }
 }
 </script>

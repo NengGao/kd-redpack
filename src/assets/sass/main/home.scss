@@ -169,6 +169,18 @@
            background-size: toRem(246.5px);
        }
     }
+    .xzdd{
+        .activity-logo{
+           background: no-repeat center url(/static/images/main/ic_roomCard.png);
+           background-size: 100%;
+       }
+    }
+    .jqqd{
+        .activity-logo{
+           background: no-repeat center url(/static/images/main/ic_want.png);
+           background-size: 100%;
+       }
+    }
     .goods-candid{
         
         margin-top: toRem(16px);
@@ -284,5 +296,13 @@
             }
         }
     }
-
+}
+.ic-cash-logo{
+    width: 8.4rem;
+    height: 8.4rem;
+    position: fixed;
+    bottom: 7rem;
+    right: 1.2rem;
+    background: no-repeat center url(/static/images/main/ic_cash_logo.png);
+    background-size: 100%;
 }

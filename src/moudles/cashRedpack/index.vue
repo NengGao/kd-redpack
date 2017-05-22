@@ -211,7 +211,7 @@
 		},
 		created() {
 			
-			
+			this.createService()
 		},
 		methods: {
 			//刷新 滚动条
@@ -257,6 +257,39 @@
 			showMdOpen(md, n) {
 				this.md.mask = true;
 				this.md.redpackOpen = true;
+			},
+			// 以下是  .ws 
+			createService() {
+				
+				let interval;
+				let self = this;
+				if(!this.ws){
+					this.ws = new ReconnectingWebSocket(config.ws.roomCard + "/createLobbyService?token=" + this.user.token);
+					this.ws.debug = false;
+					this.ws.timeoutInterval = 5400;
+					this.$store.dispatch('socket', this.ws);
+				}
+				//
+				let ws = this.ws;
+				ws.onopen = function() {
+					console.log("创建会话");
+					interval = setInterval(function() {
+						ws.send('{"msgKind":100}');
+					}, 30000);
+				};
+				ws.onclose = function() {
+					clearInterval(interval);
+				};
+				ws.onerror = function(evt) {
+					console.log("错误：" + evt)
+				};
+				ws.onmessage = function(message) {
+					var _data = JSON.parse(message.data);
+					if(_data.msgType == 1014){
+						Toast({ message: "您的账号已在别处登录", duration: 3000 });
+						ws.close()
+					}
+				}
 				
 			}
 		}
