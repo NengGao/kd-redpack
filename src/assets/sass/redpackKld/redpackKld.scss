@@ -6,11 +6,167 @@
 @import "../redpack.scss";
 @import "../animations.scss";
 
+.content{
+    overflow: hidden;
+    .scroll{
+        padding-top: 1rem;
+        padding-bottom: 3rem;
+    }
+}
+.kld-room{
+    position: fixed;
+    top: 0;
+    right: 0.8rem;
+    z-index: 11;
+    color: #f33;   
+    padding-top: 1rem;
+    li{
+        width: 2.8rem;
+        height: 2rem;
+        border-radius: 1rem;
+        background: #b51b0f;
+        line-height: 2rem;
+        padding: 0 .35rem;
+        font-weight: 400;
+        font-size: .95rem;
+        text-align: center;
+        margin-left: .4rem;
+    }     
+    .active{
+        box-shadow: 0 0 0.2rem 0.2rem #f74343;
+        background: #ffc800!important;
+    }
+}
 .footer{
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  background: #302627;
-  width: 100%;
-  height: 4.21rem;
+    width: 100%;
+    background: #302627;
+    width: 100%;
+    height: 4.21rem;
+    position: relative;
+    .user-balance{
+        padding-left: 1rem;
+        padding-top: 0.3rem;
+        p{
+            color: #7c6769;
+            line-height: 1.6rem;
+            font-size: toRem(12px);
+            padding-left: 0.3rem;
+        }
+        .balance-box{
+            min-width: 5.4rem;
+            padding: 0.15rem 0.3rem 0.15rem 0.6rem;
+            line-height: 1.5rem;
+            border-radius: 1rem;
+            background: #1f1616;
+            color: #ffb726;
+            position: relative;
+            .ic-add{
+                background: no-repeat center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAb1BMVEX82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb82Sb+/v6Ws3QHAAAAI3RSTlMACAkKDA0jJCUyV1iIiYqYmZqbnMjJz9DR6Onq6/T19vj5+nYITrIAAADQSURBVDjLjZPrFoIgEIRX01TMVETDa8L2/s+YWUdFBZp/MN/Z5TILsMgjKWvGsWEp8eCogPa4qKfBznZuAhWJxNn61woPqjZFohpPVEdL+xZP1f5quI917zVpXXF3BhLUAZjMB5R6QH6aUNQDWAD4vQnofSBoApBAbgZyYGaAQbcYe81GB8IMCDtgbWE9pPWa1ocyP/XgAxSWz4LA9N2hJTD3b+S4NnKX/0Jrj/1Ugx99rkyfk0jVluroTQrpsNrPIjyZby/OylbKtszizfi/ATOAbUTz8QKcAAAAAElFTkSuQmCC);
+                background-size: 65%;
+                position: absolute;
+                right: 0.2rem;
+                top: 0rem;
+                &:active{
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+    .games-function{
+        position: absolute;
+        right: 1rem;
+        top: 0.8rem;
+        li{
+            float: right;
+            height: 2.57rem;
+            position: relative;
+            margin-left: 1rem;
+            i{
+                width: 2.57rem;
+                height: 2.57rem;
+                display: block;
+            }
+            .ic-lock{
+                background: no-repeat center url(/static/images/cashRedpack/ic_lock.png);
+                background-size: 95%;
+                position: absolute;
+                top: 0;
+                right: 0;
+                z-index: 1;
+            }
+           .ic-chat{
+               background: no-repeat center url(/static/images/cashRedpack/ic_chat.png);
+               background-size: 95%;
+            } 
+           .ic-options{
+               background: no-repeat center url(/static/images/cashRedpack/ic_options.png);
+               background-size: 95%;
+            }
+            .ic-tool{
+                background: no-repeat center url(/static/images/cashRedpack/ic_tool.png);
+                background-size: 95%;
+            }
+            .ic-shop{
+                background: no-repeat center url(data:image/png;base64,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);
+                background-size: 95%;
+                position: relative;
+                top: -0.1rem;
+            }
+        }
+    }
+}
+
+
+.balance-recharge{
+    width: 22rem;
+    padding-top: 4rem;
+    .md-content{
+        background: #302627;
+        height: 16rem;
+        .md-close{
+            position: absolute;
+            right: -1.2rem;
+            top: -1.5rem;
+            width: 3rem;
+            height: 3rem;
+            background: no-repeat center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAABFFBMVEWoJST///+oJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSoJSSpJSSrJSWvJSawJSa0JCe2JCe4JCi5JCjAJCrBJCrKIyzLIyzLIy3MIy3PIy7RIy7UIy/cIjHdIjHgIjLhIjLiIjLjIjLkIjPlIjPmIjOfJVFbAAAAQXRSTlMAAAQFBhMUFhcZGhscJSYpKk5PUFFXWFtcZmlwcXJ1dnp7jY6Pk5SVtre4y8zOz9DY2dvs7e7x8vP09fb4+fr8/gjcwMIAAAJTSURBVEjHlZZrQ9pAEEWHomBprVqrrUq1D6pFoD7qgxYrHMRgI6hEDOD+///RDzGS7C7RzsfknmR3ZvfOSEq0yC4VirsHJycHu8XCUlaMiAPT+VKDSDRK+ekE4OWXXxjx+1tuAvBivYo1qutpGzBbeXjf7nq3/mjk33rd9sOjH/Mm8PYIAKfjq0j4HSf4yaIOrNQBWlfKiKsWQH0lDqwC4A6UJQaXAKxGgYU6QEdNiA5AfWEMzFWBsxs1MW7OgOpcCKR3ABL0St0A7KQfgPXE9URWtREAuSpwqZ6IS6CaE5GUbAKtMD96nrywLIMWsCUiqUwNCPPvO25M32s6IXEF1DIiqTXACT/jgBvTwyPhAGsiqXJ0xy5RotcEml5k3yWRbAO4UzYi0PfCV3dAIyfLQDuyijGh6ZVqA++lAHSVhTD0qgsUpAh4yiRMvfKA77IP9JVBXJh61Qf25RgYKpMw9WoIHAuAcQ7+2vRKAViBXhPgQn88Av7YlhTo4zVXSikf+GnZdJCfC5MINm2kNcynaxBBWvXCjfNvEEHhtKMRrZdOtIEPMhM7fPH6xgk/OHyx4+1p9Y0RHaCsXSDf0erlgjOIXKCP5hXV6uuaV1S2oibge7pRGiYQ2Iz7lM24Y5v5byOTdOV5VlkJrVJmj55jxsdvnm33Xd3uHxvK0CYfWhpK2LLOr0399bmtZYksJjfFd8lttz+4vx/0x213Z97W2Kc+1eyNvfZ5asLo8OqrbXTYfJ0wnGTy5fhwUs5nEqcZEZlZLmzvHZ6eHu5tF5ZnjOnnHx45Nz/mSLgNAAAAAElFTkSuQmCC);
+            background-size: 60%;
+            z-index: 10;
+        }
+        .balance-recharge-title{
+            width: 100%;
+            height: 4rem;
+            background: no-repeat center url(/static/images/cashRedpack/balance_recharge.png);
+            background-size: 90%;
+            position: absolute;
+            top: -2rem;
+        }
+        .user-balance{
+            padding-top: 2.6rem;
+            line-height: 1.5rem;
+            padding-left: 1.1rem;
+            color: #fff;
+            font-size: toRem(12px);
+            span{
+                color: $red;
+            }
+        }
+        .tips{
+            color: #997a7d;
+            font-size: 0.857rem;
+            padding-left: 1rem;
+            text-align: left;
+        }
+        .balance-btn{
+            display: block;
+            width: 20.4rem;
+            height: 3.14rem;
+            background: #d43a39;
+            color: #fff;
+            margin: 1rem auto 1rem;
+            border: 0;
+            border-radius: .3rem;
+            font-size: 1.35rem;
+        }
+    }
 }

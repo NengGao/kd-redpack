@@ -29,6 +29,9 @@ Vue.use(KD.Header);
 Vue.use(KD.wxScan);
 Vue.use(KD.informList);
 Vue.use(KD.star);
+Vue.use(KD.Counter);
+Vue.use(KD.kdPay);
+Vue.use(KD.getKld);
 
 /* eslint-disable no-new */
 new Vue({

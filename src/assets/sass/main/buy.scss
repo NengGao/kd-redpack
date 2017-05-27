@@ -37,6 +37,58 @@
     padding-left: 1rem;
 }
 .kld-list{
-    width: 92%;
+    width: 88%;
     margin: 0 auto;
+    li{
+        width: 10.6rem;
+        padding: 0.5rem 0;
+        background: #fff;
+        float: left;
+        margin-bottom: 0.8rem;
+        text-align: center;
+        border-radius: 0.2rem;
+        border: solid 0.2rem #fff;
+        p{
+            padding-top: 0.3rem;
+            line-height: 1.6rem;
+            span{
+                font-size: toRem(20px);
+                position: relative;
+                top: 0.1rem;
+                padding-right: 0.2rem;
+            }
+        }
+        .price{
+            color: #999;
+            line-height: 2rem;
+            font-size: toRem(12px);
+        }
+        &:nth-child(2n){
+            margin-left: 1.3rem;
+        }
+    }
+    .active{
+        border: solid 0.2rem $red;
+        position: relative; 
+        &:before{
+            content: '';
+            width: 1.7rem;
+            height: 1.6rem;
+            display: block;
+            background: no-repeat top url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAANlBMVEUAAAD/Jzn/Jzn/////KDr/R1b/Kjv/6Or/rLP/oqr/6+z/5Ob/sbj/p67/QVH/eIP/bHj/hY/unMv7AAAAAnRSTlMAgJsrThgAAACqSURBVEjHldJbCsJAFATR0vERX0nc/2YFE2mQmQvV36f+mqPbAeuxHueL4Lz0PSN/be+uZ+hbinhg7NvU8xT+1PNYj/IJ1vnPv3o+wdIe88/fa8/m21bUPsGz7UXtE1z2ovQJUqxff+v7BCla4ROkqH2CvZhqnyBF7ROkKH2CFGvhi/PVHuuxHuuxHuuxHuuxHuuxHuuxHuuxHuuxHuuxHuuxHuuxHuux/gNx0wuYqoFXNQAAAABJRU5ErkJggg==);
+            background-size: 100%;
+            position: absolute;
+            top: 0;
+        }
+    }
+}
+.buy-btn{
+    width: 86%;
+    height: 3.4rem;
+    background: $red;
+    color: #fff;
+    margin: 5rem auto 2rem auto;
+    font-size: toRem(16px);
+    border: 0;
+    border-radius: 0.2rem;
 }

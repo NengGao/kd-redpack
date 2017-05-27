@@ -1,0 +1,432 @@
+@charset 'utf8';
+
+@import "../config.scss";
+@import "../icon.scss";
+@import "../dialog.scss";
+
+.content{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  .nostartMain{
+    .welfare_main{
+      height: 19rem;
+      background: #ffffff;
+      margin-bottom: 1rem;
+      .welfare_head{
+        height: 2.78rem;
+        position: relative;
+        padding-top: 1.5rem;
+        .welfare_head_lt{
+          display: inline-block;
+          margin-left: 1rem;
+          position: relative;
+          .welfare_head_lt_img{
+            display: inline-block;
+            width: 2.8rem;
+            height: 2.3rem;
+            position: relative;
+            top: -0.5rem;
+            left: 0.5rem;
+            z-index: 1;
+            background: no-repeat url('http://k.kuaidian.cn/redpackWelfare/redpackWelfare.png');
+            background-position: -0.6rem -0.6rem;
+            background-size: 52.5rem;
+          }
+          .num{
+            display: inline-block;
+            width: 1.1rem;
+            height: 1.1rem;
+            border-radius: 1rem;
+            background: #ffe033;
+            font-size: 0.875rem;
+            text-align: center;
+            line-height: 1.2rem;
+            color: #ff2739;
+            position: absolute;
+            left: 2.5rem;
+            z-index: 2;
+            top: -0.6rem;
+          }
+          .left_num{
+            font-size: 1rem;
+            color: #ffffff;
+            border-radius: 1.25rem;
+            background: #ffbb33;
+            padding: 0.4rem 0.8rem 0.4rem 3.5rem;
+            position: relative;
+            left: -3rem;
+            top: -0.8rem;
+            white-space: nowrap;
+            vertical-align: middle;
+          }
+        }
+        .activity_rule{
+          display: inline-block;
+          color: #999999;
+          position: absolute;
+          right: 1rem;
+          top:1.8rem;
+          text-decoration: underline;
+          z-index: 2;
+        }
+      }
+      .welfare_content{
+        .noStart_bg{
+          display: block;
+          width: 8.5rem;
+          height: 8.5rem;
+          background:no-repeat url('http://k.kuaidian.cn/redpackWelfare/redpackWelfare.png');
+          background-position: -24.5rem 0;
+          background-size: 40.5rem;
+          margin: 0 auto;
+        }
+        .welfare_text{
+          text-align: center;
+          color: #999999;
+          font-size: 1rem;
+          margin-top: 1rem;
+        }
+        .welfare_cash{
+          text-align: center;
+          font-size: 1.35rem;
+          padding-top: 0.2rem;
+           em{
+            color: #ff2739;
+            font-size: 1.7rem;
+          }
+        }
+      }
+      .start-rob{
+        .welfare_content{
+          .moneyBag_bg{
+            display: block;
+            width: 8.5rem;
+            height: 8.5rem;
+            margin: 0 auto;
+            background: no-repeat url('http://k.kuaidian.cn/redpackWelfare/redpackWelfare.png');
+            background-position: -6.3rem 1.5rem;
+            background-size: 32.5rem;
+          }
+          .leftRpNum{
+            text-align: center;
+            color: #333333;
+            font-size: 1.15rem;
+            margin-top: 1rem;
+             span{
+              font-size: 1.7rem;
+            }
+             em{
+              color: #ff2739;
+              font-size: 1.7rem;
+            }
+          }
+          .total_redpack{
+            text-align: center;
+            font-size: 1.15rem;
+            padding-top: 0.2rem;
+             em{
+              color: #ff2739;
+            }
+          }
+        }
+        .robingBtn{
+          display: block;
+          border: 0;
+          width: 18.6rem;
+          height: 3.2rem;
+          border-radius: 0.4rem;
+          color: #ffffff;
+          font-size: 1.35rem;
+          margin: 2rem auto;
+          background: #ff2739;
+          font-weight: 600;
+        }
+        .startNoNum{
+          .numOut{
+            color: #ff2739;
+            font-size: 1.15rem;
+            text-align: center;
+            margin-top: 0.5rem;
+          }
+          .noNumBtn{
+            display: block;
+            border: 0;
+            width: 20.6rem;
+            height: 3.6rem;
+            border-radius: 0.4rem;
+            color: #ffffff;
+            font-size: 1.35rem;
+            margin: 1rem auto;
+            background: #FF939C;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+  .isShow-y{
+    margin-top: 1rem;
+    .cashLisBox{
+      width: 100%;
+      background: #fff;
+      margin-top: 10px;
+      overflow: hidden;
+      padding-bottom: 2rem;
+      .cashLisTitle{
+        height: 3.8rem;
+        line-height: 3.8rem;
+        font-weight: 600;
+        padding-left:3.2rem;
+        color: #333;
+        border-bottom: solid 0.1rem #eee;
+        position: relative;
+        z-index: 1;
+        background: #fff;
+        font-size: 1.24rem;
+        &:before{
+          width: 3.8rem;
+          height: 3.8rem;
+          content: '';
+          background:no-repeat center url(/static/images/welfare/ic_cashLisTitle.png) ;
+          background-size: 35%;
+          display: block;
+          position: absolute;
+          left: 0;
+        }
+         span{
+          color: #ff3333;
+          font-size: 1.2rem;
+          position: absolute;
+          right: 1rem;
+          font-weight: normal;
+          text-decoration: underline;
+          &:active{
+            text-decoration: none;
+          }
+        }
+      }
+      ul{
+          li{
+            height: 4.2rem;
+            position: relative;
+            border-bottom: solid 0.1rem #eee;
+            padding: 0 $padding;
+            box-sizing: border-box;
+             .userHead{
+               margin-top: 0.5rem;
+              img{
+                width: 3.2rem;
+                height: 3.2rem;
+                border-radius: 100%;
+              }
+            }
+            .userInfo{
+              margin-top:0.8rem;
+              margin-left: 0.5rem;
+              .userName{
+                line-height: 1.5rem;
+                font-size: 1rem;
+                color: #333;
+                width: 9rem;
+                white-space:nowrap;
+                overflow:hidden;
+                text-overflow:ellipsis;
+              }
+              .time{
+                display: inline-block;
+                text-align: center;
+                height: 100%;
+                color: #999999;
+              }
+            }
+            .takeNum{
+              position: absolute;
+              right: 1rem;
+              color: #666;
+              line-height: 4.2rem;
+              em{
+                color: $red;
+              }
+            }
+          }
+        }
+
+    }
+  }
+}
+
+.openRedpack{
+  position: absolute;
+  width: 20.2rem;
+  border-radius: 0.3rem;
+  z-index: 999;
+  .md-content{
+    background: #e81f33;
+    height: 26.6rem;
+    .openRedpack_top{
+      height: 16.4rem;
+      background: no-repeat center url(/static/images/welfare/redpack_bg.png);
+      background-size: 100%;
+      img{
+        display: block;
+        width: 2.8rem;
+        height: 2.8rem;
+        margin: 0 auto;
+        padding-top: 2rem;
+      }
+      .openRedpack_name{
+        text-align: center;
+        color: #fcfd97;
+        font-size: 0.875rem;
+        margin-top: 0.5rem;
+      }
+      .openRedpack_text{
+        text-align: center;
+        color: #ffffff;
+        font-size: 1rem;
+        margin-top: 0.3rem;
+      }
+      .openRedpack_mainName{
+        text-align: center;
+        color: #ffffff;
+        font-size: 1.7rem;
+        margin-top: 1.5rem;
+      }
+    }
+
+    .money{
+      display: block;
+      width: 6.5rem;
+      height: 6.5rem;
+      margin: 0 auto;
+      position: relative;
+      top: -3.4rem;
+      background: no-repeat url('http://k.kuaidian.cn/redpackWelfare/redpackWelfare.png');
+      background-position: -4rem -0.2rem;
+      background-size: 53.5rem;
+    }
+  }
+}
+
+/*抢玩了 弹窗*/
+.noRobRedpack{
+  position: absolute;
+  width: 20.2rem;
+  border-radius: 0.3rem;
+  z-index: 999;
+  .md-content{
+    background: #ffffff;
+    padding: $padding;
+    .noRobRedpack_bg{
+      display: block;
+      width: 6.8rem;
+      height: 6rem;
+      margin: 1.5rem auto 0 auto;
+      background:no-repeat url('http://k.kuaidian.cn/redpackWelfare/redpackWelfare.png');
+      background-position: -13.6rem 0.9rem;
+      background-size: 33.5rem;
+    }
+    .noRobBtn{
+      display: block;
+      border: 0;
+      width: 17.8rem;
+      height: 3.2rem;
+      background: #ff2739;
+      color: #ffffff;
+      font-size: 1.35rem;
+      margin: 2rem auto 0 auto;
+      border-radius: 0.5rem;
+    }
+    .noVipRobBtn{
+      display: block;
+      border: 0;
+      width: 17.8rem;
+      height: 3rem;
+      background: #fcd200;
+      color: #ff4734;
+      font-size: 1.35rem;
+      margin: 1.2rem auto 0 auto;
+      border-radius: 0.5rem;
+    }
+    .noCash_state{
+      text-align: center;
+      font-size: 1rem;
+      color: #333333;
+      margin-top: 1rem;
+    }
+    .red_close{
+      position: absolute;
+      right: 0.5rem;
+      top:0;
+    }
+  }
+}
+
+
+/*开出来的红包弹窗*/
+.openingRp{
+  position: absolute;
+  width: 20.2rem;
+  border-radius: 0.3rem;
+  z-index: 999;
+  .md-content{
+    padding: $padding;
+    background: #ffffff;
+    .cash_num{
+      text-align: center;
+      color: #ff2739;
+      font-size: 1.15rem;
+      margin-top: 3.5rem;
+       em{
+        font-size: 3.42rem;
+      }
+    }
+
+    .cash_state{
+      text-align: center;
+      font-size: 1rem;
+      color: #333333;
+      margin-top: 2rem;
+    }
+    .goRobBtn{
+      display: block;
+      border: 0;
+      width: 17.8rem;
+      height: 3.2rem;
+      background: #ff2739;
+      color: #ffffff;
+      font-size: 1.35rem;
+      margin: 2.5rem auto 0 auto;
+      border-radius: 0.5rem;
+    }
+    .goVipRobBtn{
+      display: block;
+      border: 0;
+      width: 17.8rem;
+      height: 3.2rem;
+      background: #fcd200;
+      color: #ff4734;
+      font-size: 1.35rem;
+      margin: 1.2rem auto 0 auto;
+      border-radius: 0.5rem;
+    }
+    .lucy{
+      display: block;
+      text-decoration: underline;
+      text-align: center;
+      color: #999999;
+      font-size: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .goTime em{
+      font-size: 1rem;
+    }
+    .red_close{
+      position: absolute;
+      right: 0.5rem;
+      top:0;
+
+    }
+  }
+}

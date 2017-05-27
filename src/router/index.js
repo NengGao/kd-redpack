@@ -16,8 +16,12 @@ const News = r => require.ensure([], () => r(require('@/moudles/main/news')), 'm
 const newsDetail = r => require.ensure([], () => r(require('@/moudles/main/newsDetail')), 'main')
 const balanceDetailed = r => require.ensure([], () => r(require('@/moudles/main/balanceDetailed')), 'main')
 
+// 客服系统
+
+const Customer = r => require.ensure([], () => r(require('@/moudles/customer/index.vue')), 'customer')
 // 超级大富翁 模块
-const cashRedpack = r => require.ensure([], () => r(require('@/moudles//cashRedpack/index.vue')), 'cashRedpack')
+const cashRedpack = r => require.ensure([], () => r(require('@/moudles/cashRedpack/index.vue')), 'cashRedpack')
+const cashGroupInfo = r => require.ensure([], () => r(require('@/moudles/cashRedpack/groupInfo.vue')), 'cashRedpack')
 
 //福利场模块
 const Welfare = r => require.ensure([], () => r(require('@/moudles/welfare/index.vue')), 'welfare')
@@ -27,6 +31,11 @@ const redpackPK = r => require.ensure([], () => r(require('@/moudles/redpackPK/i
 
 //豆豆接龙模块
 const redpackKld = r => require.ensure([], () => r(require('@/moudles/redpackKld/index.vue')), 'redpackKld')
+
+//商品抢拍模块
+const goodsAuction = r => require.ensure([], () => r(require('@/moudles/goodsAuction/index.vue')), 'goodsAuction')
+const myAuction = r => require.ensure([], () => r(require('@/moudles/goodsAuction/myAuction.vue')), 'goodsAuction')
+const auctionRecord = r => require.ensure([], () => r(require('@/moudles/goodsAuction/auctionRecord.vue')), 'goodsAuction')
 
 
 //血战到底 模块
@@ -56,7 +65,7 @@ Vue.use(Router);
 export default new Router({
   routes: [
 /***********************************************  主程序    ************************************************/
-		{
+	{
       path: '/',
       name: 'Home',
       component: Home
@@ -104,28 +113,39 @@ export default new Router({
       name: 'Shop',
       component: Shop
     },
-   //  乐豆商城
+   //  购买快乐豆
     {
     	path: '/buy',
       name: 'Buy',
       component: Buy
-    },   
-    
-//福利场
+    },
+
+/***********************************************  客服系统     *********************************************************/
+    {
+      path: '/customer',
+      name: 'Customer',
+      component: Customer
+    },
+/***********************************************  业务  整点福利红包     ************************************************/
     {
     	path: '/welfare/index',
       name: 'Welfare',
       component: Welfare
     },
 
-/***********************************************  业务  房卡     ************************************************/
+/***********************************************  业务  超级大富翁     **************************************************/
     //超级大富翁主页
   	{
   		path: '/cashRedpack/index',
       name: 'cashRedpack',
       component: cashRedpack
   	},
-    /***********************************************  业务  红包竞猜     ************************************************/
+  	{
+  		path: '/cashRedpack/groupInfo/:roomid',
+      name: 'cashGroupInfo',
+      component: cashGroupInfo
+  	},
+/***********************************************  业务  红包竞猜     ****************************************************/
     //红包竞猜主页
     {
       path: '/redpackPK/index',
@@ -133,18 +153,37 @@ export default new Router({
       component: redpackPK
     },
 
-    /***********************************************  业务  豆豆接龙     ************************************************/
+/***********************************************  业务  豆豆接龙     ****************************************************/
     //豆豆接龙主页
     {
       path: '/redpackKld/index',
       name: 'redpackKld',
       component: redpackKld
     },
+    /***********************************************  业务  商品抢拍     ************************************************/
+    //商品抢拍主页
+    {
+      path: '/goodsAuction/index/:goodsCode',
+      name: 'goodsAuction',
+      component: goodsAuction
+    },
+    //我的抢拍
+    {
+      path: '/goodsAuction/myAuction',
+      name: 'myAuction',
+      component: myAuction
+    },
+//抢拍结果记录
+    {
+      path: '/goodsAuction/auctionRecord/:period',
+      name: 'auctionRecord',
+      component: auctionRecord
+    },
 
-/***********************************************  业务  房卡     ************************************************/
+/***********************************************  业务  房卡     ********************************************************/
   	//房卡主页
   	{
-  		path: '/roomCard/index/:oid/:page',
+  		path: '/roomCard/index/:page',
       name: 'roomCard',
       component: RoomCard
   	},

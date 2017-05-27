@@ -1,3 +1,8 @@
+
+import config from '@/config'
+import ReconnectingWebSocket from '@/assets/js/reconnecting-websocket.min'
+import { Toast,MessageBox } from 'mint-ui'
+
 export default {
 	setLocal : function(name,val){
 		localStorage.setItem(name,val)
@@ -117,4 +122,37 @@ export default {
         document.getElementById("app").appendChild(Alipay);
         document.forms['alipaysubmit'].submit();
     },
+
+	/*************** 创建 ws  *****************/
+    createService: function (self) {
+		let interval;
+		if(!self.ws){
+			self.ws = new ReconnectingWebSocket(config.ws.roomCard + "/createLobbyService?token=" + self.user.token);
+			self.ws.debug = false;
+			self.ws.timeoutInterval = 5400;
+			self.$store.dispatch('socket', self.ws);
+		}
+		//
+		let ws = self.ws;
+		ws.onopen = function() {
+			console.log("创建会话");
+			interval = setInterval(function() {
+				ws.send('{"msgKind":100}');
+			}, 30000);
+		};
+		ws.onclose = function() {
+			clearInterval(interval);
+		};
+		ws.onerror = function(evt) {
+			console.log("错误：" + evt)
+		};
+		ws.onmessage = function(message) {
+			var _data = JSON.parse(message.data);
+			if(_data.msgType == 1014){
+				Toast({ message: "您的账号已在别处登录", duration: 3000 });
+				ws.close()
+			}
+		}
+		
+	}
 }

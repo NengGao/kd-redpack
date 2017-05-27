@@ -73,6 +73,13 @@ export default {
   		cb(data)
   	})
   },
+  //分配房间
+  getRoom(cb,data) {
+  	fetch(config.ip.room + '/getRoom','get',data,true)
+  	.then(function(data){
+  		cb(data)
+  	})
+  },
   //news
   toMessageCenter(cb) {
     var messageId = localStorage.getItem("messageId");
@@ -99,8 +106,13 @@ export default {
 	  	})
 	},
 
-
-//房卡
+//超级大富翁
+//获取充值次数
+	rechargeCount(cb){
+	  	fetch(config.ip.room + '/rechargeCount','get',{},true).then(function(data){
+	  		cb(data)
+	  	})
+	},
 
 	//进入房间
 	enterRoom(cb,data){
@@ -299,5 +311,40 @@ export default {
     },true).then(function(data){
       cb(data)
     })
-  }
+  },
+/****************************************************************************************/
+//商品抢拍
+  robBuyEnterRoom(cb,goodsCode){
+    fetch(config.ip.robBuy + '/enterRoom','post',{
+      goodsCode:goodsCode
+    },true).then(function(data){
+      cb(data)
+    })
+  },
+  //快乐豆支付
+  kldPay(cb,payment,goodsCode,price){
+    fetch(config.ip.robBuy + '/bid','get',{
+      payment:payment,
+      goodsCode:goodsCode,
+      price:price
+    },true).then(function(data){
+      cb(data)
+    })
+  },
+  //快乐豆支付
+  myRobBuy(cb,type){
+  fetch(config.ip.robBuy + '/myRobBuy','get',{
+    type:type,
+  },true).then(function(data){
+    cb(data)
+  })
+  },
+  //竞拍结果记录
+  checkRecord(cb,period){
+    fetch(config.ip.robBuy + '/checkRecord','get',{
+      period:period,
+    },true).then(function(data){
+      cb(data)
+    })
+  },
 }

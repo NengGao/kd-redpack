@@ -3,7 +3,7 @@
 		<kd-header :headerMsg=headerMag></kd-header>
 		<router-link tag="li" to="/buy" class="header-right flex-wrap">
 			<i class="ic-kld"></i> 
-			<span>294.7</span>
+			<span>{{user.syceeTotal | KLD_f}}</span>
 			<i class="ic-add"></i>
 		</router-link>
 		<div class="shop-notice"></div>

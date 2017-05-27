@@ -42,7 +42,7 @@
 								<div class="hot-text">
 									<p>{{item.notice}}</p>
 									<div class="star-box">
-                    <star :starLevel="item.starLevel"></star>
+                    					<star :starLevel="item.starLevel"></star>
 										<div class="star-right">
 											<div class="room-box">
 												<i class="ic_house"></i>
@@ -131,37 +131,11 @@
 			</div>
 			<i class="ic-close-gray" @click="closeMd('massToBuy')"></i>
 		</div>
-		<!--确认付款-->
-		<div class="confirm-pay" v-show="md.confirmPayShow">
-			<div class="title">确认付款</div>
-			<div class="pay-head">
-				<p>待付款</p>
-				<div class="pay-price">￥{{payPrice | RMB_f}}</div>
-			</div>
-			<div class="choose-box">
-				<div class="choose-text">选择支付方式</div>
-				<div class="choose-pay-type-box">
-					<div class="flex-wrap flex-center choose-pay-type" @click="changePayWay(index)" v-for="(item,index) in payList" v-if=item.show>
-						<div class="flex-wrap flex-center pay-left">
-							<i :class="{'ic_balance_pay':payList[index].title=='余额支付','ic_wx_smpay':payList[index].title=='微信扫码支付','ic_wx_pay':payList[index].title=='微信支付','ic_zfb_pay':payList[index].title=='支付宝支付'}"></i>
-							<div class="pay-title">
-								<p>{{payList[index].title}}</p>
-								<p v-if="payList[index].type=='ye'">帐户余额：￥{{ user.balance | RMB_f }}</p>
-								<div class="pay-SM" v-if="payList[index].type == 'wxScan'">
-									<span></span>
-									<em>支付随机减免</em>
-								</div>
-							</div>
-						</div>
-						<i :class="{'ic-choose':payList[index].active}"></i>
-					</div>
-				</div>
-			</div>
-			<input type="button" value="立即支付" class="to-pay-btn" @click="buyCard">
-			<i class="ic-close-gray" @click="closePay('confirmPayShow')"></i>
-		</div>
-
-		<wx-scan :wxScan=wxScan></wx-scan>
+		
+		
+		
+		<!-- 快点支付  -->
+		<kd-pay :paySet=paySet></kd-pay>
 	</div>
 </template>
 
@@ -171,19 +145,15 @@
 	import config from '@/config';
 	import common from '@/assets/js/common'
 	import { Toast,Indicator,Swipe,SwipeItem } from 'mint-ui'
-	import ReconnectingWebSocket from '@/assets/js/reconnecting-websocket.min'
+
 	export default {
 		data() {
 			return {
 				user: this.$store.getters.getUserInfo || '',
 				ws : this.$store.getters.getSocket,
 				intoRoomId: '',
-				wxScan: {
-					show: false,
-					url: ''
-				},
-				hotArr: common.getJsonLocal("hotArr") || '',
-				messageList: common.getJsonLocal("messageList") || '',
+				hotArr: common.getJsonLocal("hotArr") || [],
+				messageList: common.getJsonLocal("messageList") || [],
 				buyList: [
 					{ num: "1", price: "5", active: false, ifmass: false },
 					{ num: "10", price: "50", active: false, ifmass: false },
@@ -194,14 +164,13 @@
 					{ num: "1000", price: "3000", active: false, ifmass: true },
 					{ num: "5000", price: "20000", active: false, ifmass: true },
 				],
-				payList: [
-					{ title: "余额支付", type: "ye", active: true, favorable: false, show: true },
-					{ title: "微信扫码支付", type: "wxScan", active: false, favorable: true, show: false },
-					{ title: "微信支付", type: "wxApp", active: false, favorable: false, show: false },
-					{ title: "支付宝支付", type: "alipay", active: false, favorable: false, show: false }
-				],
+				paySet:{
+					type : 'XZDD',
+					returnUrl : 'http://' + config.host + encodeURIComponent('/#/roomCard/index/0'),
+					balance : true,
+	        		balancePay : this.balancePay
+				},
 				page: true,
-				payPrice: '',
 				headerMag: {
 					title: '血战到底',
 					rightMsg: '',
@@ -231,28 +200,30 @@
 			}
 		},
 		created() {
-			var data = {
-				oid: this.$route.params.oid,
-				self: this,
-				page: this.$route.params.page,
-				callback :  this.createService()
-			};
-			this.$store.dispatch('roomCardlogin', data);
-
-			if(this.$route.params.page == 1) {
-				this.page = false;
-			} else if(this.$route.params.page == 0) {
+			let self = this;
+			//common.createService(this);
+			if(this.$route.params.page == 0){
 				this.page = true;
-			}
+		        Api.xzddHome(function(data){
+		            self.roomCard.roomCardAmount = data.roomCardAmount;
+		            localStorage.setItem("roomCardAmount",data.roomCardAmount);
+		            self.hotArr = data;
+		            self.messageList=data.messageList;
+		            common.setJsonLocal("hotArr",data);
+		            common.setJsonLocal("messageList",data.messageList);
+		        })
+	        }else {
+	        	this.page = false;
+		        Api.recentJoin(function(data){
+		            self.roomCard.roomCardAmount = data.roomCardAmount;
+		            self.hotArr = data;
+		            common.setJsonLocal("hotArr",data);
+		        })
+	        }
 		},
 		methods: {
-			_initScroll() {
-				this.scroll = new BScroll(this.$refs.wrapper, {
-					click: true
-				});
-			},
 			chooseType(index) {
-				this.payPrice = this.buyList[index].price;
+				 this.$store.getters.getKdPay.payPrice = this.buyList[index].price;
 				const self = this;
 				for(let i = 0; i < self.buyList.length; i++) {
 					this.buyList[i].active = false;
@@ -261,17 +232,16 @@
 					self.closeMd('massBuyCard');
 					self.closeMd('payRoomCard');
 					self.closeMd('massToBuy');
-					self.showMd('confirmPayShow');
+					self.$store.getters.getKdPay.show = true;
 				}, 100);
 				this.buyList[index].active = true;
-
 			},
 			changePage(type) {
 				if((type && this.page) || (!type && !this.page)) return
 				this.page = !this.page;
 				let self = this;
 				if(!this.page) {
-					this.$router.push('/roomCard/index/' + this.user.openid + '/1')
+					this.$router.replace('/roomCard/index/1')
 					this.page = false;
 					Indicator.open();
 					Api.recentJoin(function(data) {
@@ -292,7 +262,7 @@
 							common.setJsonLocal("hotArr", data);
 						}
 					});
-					this.$router.push('/roomCard/index/' + this.user.openid + '/0')
+					this.$router.replace('/roomCard/index/0')
 				}
 			},
 			buyListChange(index) {
@@ -336,7 +306,7 @@
 			showMassBuyCard(type) {
 				this.md.massToBuy = !this.md.massToBuy;
 				this.md.massBuyCard = false;
-				this.getPayMethod();
+			
 			},
 			closeMassBuyCard() {
 				this.md.mask = false;
@@ -347,99 +317,29 @@
 					this.buyList[i].active = false;
 				};
 				this.md.mask = !this.md.mask;
-				this.getPayMethod();
 				if(this.user.group) {
 					this.md.massBuyCard = !this.md.massBuyCard;
 				} else {
 					this.md.payRoomCard = !this.md.payRoomCard;
 				}
 			},
-			getPayMethod() {
+			balancePay(){
 				let self = this;
-				Api.getPayMethod(function(data) {
+				let num = common.getArrItem(this.buyList, "num");
+				Api.getRoomCard(function(data) {
 					if(data.msgCode == '200') {
-						for(let i = 0; i < self.payList.length; i++) {
-							for(let j = 0; j < data.list.length; j++) {
-								if(data.list[j].methodId == self.payList[i].type) {
-									self.payList[i].show = true;
-								}
-							}
-						}
+						self.md.mask = false;
+						self.md.payRoomCard = false;
+						self.$store.getters.getKdPay.show = false;
+						self.user.balance = data.balance;
+						self.roomCard.roomCardAmount = self.roomCard.roomCardAmount + parseInt(num);
+						Toast({ message: '购买成功', duration: 1500, iconClass: 'ic-toast-success' });
 					} else {
 						Toast({ message: data.msgNote, duration: 1500 });
 					}
 				}, {
-					orderType: 'XZDD'
+					amount: num
 				})
-			},
-			buyCard() {
-				let self = this;
-				let num = common.getArrItem(this.buyList, "num");
-				let type = common.getArrItem(this.payList, "type");
-				let returnUrl = 'http://' + config.host + encodeURIComponent('/#/roomCard/index/') + self.$route.params.oid + '/0';
-				if(type == 'ye') {
-					Api.getRoomCard(function(data) {
-						if(data.msgCode == '200') {
-							self.md.mask = false;
-							self.md.payRoomCard = false;
-							self.md.confirmPayShow = false;
-							self.user.balance = data.balance;
-							self.roomCard.roomCardAmount = self.roomCard.roomCardAmount + parseInt(num);
-							Toast({ message: '购买成功', duration: 1500, iconClass: 'ic-toast-success' });
-						} else {
-							Toast({ message: data.msgNote, duration: 1500 });
-						}
-					}, {
-						amount: num
-					})
-				} else {
-
-					Api.submit(function(data) {
-						if(data.msgCode == '200') {
-							let payResult = data.data;
-							//支付宝
-							if(type == 'alipay') {
-								common.toAlipay(payResult, returnUrl);
-							}
-							//微信App
-							if(type == 'wxAppPay') {
-								if(data.official) {
-									//官方微信支付
-									let official = data.official;
-									let weixinPay = data;
-									delete weixinPay.official;
-									delete weixinPay.msgCode;
-									weixinPay.returnCode = 'SUCCESS';
-									common.toWxPay(JSON.stringify(weixinPay), official);
-								} else {
-									let tokenId = data.tokenId;
-									let appId = data.appId;
-									try {
-										common.toWxPay(tokenId, data.official, payJson.returnUrl, appId)
-									} catch(e) {
-										Toast({ message: '调起微信支付失败', duration: 1300 });
-									}
-								}
-							}
-							if(type == 'wxScan') {
-								self.wxScan.show = true;
-								self.md.mask = false;
-								self.md.payRoomCard = false;
-								self.md.confirmPayShow = false;
-								self.wxScan.url = data.imgUrl;
-							}
-						} else {
-							Toast({ message: data.msgNote, duration: 1500 });
-						}
-					}, {
-						orderType: 'XZDD',
-						amount: self.payPrice,
-						userCode: self.user.userCode,
-						payMethod: type,
-						bussinessData: num,
-						returnUrl: returnUrl
-					})
-				}
 			},
 			addRoom(roomId, roomPwd) {
 				let self = this;
@@ -459,40 +359,6 @@
 			},
 			recordDetails(b, r, u) {
 				this.$router.push('/roomCard/recordDetails/' + b + '/' + r + '/' + u)
-			},
-			// 以下是  .ws
-			createService() {
-
-				let interval;
-				let self = this;
-				if(!this.ws){
-					this.ws = new ReconnectingWebSocket(config.ws.roomCard + "/createLobbyService?token=" + this.user.token);
-					this.ws.debug = false;
-					this.ws.timeoutInterval = 5400;
-					this.$store.dispatch('socket', this.ws);
-				}
-				//
-				let ws = this.ws;
-				ws.onopen = function() {
-					console.log("创建会话");
-					interval = setInterval(function() {
-						ws.send('{"msgKind":100}');
-					}, 30000);
-				};
-				ws.onclose = function() {
-					clearInterval(interval);
-				};
-				ws.onerror = function(evt) {
-					console.log("错误：" + evt)
-				};
-				ws.onmessage = function(message) {
-					var _data = JSON.parse(message.data);
-					if(_data.msgType == 1014){
-						Toast({ message: "您的账号已在别处登录", duration: 3000 });
-						ws.close()
-					}
-				}
-
 			}
 		}
 	}

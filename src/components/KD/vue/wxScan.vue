@@ -16,6 +16,11 @@
 	import common from '@/assets/js/common'
 	
 	export default {
+		data(){
+			return{
+				kdPay : this.$store.getters.getKdPay
+			}
+		},
 		props:{
 			wxScan:{
 	        	type: Object
@@ -23,6 +28,8 @@
 		},
 		methods:{
 			wxScanClose(){
+				console.log(this.kdPay);
+				this.kdPay.show = false;
 				this.wxScan.show = false;
 			},
 			saveImage(){
@@ -44,7 +51,7 @@
 		position: absolute;
 		top:0;
 		left:0;
-		z-index:12;
+		z-index:998;
 		.header{
 		    height: toRem(55px);
 		    width: 100%;

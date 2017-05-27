@@ -1,0 +1,1091 @@
+@charset 'utf8';
+
+@import "../config.scss";
+@import "../icon.scss";
+@import "../dialog.scss";
+@import "../animations.scss";
+
+.content {
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.goodsDetailInfo {
+  height: 15.3rem;
+  background: #ffffff;
+  position: relative;
+  .JDprice {
+    position: absolute;
+    width: 3.8rem;
+    height: 3.8rem;
+    background: no-repeat center url(/static/images/goodsAuction/JDprice.png);
+    background-size: 100%;
+    z-index: 2;
+    right: 1.15rem;
+    top: 5.5rem;
+    span {
+      display: inline-block;
+      width: 100%;
+      position: absolute;
+      bottom: 0.6rem;
+      text-align: center;
+      font-size: 0.875rem;
+      color: #ffffff;
+    }
+    em {
+      font-size: 1rem;
+      color: #ffffff;
+    }
+  }
+  .swiper-container {
+    height: 15.3rem;
+    background: #ffffff;
+    .goods_img img {
+      width: 11.5rem;
+      height: 11.5rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -60%);
+      -webkit-transform: translate(-50%, -60%);
+    }
+    .page {
+      position: absolute;
+      width: 2.14rem;
+      height: 2.14rem;
+      background: #d2d2d2;
+      border-radius: 100%;
+      color: #ffffff;
+      font-size: 1rem;
+      line-height: 2.24rem;
+      text-align: center;
+      right: 7rem !important;
+      top: 3.5rem;
+    }
+    .ic_backBox {
+      padding: 0 1rem 1rem 1.15rem;
+      position: absolute;
+      top: 1.15rem;
+      z-index: 2;
+      .ic_back {
+        display: block;
+        width: 1.715rem;
+        height: 1.715rem;
+        background: no-repeat center url(/static/images/goodsAuction/ic_back.png);
+        background-size: 100%;
+        &:active {
+          top: 1.2rem;
+          opacity: 0.6;
+        }
+      }
+    }
+
+    .ic_rule {
+      position: absolute;
+      min-width: 3.71rem;
+      height: 2.85rem;
+      background: no-repeat center url(/static/images/goodsAuction/ic_rule.png);
+      background-size: 100%;
+      right: 1.15rem;
+      top: 1.15rem;
+      color: #ffffff;
+      font-size: 0.875rem;
+      line-height: 2.85rem;
+      text-align: center;
+      z-index: 2;
+    }
+    .joininfo {
+      -webkit-transform: translate3d(0, 0, 0);
+      -moz-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+      position: absolute;
+      width: 11.65rem;
+      height: 2.28rem;
+      border-radius: 1.5rem;
+      line-height: 2.28rem;
+      color: #ffffff;
+      font-size: 0;
+      background: rgba(0, 0, 0, 0.6);
+      left: -12rem;
+      top: 4rem;
+      z-index: 2;
+      .toCost {
+        .joinUser {
+          font-size: 0.875rem;
+          p {
+            max-width: 4.6rem;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            word-break: break-all;
+          }
+        }
+        img {
+          width: 2.28rem;
+          height: 2.28rem;
+          border-radius: 100%;
+          margin-right: 0.3rem;
+        }
+      }
+    }
+
+    .goodsInfoBox {
+      position: absolute;
+      height: 4.57rem;
+      width: 100%;
+      background: rgba(243, 57, 73, 0.85);
+      bottom: 0;
+      z-index: 2;
+      .goodsInfo {
+        padding-left: 1.15rem;
+        width: 100%;
+        .goodsName {
+          width: 17rem;
+          font-size: 0.875rem;
+          color: #ffffff;
+          line-height: 1rem;
+          max-height: 2.5rem;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          overflow: hidden;
+        }
+        .lastPrice {
+          font-size: 1rem;
+          color: #ffffff;
+          line-height: 1.5rem;
+          span {
+            color: #ffe359;
+            font-size: 1rem;
+          }
+          em {
+            color: #ffe359;
+            font-size: 1.7rem;
+          }
+        }
+      }
+      .endTimeBox {
+        position: absolute;
+        width: 6.35rem;
+        height: 4.98rem;
+        background: #ffe359;
+        right: 1.15rem;
+        top: -0.4rem;
+        span {
+          position: absolute;
+          display: inline-block;
+          width: 0;
+          height: 0;
+          border-top: 0.4rem solid transparent;
+          border-bottom: 0.1rem solid transparent;
+          border-right: 0.4rem solid #4a251b;
+          top: 0;
+          left: -0.35rem;
+        }
+        .peroid_end {
+          p {
+            color: #4c261c;
+            font-size: 0.875rem;
+            text-align: center;
+            line-height: 1rem;
+          }
+          .endTime {
+            color: #ec0033;
+            font-size: 1.35rem;
+            text-align: center;
+            line-height: 1.8rem;
+          }
+        }
+        .period {
+          color: #4c261c;
+          font-size: 0.95rem;
+          text-align: center;
+          margin-top: 0.8rem;
+          line-height: 1rem;
+        }
+      }
+    }
+    .changeBg{
+      background: #817A7A!important;
+    }
+  }
+}
+  .lastAuctionBox {
+    height: 3.71rem;
+    width: 100%;
+    background: #ffffff;
+    ul {
+      padding-left: 1.15rem;
+      li {
+        display: inline-block;
+        height: 3.71rem;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        z-index: 2;
+        text-align: left;
+        .lastPeroid {
+          font-size: 0.8rem;
+          color: #666666;
+          margin-top: 0.8rem;
+          line-height: 1.2rem;
+        }
+        .lastPeroidPrice {
+          color: #ff3c4c;
+          line-height: 1.4rem;
+          em {
+            font-size: 1.15rem;
+          }
+          span {
+            font-size: 0.875rem;
+          }
+        }
+      }
+    }
+  }
+
+
+.rankBox{
+  height: 14.5rem;
+  background: #ffffff;
+  margin-top: 0.5rem;
+  .rankHead{
+    border-bottom: 0.1rem solid #f5f4f4;
+    padding: 0 1.15rem;
+    height: 3.71rem;
+    -webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;
+    .rankLeft{
+      p:nth-child(1){
+        font-size: 1.15rem;
+        color: #333;
+        line-height: 1.9rem;
+      }
+      p:nth-child(2){
+        font-size: 1rem;
+        color: #999;
+        line-height: 1.2rem;
+      }
+    }
+    .rankRight{
+      p:nth-of-type(1){
+        font-size: 1rem;
+        color: #999;
+        line-height: 1.8rem;
+        text-align: right;
+      }
+      p:nth-of-type(2){
+        font-size: 0.875rem;
+        color: #e78f4b;
+        line-height: 1.2rem;
+        text-align: right;
+        .refresh{
+          display: inline-block;
+          width: 1.2rem;
+          height: 1.2rem;
+          background: no-repeat center url(/static/images/goodsAuction/ic_refresh.png);
+          background-size: 0.8rem;
+          vertical-align: middle;
+        }
+      }
+
+    }
+  }
+  .rank_10{
+    height: 10.78rem;
+    padding: 0 1.15rem;
+     ul{
+      height: 10.78rem;
+      width: 100%;
+      font-size: 0;
+      li {
+        display: inline-block;
+        width: 20%;
+        z-index: 2;
+        text-align: center;
+        padding: 0.5rem 0;
+        line-height: normal;
+        box-sizing: border-box;
+        img{
+          display: block;
+          width: 2.85rem;
+          height: 2.85rem;
+          margin: 0 auto;
+          border-radius: 100%;
+        }
+        p{
+          display: block;
+          color: #999;
+          text-align: center;
+          line-height: 1.5rem;
+          font-size: 0.875rem;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}
+
+
+.lastRecordBox{
+  background: #ffffff;
+  margin-top: 0.5rem;
+  .lastRecordTitle{
+    height: 2.85rem;
+    line-height: 2.95rem;
+    padding-left: 1.15rem;
+    font-size: 1.15rem;color: #333;
+    background: #ffffff;
+    position: relative;
+    z-index: 2;
+     span{
+      color: #fe3b4b;
+      font-size: 1rem;
+      position: absolute;
+      right: 1.15rem;
+    }
+  }
+  .lastRecord{
+    .lastRecordList{
+      height: 4rem;
+      padding: 0 1.15rem;
+      position: relative;
+      border-top: 0.1rem solid #f5f4f4;
+      box-sizing: border-box;
+      -webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;
+      .lastRecordLeft{
+        img{
+          width: 2.85rem;
+          height: 2.85rem;
+          border-radius: 100%;
+        }
+        &:active{
+          background:#f9f9f9;
+        }
+
+        .userInfo{
+          margin-left: 0.5rem;
+          span{
+            display: inline-block;
+            max-width: 10rem;
+            line-height: 1.2rem;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            vertical-align: middle;
+          }
+          p:nth-of-type(1){
+            color: #666666;
+            font-size: 1rem;
+            line-height: 1.6rem;
+            max-width: 12rem;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+          }
+          p:nth-of-type(2){
+            color: #333;
+            font-size: 1.15rem;
+            line-height: 1rem;
+          }
+          em{
+            color: #666666;
+            font-size: 1rem;
+            line-height: 1.2rem;
+          }
+      }
+      }
+      .needKld{
+         p:nth-of-type(1){
+          color: #666666;
+          font-size: 1rem;
+          line-height: 1.6rem;
+          text-align: right;
+        }
+        .needKldNum{
+          color: #e78f4b;
+          font-size: 1.15rem;
+          line-height: 1rem;
+        }
+      }
+    }
+  }
+}
+
+.foot{
+  position: relative;
+  height: 4.14rem;
+  width: 100%;
+  background: #ffffff;
+  border-top: 0.1rem solid #f5f4f4;
+  .footLeft{
+    display: inline-block;
+    background: #ffffff;
+    height: 4.14rem;
+    padding-left: 1.15rem;
+    width: 17.8rem;
+    box-sizing: border-box;
+    .toPrice{
+      .myPrice{
+        color: #333;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        margin-top: 0.65rem;
+        position: relative;
+         em{
+          color: #ff3c4c;
+          font-size: 1.15rem;
+        }
+        .jd_price{
+          position: absolute;
+          right: 0.5rem;
+          color: #999;
+          line-height: 1.5rem;
+          font-size: 0.875rem;
+          margin-left: 0.5rem;
+          text-decoration: line-through;
+        }
+      }
+      .myBeans{
+        color: #333;
+        font-size: 1rem;
+        line-height: 1.5rem;
+        margin-top: 0.65rem;
+        position: relative;
+        em{
+          color: #ff3c4c;
+          font-size: 1.15rem;
+        }
+      }
+    }
+  }
+  .footRight{
+    position: absolute;
+    display: inline-block;
+    background: #f33949;
+    height: 4.14rem;
+    width: 7.78rem;
+    right: 0;
+    top:0;
+    &:active{
+      opacity: 0.6;
+    }
+    .change_p{
+      text-align: center;
+      color: #ffffff;
+      font-size: 1.15rem;
+      line-height: 1.6rem;
+      margin-top: 0.8rem;
+    }
+    .change_num{
+      text-align: center;
+      color: #ffffff;
+      font-size: 0.9rem;
+       em{
+        color: #ffe359;
+      }
+    }
+
+  }
+
+  .joinNext{
+    position: absolute;
+    display: inline-block;
+    background: #f33949;
+    height: 4.14rem;
+    width: 7.78rem;
+    right: 0;
+    top:0;
+    color: #ffffff;
+    text-align: center;
+    line-height: 4.14rem;
+    font-size: 1.15rem;
+    &:active{
+      opacity: 0.6;
+    }
+  }
+}
+
+
+.rewardBox{
+  .successGetBox{
+    height: 4.57rem;
+    background: #f33949;
+    padding: 0 1.15rem;
+    margin-top: 0.5rem;
+    -webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;
+    &:active{
+      opacity: 0.6;
+    }
+    .successGet{
+       img{
+        width: 2.85rem;
+        height: 2.85rem;
+        border-radius: 100%;
+      }
+      .successGetInfo{
+        margin-left: 0.5rem;
+        .successGetName{
+          font-size: 1rem;
+          color: #ffffff;
+          line-height: 1.5rem;
+        }
+        .successGetPrice{
+          font-size: 1rem;
+          color: #ffffff;
+          line-height: 1.5rem;
+           em{
+            color: #ffe359;
+            font-size: 1.15rem;
+            line-height: 1.5rem;
+          }
+        }
+      }
+    }
+    .ic_white_right{
+      height: 1.1rem;
+      width: 1.1rem;
+      background: no-repeat center url(/static/images/goodsAuction/ic_white_right.png);
+      background-size: 1.1rem;
+    }
+  }
+}
+
+/*乐豆退回弹窗*/
+.tipBox{
+  .md-content{
+    width: 22.8rem;
+    background: #ffffff;
+    border-radius: 0.3rem;
+    padding: 1.15rem;
+    box-sizing: border-box;
+    .tip_title{
+      line-height: 2.2rem;
+      font-size: 1.35rem;
+      color: #333;
+      font-weight: 600;
+    }
+    p{
+      font-size: 1.15rem;
+      line-height: 1.5rem;
+      margin-top: 0.5rem;
+    }
+    span{
+      color: #f22435;
+    }
+    .btn_main{
+      @include flex-pack-justify();
+      margin-top: 0.8rem;
+      .lookAccount{
+        width: 9.71rem;
+        height: 3.14rem;
+        border: 0.1rem solid #d1d1d1;
+        border-radius: 0.3rem;
+        font-size: 1.35rem;
+        color: #666666;
+        background: #ffffff;
+        &:active{
+          opacity: 0.6;
+        }
+      }
+      .confirmBtn{
+        width: 9.71rem;
+        height: 3.14rem;
+        border: 0;
+        border-radius: 0.3rem;
+        font-size: 1.35rem;
+        color: #ffffff;
+        background: #ed1126;
+        &:active{
+          opacity: 0.6;
+        }
+      }
+    }
+    .red_close{
+      position: absolute;
+      top:0;
+      right: 0;
+    }
+  }
+}
+
+
+/*次数用完*/
+
+.auctionNum{
+  .md-content{
+    width:22.8rem;
+    padding: 1.15rem;
+    border-radius: 0.3rem;
+    background: #ffffff;
+    box-sizing: border-box;
+     img{
+      width: 6.8rem;
+      height: 6.8rem;
+      margin: 3rem auto 1rem auto;
+    }
+    .auctionNum_title{
+      font-size: 1.35rem;
+      text-align: center;
+    }
+     p{
+      color: #999999;
+      text-align: center;
+      line-height: 1.5rem;
+    }
+    .auctionNum_notice{
+      padding-top: 1rem;
+      color: #666;
+      font-size: 1rem;
+      text-align: justify;
+    }
+    #auctionNumBtn{
+      border: 0;
+      display: block;
+      width: 100%;
+      margin: 1.15rem auto 0 auto;
+      height: 3.42rem;
+      border-radius: 0.3rem;
+      color: #ffffff;
+      font-size: 1.25rem;
+      background: #ed1126;
+      &:active{
+        opacity: 0.6;
+      }
+    }
+    .red_close{
+      position: absolute;
+      top:0;
+      right: 0;
+    }
+  }
+}
+
+/*规则*/
+@media screen and (max-width:321px) {
+  .auctionRule{
+    transform:scale(1,0.95);
+    -webkit-transform:scale(1,0.95);
+    -moz-transform:scale(1,0.95);
+    -o-transform:scale(1,0.95);
+    bottom: -1rem!important;
+  }
+}
+.auctionRule{
+  position: absolute;
+  bottom: 0;
+  z-index: 999;
+  .md-content{
+    background: #ffffff;
+    border-radius: 0.3rem;
+    padding: 1.15rem;
+    box-sizing: border-box;
+
+     h1{
+      font-weight: normal;
+      font-size: 1.33rem;
+      margin-top: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .auctionRuleBox p{
+      color: #666666;
+      text-align: justify;
+      font-size: 1.15rem;
+      line-height: 1.4rem;
+      margin-top: 1rem;
+    }
+    .stepBox{
+      width: 15rem;
+      height: 1.7rem;
+      border: 0.1rem solid #f5f2f0;
+      position: relative;
+      margin: 1.5rem auto 0 auto;
+      .step{
+        display: inline-block;
+        width: 2.57rem;
+        height: 1.7rem;
+        color: #ffffff;
+        font-size: 1.15rem;
+        text-align: center;
+        line-height: 1.7rem;
+        background: no-repeat center url(/static/images/goodsAuction/ic_number_bg.png);
+        background-size: 100%;
+      }
+       span{
+        color: #999999;
+        font-size: 1rem;
+
+      }
+       em{
+        position: absolute;
+        width:0;
+        height:0;
+        border-left:0.6rem solid transparent;
+        border-right: 0.6rem solid transparent;
+        border-top: 0.6rem solid #ff2739;
+        bottom: -1rem;
+        left: 6.35rem;
+      }
+    }
+
+    #myKnowBtn{
+      display: block;
+      background: #ff2739;
+      border: 0;
+      width: 100%;
+      height: 3.42rem;
+      border-radius: 0.5rem;
+      font-size: 1.25rem;
+      color: #ffffff;
+      margin: 1.15rem auto 0 auto;
+      &:active{
+        opacity: 0.6;
+      }
+    }
+    .red_close{
+      position: absolute;
+      top:0;
+      right:0;
+    }
+  }
+}
+
+/*修改出价*/
+.editPrice{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 999;
+  .md-content{
+    background: #ffffff;
+    padding: 2rem 1.15rem 1.15rem 1.15rem;
+    box-sizing: border-box;
+    .priceBox{
+       p{
+        font-size: 1rem;
+        color: #999;
+        line-height: 3rem;
+      }
+      .editPrice_title{
+        font-size: 1.35rem;
+        color: #333;
+        font-weight: 600;
+      }
+      .price_num{
+        position: relative;
+        line-height: 3rem;
+        span:nth-of-type(1){
+          font-size: 1.15rem;
+          color: #3d3d3d;
+        }
+        span:nth-of-type(2){
+          position: absolute;
+          font-size: 1rem;
+          color: #ff2739;
+          right: 0;
+        }
+      }
+      .priceSection{
+        .reduce{
+          width: 4.57rem;
+          height: 3.14rem;
+          border-radius: 0.3rem;
+          background: no-repeat center url(/static/images/goodsAuction/ic_reduce.png);
+          background-size: 1.5rem;
+          background-color: #fff;
+          border: 0.1rem solid #d1d1d1;
+          &:active{
+            opacity: 0.6;
+          }
+        }
+        .add{
+          width: 4.57rem;
+          height: 3.14rem;
+          border-radius: 0.3rem;
+          background: no-repeat center url(/static/images/goodsAuction/ic_add.png);
+          background-size: 1.4rem;
+          background-color: #f33949;
+          &:active{
+            opacity: 0.6;
+          }
+        }
+        .priceNum{
+          width: 12.8rem;
+          height: 3.14rem;
+          background: #ebebeb;
+          border-radius: 0.3rem;
+          margin-left: 1.25rem;
+          margin-right: 1.25rem;
+          text-align: center;
+          line-height: 3.14rem;
+          color: #666666;
+        }
+      }
+    }
+    .confirmPayBtn{
+      display: block;
+      border: 0;
+      width: 100%;
+      height: 3.42rem;
+      background: #ed1126;
+      border-radius: 0.3rem;
+      margin: 0 auto 1.15rem auto;
+      color: #ffffff;
+      font-size: 1.35rem;
+      &:active{
+        opacity: 0.6;
+      }
+    }
+    .ic-close-gray{
+      position: absolute;
+      top: .5rem;
+      right: .5rem;
+    }
+
+  }
+}
+
+/*确认支付*/
+.confirmPay{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #ffffff;
+  padding: 2rem 1.15rem 1.15rem 1.15rem;
+  box-sizing: border-box;
+  z-index: 999;
+  .goodsBox{
+    height: 6.2rem;
+     img{
+      width: 4.57rem;
+      height: 4.57rem;
+    }
+    .goodsA{
+      margin-left: 1.15rem;
+      .goods_name{
+        color: #333;
+        font-size: 1rem;
+        line-height: 1.2rem;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+      }
+      .goods_price{
+        line-height: 1.8rem;
+         em{
+          color: #666;
+          font-size: 1rem;
+          line-height: 1.2rem;
+        }
+         span{
+          color: #ff2739;
+          font-size: 1.15rem;
+          line-height: 1.2rem;
+        }
+         i{
+          color: #ff2739;
+          font-size: 1rem;
+          line-height: 1.2rem;
+        }
+      }
+    }
+  }
+  .priceBox{
+    border-bottom: 0.1rem solid #f5f4f4;
+     p{
+      font-size: 1rem;
+      color: #999;
+      line-height: 3rem;
+    }
+    .priceText{
+      line-height: 3.5rem;
+      font-size: 1.15rem;
+      color: #333;
+      position: relative;
+       span{
+        position: absolute;
+        font-size: 1rem;
+        color: #ff2739;
+        right: 0;
+      }
+    }
+    .priceSection{
+      .reduce{
+        width: 4.57rem;
+        height: 3.14rem;
+        border-radius: 0.3rem;
+        background: no-repeat center url(/static/images/goodsAuction/ic_reduce.png);
+        background-size: 1.5rem;
+        background-color: #fff;
+        border: 0.1rem solid #d1d1d1;
+        &:active{
+          opacity: 0.6;
+        }
+      }
+      .add{
+        width: 4.57rem;
+        height: 3.14rem;
+        border-radius: 0.3rem;
+        background: no-repeat center url(/static/images/goodsAuction/ic_add.png);
+        background-size: 1.4rem;
+        background-color: #f33949;
+        &:active{
+          opacity: 0.6;
+        }
+      }
+      .priceNum{
+        width: 12.8rem;
+        height: 3.14rem;
+        background: #ebebeb;
+        border-radius: 0.3rem;
+        margin-left: 1.25rem;
+        margin-right: 1.25rem;
+        text-align: center;
+        line-height: 3.14rem;
+        color: #666666;
+      }
+    }
+  }
+  .confirmPayBtn{
+    display: block;
+    border: 0;
+    width: 100%;
+    height: 3.42rem;
+    background: #ed1126;
+    border-radius: 0.3rem;
+    margin: 1.15rem auto;
+    color: #ffffff;
+    font-size: 1.35rem;
+    &:active{
+      opacity: 0.6;
+    }
+  }
+  .red_close{
+    position: absolute;
+    top:0;
+    right: 0;
+  }
+}
+
+/*快乐豆不足*/
+.noBeans{
+  overflow: visible;
+  .md-content{
+    background: #302627;
+    border-radius: 0.3rem;
+    box-sizing: border-box;
+    padding: 0 0.5rem 1rem 0.5rem;
+    .ic_tip_bg{
+      position: absolute;
+      img{
+        width: 100%;
+        margin-top: -2rem;
+      }
+    }
+    .ic_kld{
+      width: 3.2rem;
+      height: 3.2rem;
+      margin: 0 auto;
+      padding-top: 3.5rem;
+    }
+
+     p{
+      text-align: center;
+      color: #ffffff;
+      font-size: 1.35rem;
+      line-height: 2.8rem;
+    }
+    .noBeansBtn{
+      margin-top:1.2rem;
+      .cancel{
+        border: 0;
+        width: 9.7rem;
+        height: 3.14rem;
+        background: #4e3f40;
+        border-radius: 0.3rem;
+        color: #ffffff;
+        font-size: 1.35rem;
+        margin-left: 0.5rem;
+        &:active{
+          opacity: 0.6;
+        }
+      }
+      #goGet{
+        border: 0;
+        width: 9.7rem;
+        height: 3.14rem;
+        background: #d43a39;
+        border-radius: 0.3rem;
+        color: #ffffff;
+        font-size: 1.35rem;
+        margin-left: 1.2rem;
+        &:active{
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+}
+
+.isRankBox{
+  position: absolute;
+  z-index: 999;
+  .md-content{
+    background: #ffffff;
+    border-radius: 0.3rem;
+    padding: 1.15rem;
+    box-sizing: border-box;
+    .tip_title{
+      line-height: 2.2rem;
+      font-size: 1.35rem;
+      color: #333;
+      font-weight: 600;
+    }
+     p{
+      font-size: 1.15rem;
+      line-height: 1.5rem;
+      margin-top: 0.5rem;
+       em{
+         color: #e78f4b;
+       }
+    }
+    .btn_main{
+      margin-top: 0.8rem;
+      @include flex-pack-justify();
+      .continueBtn{
+        width: 9.71rem;
+        height: 3.14rem;
+        border: 0.1rem solid #d1d1d1;
+        border-radius: 0.3rem;
+        font-size: 1.35rem;
+        color: #666666;
+        background: #ffffff;
+        &:active{
+          opacity: 0.6;
+        }
+      }
+
+      .confirmBtn{
+        width: 9.71rem;
+        height: 3.14rem;
+        border: 0;
+        border-radius: 0.3rem;
+        font-size: 1.35rem;
+        color: #ffffff;
+        background: #ed1126;
+        &:active{
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+  .ic-close-gray{
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+}
+

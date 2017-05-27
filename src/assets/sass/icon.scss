@@ -275,29 +275,33 @@
 
 .ic_balance_pay{
   display: block;
-  width: toRem(80px/2);
-  height: toRem(80px/2);
+  margin-left: 0.5rem;
+  width: toRem(60px/2);
+  height: toRem(60px/2);
   background: center no-repeat url(/static/images/roomCard/ic_balance_pay.png);
   background-size: 100%;
 }
 .ic_wx_smpay{
   display: block;
-  width: toRem(80px/2);
-  height: toRem(80px/2);
+  width: toRem(60px/2);
+  height: toRem(60px/2);
+  margin-left: 0.5rem;
   background: center no-repeat url(/static/images/roomCard/ic_wx_smpay.png);
   background-size: 100%;
 }
 .ic_wx_pay{
   display: block;
-  width: toRem(80px/2);
-  height: toRem(80px/2);
+  width: toRem(60px/2);
+  height: toRem(60px/2);
+  margin-left: 0.5rem;
   background: center no-repeat url(/static/images/roomCard/ic_wx_pay.png);
   background-size: 100%;
 }
 .ic_zfb_pay{
   display: block;
-  width: toRem(80px/2);
-  height: toRem(80px/2);
+  width: toRem(60px/2);
+  height: toRem(60px/2);
+  margin-left: 0.5rem;
   background: center no-repeat url(/static/images/roomCard/ic_zfb_pay.png);
   background-size: 100%;
 }
@@ -347,4 +351,12 @@
   height: toRem(16px);
   background: center no-repeat url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAfCAMAAACxiD++AAABU1BMVEUAAADLciSxay7McySRYzqdZjXMcyTMcyS2bSzMcyR+XUHMcySEXz/McySOYTvMcyTMcySjZzOmaDKpaTHMcySsajDMcyTMcyS4bSvMcyS7bivHcSbHcSbIciXMcyRrWEl3XETMcyR7XULMcySHYD7McyTMcySVZDnMcySZZTfMcySZZTfMcyTMcySgZzTMcyS2bSy5biuXg3P5skvhmC+xmohoWEtuXlChkH+KeGl2ZVfQeSe0n5CunIybh3aRf3COe2uHdWZrW07ajCzNdCSeinmYhHSSgnJ/b2H3vlj6v1dyYVPpq031rEbvpz/UgivRfCjOdiaznYurm4mul4WmlYSmkH+UhHX7zGSEc2Tyvlv5t1DsoEDfmUDinTLbkS7Tfiv60Gj7xl76xV76uVLprE7lpEjyqEXvpEPhnEPdlT3poTnknDPWhzPdlzHVhTHSfif3bg9AAAAAMnRSTlMAB0Q4lXh4Yjgyxsa4uJ6ZlmdgWlpSUkUyLSwdGhX29dbWzMyurqKMjIKCgYFvbmk3MaWbjR0AAAF3SURBVCjPfdNld4JQAMbx63Szu2vdPRFQsLC75mbN6brj+78aNeCy4fPO8/8djod7AbItLIC505bL9rkgn0xi8/rSayIRX1Tuqk4FRROYShHsv4xRtJveU+pBsoKg9COyQQWw+4gwoNvf+b/rZxUWoEnc9/fv6bU2Yx3hQKFk0DjOVEJTn1g38l+T+qjKg2IsVhoS2LrFfkorf+dj8jC6GdxW7xEOXEYihdjFeTLWp4hsANjqg7vqGGHGg1SEGadKGuDPXyGSMQ8QR2EBALyQQHtFsccx9mw9nWcR9FJiz2Td/BmTTwKAugPwO2o3foHY0/ix5JhnvGhKOnTshy02v0cFUDsA0oXajeZblJ4A8BAE1C06QoDQQcCVk4OyE76MUzmg4Ktp/ZSDuAYC5ii/TIYHaRME1q7ZPP3GMCLOiVUILDMg1za6AHAaagxJrUh7mKQzafZwv9ymGhUp4mHpfW3lyC2v5BPexIeED3pR22oATWfhX9QPPqhwMkIWKq8AAAAASUVORK5CYII=);
   background-size: 100%;
+}
+/*红色关闭*/
+.red_close{
+  display: block;
+  width: 2.8rem;
+  height: 2.8rem;
+  background: no-repeat center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAVBAMAAACwDgOmAAAAJFBMVEUAAADyMgzyMgzyMgzyMgzyMgzyMgzyMgzyMgzyMgzyMgzyMgzWc/Y/AAAAC3RSTlMA0RTG3BwOtDAjPOzUPU4AAABqSURBVAjXNY2xCYAwFAUfBiFYWgk2ZgUL0RlsM4BTCI4lFkH+coF/5FWPu+I0rGL9rvAu/FzUzSP43KSEyN8lBBgBRoARjhGTY4Q59kX71ZbNGyQP4iSJkyROkjhJBBgBRoSWTEXxlhBPBZpCHks/xwtDAAAAAElFTkSuQmCC);
+  background-size: 1.2rem;
 }

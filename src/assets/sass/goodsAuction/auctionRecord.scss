@@ -1,0 +1,186 @@
+@charset 'utf8';
+
+@import "../config.scss";
+@import "../icon.scss";
+@import "../dialog.scss";
+@import "../animations.scss";
+
+.content {
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.auctionResultHead{
+  position: relative;
+  background: #f5f4f4;
+  z-index: 2;
+  .auctionInfoBox{
+    background: #ffffff;
+    height: 7.46rem;
+    width: 100%;
+    padding: 1.15rem;
+    box-sizing: border-box;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 2;
+
+    .auctionInfo{
+      font-size: 1.15rem;
+      color: #333;
+      line-height: 1.5rem;
+      &:before{
+        content: "";
+        display: inline-block;
+        width: 0.2rem;
+        height: 1.15rem;
+        background: #ff2739;
+        vertical-align: top;
+        margin-right: 0.3rem;
+      }
+    }
+    .auctionUser{
+      height: 4.65rem;
+      -webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;
+      .auctionLeft{
+         img{
+          width: 2.85rem;
+          height: 2.85rem;
+          border-radius: 100%;
+        }
+        .auctionMain{
+          margin-left: 0.5rem;
+           p:nth-of-type(1){
+            font-size: 1.15rem;
+            color: #333;
+            line-height: 1.8rem;
+            max-width: 12rem;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+          }
+           p:nth-of-type(2){
+            font-size: 0.875rem;
+            color: #999;
+            line-height: 1rem;
+          }
+           p em{
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.5rem;
+          }
+        }
+      }
+      .auctionRight{
+         p:nth-of-type(1){
+          font-size: 1rem;
+          color: #333;
+          line-height: 1.8rem;
+        }
+         p:nth-of-type(2){
+          font-size: 0.875rem;
+          color: #999;
+          line-height: 1rem;
+          text-align: right;
+        }
+         p em{
+          font-size: 1rem;
+          color: #ff2739;
+          line-height: 1.5rem;
+        }
+      }
+
+    }
+    .ic_success_mark{
+      position: absolute;
+      display: inline-block;
+      width: 5.7rem;
+      height: 5.7rem;
+      right: 0;
+      top:-2rem;
+      background: no-repeat center url(/static/images/goodsAuction/ic_mark.png);
+      background-size: 100%;
+    }
+  }
+  .lastRecordTitle{
+    height: 2.85rem;
+    line-height: 2.95rem;
+    padding-left: 1.15rem;
+    font-size: 1.15rem;color: #333;
+    background: #ffffff;
+    position: relative;
+    z-index: 2;
+     span{
+      color: #fe3b4b;
+      font-size: 1rem;
+      position: absolute;
+      right: 1.15rem;
+    }
+  }
+
+}
+
+.recordBox{
+  background: #ffffff;
+  .lastRecordList{
+    height: 4rem;
+    padding: 0 1.15rem;
+    position: relative;
+    border-top: 0.1rem solid #f5f4f4;
+    box-sizing: border-box;
+    -webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;
+    &:active{
+      background:#f9f9f9;
+    }
+    .lastRecordLeft{
+      img{
+        width: 2.85rem;
+        height: 2.85rem;
+        border-radius: 100%;
+      }
+      .userInfo{
+        margin-left: 0.5rem;
+         span{
+          display: inline-block;
+          max-width: 10rem;
+          line-height: 1.2rem;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          vertical-align: middle;
+        }
+         p:nth-of-type(1){
+          color: #666666;
+          font-size: 1rem;
+          line-height: 1.6rem;
+          max-width: 12rem;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+         p:nth-of-type(2){
+          color: #333;
+          font-size: 1.15rem;
+          line-height: 1rem;
+        }
+         em{
+          color: #666666;
+          font-size: 1rem;
+          line-height: 1.2rem;
+        }
+      }
+
+    }
+    .needKld{
+       p:nth-of-type(1){
+        color: #666666;
+        font-size: 1rem;
+        line-height: 1.6rem;
+        text-align: right;
+      }
+      .needKldNum{
+        color: #e78f4b;
+        font-size: 1.15rem;
+        line-height: 1rem;
+      }
+    }
+  }
+}

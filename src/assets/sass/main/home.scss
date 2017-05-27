@@ -1,7 +1,8 @@
 @charset 'utf8';
 
 @import "../config.scss";
-
+@import "../animations.scss";
+@import "../dialog.scss";
 .header{
     height: toRem(55px);
     width: 100%;
@@ -136,21 +137,32 @@
         height: toRem(72px);
         li{
             @include flex(1);
+            position: relative;
             &:nth-child(1){
                 border-right: $border;
+            }
+            .ic-tj {
+                display: block;
+                width: 2.8rem;
+                height: 2.8rem;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: top no-repeat url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE0AAABNCAMAAADU1xmCAAAAk1BMVEUAAAD/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/Jzn/////8fL/UmH/fYj/NUb/qbD/1Nf/jJX/YW7/RFP/xcr/t73/4uX/b3v/mqNrGdlvAAAAIXRSTlMA+fzxVEcK6uNQTD0VD9fDIAbPrV1ZMycbA93Juiy1p1/2r9e0AAACd0lEQVRYw83V127cMBAF0HFixyW99zKXHFJ11///dZE4XGmDRbKkSCC+gMqDcMAZsdC5XF1wai4uHyx2ew67+1/Y3YPFrpIxa8ux2wUzxlXEIP/GHqdiYitiHYxi3pdhmhFoZwyN+xv29Bx2edQzGFcPEy8Bc1UwZsUaX4RJ0x1jADM7m4094jnOABPmFmzSXGNcNqYRYGd39xETNDw/NmLWwKAFItbBn2AfcjCxwiZi3GLMxt5HbP2b2AdsrnIzxjvF5mLZC6vmec11BsZWsWaPgVmxtoHPxdbo1FAtVOtW7vp7zsh2llnC2sTugDH3QCr2LmCduOUXtI4nDfaAOY8xHdPuG68LSuMAY9mLVj64LIz3HoCO5LBbTlyURUf2MQ2TuVGdzgRrRLVBArfkJhFjj1YXlEwPJVrcs3LJ2C/FuIeZMJmuNmLcdz0rl4NpRu2Zjb0SbZRyiRgtGO+BNh4GEgx34FS7eUVnEz7XWR4GZY0RA/mjXS4VI91oPbs9e2CSggjFvFabjBFrcb5BJ0BU2uUc5ZgvSRgtB6fnHoMPmugZP2EuA1Nt3b9k5JmT6Zr8IR+jiI2hd4NlH1eTxRH2iTI0a3zonaDlidOdd8VeKJZcaX84pmxwjN2IEWsix6zcuAVbNVXg48sJlq31gFk4YyP2jLZpLQa7cKoptknr/J4Xrg/3N4rla5qVi1iJppysWKnGI9oFK9XcCLP0rFjrh0Gxr8+pUNMUYFQVo3NYufZyK0ZVMaqK0Sn2hLanKkZnsCLtWxlGVTGqilEalq/9KMdoxV5TeSpiq/a2CkZVMaqKUVWMZuwz1dN+1sOoKkZVMaqK/Qawdja8fBURYwAAAABJRU5ErkJggg==) ;
+                background-size: 2.8rem;
             }
         }
         .activity-logo{
            width: toRem(48px);
            height: toRem(48px);
            margin: 0.8rem 0.8rem auto 1.1rem;
-           
+
         }
         .activity-name{
             font-size: toRem(16px);
             padding-top: 1.2rem;
             line-height: 1.4rem;
-            
+
         }
         .activity-tips{
             color: #999;
@@ -161,7 +173,7 @@
        .activity-logo{
             background: no-repeat toRem(-55px) toRem(-51px) url(/static/images/main/ic_home.png);
             background-size: toRem(246.5px);
-       } 
+       }
     }
     .ddjl{
         .activity-logo{
@@ -182,7 +194,7 @@
        }
     }
     .goods-candid{
-        
+
         margin-top: toRem(16px);
         background: #fff;
         .ic-candid{
@@ -207,7 +219,7 @@
                padding-bottom: 0.5rem;
                border-top: $border;
                overflow: hidden;
-               position: relative; 
+               position: relative;
                &:nth-child(odd){
                     width: 49.5%;
                     border-right: $border;
@@ -298,11 +310,134 @@
     }
 }
 .ic-cash-logo{
-    width: 8.4rem;
-    height: 8.4rem;
+    width: 8.2rem;
+    height: 8.2rem;
     position: fixed;
+    z-index: 20;
     bottom: 7rem;
     right: 1.2rem;
     background: no-repeat center url(/static/images/main/ic_cash_logo.png);
     background-size: 100%;
+}
+
+.openRedpack{
+  position: absolute;
+  width: 20.2rem;
+  border-radius: 0.3rem;
+  z-index: 999;
+  .md-content{
+    background: #e81f33;
+    height: 26.6rem;
+    .openRedpack_top{
+      height: 16.4rem;
+      background: no-repeat center url(/static/images/welfare/redpack_bg.png);
+      background-size: 100%;
+      img{
+        display: block;
+        width: 2.8rem;
+        height: 2.8rem;
+        margin: 0 auto;
+        padding-top: 2rem;
+      }
+      .openRedpack_name{
+        text-align: center;
+        color: #fcfd97;
+        font-size: 0.875rem;
+        margin-top: 0.5rem;
+      }
+      .openRedpack_text{
+        text-align: center;
+        color: #ffffff;
+        font-size: 1rem;
+        margin-top: 0.3rem;
+      }
+      .openRedpack_mainName{
+        text-align: center;
+        color: #ffffff;
+        font-size: 1.7rem;
+        margin-top: 1.5rem;
+      }
+    }
+
+    .money{
+      display: block;
+      width: 6.5rem;
+      height: 6.5rem;
+      margin: 0 auto;
+      position: relative;
+      top: -3.4rem;
+      background: no-repeat url('http://k.kuaidian.cn/redpackWelfare/redpackWelfare.png');
+      background-position: -4rem -0.2rem;
+      background-size: 53.5rem;
+    }
+  }
+}
+
+
+/*开出来的红包弹窗*/
+.openingRp{
+  position: absolute;
+  width: 20.2rem;
+  border-radius: 0.3rem;
+  z-index: 999;
+  .md-content{
+    padding: $padding;
+    background: #ffffff;
+    .cash_num{
+      text-align: center;
+      color: #ff2739;
+      font-size: 1.15rem;
+      margin-top: 3.5rem;
+      em{
+        font-size: 3.42rem;
+      }
+    }
+
+    .cash_state{
+      text-align: center;
+      font-size: 1rem;
+      color: #333333;
+      margin-top: 2rem;
+    }
+    .goRobBtn{
+      display: block;
+      border: 0;
+      width: 17.8rem;
+      height: 3.2rem;
+      background: #ff2739;
+      color: #ffffff;
+      font-size: 1.35rem;
+      margin: 2.5rem auto 0 auto;
+      border-radius: 0.5rem;
+    }
+    .goVipRobBtn{
+      display: block;
+      border: 0;
+      width: 17.8rem;
+      height: 3.2rem;
+      background: #fcd200;
+      color: #ff4734;
+      font-size: 1.35rem;
+      margin: 1.2rem auto 0 auto;
+      border-radius: 0.5rem;
+    }
+    .lucy{
+      display: block;
+      text-decoration: underline;
+      text-align: center;
+      color: #999999;
+      font-size: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .goTime em{
+      font-size: 1rem;
+    }
+    .red_close{
+      position: absolute;
+      right: 0.5rem;
+      top:0;
+
+    }
+  }
 }

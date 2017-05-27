@@ -1,0 +1,366 @@
+@charset 'utf8';
+
+@import "../config.scss";
+@import "../icon.scss";
+@import "../dialog.scss";
+@import "../animations.scss";
+
+.content {
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.goodsState{
+  height: 3.42rem;
+  line-height: 3.42rem;
+  color: #666666;
+  font-size: 1.15rem;
+  background: #ffffff;
+  position: relative;
+  z-index: 2;
+  .goodsWay{
+    width: 33.3%;
+    text-align: center;
+  }
+  .redcolor{
+    color: #ff2739;
+    border-bottom: 0.2rem solid #ff2739;
+  }
+}
+
+.goodsListBox{
+  .goodsList{
+    background: #ffffff;
+    margin-top: 0.5rem;
+    .goodsListHead{
+      justify-content: space-between;
+      height: 2.4rem;
+      line-height: 2.4rem;
+      padding: 0 1.15rem;
+       span:nth-child(1){
+        font-size: 1rem;
+        color: #333333;
+      }
+      .endTime{
+        font-size: 0.875rem;
+        color: #505050;
+         em{
+          display: inline-block;
+          font-size:1rem;
+          color: #ffffff;
+          background: #ff2739;
+          width: 1.5rem;
+          height: 1.5rem;
+          border-radius: 0.3rem;
+          vertical-align: middle;
+          line-height: 1.5rem;
+          text-align: center;
+          margin-left: 0.2rem;
+        }
+         span{
+          font-size: 0.875rem;
+          color: #ff2739;
+          margin-left: 0.2rem;
+        }
+      }
+
+    }
+    .goodsListMiddle{
+      align-items: center;
+      height: 5.92rem;
+      padding: 0.5rem 1.15rem;
+       img{
+        width: 4.85rem;
+        height: 4.85rem;
+      }
+      .goodsListInfo{
+        padding-left: 1.15rem;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        flex: 1;
+        z-index: 2;
+        .goodsName{
+          display: -webkit-box;
+          color: #333333;
+          font-size: 1rem;
+          line-height: 1.5;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          word-break: break-all;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          text-align: justify;
+        }
+        .auctionPrice{
+          font-size:1rem;
+          color: #666666;
+          line-height: 1.5rem;
+           em{
+            color: #ff2739;
+          }
+        }
+      }
+
+    }
+    .goodsListBottom{
+      height: 3.14rem;
+      line-height: 3.14rem;
+      border-top:0.1rem solid #f5f2f0;
+       p{
+        width: 50%;
+      }
+       p:nth-of-type(2){
+        text-align: center;
+        color: #ff2739;
+        font-size: 1.15rem;
+        border-left:0.1rem solid #f5f2f0;
+         .goAuction{
+           width: 100%;
+           height: 3.14rem;
+           border: 0;
+           color: #ff2739;
+           font-size: 1.15rem;
+           background: #ffffff;
+           &:active{
+             background: #f9f9f9;
+           }
+         }
+      }
+    }
+
+
+  }
+
+
+
+  .goodsPrice span:nth-child(2){
+    padding-left: 1.5rem;
+    line-height: 2;
+    font-size: 0.875rem;
+    color: #666666;
+  }
+  .goodsPrice em{
+    font-size: 1.35rem;
+    color: #ff2739;
+  }
+  .priceNum{
+    font-size: 0.875rem;
+    color: #999999;
+    line-height: 1.3;
+  }
+
+
+  .myPrice{
+    font-size: 1rem;
+    color: #333333;
+  }
+  .myPrice span{
+    color: #ff2739;
+  }
+  .myPrice em{
+    font-size: 1.35rem;
+    color: #ff2739;
+  }
+  .goBtn{
+    border: 0;
+    width: 7.5rem;
+    height: 2.57rem;
+    background: #ffbb33;
+    color: #fff;
+    font-size: 1.15rem;
+    border-radius: 0.3rem;
+
+  }
+  .goBtn:active{
+    opacity: 0.6;
+  }
+  .getBtn{
+    border: 0;
+    width: 7.5rem;
+    height: 2.57rem;
+    background: #ff2739;
+    color: #fff;
+    font-size: 1.15rem;
+    border-radius: 0.3rem;
+  }
+  .getBtn:active{
+    opacity: 0.6;
+  }
+  .myBtn{
+    border: 0;
+    width: 7.5rem;
+    height: 2.57rem;
+    background: #ff2739;
+    color: #fff;
+    font-size: 1.15rem;
+    border-radius: 0.3rem;
+  }
+
+  .font{
+    color: #999999!important;
+    font-size: 0.875rem!important;
+  }
+  .noSuccess{
+    color: #ff2739;
+    font-size: 1rem;
+  }
+
+  .left_time{
+    text-align: center;
+    color: #333;
+    font-size: 0.65rem;
+
+  }
+  .left_time em{
+    display: inline-block;
+    background: #ff2739;
+    border-radius: 0.2rem;
+    color: #ffffff;
+    font-size: 0.65rem;
+    vertical-align: text-top;
+    margin-left: 0.2rem;
+    height: 0.875rem;
+    margin-right: 0.2rem;
+    text-align: center;
+    line-height: 1.05rem;
+    padding: 0.1rem;
+  }
+  .left_time span{
+    font-size: 0.875rem;
+    color: #666666;
+  }
+  .myBtn span{
+    font-size: 0.875rem;
+    color: #ffffff;
+  }
+  .myBtn em{
+    font-size: 1.15rem;
+  }
+
+  .backBean{
+    font-size: 1.15rem;
+    color: #ff2739;
+    margin-left: 1.15rem;
+    width: 50%;
+  }
+  .backBeanA{
+    font-size: 1.15rem;
+    color: #ff2739;
+    margin-left: 1.15rem;
+    width: 50%;
+  }
+  .backBean:before{
+    content: "";
+    display: inline-block;
+    width: 1.7rem;
+    height: 1.7rem;
+    background: no-repeat center url(/static/images/goodsAuction/ic_yes.png);
+    background-size: 1.4rem;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+  }
+  .toAccount{
+    width: 50%;
+    height: 100%;
+    position: relative;
+  }
+  .toAccount span{
+    position: absolute;
+    right: 2.5rem;
+    color: #999;
+    font-size: 1rem;
+  }
+  .ic-arrow-rg{
+    position: absolute;
+    right: 0.5rem;
+    top: 0.9rem;
+
+  }
+  .getGoods{
+    width: 50%;
+  }
+  .exchangeRedpack{
+    width: 50%;
+    text-align: center;
+    border-left: 0.1rem solid #f5f2f0;
+  }
+  .getGoods_p{
+    color: #cccccc;
+    font-size: 1.15rem;
+    text-align: center;
+    line-height: 1.2rem;
+  }
+  .getGoods_text{
+    color: #999;
+    font-size: 0.875rem;
+    text-align: center;
+    line-height: 1.2rem;
+  }
+  .exchangeBtn{
+    width: 100%;
+    height: 3.14rem;
+    border: 0;
+    color: #ff2739;
+    font-size: 1.15rem;
+    background: #ffffff;
+  }
+  .exchangeBtn:active{
+    background: #f9f9f9;
+  }
+
+  .getGoodsBtn{
+    width: 100%;
+    height: 3.14rem;
+    border: 0;
+    color: #ff2739;
+    font-size: 1.15rem;
+    background: #ffffff;
+  }
+  .getGoodsBtn:active{
+    background: #f9f9f9;
+  }
+  .hasExchange{
+    width: 100%;
+    color: #ff2739;
+    font-size: 1.15rem;
+    opacity: 0.6;
+    text-align: center;
+  }
+  .myAuction:active{
+    background: #f9f9f9;
+  }
+
+}
+
+.myAuction{
+  position: absolute;
+  right: 1.15rem;
+  font-size: 1.15rem;
+  font-weight: normal;
+  color: #ffffff;
+}
+.myAuction:active{
+  opacity: 0.6;
+}
+
+.noInfo{
+  position: absolute;
+  width: 10rem;
+  height: 10rem;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%,-50%);
+  -webkit-transform:translate(-50%,-50%);;
+   img{
+    width: 7rem;
+    margin: 0 auto;
+  }
+  .no_record{
+    text-align: center;
+    font-size: 1.15rem;
+    color: #999999;
+    margin-top: 1rem;
+  }
+}
+
+

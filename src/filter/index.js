@@ -34,3 +34,10 @@ Vue.filter('roomStatus_f', function(value){
 		return '等待中'
 	}
 });
+Vue.filter('redpackTime', function(value){
+	value = parseInt(value) / 1000;
+	if(value == 0) {
+		return 'Go'
+	}
+	return value
+});

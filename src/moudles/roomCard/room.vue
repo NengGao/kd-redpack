@@ -364,13 +364,6 @@
 			}
 		},
 		filters: {
-			redpackTime: function(value) {
-				value = parseInt(value) / 1000;
-				if(value == 0) {
-					return 'Go'
-				}
-				return value
-			},
 			boutId_f : function(value){
 				if(!value) return
 				return value.substring(7,value.length)

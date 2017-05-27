@@ -14,7 +14,7 @@
 				</li>
 				<li class="lineBox marginTop flex-wrap">
 					<div class="lineBox-icon ic-kld"></div>
-					<div class="lineBox-title">我的快乐豆：<span>{{user.inviteCode | KLD_f}}豆</span></div>
+					<div class="lineBox-title">我的快乐豆：<span>{{user.syceeTotal | KLD_f}}豆</span></div>
 					<div class="lookDetail">明细</div>
 					<i class="ic-arrow-rw"></i>
 				</li>
@@ -27,11 +27,11 @@
 					<div class="lineBox-title">消息通知</div>
 					<i class="ic-arrow-rw"></i>
 				</router-link>
-				<li class="lineBox flex-wrap">
+				<router-link tag="li" to="/goodsAuction/myAuction" class="lineBox flex-wrap">
 					<div class="lineBox-icon ic-auction"></div>
 					<div class="lineBox-title">我的抢拍</div>
 					<i class="ic-arrow-rw"></i>
-				</li>
+				</router-link>
 				<router-link tag="li" to="/vip" class="lineBox marginTop flex-wrap">
 					<div class="lineBox-icon ic-vip"></div>
 					<div class="lineBox-title">升级vip特权</div>
@@ -42,17 +42,17 @@
 					<li class="flex-con-1">奖励丰厚</li>
 					<li class="flex-con-1">vip专享</li>
 				</ul>
-				<li class="lineBox flex-wrap">
+				<router-link tag="li" to="/customer" class="lineBox flex-wrap">
 					<div class="lineBox-icon ic-waiter"></div>
 					<div class="lineBox-title">在线客服</div>
 					<i class="ic-arrow-rw"></i>
-				</li>
+				</router-link>
 				<router-link tag="li" to="/about" class="lineBox flex-wrap">
 					<div class="lineBox-icon ic-about"></div>
 					<div class="lineBox-title">关于我们</div>
 					<i class="ic-arrow-rw"></i>
 				</router-link>
-				<li class="lineBox exit" id="exit">
+				<li class="lineBox exit" id="exit" @click=exitLogin>
 					<i class="lineBox-icon ic-exit"></i>退出登录
 				</li>
 			</ul>
@@ -61,6 +61,7 @@
 </template>
 
 <script>
+	import { Toast } from 'mint-ui'
 	export default{
 		name: 'personal',
 		data(){
@@ -68,14 +69,28 @@
 				user: this.$store.state.user,
 				headerMag:{
 					title:'个人中心',
-					rightMsg: '<i class="ic-balance"></i>余额(元): '+ this.$store.state.user.userMoney,
+					rightMsg: '<i class="ic-balance"></i>余额(元): '+ this.$store.state.user.balance,
 					rightUrl: '/balance'
 				}
+			}
+		},
+		methods:{
+			exitLogin(){
+				localStorage.clear();
+				Toast({
+				  message: '退出成功',
+				  duration: 1500,
+				  iconClass: 'ic-toast-success'
+				});
+				let self = this;
+				setTimeout(function(){
+					self.$router.push('/')
+				},1700)
 			}
 		}
 	}
 </script>
-	
+
 <style rel="stylesheet/scss" lang="scss" scoped>
 	@import "../../assets/sass/main/personal.scss";
 </style>

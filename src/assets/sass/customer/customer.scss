@@ -1,0 +1,55 @@
+@charset 'utf8';
+
+@import "../config.scss";
+@import "../icon.scss";
+@import "../dialog.scss";
+@import "../redpack.scss";
+
+.content{
+    overflow: hidden;
+}
+.footer{
+    width: 100%;
+    height: 4.6rem;
+    background: #fff;
+    position: relative;
+    .send-box{
+        width: 94%;
+        overflow: hidden;
+        height: 2.9rem;
+        margin: 0.75rem auto;
+        .send-btn{
+            width: 5rem;
+            height: 2.9rem;
+            background: #f64949;
+            color: #fff;
+            border: 0;
+            border-radius: 0.3rem;
+            margin-left: 1rem;
+            &:active{
+                opacity: 0.8;
+            }
+        }
+        .send-img{
+            width: 3rem;
+            height: 2.9rem;
+            background: no-repeat center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAAwCAYAAABE1blzAAADGUlEQVR42uyaXYhNURTH95w7c5nxMU00YZQQpiQaaZLUnXxM44VBhhqjqXmQkkSJ8iLSxJMoKY3x8cLDKO4gZWKUpCgvUnihfD0wYUbG4L+662Z32/eefc8592Od7qpfnb3PPh//ffbZa+11TtmNvj5lsImgQsmyX+BHamW5tr0EHATNoFrJtC/gDjgCXlCFwzvawGOwRbA4shqwFTwFG5JPcBG4CKJawyHwR5i4Cn61yMaDK2ApCTykiXsGtoGXQp9gAwurB1VgPw3RNVqDTsHiFA/NHVq5mQRO4cIweK7k2xNte4ajFUbB3xAI1DU4jgq5lQSWBJYEFtbK83y9SrAOzAXfOG58ExaBTeAy+SatbgycpogD/JYskFYqNzl80i0C9rDv2iv5HTxqEKfbbjBbqkAaJWtd2kR4HSpSYKVldmCyVIE0W36waPdK8jvY47L/PbglfZJ5lGbfT9AORiQLpLXmKnAcfOI68nv9YAW453J8GejmzthVrI5+hNMjRDWLHrV8CGfATi7TNiWXjhVzLDpkKY7cR68mTh/yJ/nJig22KRF2ld9Pk+0D57gTxAmkqOc62OjSrkslsmhRSQIngThosWzfxp1RJUEgTR53QSzL46gzbitDVt6rwEgOxNWyu2j0ePxKPr7Wr8AF4DMYUMF9x6gD93lZ5cca+DyeBZLfvMRDKWbqMQ9Gy6RBlUi3B2H1fgQeBssMPTbTx80M5motmK3ARo5CTDf5EMzL8tqLuXPqcjlr2QqcoBKf2NKFdrPAA75p284aCGB4BybwBJjv0mYa3/Ryl3YxdgU1+fA7NgJbDLGgmx9bneFccXbmqhgE0qe18zZBbcpwpgxaa0p9a6aIo1ACz4LpHs47DlxT/z9GbudyNN+hUSaBHWCzj3NTtHMBvOYJKqIKYE6GWfFUQNeYU8jg1klT16Nk/05iFJjMXVIKvUmFw8ZI4Edtkdlhm+sQYm9JYL9W0cszYFgs7vATG1bhM0psdTs8jW8C30Mk7itYT0M0GTzTcn8hOKASfz5NFSqMFuL0CYBSiu+o4p8AAwCfdX1WUHnMPQAAAABJRU5ErkJggg==) #f5f5f5;
+            background-size: 60%;
+            border-radius: 0 0.3rem 0.3rem 0;
+            overflow: hidden;
+            padding-right: 0.2rem;
+            input{
+                opacity: 0;
+            }
+        }
+        input[type='text']{
+            background: #f5f5f5;
+            border: 0;
+            height: 2.9rem;
+            border-radius: 0.3rem 0 0 0.3rem;
+            color: #999;
+            z-index: 0;
+            padding-left: 0.8rem;
+        }
+    }
+}
